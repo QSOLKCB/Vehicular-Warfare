@@ -1,0 +1,32 @@
+{
+  "testedGit": "5af96674108ab08909ca0ad6b4c4333cc6304722",
+  "base": "32917d00456a9e6a1e22b85e8dcb2563630bc5d4",
+  "upstream": "0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466",
+  "manifestSha256": "0608e182be0d55f1dcb2fcf92eae6e3078e704de8ef7fadcc0fb5ab933a61bef",
+  "cleanRebuild": {
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "NOTICE": "3e00b198d9b7e8cf9aba1b6095caf815dd276bd7cff6c3e517927bf690c2c302",
+    "modules/collision/index.js": "99c0f4bc106d4162fc5bea057a7108d7cf52526279b2a8ad4e4f27c1f0e6f5c1",
+    "modules/math/index.js": "4f4ebf0786b97342c11004b8830a535890b16693458a0436edb1fc581a411da7",
+    "modules/render-packing/index.js": "c42239a5be626feb53f11243dddaa034821daaa7ca667741495420dca8558733",
+    "modules/render-webgl/index.js": "b23b2c427d3bf8b29c991e3cf676bcda13bdffa9dae88bbb9f0f4594088aba2d",
+    "modules/terrain/index.js": "500756acf093f44e2e6c7e993a4b8f3f6f720abaf32db99fe0189d9b65fdc186"
+  },
+  "historicalSimulation": {
+    "sim/clock.js": "e9d96923c4fbed636ca1b0132dc615986fcbd94a5ae17fcb3cec1c1392b9ff80",
+    "sim/identity.js": "1f0a4a597b2d06c47ec7caf19717dec6a09daf9c0cb9806a5a47f15920edc109",
+    "sim/mech-identity.js": "cde0962712b1ee1a87cfd0f6dc84e577612a297a40d224377bc1c5e3507d5918",
+    "sim/mech-world.js": "694fda12008453063529948357b572c7867b215617e439716fdd4bf96d1d4a0f",
+    "sim/missions.js": "7794bbcf134acfa4a0b830842c72addfd0ad1d03d48707b5d0234ebeb63faeb4",
+    "sim/naval-identity.js": "d5685255bcab26a652c0f5aac5bc62a88077c0cf052fd82c2b26b16264ea8e98",
+    "sim/naval-world.js": "af4cb912b34a5a3364183fe5c47fbc62c3bc0c0917a5d469e7b09e5f8562d1b0",
+    "sim/tank-combat.js": "f0197096c209054d01f9f23dc89565121ca80b552e7e8d68629d5a67c7c6cc99",
+    "sim/tank-identity.js": "cd18b5ae48ac3a5c1864d88a35d0d16a864b34ba66365ef426372c9d7e6bebb0",
+    "sim/tank-world.js": "f37854bfeb3a5d6af52f3f96920d775d11df981ef529e258fa7ec7e86a80a847",
+    "sim/terrain.js": "b1f91458aa3f4cf1d476b384b9a49a5de05d7c2f974e118b6a0edfcf0430996f",
+    "sim/tracks.js": "01528d54be48d61b1b8bf7759e1ae16eab20345ce70a3c85cbacc2c015ad9b4c",
+    "sim/vessel.js": "4fc79823953afae5ce98ffab6f5564135902910a54e0c34c0575920eebf936d9",
+    "sim/walker.js": "33e553835b8c70138f0f2a321aaddf2415cdcd50ee311a08b97b58081f5f9e43",
+    "sim/world.js": "650b1cfb72684de987a3219bbba14d597e895eec404aa149f626353090719698"
+  }
+}
