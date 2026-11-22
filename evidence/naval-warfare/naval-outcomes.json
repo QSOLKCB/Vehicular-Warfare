@@ -1,0 +1,1076 @@
+[
+ {
+  "status": "victory",
+  "reason": "passage reopened",
+  "score": 250,
+  "health": {
+   "player": 60,
+   "patrol": 0,
+   "station": 0
+  },
+  "receipt": {
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "seed": 1404,
+   "ticks": 1249,
+   "commands": [
+    [
+     0,
+     257
+    ]
+   ],
+   "stateHash": "20a71959",
+   "eventHash": "e519319c",
+   "mission": "lantern"
+  },
+  "events": [
+   {
+    "tick": 1,
+    "type": "launch",
+    "owner": "player",
+    "shot": 1,
+    "point": [
+     -4.902694268287728e-20,
+     1.9000443072227173,
+     37.84970482105814
+    ]
+   },
+   {
+    "tick": 47,
+    "type": "launch",
+    "owner": "player",
+    "shot": 2,
+    "point": [
+     -3.554453344508607e-19,
+     1.9311586663598463,
+     37.515295334825026
+    ]
+   },
+   {
+    "tick": 93,
+    "type": "launch",
+    "owner": "player",
+    "shot": 3,
+    "point": [
+     7.354041402431506e-20,
+     1.9618591658374787,
+     36.56641091897962
+    ]
+   },
+   {
+    "tick": 137,
+    "type": "impact",
+    "source": "player",
+    "shot": 1,
+    "target": "water",
+    "point": [
+     -4.902694268287728e-20,
+     0,
+     -11.671165885303429
+    ]
+   },
+   {
+    "tick": 139,
+    "type": "launch",
+    "owner": "player",
+    "shot": 4,
+    "point": [
+     -1.4462948091448818e-18,
+     1.9602719017258088,
+     35.080165949027965
+    ]
+   },
+   {
+    "tick": 184,
+    "type": "impact",
+    "source": "player",
+    "shot": 2,
+    "target": "water",
+    "point": [
+     -3.554453344508607e-19,
+     0,
+     -12.40929015572447
+    ]
+   },
+   {
+    "tick": 185,
+    "type": "launch",
+    "owner": "player",
+    "shot": 5,
+    "point": [
+     -1.1974830750292782e-17,
+     1.947175340650447,
+     33.18053632713722
+    ]
+   },
+   {
+    "tick": 231,
+    "type": "impact",
+    "source": "player",
+    "shot": 3,
+    "target": "water",
+    "point": [
+     7.354041402431506e-20,
+     0,
+     -13.753386403740183
+    ]
+   },
+   {
+    "tick": 231,
+    "type": "launch",
+    "owner": "player",
+    "shot": 6,
+    "point": [
+     -2.089773431857645e-17,
+     1.9437773824620483,
+     30.980526518787727
+    ]
+   },
+   {
+    "tick": 277,
+    "type": "impact",
+    "source": "player",
+    "shot": 4,
+    "target": "water",
+    "point": [
+     -1.4462948091448818e-18,
+     0,
+     -15.219314393062465
+    ]
+   },
+   {
+    "tick": 277,
+    "type": "launch",
+    "owner": "player",
+    "shot": 7,
+    "point": [
+     -3.033542078503033e-17,
+     1.9479656549971887,
+     28.5587843007088
+    ]
+   },
+   {
+    "tick": 322,
+    "type": "impact",
+    "source": "player",
+    "shot": 5,
+    "target": "water",
+    "point": [
+     -1.1974830750292782e-17,
+     0,
+     -16.950564524228817
+    ]
+   },
+   {
+    "tick": 323,
+    "type": "launch",
+    "owner": "player",
+    "shot": 8,
+    "point": [
+     -3.876805492648524e-17,
+     1.950656338284839,
+     25.97120243369863
+    ]
+   },
+   {
+    "tick": 368,
+    "type": "impact",
+    "source": "player",
+    "shot": 6,
+    "target": "water",
+    "point": [
+     -2.089773431857645e-17,
+     0,
+     -19.106761831394557
+    ]
+   },
+   {
+    "tick": 369,
+    "type": "launch",
+    "owner": "player",
+    "shot": 9,
+    "point": [
+     -2.809243815728871e-17,
+     1.94985109380347,
+     23.263274638573158
+    ]
+   },
+   {
+    "tick": 414,
+    "type": "impact",
+    "source": "player",
+    "shot": 7,
+    "target": "water",
+    "point": [
+     -3.033542078503033e-17,
+     0,
+     -21.582506684358812
+    ]
+   },
+   {
+    "tick": 415,
+    "type": "launch",
+    "owner": "player",
+    "shot": 10,
+    "point": [
+     -3.028639384234746e-17,
+     1.9485438523457796,
+     20.471689254656606
+    ]
+   },
+   {
+    "tick": 425,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 11,
+    "point": [
+     6.676217078202672,
+     1.9674901770731332,
+     -5.715898724317496
+    ]
+   },
+   {
+    "tick": 460,
+    "type": "impact",
+    "source": "player",
+    "shot": 8,
+    "target": "water",
+    "point": [
+     -3.876805492648524e-17,
+     0,
+     -24.204781610609018
+    ]
+   },
+   {
+    "tick": 461,
+    "type": "launch",
+    "owner": "player",
+    "shot": 12,
+    "point": [
+     -3.705211193258448e-17,
+     1.948450947570147,
+     17.62274776133716
+    ]
+   },
+   {
+    "tick": 491,
+    "type": "impact",
+    "source": "player",
+    "shot": 10,
+    "target": "enemy",
+    "point": [
+     -3.028639384234746e-17,
+     1.3499341332324906,
+     -7.323716118050549
+    ]
+   },
+   {
+    "tick": 491,
+    "type": "damage",
+    "source": "player",
+    "shot": 10,
+    "target": "enemy",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     -3.028639384234746e-17,
+     1.3499341332324906,
+     -7.323716118050549
+    ]
+   },
+   {
+    "tick": 494,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 11,
+    "target": "player",
+    "point": [
+     0.8671827603031328,
+     2.358124075106705,
+     18.564763932134102
+    ]
+   },
+   {
+    "tick": 494,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 11,
+    "target": "player",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     0.8671827603031328,
+     2.358124075106705,
+     18.564763932134102
+    ]
+   },
+   {
+    "tick": 506,
+    "type": "impact",
+    "source": "player",
+    "shot": 9,
+    "target": "water",
+    "point": [
+     -2.809243815728871e-17,
+     0,
+     -26.902326766267752
+    ]
+   },
+   {
+    "tick": 507,
+    "type": "launch",
+    "owner": "player",
+    "shot": 13,
+    "point": [
+     -3.647604535606069e-17,
+     1.9489368062133192,
+     14.733826700250281
+    ]
+   },
+   {
+    "tick": 553,
+    "type": "launch",
+    "owner": "player",
+    "shot": 14,
+    "point": [
+     -3.555679018075675e-17,
+     1.9491265706195011,
+     11.816723559536797
+    ]
+   },
+   {
+    "tick": 555,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 15,
+    "point": [
+     3.311940991158448,
+     1.968604456872309,
+     -5.683970594951415
+    ]
+   },
+   {
+    "tick": 598,
+    "type": "impact",
+    "source": "player",
+    "shot": 12,
+    "target": "water",
+    "point": [
+     -3.705211193258448e-17,
+     0,
+     -32.52480047595321
+    ]
+   },
+   {
+    "tick": 599,
+    "type": "launch",
+    "owner": "player",
+    "shot": 16,
+    "point": [
+     -3.2186187871308953e-17,
+     1.9489965707457308,
+     8.88001227773574
+    ]
+   },
+   {
+    "tick": 603,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 15,
+    "target": "player",
+    "point": [
+     0.4061255611146591,
+     2.3439171326785635,
+     11.592466855318374
+    ]
+   },
+   {
+    "tick": 603,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 15,
+    "target": "player",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     0.4061255611146591,
+     2.3439171326785635,
+     11.592466855318374
+    ]
+   },
+   {
+    "tick": 604,
+    "type": "impact",
+    "source": "player",
+    "shot": 14,
+    "target": "enemy",
+    "point": [
+     -3.555679018075675e-17,
+     1.6791438775759737,
+     -6.85
+    ]
+   },
+   {
+    "tick": 604,
+    "type": "damage",
+    "source": "player",
+    "shot": 14,
+    "target": "enemy",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     -3.555679018075675e-17,
+     1.6791438775759737,
+     -6.85
+    ]
+   },
+   {
+    "tick": 642,
+    "type": "impact",
+    "source": "player",
+    "shot": 16,
+    "target": "enemy",
+    "point": [
+     -3.2186187871308953e-17,
+     1.7572775242663168,
+     -6.85
+    ]
+   },
+   {
+    "tick": 642,
+    "type": "damage",
+    "source": "player",
+    "shot": 16,
+    "target": "enemy",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     -3.2186187871308953e-17,
+     1.7572775242663168,
+     -6.85
+    ]
+   },
+   {
+    "tick": 642,
+    "type": "destroy",
+    "source": "player",
+    "shot": 16,
+    "target": "enemy",
+    "point": [
+     -0.4662619584563349,
+     0.34998690314479064,
+     -8
+    ]
+   },
+   {
+    "tick": 644,
+    "type": "impact",
+    "source": "player",
+    "shot": 13,
+    "target": "water",
+    "point": [
+     -3.647604535606069e-17,
+     0,
+     -35.41998608804363
+    ]
+   },
+   {
+    "tick": 645,
+    "type": "launch",
+    "owner": "player",
+    "shot": 17,
+    "point": [
+     -3.3497658588075907e-17,
+     1.9488837261705059,
+     5.929910838905904
+    ]
+   },
+   {
+    "tick": 691,
+    "type": "launch",
+    "owner": "player",
+    "shot": 18,
+    "point": [
+     -3.0776663269176226e-17,
+     1.9488988833991492,
+     2.9706739856215445
+    ]
+   },
+   {
+    "tick": 737,
+    "type": "launch",
+    "owner": "player",
+    "shot": 19,
+    "point": [
+     -1.837284677040827e-17,
+     1.9489477045095995,
+     0.005126485256357061
+    ]
+   },
+   {
+    "tick": 782,
+    "type": "impact",
+    "source": "player",
+    "shot": 17,
+    "target": "water",
+    "point": [
+     -3.3497658588075907e-17,
+     0,
+     -44.22321754737078
+    ]
+   },
+   {
+    "tick": 783,
+    "type": "launch",
+    "owner": "player",
+    "shot": 20,
+    "point": [
+     -1.6595620098153963e-17,
+     1.9489570421364357,
+     -2.9648046760796385
+    ]
+   },
+   {
+    "tick": 828,
+    "type": "impact",
+    "source": "player",
+    "shot": 18,
+    "target": "water",
+    "point": [
+     -3.0776663269176226e-17,
+     0,
+     -47.182649834518976
+    ]
+   },
+   {
+    "tick": 829,
+    "type": "launch",
+    "owner": "player",
+    "shot": 21,
+    "point": [
+     -2.0922247789917875e-17,
+     1.9489412053265769,
+     -5.9377554715521725
+    ]
+   },
+   {
+    "tick": 874,
+    "type": "impact",
+    "source": "player",
+    "shot": 19,
+    "target": "water",
+    "point": [
+     -1.837284677040827e-17,
+     0,
+     -50.14882682319473
+    ]
+   },
+   {
+    "tick": 875,
+    "type": "launch",
+    "owner": "player",
+    "shot": 22,
+    "point": [
+     -2.0248127328028305e-17,
+     1.9489328523410858,
+     -8.912768090819078
+    ]
+   },
+   {
+    "tick": 920,
+    "type": "impact",
+    "source": "player",
+    "shot": 20,
+    "target": "water",
+    "point": [
+     -1.6595620098153963e-17,
+     0,
+     -53.11887838177052
+    ]
+   },
+   {
+    "tick": 921,
+    "type": "launch",
+    "owner": "player",
+    "shot": 23,
+    "point": [
+     -2.2944609175586544e-17,
+     1.948936342758677,
+     -11.889191759241637
+    ]
+   },
+   {
+    "tick": 966,
+    "type": "impact",
+    "source": "player",
+    "shot": 21,
+    "target": "water",
+    "point": [
+     -2.0922247789917875e-17,
+     0,
+     -56.09162498101338
+    ]
+   },
+   {
+    "tick": 967,
+    "type": "launch",
+    "owner": "player",
+    "shot": 24,
+    "point": [
+     -2.7136412774972538e-17,
+     1.948940676447621,
+     -14.866588463159621
+    ]
+   },
+   {
+    "tick": 1009,
+    "type": "impact",
+    "source": "player",
+    "shot": 22,
+    "target": "terrain",
+    "point": [
+     -2.0248127328028305e-17,
+     0.09617757446877691,
+     -57.81326214117072
+    ]
+   },
+   {
+    "tick": 1013,
+    "type": "launch",
+    "owner": "player",
+    "shot": 25,
+    "point": [
+     -3.4343373349355496e-17,
+     1.948940669503634,
+     -17.844657298767054
+    ]
+   },
+   {
+    "tick": 1048,
+    "type": "impact",
+    "source": "player",
+    "shot": 23,
+    "target": "terrain",
+    "point": [
+     -2.2944609175586544e-17,
+     0.27436169342310956,
+     -58.37892601086701
+    ]
+   },
+   {
+    "tick": 1059,
+    "type": "launch",
+    "owner": "player",
+    "shot": 26,
+    "point": [
+     -3.79100834295348e-17,
+     1.94893902809621,
+     -20.82318780784565
+    ]
+   },
+   {
+    "tick": 1088,
+    "type": "impact",
+    "source": "player",
+    "shot": 24,
+    "target": "terrain",
+    "point": [
+     -2.7136412774972538e-17,
+     0.44519742571187665,
+     -58.92126166892659
+    ]
+   },
+   {
+    "tick": 1105,
+    "type": "launch",
+    "owner": "player",
+    "shot": 27,
+    "point": [
+     -3.781202954416905e-17,
+     1.9489385359857203,
+     -23.80203422002409
+    ]
+   },
+   {
+    "tick": 1127,
+    "type": "impact",
+    "source": "player",
+    "shot": 25,
+    "target": "terrain",
+    "point": [
+     -3.4343373349355496e-17,
+     0.6084246402859507,
+     -59.439443302495086
+    ]
+   },
+   {
+    "tick": 1151,
+    "type": "launch",
+    "owner": "player",
+    "shot": 28,
+    "point": [
+     -3.619414043563409e-17,
+     1.94893901172219,
+     -26.781097356266372
+    ]
+   },
+   {
+    "tick": 1160,
+    "type": "impact",
+    "source": "player",
+    "shot": 26,
+    "target": "shore",
+    "point": [
+     -3.79100834295348e-17,
+     0.9066930288661881,
+     -57.5
+    ]
+   },
+   {
+    "tick": 1160,
+    "type": "damage",
+    "source": "player",
+    "shot": 26,
+    "target": "shore",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     -3.79100834295348e-17,
+     0.9066930288661881,
+     -57.5
+    ]
+   },
+   {
+    "tick": 1197,
+    "type": "impact",
+    "source": "player",
+    "shot": 27,
+    "target": "shore",
+    "point": [
+     -3.781202954416905e-17,
+     1.0691105801896275,
+     -57.5
+    ]
+   },
+   {
+    "tick": 1197,
+    "type": "damage",
+    "source": "player",
+    "shot": 27,
+    "target": "shore",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     -3.781202954416905e-17,
+     1.0691105801896275,
+     -57.5
+    ]
+   },
+   {
+    "tick": 1197,
+    "type": "launch",
+    "owner": "player",
+    "shot": 29,
+    "point": [
+     -3.7652691980449695e-17,
+     1.9489393498682854,
+     -29.76030979067673
+    ]
+   },
+   {
+    "tick": 1235,
+    "type": "impact",
+    "source": "player",
+    "shot": 28,
+    "target": "shore",
+    "point": [
+     -3.619414043563409e-17,
+     1.217786528340512,
+     -57.5
+    ]
+   },
+   {
+    "tick": 1235,
+    "type": "damage",
+    "source": "player",
+    "shot": 28,
+    "target": "shore",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     -3.619414043563409e-17,
+     1.217786528340512,
+     -57.5
+    ]
+   },
+   {
+    "tick": 1235,
+    "type": "destroy",
+    "source": "player",
+    "shot": 28,
+    "target": "shore",
+    "point": [
+     0,
+     2.785,
+     -60
+    ]
+   },
+   {
+    "tick": 1243,
+    "type": "launch",
+    "owner": "player",
+    "shot": 30,
+    "point": [
+     -3.4747845626489225e-17,
+     1.9489392714106017,
+     -32.739625062063546
+    ]
+   },
+   {
+    "tick": 1249,
+    "type": "beacon",
+    "point": [
+     0,
+     0,
+     -34
+    ]
+   },
+   {
+    "tick": 1249,
+    "type": "outcome",
+    "status": "victory",
+    "reason": "passage reopened",
+    "score": 250
+   }
+  ]
+ },
+ {
+  "status": "defeat",
+  "reason": "vessel disabled",
+  "score": 0,
+  "health": {
+   "player": 0,
+   "patrol": 60,
+   "station": 60
+  },
+  "receipt": {
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "seed": 1404,
+   "ticks": 959,
+   "commands": [
+    [
+     0,
+     1
+    ]
+   ],
+   "stateHash": "3308d4cc",
+   "eventHash": "2101dfcc",
+   "mission": "lantern"
+  },
+  "events": [
+   {
+    "tick": 425,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 1,
+    "point": [
+     6.676217078202672,
+     1.9674901770731332,
+     -5.715898724317496
+    ]
+   },
+   {
+    "tick": 494,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 1,
+    "target": "player",
+    "point": [
+     0.8671827603031328,
+     2.358124075106705,
+     18.564763932134102
+    ]
+   },
+   {
+    "tick": 494,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 1,
+    "target": "player",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     0.8671827603031328,
+     2.358124075106705,
+     18.564763932134102
+    ]
+   },
+   {
+    "tick": 555,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 2,
+    "point": [
+     3.311940991158448,
+     1.968604456872309,
+     -5.683970594951415
+    ]
+   },
+   {
+    "tick": 603,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 2,
+    "target": "player",
+    "point": [
+     0.4061255611146591,
+     2.3439171326785635,
+     11.592466855318374
+    ]
+   },
+   {
+    "tick": 603,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 2,
+    "target": "player",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     0.4061255611146591,
+     2.3439171326785635,
+     11.592466855318374
+    ]
+   },
+   {
+    "tick": 685,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 3,
+    "point": [
+     0.15490621676632044,
+     1.969287696836964,
+     -5.651681396670191
+    ]
+   },
+   {
+    "tick": 713,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 3,
+    "target": "player",
+    "point": [
+     0.008764984367346703,
+     2.2452611345579774,
+     4.524062419827448
+    ]
+   },
+   {
+    "tick": 713,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 3,
+    "target": "player",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     0.008764984367346703,
+     2.2452611345579774,
+     4.524062419827448
+    ]
+   },
+   {
+    "tick": 815,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 4,
+    "point": [
+     -0.3409354611151133,
+     2.0449433314615906,
+     -5.6583153861333635
+    ]
+   },
+   {
+    "tick": 829,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 4,
+    "target": "player",
+    "point": [
+     0.04702206185928347,
+     2.202609239446008,
+     -0.5995810565860513
+    ]
+   },
+   {
+    "tick": 829,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 4,
+    "target": "player",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     0.04702206185928347,
+     2.202609239446008,
+     -0.5995810565860513
+    ]
+   },
+   {
+    "tick": 945,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 5,
+    "point": [
+     -0.2961096904582987,
+     1.9690403441440016,
+     -5.656737861260002
+    ]
+   },
+   {
+    "tick": 959,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 5,
+    "target": "player",
+    "point": [
+     0.04417176202139773,
+     2.1265696460726047,
+     -0.5995810565860513
+    ]
+   },
+   {
+    "tick": 959,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 5,
+    "target": "player",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     0.04417176202139773,
+     2.1265696460726047,
+     -0.5995810565860513
+    ]
+   },
+   {
+    "tick": 959,
+    "type": "destroy",
+    "source": "enemy",
+    "shot": 5,
+    "target": "player",
+    "point": [
+     0,
+     0.35019925492037385,
+     0.5504189434139486
+    ]
+   },
+   {
+    "tick": 959,
+    "type": "outcome",
+    "status": "defeat",
+    "reason": "vessel disabled",
+    "score": 0
+   }
+  ]
+ }
+]

@@ -1,0 +1,60 @@
+{
+  "git": "1daf1d2a7471926474852d8147423c216283c40b",
+  "node": "v22.18.0",
+  "results": [
+    {
+      "family": "sable",
+      "status": "victory",
+      "ticks": 1036,
+      "recordedSource": "vw-001a:a9aee959be3e65883671613ea34c5ccb75628ea220ef935e75d92beb5e5986bc",
+      "currentSource": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+      "stateHash": "4c7c7425",
+      "eventHash": "44e841ed"
+    },
+    {
+      "family": "sable",
+      "status": "defeat",
+      "ticks": 763,
+      "recordedSource": "vw-001a:a9aee959be3e65883671613ea34c5ccb75628ea220ef935e75d92beb5e5986bc",
+      "currentSource": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+      "stateHash": "8c57c19c",
+      "eventHash": "24b0cc00"
+    },
+    {
+      "family": "cutbank",
+      "status": "victory",
+      "ticks": 447,
+      "recordedSource": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+      "currentSource": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+      "stateHash": "46ecee4c",
+      "eventHash": "2f78b155"
+    },
+    {
+      "family": "cutbank",
+      "status": "defeat",
+      "ticks": 1055,
+      "recordedSource": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+      "currentSource": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+      "stateHash": "7103272f",
+      "eventHash": "5618f363"
+    },
+    {
+      "family": "glassworks",
+      "status": "victory",
+      "ticks": 1152,
+      "recordedSource": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+      "currentSource": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+      "stateHash": "1b3e05f3",
+      "eventHash": "20ed0bf8"
+    },
+    {
+      "family": "glassworks",
+      "status": "defeat",
+      "ticks": 1132,
+      "recordedSource": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+      "currentSource": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+      "stateHash": "29369f1b",
+      "eventHash": "96b8a768"
+    }
+  ]
+}
