@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "source": "vw-cmd-001:5d7b4943ee395804df0301acc66b0d5bf1ad931cbfa4f61a45147a45895d4ade",
+  "scenario": "breakwater-command-v1",
+  "seed": 2505,
+  "roster": [
+    {
+      "id": "cobalt-helicopter",
+      "kind": "helicopter",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-tank",
+      "kind": "tank",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-mech",
+      "kind": "mech",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-ship",
+      "kind": "ship",
+      "faction": "cobalt"
+    },
+    {
+      "id": "ember-helicopter",
+      "kind": "helicopter",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-tank",
+      "kind": "tank",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-mech",
+      "kind": "mech",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-ship",
+      "kind": "ship",
+      "faction": "ember"
+    },
+    {
+      "id": "relay",
+      "kind": "relay",
+      "faction": "ember"
+    }
+  ],
+  "orders": [
+    {
+      "tick": 2,
+      "units": [
+        "cobalt-helicopter",
+        "cobalt-mech",
+        "cobalt-ship",
+        "cobalt-tank"
+      ],
+      "append": false,
+      "type": "ATTACK",
+      "target": "relay"
+    },
+    {
+      "tick": 8,
+      "units": [
+        "cobalt-helicopter"
+      ],
+      "append": true,
+      "type": "MOVE",
+      "x": -16,
+      "z": 3
+    }
+  ],
+  "ticks": 1325,
+  "stateHash": "7aa1daf8",
+  "eventHash": "9fd488bb",
+  "outcome": "victory"
+}

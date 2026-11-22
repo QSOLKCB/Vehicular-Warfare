@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: simultaneous replacement and waypoint orders use stable member IDs and copied input data
+ok 1 - simultaneous replacement and waypoint orders use stable member IDs and copied input data
+  ---
+  duration_ms: 63.54152
+  type: 'test'
+  ...
+# Subtest: invalid group commands and overflowing waypoint queues reject atomically, without calling accessors
+ok 2 - invalid group commands and overflowing waypoint queues reject atomically, without calling accessors
+  ---
+  duration_ms: 6.805124
+  type: 'test'
+  ...
+# Subtest: mixed group commands actuate tracks, tripod support, lift and six-column buoyancy
+ok 3 - mixed group commands actuate tracks, tripod support, lift and six-column buoyancy
+  ---
+  duration_ms: 351.846225
+  type: 'test'
+  ...
+# Subtest: ship attempting a dry crossing grounds and reports an obstruction within the mission limit
+ok 4 - ship attempting a dry crossing grounds and reports an obstruction within the mission limit
+  ---
+  duration_ms: 46.423332
+  type: 'test'
+  ...
+# Subtest: designation requires a friendly observation and losing island sight stops tracking and fire
+ok 5 - designation requires a friendly observation and losing island sight stops tracking and fire
+  ---
+  duration_ms: 8.802164
+  type: 'test'
+  ...
+# Subtest: the four archived numerical Breakwater receipts survive the controller extension
+ok 6 - the four archived numerical Breakwater receipts survive the controller extension
+  ---
+  duration_ms: 1038.852069
+  type: 'test'
+  ...
+# Subtest: tank reports an occupied point and a wet direct route as blocked and stays on dry tracks
+ok 7 - tank reports an occupied point and a wet direct route as blocked and stays on dry tracks
+  ---
+  duration_ms: 111.035773
+  type: 'test'
+  ...
+# Subtest: HOLD crews stop and engage, DEFEND crews reach the point and remain on station
+ok 8 - HOLD crews stop and engage, DEFEND crews reach the point and remain on station
+  ---
+  duration_ms: 156.859863
+  type: 'test'
+  ...
+# Subtest: multi-crew victory uses prior physical launches, a real gate crossing and survives loss of command units
+ok 9 - multi-crew victory uses prior physical launches, a real gate crossing and survives loss of command units
+  ---
+  duration_ms: 548.347388
+  type: 'test'
+  ...
+# Subtest: destroyed friendly recipients and replay tampering fail admission and verification
+ok 10 - destroyed friendly recipients and replay tampering fail admission and verification
+  ---
+  duration_ms: 101.010348
+  type: 'test'
+  ...
+# Subtest: mission order history and command time have independent hard bounds
+ok 11 - mission order history and command time have independent hard bounds
+  ---
+  duration_ms: 752.190434
+  type: 'test'
+  ...
+# Subtest: north-up CSS coordinates round trip at wide and tall aspect ratios
+ok 12 - north-up CSS coordinates round trip at wide and tall aspect ratios
+  ---
+  duration_ms: 1.045341
+  type: 'test'
+  ...
+# Subtest: wheel zoom anchors cursor and pan uses CSS pixel deltas
+ok 13 - wheel zoom anchors cursor and pan uses CSS pixel deltas
+  ---
+  duration_ms: 0.22904
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3239.547014

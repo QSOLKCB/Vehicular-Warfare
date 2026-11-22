@@ -1,0 +1,342 @@
+{
+ "release": "5c3088953f983fadb2fade5f360de24f2d30cd2d",
+ "runtime": "80e0b0aac2d737a3a5c0a05f5522611b8d2aad86",
+ "zipSha256": "27ec8fa1ae0227678c881ee466dedd67d90e54cb839f49d5bcd232d827d9a2b6",
+ "browser": "Google Chrome 158.0.8127.36",
+ "distinct": 24,
+ "occurrences": 29,
+ "verified": [
+  {
+   "mission": "breakwater",
+   "ticks": 1095,
+   "stateHash": "4907ce34",
+   "eventHash": "65e7fd7c",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/combined.json.gz",
+     "/runs/0/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "breakwater",
+   "ticks": 1211,
+   "stateHash": "d70a33a2",
+   "eventHash": "1d226943",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/combined.json.gz",
+     "/runs/1/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "breakwater",
+   "ticks": 978,
+   "stateHash": "cf294af2",
+   "eventHash": "b0e32513",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/combined.json.gz",
+     "/runs/2/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "breakwater",
+   "ticks": 978,
+   "stateHash": "25fe298d",
+   "eventHash": "1ec32e37",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/combined.json.gz",
+     "/runs/3/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "breakwater",
+   "ticks": 1064,
+   "stateHash": "3070e54c",
+   "eventHash": "dca0d304",
+   "status": "defeat",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/combined.json.gz",
+     "/loss/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "cutbank",
+   "ticks": 486,
+   "stateHash": "d7460ed0",
+   "eventHash": "68b883c3",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/controls.json.gz",
+     "/solo/0/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "glassworks",
+   "ticks": 1153,
+   "stateHash": "cb5fa56d",
+   "eventHash": "38fb67f4",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/controls.json.gz",
+     "/solo/1/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "lantern",
+   "ticks": 1250,
+   "stateHash": "7cc2cb84",
+   "eventHash": "2b4ce92d",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/controls.json.gz",
+     "/solo/2/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "workshop",
+   "ticks": 959,
+   "stateHash": "e353fae6",
+   "eventHash": "e36a358a",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/creator.json.gz",
+     "/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "workshop",
+   "ticks": 1054,
+   "stateHash": "567c59c2",
+   "eventHash": "2f954672",
+   "status": "defeat",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/creator.json.gz",
+     "/loss/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "glassworks",
+   "ticks": 1153,
+   "stateHash": "cb5fa56d",
+   "eventHash": "38fb67f4",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/mech.json.gz",
+     "/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "glassworks",
+   "ticks": 1134,
+   "stateHash": "2b6d9a0a",
+   "eventHash": "9fd0074a",
+   "status": "defeat",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/mech.json.gz",
+     "/loss/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "lantern",
+   "ticks": 1253,
+   "stateHash": "63b57a5b",
+   "eventHash": "14fdd008",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/naval.json.gz",
+     "/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "lantern",
+   "ticks": 959,
+   "stateHash": "82a402d5",
+   "eventHash": "fde03734",
+   "status": "defeat",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/naval.json.gz",
+     "/loss/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "longwatch",
+   "ticks": 1632,
+   "stateHash": "8b5c07bb",
+   "eventHash": "b817db28",
+   "status": "defeat",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/routes-exposure.json.gz",
+     "/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "longwatch",
+   "ticks": 8587,
+   "stateHash": "85814ea4",
+   "eventHash": "5c42367e",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/routes-flights.json.gz",
+     "/0/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "frostline",
+   "ticks": 9372,
+   "stateHash": "82c68c2c",
+   "eventHash": "33f5ceef",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/routes-flights.json.gz",
+     "/1/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "sable",
+   "ticks": 1098,
+   "stateHash": "d69c5fca",
+   "eventHash": "53275910",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/sable-playthrough.json.gz",
+     "/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "sable",
+   "ticks": 768,
+   "stateHash": "e4beee9b",
+   "eventHash": "9b5ec4d8",
+   "status": "defeat",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/sable-playthrough.json.gz",
+     "/loss/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "cutbank",
+   "ticks": 485,
+   "stateHash": "dd03edb8",
+   "eventHash": "1c6f095a",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/tank.json.gz",
+     "/win/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "cutbank",
+   "ticks": 1056,
+   "stateHash": "93a05f9e",
+   "eventHash": "8dcf7718",
+   "status": "defeat",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/tank.json.gz",
+     "/loss/receipt"
+    ]
+   ]
+  },
+  {
+   "mission": "sable",
+   "ticks": 897,
+   "stateHash": "67fbe180",
+   "eventHash": "db64fe9b",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/victory"
+    ]
+   ]
+  },
+  {
+   "mission": "frostline",
+   "ticks": 255,
+   "stateHash": "a55cc42d",
+   "eventHash": "811c9dc5",
+   "status": "flying",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/frostline/recording"
+    ]
+   ]
+  },
+  {
+   "mission": "sable",
+   "ticks": 442,
+   "stateHash": "56d28634",
+   "eventHash": "79014d08",
+   "status": "victory",
+   "locations": [
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/parity/results/0/recording"
+    ],
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/parity/results/0/verified"
+    ],
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/parity/results/1/recording"
+    ],
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/parity/results/1/verified"
+    ],
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/parity/results/2/recording"
+    ],
+    [
+     "evidence/tactical-display/browser/terrain.json.gz",
+     "/parity/results/2/verified"
+    ]
+   ]
+  }
+ ]
+}

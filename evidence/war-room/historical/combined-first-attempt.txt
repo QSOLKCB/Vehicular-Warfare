@@ -1,0 +1,14 @@
+file:///home/trent/Vehicular-Warfare/tools/browser.mjs:81
+    pending.set(id,m=>{clearTimeout(timer);m.error?fail(Error(m.error.message)):ok(m.result);});
+                                                        ^
+
+Error: Inspected target navigated or closed
+    at file:///home/trent/Vehicular-Warfare/tools/browser.mjs:81:57
+    at Socket.<anonymous> (file:///home/trent/Vehicular-Warfare/tools/browser.mjs:69:66)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
+Node.js v22.18.0
