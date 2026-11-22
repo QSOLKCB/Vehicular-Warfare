@@ -28,6 +28,12 @@ Choose **Naval sortie** to pilot a cutter through the island channel. **W/S** ap
 
 Choose a helicopter, tank, mech or ship before deploying. Your other three crews join you against four mobile defenders and a shore relay. Disable the relay to open your crew's gate, enter the gate and help the team disable two mobile defenders. Holding the gate lets your crew draw on its limited repair supply. The briefing lists controls for each vehicle, and the debrief lets you save the run or choose another crew. [Theatre, vehicle and replay API](docs/COMBINED_ARMS.md) · [Playthroughs and measurements](evidence/combined-arms/)
 
+## Creator systems · Mission workshop
+
+Choose **Mission workshop** on the mission board. Give the mission a title, set its terrain seed and player crew, then place the gate and shore relay on the chart. You can click a landmark into place, use the arrow keys on the chart, or enter coordinates. **Apply changes** saves the accepted draft in this browser. **Export pack** creates a small JSON file that another player can import and play offline.
+
+After a playtest, choose **Watch replay** or **Save replay**. The workshop also opens saved Breakwater Reach recordings. Pause, scrub to a tick, then switch between chase, gun sight and overhead to see the same moment from three angles. **Music** enables an original local score that follows the encounter in both live play and replay. [Pack format and replay API](docs/CREATOR_SYSTEMS.md) · [Playable example, score and verification](evidence/creator-systems/)
+
 ## Terrain view
 
 Choose **Original WebGL** or **Experimental voxel** on the mission board or pause panel. In flight, press **T** or use the terrain button to switch at the current aircraft pose. Survey uses a 256 × 160 working image. Fine uses 384 × 240. Both use WebGL1 for the sky, 3D objects and final composition.
@@ -71,6 +77,7 @@ node tools/measure.mjs
 node tools/measure.mjs mech
 node tools/measure.mjs naval
 node tools/measure.mjs combined
+node tools/measure.mjs creator
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-verification
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-routes routes
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-columns terrain
@@ -78,6 +85,7 @@ CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-tracked tank
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-walking mech
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-sailing naval
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-combined combined
+CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-workshop creator
 ```
 
 **Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. Open **Flight controls & saved replays → Check saved flight** to verify the file locally in the recording browser. The report shows sortie, elapsed time and outcome. Node can verify a receipt when its runtime reproduces the checksums. From the repository root, run

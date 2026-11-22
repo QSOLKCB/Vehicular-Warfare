@@ -1,0 +1,25 @@
+#station{--gold:#fad18b;--line:#d4c6a65c}
+#return{margin:0 0 0 auto;color:var(--gold);font:600 12px var(--mono);letter-spacing:.03em}
+#musicCue{margin-left:auto;padding:4px 8px;background:#182725d9;color:#f5dbac;font:11px var(--mono);letter-spacing:.03em}
+#musicCue:not([hidden])+#return{margin-left:4px}
+#station #return:focus-visible,#station input:focus-visible,#station select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#station #title{font-size:clamp(41px,6.6vw,95px);overflow-wrap:anywhere}
+#station .panel-actions{display:flex;flex-wrap:wrap;gap:6px}
+#watch{display:none}
+#station:is([data-mode=paused],[data-mode=victory],[data-mode=defeat]) #watch{display:inline-block}
+#station[data-kind=replay] .shade{background:linear-gradient(0deg,#0b1719bd,transparent 44%,transparent 86%,#172a2c88)}
+#station[data-kind=replay] .instruments,#station[data-kind=replay] #liveActions,#station[data-kind=replay] footer{display:none}
+#station[data-mode=error] #guide{display:none}
+#station #missionLabel{overflow-wrap:anywhere;max-width:min(37vw,280px)}
+#replayDeck{position:absolute;left:4%;right:4%;bottom:4%;z-index:4;max-width:840px;margin:auto;padding:13px 18px 14px;background:#142525ed;border:1px solid var(--line);border-top:2px solid var(--gold);color:var(--ink)}
+.timecode,.transport,.angle{display:flex;align-items:center}
+.timecode{justify-content:space-between;gap:10px;font:600 11px var(--mono);letter-spacing:.06em}
+.timecode label{color:var(--gold);text-transform:uppercase}#replayState{color:#e0e3d6;padding-left:8px;text-transform:none;letter-spacing:0}
+#timecode{font-variant-numeric:tabular-nums}
+#timeline{width:100%;margin:8px 0 10px;height:18px;accent-color:var(--gold);cursor:pointer}
+.transport{gap:8px}.transport button,.transport select{min-height:34px;padding:6px 11px}
+#replayToggle{background:var(--gold);color:#202522;min-width:72px}
+.angle{gap:7px;margin-left:auto;font:11px var(--mono);color:var(--gold)}
+#replayDeck:has(#timeline:focus-visible){border-top-color:#fff2d4}
+#station[data-kind=replay] #message{bottom:29%}
+@media(max-width:580px){#replayDeck{left:2%;right:2%;bottom:2%;padding:10px}.angle{font-size:0;gap:0}.transport{gap:4px}#replayState{display:none}.timecode{letter-spacing:0}.transport button,.transport select{font-size:11px;padding:5px 8px}.mission{top:15%}}

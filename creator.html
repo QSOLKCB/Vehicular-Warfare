@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b2826">
+  <title>Mission workshop · Vehicular Warfare</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./game/creator.css">
+</head>
+<body>
+  <header class="mast"><div class="mast-inner">
+    <a class="brand" href="./index.html"><span class="insignia" aria-hidden="true">◢</span>Vehicular Warfare</a>
+    <a class="board-link" href="./index.html">← Mission board</a>
+  </div></header>
+  <main>
+    <div class="title-row">
+      <h1>Mission workshop</h1>
+      <div class="file-actions">
+        <button id="importButton" type="button">Import pack</button>
+        <button id="exportPack" type="button">Export pack</button>
+        <button id="replayButton" type="button">Open replay <span aria-hidden="true">↗</span></button>
+        <input id="importPack" type="file" accept=".json,application/json" hidden>
+        <input id="openReplay" type="file" accept=".json,application/json" hidden>
+      </div>
+    </div>
+    <div class="workspace">
+      <section class="chart-panel" aria-labelledby="chartTitle">
+        <div class="panel-head"><h2 id="chartTitle">Breakwater chart</h2><span class="chart-bearing" aria-label="North is up">N ↑</span></div>
+        <div class="map-frame">
+          <canvas id="terrainMap" width="640" height="640" tabindex="0" aria-label="North-up terrain chart, click to place the selected landmark" aria-describedby="mapHelp">
+            Use the X and Z fields to place the gate and shore relay.
+          </canvas>
+        </div>
+        <div class="chart-key" aria-label="Map legend">
+          <span><i class="key-start"></i>Start</span><span><i class="key-gate"></i>Gate</span>
+          <span><i class="key-relay"></i>Relay</span><span><i class="key-crew"></i>Crews</span>
+        </div>
+      </section>
+      <section class="settings" aria-labelledby="settingsTitle">
+        <div class="panel-head"><h2 id="settingsTitle">Mission settings</h2><span id="draftState"></span></div>
+        <form id="packForm" novalidate>
+          <label for="packTitle">Title</label>
+          <input id="packTitle" autocomplete="off" required>
+          <div class="field-pair">
+            <div><label for="packSeed">Terrain seed</label><input id="packSeed" type="number" min="0" max="4294967295" step="1" required></div>
+            <div><label for="packCrew">Player crew</label>
+              <select id="packCrew">
+                <option value="helicopter">Kestrel · Helicopter</option><option value="tank">Basalt · Tank</option>
+                <option value="mech">Kiln · Mech</option><option value="ship">Tern · Cutter</option>
+              </select>
+            </div>
+          </div>
+          <fieldset class="landmarks">
+            <legend>Landmarks</legend>
+            <p id="mapHelp">Select a landmark, then click the chart or edit its coordinates. On the chart, arrow keys move it one metre.</p>
+            <div class="coordinate-grid">
+              <span></span><span class="axis">X · east</span><span class="axis">Z · south</span>
+              <label class="landmark-name" for="placeGate"><input type="radio" name="landmark" id="placeGate" value="gate" checked>Gate</label>
+              <input id="gateX" type="number" aria-label="Gate X" step="1" min="-136" max="136" required>
+              <input id="gateZ" type="number" aria-label="Gate Z" step="1" min="-136" max="136" required>
+              <label class="landmark-name" for="placeRelay"><input type="radio" name="landmark" id="placeRelay" value="relay">Shore relay</label>
+              <input id="relayX" type="number" aria-label="Relay X" step="1" min="-136" max="136" required>
+              <input id="relayZ" type="number" aria-label="Relay Z" step="1" min="-136" max="136" required>
+            </div>
+          </fieldset>
+          <div class="mission-actions">
+            <button id="applyPack" type="submit">Apply changes</button>
+            <button id="playPack" class="primary" type="button">Playtest <span aria-hidden="true">↗</span></button>
+          </div>
+        </form>
+        <output id="editorStatus" role="status" aria-live="polite"></output>
+        <button id="resetPack" type="button">Restore starter mission</button>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./game/creator-editor.js"></script>
+</body>
+</html>

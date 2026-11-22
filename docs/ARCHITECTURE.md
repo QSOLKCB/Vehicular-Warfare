@@ -58,3 +58,7 @@ Each column clips to the field boundary and a 1,200 m radial limit, with at most
 A heightfield has one surface elevation per horizontal location. It cannot represent overhangs, tunnels or overlapping floors. Camera pitch, bank and sight zoom change the texture projection. At steep angles or close to a ridge the limited angular and distance samples can produce stair steps, stretching and colour/depth edge differences. The attitude indicator and sight continue to use the aircraft state and camera. Each live projectile still sweeps the authoritative world at 120 Hz.
 
 **Lifecycle:** malformed mission rejection before committing state; pause/blur/capture loss clears held inputs/time debt; teardown GPU/audio/RAF; same-source/runtime replay with raw evidence. Separate CI/headless software results from native GPU claims.
+
+## Creator systems
+
+The workshop validates a versioned data pack, builds a fresh Breakwater world and places its gate and shore relay before the first tick. Authoring, preview, playtest and replay query the same seeded geometry. The workshop has a separate simulation source identity. Its viewer checks the embedded pack and command stream, then advances or restores bounded simulation checkpoints as the player scrubs. Camera and music are presentation inputs. [Pack and replay contract](CREATOR_SYSTEMS.md)
