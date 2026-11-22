@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>War Room · Breakwater Reach</title><link rel="icon" href="data:,"><link rel="stylesheet" href="./game/war-room.css"></head>
+<body><header><a href="./index.html" aria-label="Mission board">◂ Mission board</a><strong>WAR ROOM</strong><span>Breakwater Reach</span><button id="expand" aria-pressed="false">Expand chart</button><output id="clock">02:00</output><button id="pause">Pause</button></header>
+<main>
+<section id="display" aria-label="Strategic display">
+<canvas id="strategy" tabindex="0" aria-label="North-up command map. Click or drag to select. Right-click to order. Arrow keys pan."></canvas>
+<canvas id="battlefield" tabindex="0" hidden aria-label="Battle observation"></canvas>
+<canvas id="theatreMap" width="202" height="152" hidden aria-label="Local crew chart"></canvas>
+<div id="mapTools"><button id="less" aria-label="Zoom out">−</button><button id="fit">Fit theatre</button><button id="more" aria-label="Zoom in">+</button></div>
+<output role="status" id="feedback">Select a crew to issue orders.</output>
+<div id="viewTools"><button id="tab">Observe in 3D</button><select id="camera" aria-label="Observation camera" hidden><option value="overview">Overhead</option><option value="chase">Crew chase</option><option value="sight">Weapon sight</option></select></div>
+</section>
+<aside><div class="sectionTitle"><small>COBALT COMMAND</small><h1>Breakwater Reach</h1></div>
+<p id="objective">Disable the shore relay, secure the crossing and disable two mobile defenders.</p>
+<h2>Command roster <button id="all">Select all</button></h2><div id="roster"></div><label class="check"><input type="checkbox" id="multiSelect">Toggle individual crews</label>
+<h2>Orders</h2><form id="orderForm"><div class="pair"><label>Order<select id="type"><option>MOVE</option><option>ATTACK</option><option>HOLD</option><option>DEFEND</option></select></label><label class="check"><input id="append" type="checkbox">Queue</label></div>
+<div id="coords" class="pair"><label>East / X<input id="east" type="number" step="any" value="-18" required></label><label>South / Z<input id="south" type="number" step="any" value="3" required></label></div>
+<label id="contactLabel" hidden>Visible contact<select id="contact"></select></label>
+<button id="issue" type="submit">Issue order</button></form>
+
+<details><summary>Display &amp; controls</summary>
+<div class="pair"><label>Control group<select id="groupNumber"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></label><button id="storeGroup">Store</button><button id="recallGroup">Recall</button></div>
+<label class="check"><input id="retro" type="checkbox">Retro tactical display (M)</label>
+<label class="check"><input id="fx" type="checkbox">FX gate beacon (G)</label>
+<label class="check"><input id="music" type="checkbox">Mission music</label>
+<p>Drag a box to select crews. Shift-click toggles a crew. Right-click terrain to move or a contact to attack. Shift queues. Middle-drag or use arrows to pan. Wheel zooms. Ctrl + 1–9 stores a group. 1–9 recalls it. F follows a crew. Tab switches views from the map. C cycles cameras. P pauses.</p></details>
+</aside></main>
+<dialog id="panel" aria-labelledby="panelTitle" aria-describedby="panelText"><small>COBALT COMMAND</small><h2 id="panelTitle">The War Room</h2><p id="panelText">Four crews await orders at Breakwater Reach. Disable the shore relay, occupy the crossing and disable two Ember vehicles within two minutes. At least one Cobalt crew must survive.</p>
+<button id="primary">Deploy crews</button><button id="restart" hidden>Restart mission</button><button id="save" hidden>Save replay</button><label class="file">Open replay<input type="file" id="openReplay" accept=".json,application/json"></label><output id="report" role="status"></output><a id="boardReturn" href="./index.html">Mission board</a></dialog>
+<script type="module" src="./game/war-room.js"></script></body></html>

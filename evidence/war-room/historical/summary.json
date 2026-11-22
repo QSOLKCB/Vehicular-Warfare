@@ -1,0 +1,224 @@
+{
+  "archiveSha256": "27ec8fa1ae0227678c881ee466dedd67d90e54cb839f49d5bcd232d827d9a2b6",
+  "backend": "software",
+  "presentation": "retro",
+  "revision": "80e0b0aac2d737a3a5c0a05f5522611b8d2aad86",
+  "servedTree": {
+    "revision": "80e0b0aac2d737a3a5c0a05f5522611b8d2aad86",
+    "files": 86,
+    "sha256": "68ddf7f4c5e2610cc3fb4ef720f4ae2d7711382fc2a5458a996c29e582407e89"
+  },
+  "browser": "Chrome/158.0.8127.36",
+  "cpu": "AMD Ryzen 9 5950X 16-Core Processor",
+  "sable": {
+    "win": {
+      "ticks": 1086,
+      "stateHash": "d1e1c115",
+      "eventHash": "37a595f9"
+    },
+    "loss": {
+      "ticks": 768,
+      "stateHash": "d9763213",
+      "eventHash": "618d1b55"
+    },
+    "execution": {
+      "elapsedSeconds": 21.04,
+      "exit": 0
+    },
+    "screenshotSha256": {
+      "01-briefing.png": "703dbf7f642e8d34afca7887db7e83ddf75bdeac746c3f2ea53df679b147ea11",
+      "02-masked.png": "b7186220fcda761c8859ccf966fe85bedd8af95b39bf4487f1501741e40749db",
+      "03-exposed.png": "ca6e73a608f286b1c3a59da20c1aff6c4cf6af2aab4ab43f091a41a65fcc2a0c",
+      "04-search.png": "c9ec7b40cf42698d8ddc29448cfe0ed1b2992cb37042d9f742125bed2901efef",
+      "05-cockpit.png": "f5eac5840a0f393ea1a75ae10a45cde92cf6ed7eb20fd3e2fbc35eadd3472506",
+      "06-victory.png": "36d13423202c8aefa1003054a0dab7e950517746950d25954e0a320f8b2e68f5",
+      "07-defeat.png": "7167911e4a38ca46812f337f781b67441dfb0a80a871bafe2227c4e8243ae277"
+    }
+  },
+  "graphics": {
+    "backend": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "width": 1100,
+    "height": 720
+  },
+  "routes": {
+    "routes": {
+      "longwatch": {
+        "ticks": 8561,
+        "stateHash": "88434f8f",
+        "eventHash": "d8b61aaf"
+      },
+      "frostline": {
+        "ticks": 9397,
+        "stateHash": "c0d0919e",
+        "eventHash": "ffa72a74"
+      }
+    },
+    "execution": {
+      "elapsedSeconds": 167.05,
+      "exit": 0
+    },
+    "screenshotSha256": {
+      "frostline-briefing.png": "78c548989b35b4df80cb0680192f8fe878e16836fe4196fc4d9ab805453c83fa",
+      "frostline-cockpit.png": "7baeb1a86300cd4b4d202c972a9742cf58879ef682875117f9770858da959a36",
+      "frostline-victory.png": "740e3ba95d5795b651b4356c21c33314abdfd5bdcdc783030ceb13022bad9dd2",
+      "longwatch-briefing.png": "a57e822282ba67573c5a231dd9dbec8445d3e7dec2f933f866bd03a160929b5e",
+      "longwatch-cockpit.png": "7344e7b11f0742807a6436448223f8b09c48e5539712c93e411d8ce0f3326ca3",
+      "longwatch-hull-hit.png": "34855b7efe015d9b9b22ffb89cc22134154f6a1bb0c902c0d816b2e1a26762eb",
+      "longwatch-victory.png": "efe3559e1c918f7d34eb65184774e5b88f7df1c2865c06107c7f333af541cd33"
+    }
+  },
+  "tank": {
+    "win": {
+      "ticks": 488,
+      "stateHash": "0d1b6175",
+      "eventHash": "f84e8384"
+    },
+    "loss": {
+      "ticks": 1058,
+      "stateHash": "e4f51579",
+      "eventHash": "40c45ef8"
+    },
+    "execution": {
+      "elapsedSeconds": 18.1,
+      "exit": 0
+    },
+    "screenshotSha256": {
+      "01-cutbank-briefing.png": "a55f9caa0a831571f9905b06cb8a09f8d87f6a2afa43959b8a7695a4024b5466",
+      "02-independent-turret.png": "384a163472859ba10e8f8ee8488cf2ffec5173976066776c1400a7a4bd87e05a",
+      "03-hull-down.png": "e4f3ce390db2db17ce16be29a64e18ac00b516d093574443165157e9fca11d7d",
+      "03b-gun-sight.png": "2e2121da46e6bd2781a84cc343ecb0874a0a45eb4cb736492437336a9f108f17",
+      "04-hit.png": "4470345895c893849d21db57d3831a5638faef681073a0913795e4f359bd7859",
+      "05-victory.png": "5475ea65feac36d7fa3ce9187bf7893102ebef274ccb4f899e243f543f90d406",
+      "06-defeat.png": "b92dae4d3ddcfab482f0153b1f4ba69a956c088bf604d827625da448e8964b75"
+    }
+  },
+  "mech": {
+    "win": {
+      "ticks": 1159,
+      "stateHash": "deeb676a",
+      "eventHash": "c4ac01a2"
+    },
+    "loss": {
+      "ticks": 1134,
+      "stateHash": "2b6d9a0a",
+      "eventHash": "9fd0074a"
+    },
+    "execution": {
+      "elapsedSeconds": 24.31,
+      "exit": 0
+    },
+    "screenshotSha256": {
+      "01-glassworks-briefing.png": "9d5722aad05f23880d6b693a20d799ca1b0f65d49a6aae9aa9934f02a4516a9c",
+      "02-walking.png": "9e2c12787ffcc4ad23844e7dad1732dd97c76cf7cb74ad3064985e270650522a",
+      "03-engagement.png": "59ff1e916350dd0603514d3c187126a45c713130764903ffb559e764da255c5f",
+      "04-beacon-victory.png": "1d4c17d5c3ba80c08d0cfc4207802cce196c18efbbad00a010078004a0eaf644",
+      "05-defeat.png": "408b34bc49fa8171a85dea48bd4641a3cabcfeb2f6b3cd8ba5beb254398a47eb"
+    }
+  },
+  "naval": {
+    "win": {
+      "ticks": 1251,
+      "stateHash": "0bea4080",
+      "eventHash": "8f9e9a52"
+    },
+    "loss": {
+      "ticks": 959,
+      "stateHash": "d41656ee",
+      "eventHash": "ff14802c"
+    },
+    "execution": {
+      "elapsedSeconds": 25.61,
+      "exit": 0
+    },
+    "screenshotSha256": {
+      "01-lantern-briefing.png": "ac4fefa50f70f7867cb84bd59dc1432c6761120613d202034c1c3486b49f5571",
+      "02-underway.png": "533fde9e5d04510a4e6b144b26f2463e6451c5837b544ede6a474a4fbf616d20",
+      "03-water-contact.png": "2ea706355e49bc7a52f19c367cefc1727505f00cf9dca06fd97e52579a4dd9aa",
+      "04-channel.png": "cb4cbbced6bfe460fc2b2a46ed45cc4955cf974322c1b1c4d37cfc2f7c05e3f9",
+      "05-shore-station.png": "b8c806928107b7507c9594330e925b9740268366044d8aa47fe19d80300d810d",
+      "06-entrance-secured.png": "57e58ad23991048f5a2ba6048015c943ffbb8de30b1ae02bf03bc2cf6ecac72f",
+      "07-defeat.png": "afcf89ed7b708afee875e49434dc2802bb1c3d99c853ef85ad349f34192a8867"
+    }
+  },
+  "combined": {
+    "loss": {
+      "ticks": 1064,
+      "stateHash": "2402f003",
+      "eventHash": "50406545"
+    },
+    "crews": {
+      "helicopter": {
+        "ticks": 1095,
+        "stateHash": "031860dd",
+        "eventHash": "76fa674c"
+      },
+      "tank": {
+        "ticks": 1149,
+        "stateHash": "167150e6",
+        "eventHash": "ce10fecb"
+      },
+      "mech": {
+        "ticks": 820,
+        "stateHash": "9eca42d1",
+        "eventHash": "bfe12bd7"
+      },
+      "ship": {
+        "ticks": 978,
+        "stateHash": "fcf86082",
+        "eventHash": "0092f52d"
+      }
+    },
+    "execution": {
+      "elapsedSeconds": 67.79,
+      "exit": 0
+    },
+    "screenshotSha256": {
+      "01-breakwater-briefing.png": "b2fe6a12790306237432ec157833d41c9ecb600cea889e677bf2c0a7a9304c63",
+      "02-helicopter-underway.png": "0b48d880733ffcae904b71008a5d921c050e0bf509e505befa4db29f834a8e0f",
+      "02-mech-underway.png": "922d2fd480dc3dd30b45aa33570c1d7b2894dc75bdabb24248926f22c88843cf",
+      "02-ship-underway.png": "465941330a20864f1664dbb5c7a1a3353d76efcb9f6f1fc1b62724be71e460be",
+      "02-tank-underway.png": "cb08788854900e90b47cd8e3f30737a68053f179882740adb60915d3f183c91c",
+      "03-helicopter-victory.png": "47ff92fa1edb8a2ca732475b3700a51527fe1aaca64e309accab3327789c205e",
+      "03-mech-victory.png": "b155c969ca0415cf322171be29436864e06100c0793bd3b256302469ccb4dadc",
+      "03-ship-victory.png": "131276b51b6665acc1273e796cc03c1d7ae395e417b2974a499d03834edaf020",
+      "03-tank-victory.png": "e6a9505eb385d9a962d59298c8f7477a4863a12f58fb876908af9f5cc6859e49",
+      "04-defeat.png": "8ac339df96879ebb2b4f579426db510332f7eb04f6e16e74b94630d7ccfb3bd4"
+    }
+  },
+  "creator": {
+    "win": {
+      "ticks": 958,
+      "stateHash": "cb1af536",
+      "eventHash": "48f61886"
+    },
+    "loss": {
+      "ticks": 1054,
+      "stateHash": "567c59c2",
+      "eventHash": "2f954672"
+    },
+    "execution": {
+      "elapsedSeconds": 36.18,
+      "exit": 0
+    },
+    "screenshotSha256": {
+      "01-workshop-narrow.png": "dccfe46af9f1ea904494e803f57adc37e0a1d6df5486874f04e7f3788345379d",
+      "01-workshop.png": "263444ec8f6661324505150a6de6c18251eeea545aea9b0aa8b90e2869f3cd9c",
+      "02-playtest.png": "9a4f2cc87baf0fd47c10421b530875c94307d3375faca8c1cc8bfa60939e0ce9",
+      "03-debrief.png": "3932db36bc0bd86171b46c99ac2cccaf307d575c5c43ff0b1f75005985fe5325",
+      "04-replay-chase.png": "34aeccf29f3ee48a858c800db172a35050ae35dc3264e7e998d847f9cf16ecb0",
+      "04-replay-overview.png": "81ef64f4383d7dfccb548dd59ebadec748de1a34faff21d3a724e12434e9e923",
+      "04-replay-sight.png": "03be18a2c75d0ffcbd03bfe0756b0ce922387ad90cf5dccaf28b5335e5c6d013",
+      "05-defeat.png": "0aac9158def218fbfe995ed54525a8e684582aeeada440e2ac1b612bcadf0d30"
+    }
+  },
+  "archives": {
+    "distinct": 107,
+    "occurrences": 204,
+    "catalogueRelease": "0132dd22191ebfeddfce8bc76651e09eb2f12b48",
+    "execution": {
+      "elapsedSeconds": 18.99,
+      "exit": 0
+    },
+    "screenshotSha256": {}
+  }
+}
