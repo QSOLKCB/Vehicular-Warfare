@@ -52,7 +52,8 @@ const server=spawn('python3',['-u','-m','http.server','0','--bind','127.0.0.1','
 server.stderr.resume();
 const line=String((await once(server.stdout,'data'))[0]);
 const port=line.match(/port (\d+)/)[1],base='http://127.0.0.1:'+port;
-const browser=spawn(chrome,['--headless=new','--disable-background-networking','--no-first-run',
+// Exercise live Web Audio and offline score capture without playing through the host speakers.
+const browser=spawn(chrome,['--headless=new','--mute-audio','--disable-background-networking','--no-first-run',
   '--disable-default-apps',...graphicsFlags,
   '--window-size=1100,760','--remote-debugging-pipe','--user-data-dir='+join(temp,'profile'),
   'about:blank'],
