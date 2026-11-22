@@ -13,3 +13,9 @@ h1{font-size:clamp(50px,7.6vw,124px);line-height:.87}
 #message{bottom:28%;font-size:12px}
 @media(max-height:550px){h1 br{display:none}#title{font-size:40px}#panel{width:65vw;max-width:65vw}}
 #belts{display:block;font:10px var(--mono);color:#a7eadb;margin-top:3px}
+
+#driveSetup{margin:0 0 14px;max-width:360px}
+#driveSetup label{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-right:8px}
+#driveStyle{font-size:13px;padding:4px 9px}
+#driveHelp{font-size:13px;line-height:1.35;margin-top:6px}
+#station:not([data-mode=briefing]):not([data-mode=paused]) #driveSetup{display:none}

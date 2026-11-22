@@ -33,6 +33,6 @@ function hud(world,draw){
 export const inspect=groundStation({
   createWorld:createMechWorld,step:stepMech,receipt:mechReceipt,replay:replayMech,
   View:MechView,Sound:MechAudio,keys:MK,aimLeft:MK.torsoLeft,aimRight:MK.torsoRight,
-  activeStatus:'walking',hud,name:'Glassworks Crossing',replayPrefix:'glassworks',
+  vehicleKind:'mech',activeStatus:'walking',hud,name:'Glassworks Crossing',replayPrefix:'glassworks',
   wonTitle:'Crossing secured',wonSummary:'Survey beacon reached'
 });

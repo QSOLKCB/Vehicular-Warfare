@@ -7,17 +7,47 @@ import {HZ} from '../sim/clock.js';
 import {EDGE} from '../sim/terrain.js';
 import {vesselBasis} from '../sim/vessel.js';
 import {vehicleGun} from '../sim/combined-vehicles.js';
-import {GATE_RADIUS,sightCombined} from '../sim/combined-world.js';
+import {GATE_RADIUS,MAX_PULSES,sightCombined} from '../sim/combined-world.js';
 import {aircraft,rotor} from './models.js';
 import {look,Model,turn} from './model-view.js';
 import {crawlerParts,drawCrawler} from './tank-view.js';
 import {walkerParts,drawWalker,shadowDisc} from './mech-view.js';
 import {coastMeshes,cutter,deckGun,foamRibbon,stationBody} from './naval-view.js';
 import {EstuaryChart,roadCover} from './combined-chart.js';
+import {DistantFleet,useDistantActor} from './distant-fleet.js';
 
 const cobalt=[.21,.53,.52],ember=[.83,.32,.19],mint=[.57,1,.76],lamp=[1,.66,.34],steel=[.32,.40,.43];
 const up=[0,1,0],east=[1,0,0],south=[0,0,1],north=[0,0,-1];
 const cameraDistance={helicopter:12.8,tank:8,mech:9.4,ship:13.3};
+const spray=[.80,.95,.89];
+
+const profiles={
+  full:{boxes:128,fragments:128,burst:6,shadowDiscs:18},
+  balanced:{boxes:MAX_PULSES+32,fragments:32,burst:4,shadowDiscs:12}
+};
+
+export function packMixedEffects(stream,w,detail){
+  const profile=profiles[detail];
+  stream.reset();
+  for(const shot of w.shots){
+    const [x,y,z]=shot.p,color=shot.faction==='cobalt'?mint:lamp;
+    stream.appendXYZRGB(x,y,z,.24,.24,.24,...color);
+  }
+  const limit=Math.min(stream.capacityBoxes,w.shots.length+profile.fragments);
+  for(let i=w.events.length-1;i>=0 && stream.boxCount+profile.burst<=limit;i--){
+    const e=w.events[i],age=(w.tick-e.tick)/HZ;
+    if(age>.42)break;
+    if(e.type!=='impact' && e.type!=='destroy')continue;
+    const color=e.target==='water'?spray:lamp,size=e.type==='destroy'?.4:.15;
+    const distance=age*(e.type==='destroy'?9:5);
+    for(let j=0;j<profile.burst;j++){
+      const angle=e.tick+j*(2*Math.PI/profile.burst);
+      stream.appendXYZRGB(e.point[0]+Math.cos(angle)*distance,e.point[1]+age*(4+j)-age*age*10,
+        e.point[2]+Math.sin(angle)*distance,size,size,size,...color);
+    }
+  }
+  return stream.boxCount-w.shots.length;
+}
 
 function scene(w){
   const mesh=coastMeshes(w),[bx,,bz]=w.beacon;
@@ -74,7 +104,10 @@ function fleet(r,color,side){
 }
 
 export class CombinedView{
-  constructor(canvas,w){
+  constructor(canvas,w,{detail='balanced'}={}){
+    if(!Object.hasOwn(profiles,detail))throw RangeError('Unknown scene detail');
+    this.detail=detail;
+    const profile=profiles[detail];
     const r=this.r=new Renderer(canvas);
     try{
       const mesh=scene(w);
@@ -82,15 +115,18 @@ export class CombinedView{
       this.chart=new EstuaryChart(document.getElementById('theatreMap'),w);
       this.fleets={cobalt:fleet(r,cobalt,'player'),ember:fleet(r,ember,'enemy')};
       this.rotor=new Model(r,rotor());this.barrel=new Model(r,deckGun());this.relay=new Model(r,stationBody(w.relay));
-      // Two walkers (body and six soles), two hulls and two low aircraft.
-      this.shadows=r.mesh([]);this.shadowData=new Float32Array(18*8*3*6);
+      this.distant=detail==='balanced'?new DistantFleet(cobalt,ember):null;
+      this.distantMesh=this.distant?r.mesh([]):null;
+      this.farActors=new Set();
+      this.shadows=r.mesh([]);this.shadowData=new Float32Array(profile.shadowDiscs*8*3*6);
       this.foam=r.mesh([]);this.foamData=new Float32Array(2*2*8*6*6);
-      this.effects=r.mesh([]);this.stream=new BoxVertexStream(128);
+      this.effects=r.mesh([]);this.stream=new BoxVertexStream(profile.boxes);
       const models=[this.rotor,this.barrel,this.relay];
       for(const f of Object.values(this.fleets))models.push(f.ship,f.helicopter,...Object.values(f.tank),...Object.values(f.mech));
       this.staticBytes=(this.land.count+this.sea.count+this.sky.count)*24;
       this.modelBytes=models.reduce((bytes,m)=>bytes+m.src.byteLength,0);
-      this.dynamicBytes=this.stream.capacityBoxes*BOX_STREAM_FLOATS*Float32Array.BYTES_PER_ELEMENT+this.foamData.byteLength+this.shadowData.byteLength;
+      this.dynamicBytes=this.stream.capacityBoxes*BOX_STREAM_FLOATS*Float32Array.BYTES_PER_ELEMENT+
+        this.foamData.byteLength+this.shadowData.byteLength+(this.distant?.data.byteLength??0);
     }catch(error){r.dispose();throw error;}
   }
   draw(w,mode){
@@ -100,12 +136,21 @@ export class CombinedView{
     gl.uniformMatrix4fv(r.vp,false,multiplyMatrices(perspective(fov,aspect),viewMatrix(eye,q)));
     gl.uniform1f(r.fog,.00125);r.draw(this.sea);r.draw(this.land);
     let draws=3,vertices=this.sea.count+this.land.count+this.sky.count,foamEnd=0;
-    let shadowEnd=0;
+    let shadowEnd=0,nearActors=0;
+    this.distant?.reset();
     for(const a of w.actors){
       if(!a.hp || (a===w.player && mode==='sight'))continue;
+      if(this.distant){
+        if(useDistantActor(a,w.player,eye,fov,this.farActors.has(a.id))){
+          this.farActors.add(a.id);this.distant.append(a,w.tick);continue;
+        }
+        this.farActors.delete(a.id);
+      }
       if(a.kind==='mech'){
         shadowEnd=shadowDisc(this.shadowData,shadowEnd,w.field,a.p,1.5,1.55);
-        for(const foot of a.feet)shadowEnd=shadowDisc(this.shadowData,shadowEnd,w.field,foot.p,.47,.56);
+        if(!this.distant || a===w.player){
+          for(const foot of a.feet)shadowEnd=shadowDisc(this.shadowData,shadowEnd,w.field,foot.p,.47,.56);
+        }
       }else if(a.kind==='tank'){
         shadowEnd=shadowDisc(this.shadowData,shadowEnd,w.field,a.p,1.6,2.12);
       }else if(a.kind==='helicopter' && a.p[1]-w.field.sample(a.p[0],a.p[2]).height<17){
@@ -118,9 +163,10 @@ export class CombinedView{
       gl.depthMask(true);gl.disable(gl.BLEND);draws++;vertices+=this.shadows.count;
     }
     for(const a of w.actors){
-      if(!a.hp)continue;
+      if(!a.hp || this.farActors.has(a.id))continue;
       if(a.kind==='ship')foamEnd=foamRibbon(this.foamData,foamEnd,w,a);
       if(a===w.player && mode==='sight')continue;
+      nearActors++;
       const f=this.fleets[a.faction];
       switch(a.kind){
       case 'tank':
@@ -146,19 +192,12 @@ export class CombinedView{
       }
       }
     }
-    if(foamEnd){r.update(this.foam,this.foamData.subarray(0,foamEnd));r.draw(this.foam);vertices+=this.foam.count;draws++;}
-    const stream=this.stream.reset();
-    for(const shot of w.shots)stream.append(shot.p,[.24,.24,.24],shot.faction==='cobalt'?mint:lamp);
-    for(let i=w.events.length-1;i>=0 && stream.boxCount+6<=stream.capacityBoxes;i--){
-      const e=w.events[i],age=(w.tick-e.tick)/HZ;
-      if(age>.42)break;
-      if(e.type!=='impact' && e.type!=='destroy')continue;
-      const tint=e.target==='water'?[.80,.95,.89]:lamp,size=e.type==='destroy'?.4:.15;
-      for(let j=0;j<6;j++){
-        const a=e.tick+j*Math.PI/3,d=age*(e.type==='destroy'?9:5);
-        stream.append(add(e.point,[Math.cos(a)*d,age*(4+j)-age*age*10,Math.sin(a)*d]),[size,size,size],tint);
-      }
+    if(this.distant?.count){
+      r.update(this.distantMesh,this.distant.meshView());r.draw(this.distantMesh);
+      vertices+=this.distantMesh.count;draws++;
     }
+    if(foamEnd){r.update(this.foam,this.foamData.subarray(0,foamEnd));r.draw(this.foam);vertices+=this.foam.count;draws++;}
+    const stream=this.stream,debrisBoxes=packMixedEffects(stream,w,this.detail);
     if(stream.boxCount){r.update(this.effects,stream.view());r.draw(this.effects);vertices+=stream.vertexCount;draws++;}
     const sight=sightCombined(w);
     if(mode!=='briefing')this.chart.draw(w,sight);
@@ -167,8 +206,11 @@ export class CombinedView{
     const y=depth>.1?.5-dot(delta,rotate(q,up))*f/depth:0;
     return {x,y,sight,aimVisible:sight.clear && depth>.1 && x>=0 && x<=1 && y>=0 && y<=1,
       width:r.canvas.width,height:r.canvas.height,draws,vertices,waterLevel:w.water.level,
-      geometryBytes:this.staticBytes+2*this.modelBytes+this.dynamicBytes,
-      cpuGeometryBytes:2*this.modelBytes+this.dynamicBytes,gpuGeometryMaxBytes:this.staticBytes+this.modelBytes+this.dynamicBytes,
+      detailProfile:this.detail,nearActors,farActors:this.distant?.count??0,projectileBoxes:w.shots.length,debrisBoxes,
+      shadowDiscs:shadowEnd/(8*3*6),wakeVertices:foamEnd/6,
+      geometryBytes:this.staticBytes+2*this.modelBytes+this.dynamicBytes+(this.distant?.templateBytes??0),
+      cpuGeometryBytes:2*this.modelBytes+this.dynamicBytes+(this.distant?.templateBytes??0),
+      gpuGeometryMaxBytes:this.staticBytes+this.modelBytes+this.dynamicBytes,
       effectCapacity:this.stream.capacityBoxes};
   }
   dispose(){this.r.dispose();}

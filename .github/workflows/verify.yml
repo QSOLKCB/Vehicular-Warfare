@@ -1,0 +1,55 @@
+name: Release verification
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Numerical and browser acceptance
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22.18.0
+      - name: Check simulation identities, vendor bytes and numerical tests
+        run: |
+          python3 tools/identity.py --check
+          node --test test/*.test.js
+      - name: Build and unpack the offline candidate
+        run: |
+          python3 tools/package.py "$RUNNER_TEMP/Vehicular-Warfare.zip"
+          python3 -m zipfile -e "$RUNNER_TEMP/Vehicular-Warfare.zip" "$RUNNER_TEMP/unpacked"
+      - name: Exercise the packaged game in Chromium
+        env:
+          CHROMIUM: google-chrome
+          CHROMIUM_BACKEND: software
+          RIDGEFIRE_WEB_ROOT: ${{ runner.temp }}/unpacked/Vehicular-Warfare
+        run: |
+          google-chrome --version
+          node tools/browser.mjs "$RUNNER_TEMP/controls" controls
+      - name: Save the tested offline candidate
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: offline-game
+          path: ${{ runner.temp }}/Vehicular-Warfare.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Save browser observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: control-acceptance
+          path: ${{ runner.temp }}/controls
+          if-no-files-found: ignore
+          retention-days: 14

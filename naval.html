@@ -13,12 +13,17 @@
     <div class="eyebrow"><span class="dash"></span><span id="chapter">NAVAL SORTIE</span></div>
     <h1 id="title">LANTERN<br>SOUND</h1>
     <p id="desc">Take the Tern north through the island channel. Disable the patrol and the shore signal station, then reach the green exit buoys.</p>
+    <div id="driveSetup" hidden>
+      <label for="driveStyle">Controls</label>
+      <select id="driveStyle" aria-describedby="driveHelp"><option value="simple">Simple</option><option value="independent">Independent</option></select>
+      <div id="driveHelp"></div>
+    </div>
     <button id="primary">Cast off <b>↗</b></button>
     <button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
     <a href="./" id="return">Mission board</a>
     <details id="guide"><summary>Bridge controls &amp; saved replays</summary>
       <div class="keys"><span><kbd>W / S</kbd> Ahead / astern</span><span><kbd>A / D</kbd> Port / starboard rudder</span>
-        <span><kbd>← / →</kbd> Traverse mount</span><span><kbd>↑ / ↓</kbd> Raise / lower barrel</span>
+        <span><kbd>Q / E</kbd> Aim mount left / right</span><span><kbd>R / F</kbd> Raise / lower aim</span><span><kbd>Arrows</kbd> Alternate aim keys</span>
         <span><kbd>Space / LMB</kbd> Fire</span><span><kbd>RMB</kbd> Capture mouse aim</span>
         <span><kbd>C</kbd> Gun sight / chase</span><span><kbd>P / Esc</kbd> Pause</span></div>
       <label class="replay-check">Check saved naval replay <input id="checkFile" type="file" accept=".json,application/json"></label>
@@ -37,7 +42,7 @@
     <div class="instruments"><div><small>HULL</small><b id="health"></b></div><div><small>SPEED</small><b id="speed"></b></div><div><small>DEPTH</small><b id="depth"></b></div><div><small>ROUNDS</small><b id="ammo"></b></div><div><small>MOUNT</small><b id="reload"></b></div></div>
     <div class="station-actions"><button id="sound" aria-pressed="false">Sound off</button><button id="camera">Gun sight</button><button id="pause">Pause</button></div>
   </section>
-  <footer><span>W/S ENGINE　 A/D RUDDER　 ARROWS AIM</span><span>SPACE FIRE　 C VIEW　 P PAUSE</span></footer>
+  <footer><span>W/S ENGINE　 A/D RUDDER　 Q/E AIM　 R/F ELEVATION</span><span>SPACE FIRE　 C VIEW　 P PAUSE</span></footer>
 </main>
 <script type="module" src="./game/naval-main.js"></script>
 </body></html>

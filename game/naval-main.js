@@ -40,7 +40,7 @@ function hud(w,draw){
 }
 export const inspect=groundStation({
   createWorld:createNavalWorld,step:stepNaval,receipt:navalReceipt,replay:replayNaval,View:NavalView,Sound:VehicleAudio,
-  keys:NK,aimLeft:NK.mountLeft,aimRight:NK.mountRight,activeStatus:'sailing',hud,actors:3,
+  vehicleKind:'ship',keys:NK,aimLeft:NK.mountLeft,aimRight:NK.mountRight,activeStatus:'sailing',hud,actors:3,
   observe:w=>({shore:w.shore,waterLevel:w.water.level}),name:'Lantern Sound',replayPrefix:'lantern',
   wonTitle:'Channel secured',wonSummary:'Exit buoys reached'
 });

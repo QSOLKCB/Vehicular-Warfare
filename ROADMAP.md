@@ -12,8 +12,8 @@
 | VW-003 — Mech Warfare | Accepted in [PR #10](https://github.com/QSOLKCB/Vehicular-Warfare/pull/10). Glassworks Crossing, a six-legged walker with independent torso aim and a survey objective | [Numerical contact tests and playable Chromium run](evidence/mech-warfare/) |
 | VW-004 — Naval Warfare | Accepted in [PR #11](https://github.com/QSOLKCB/Vehicular-Warfare/pull/11). Lantern Sound, a buoyant surface cutter, patrol, shore relay and navigable channel | [Water, grounding and mission verification](evidence/naval-warfare/) |
 | VW-005 — Combined arms | Accepted in [PR #12](https://github.com/QSOLKCB/Vehicular-Warfare/pull/12). Breakwater Reach, a coastal relay encounter with four selectable vehicle classes and allied and hostile crews | [Cross-domain contact tests, mixed encounters and replays](evidence/combined-arms/) |
-| VW-006 — Creator systems | Mission workshop with editable seed, crew and objectives, local pack exchange, three replay cameras and an original adaptive score | [Validated packs, playable runs, timeline checks and audio](evidence/creator-systems/) |
-| VW-007 — Release/performance | Native GPU profiling, LOD, effect budgets, polish | CI, owner acceptance and manually approved tag |
+| VW-006 — Creator systems | Accepted in [PR #13](https://github.com/QSOLKCB/Vehicular-Warfare/pull/13). Mission workshop with editable seed, crew and objectives, local pack exchange, three replay cameras and an original adaptive score | [Validated packs, playable runs, timeline checks and audio](evidence/creator-systems/) |
+| VW-007 — Release/performance | Simple surface controls, mixed-scene LOD and effect budgets, native GPU and SwiftShader profiling, offline candidate ZIP and PR verification | [Measured release candidate](evidence/release-performance/) · [Owner review and tagging](docs/RELEASE.md) |
 
 **Implementation sequencing:** one playable helicopter game first; avoid tackling all vehicle categories in one PR. VW-001A and VW-001B should be separate PRs if that increases reviewability. The v3.4.0 GC Observatory is development tooling, not a built-in game performance boost.
 

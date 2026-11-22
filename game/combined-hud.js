@@ -8,11 +8,11 @@ export const crewControls={
   helicopter:{name:'Kestrel',action:'Fly forward / aft',turn:'Yaw left / right',extra:'E / Q lift · Z / X strafe',
     hint:'Use E / Q to climb or descend. Approach your gate at the marked altitude.',motion:'ALTITUDE'},
   tank:{name:'Basalt',action:'Drive / reverse',turn:'Steer or pivot',extra:'Shift to brake',
-    hint:'A / D pivot the tracks. Hold Shift to brake. The turret turns independently as you drive.',motion:'TRACK SPEED'},
-  mech:{name:'Kiln',action:'Walk / backstep',turn:'Turn the chassis',extra:'Arrows slew the torso',
-    hint:'Allow room for your six feet to plant. The torso turns independently as you walk.',motion:'FOOT CONTACT'},
+    hint:'Use W/S to drive. Shift applies the service brake.',motion:'TRACK SPEED'},
+  mech:{name:'Kiln',action:'Walk / backstep',turn:'Turn the chassis',extra:'Release W/S to finish a stride',
+    hint:'Allow room for the six feet to plant as you turn.',motion:'FOOT CONTACT'},
   ship:{name:'Tern',action:'Ahead / astern',turn:'Port / starboard helm',extra:'Keep the keel in the channel',
-    hint:'Make way before turning the rudder. Steer through the channel past the skerry.',motion:'SPEED'}
+    hint:'Use W/S for ahead or astern. Keep the keel in the channel.',motion:'SPEED'}
 };
 function actorName(w,id){
   const a=w.actors.find(unit=>unit.id===id);

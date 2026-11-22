@@ -66,7 +66,6 @@ function playtest(){
   snapshot=groundStation({
     createWorld:()=>createCreatorWorld(pack),step:stepCreator,receipt:creatorReceipt,
     View:CombinedView,Sound:WorkshopMusic,soundLabel:'Music',keys:BK,aimLeft:BK.aimLeft,aimRight:BK.aimRight,
-    extraControls:{KeyE:BK.up,KeyQ:BK.down,KeyZ:BK.strafeLeft,KeyX:BK.strafeRight,ShiftLeft:BK.brake,ShiftRight:BK.brake},
     activeStatus:'active',hud:combinedHud,actors:9,observe:w=>({pack:w.pack,selection:w.selection,captured:w.captured,mobileKills:w.mobileKills,relay:w.relay}),
     name:pack.title,replayPrefix:'workshop',wonTitle:'Gate secured',wonSummary:'Relay down · defenders repelled'
   });
