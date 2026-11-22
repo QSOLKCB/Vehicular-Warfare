@@ -2,12 +2,17 @@ import {sight} from '../sim/terrain.js';
 import {vehicleGun} from '../sim/combined-vehicles.js';
 import {Clock,HZ} from '../sim/clock.js';
 import {COMBINED_LIMIT,REQUIRED_DEFENDERS} from '../sim/combined-world.js';
-import {createCommandWorld,issueOrder,stepCommand,commandContacts,commandReceipt,
-  openCommandReplay,MAX_COMMAND_REPLAY_BYTES} from '../sim/command-world.js';
+import {commandContacts,MAX_COMMAND_REPLAY_BYTES} from '../sim/command-world.js';
+import {FORMATION_REPLAY_BYTES} from '../sim/formation-world.js';
+import {commandScenarios} from './command-scenarios.js';
 import {CombinedView} from './combined-view.js';
 import {StrategicMap,callSign} from './strategic-map.js';
 import {CreatorMusic} from './creator-music.js';
 
+const scenarioKey=new URLSearchParams(location.search).get('scenario')??'classic';
+const scenario=Object.hasOwn(commandScenarios,scenarioKey)?commandScenarios[scenarioKey]:commandScenarios.classic;
+const {createWorld:createCommandWorld,issueOrder,step:stepCommand,receipt:commandReceipt,openReplay:openCommandReplay}=scenario;
+const replayLimit=scenario===commandScenarios.classic?MAX_COMMAND_REPLAY_BYTES:FORMATION_REPLAY_BYTES;
 const el=id=>document.getElementById(id);
 const canvas=el('strategy'),battle=el('battlefield'),panel=el('panel');
 const clock=new Clock(),selected=new Set(),groups=new Map(),roster=new Map();
@@ -87,9 +92,10 @@ function orderLabel(u){
   const head=u.queue[0],last=u.lastResult;
   if(!head)return u.status+(last ? ' · '+last.reason : '');
   const metres=Number.isFinite(u.distance)?' · '+Math.round(u.distance)+' m':'';
+  const route=head.route?.length>1?' · '+head.route.length+' legs':'';
   const queued=u.queue.length>1?' · '+(u.queue.length-1)+' queued':'';
   const history=last?' · last '+last.type+' '+last.status:'';
-  return head.type+' · '+(u.onStation?'on station':u.status)+metres+queued+history;
+  return head.type+' · '+(u.onStation?'on station':u.status)+metres+route+queued+history;
 }
 function initRoster(){
   const rows=[];
@@ -150,7 +156,7 @@ function showScreen(next){
 }
 function dialog(next,text){
   clearSession();mode=next;
-  const names={briefing:'The War Room',paused:'Command paused',debrief:world.status==='victory'?'Crossing secured':'Operation ended',
+  const names={briefing:scenario===commandScenarios.formation?'Formation command':'The War Room',paused:'Command paused',debrief:world.status==='victory'?'Crossing secured':'Operation ended',
     verified:'Replay verified'};
   el('panelTitle').textContent=names[next];if(text)el('panelText').textContent=text;
   el('primary').textContent=next==='paused'?'Resume command':next==='briefing'?'Deploy crews':'New mission';
@@ -355,7 +361,7 @@ on(el('openReplay'),'change',async()=>{
   const file=el('openReplay').files[0];if(!file)return;
   abortImport();const controller=loading=new AbortController();
   try{
-    if(file.size>MAX_COMMAND_REPLAY_BYTES)throw RangeError('Command replay exceeds file limit');
+    if(file.size>replayLimit)throw RangeError('Command replay exceeds file limit');
     const recovered=await openCommandReplay(await file.text(),{signal:controller.signal,
       onProgress:n=>el('report').textContent='Verifying tick '+n+'…'});
     controller.signal.throwIfAborted();
@@ -376,5 +382,8 @@ export function inspect(){
   return structuredClone({mode,tick:world.tick,status:world.status,selected:[...selected],visible,
     camera,screen,units:world.units,metrics:{...metrics,buffers:view?.r.meshes.size??0,rafActive:Boolean(raf),
       dragging:Boolean(drag),audioActive:Boolean(music)},receipt:commandReceipt(world),zoom:map.zoom,cx:map.cx,cz:map.cz});
+}
+if(scenario===commandScenarios.formation){
+  el('panelText').textContent='Select crews and give them a shared MOVE or DEFEND destination. Each crew receives a spaced slot and searches the terrain for a route. Disable the relay and two mobile defenders, then secure the crossing with a surviving crew.';
 }
 initRoster();draw();dialog('briefing');

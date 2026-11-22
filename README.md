@@ -40,6 +40,8 @@ Select **Retro Tactical Display** in the mixed briefing, pause panel or workshop
 
 Choose **War Room** on the mission board to command all four Cobalt crews from the strategic map. Drag a box around several crews and right-click terrain to move or a visible contact to attack. Shift + right-click queues the next order. The roster and coordinate form provide the same commands. Press **F** to follow a selected crew in 3D and use **Return to map** to keep commanding. Save a replay from pause or debrief and open it on the War Room briefing. [War Room controls and mission](docs/WAR_ROOM.md)
 
+Choose **Formation command** to route crews around charted obstacles and give a group of vehicles separate destinations. [Formation slots and routing](docs/FORMATION.md)
+
 The [command-mode numerical API](docs/COMMAND_AUTHORITY.md) lets four independently ordered crews share this battlefield. Its versioned receipt records group orders and waypoints.
 
 ## Creator systems · Mission workshop

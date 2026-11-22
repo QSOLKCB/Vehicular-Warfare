@@ -1,0 +1,70 @@
+{
+  "version": 2,
+  "source": "vw-cmd-003:95386b2606dcd4eb8f5841b28adff88e33eda9017ec110fd8bd02a439b7ddd59",
+  "scenario": "breakwater-formation-v1",
+  "seed": 2505,
+  "roster": [
+    {
+      "id": "cobalt-helicopter",
+      "kind": "helicopter",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-tank",
+      "kind": "tank",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-mech",
+      "kind": "mech",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-ship",
+      "kind": "ship",
+      "faction": "cobalt"
+    },
+    {
+      "id": "ember-helicopter",
+      "kind": "helicopter",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-tank",
+      "kind": "tank",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-mech",
+      "kind": "mech",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-ship",
+      "kind": "ship",
+      "faction": "ember"
+    },
+    {
+      "id": "relay",
+      "kind": "relay",
+      "faction": "ember"
+    }
+  ],
+  "orders": [
+    {
+      "tick": 0,
+      "units": [
+        "cobalt-mech",
+        "cobalt-tank"
+      ],
+      "type": "MOVE",
+      "append": false,
+      "x": -18,
+      "z": 16
+    }
+  ],
+  "ticks": 136,
+  "stateHash": "da68203e",
+  "eventHash": "67ffe8a2",
+  "outcome": "active"
+}
