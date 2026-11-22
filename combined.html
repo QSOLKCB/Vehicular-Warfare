@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#253633"><title>Breakwater Reach · Vehicular Warfare</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="./game/style.css"><link rel="stylesheet" href="./game/tank.css"><link rel="stylesheet" href="./game/combined.css">
+</head>
+<body>
+<main id="station" data-mode="briefing" data-offline-label="BREAKWATER REACH" aria-label="Breakwater Reach mission">
+  <canvas id="battlefield" aria-label="3D view of Breakwater Reach"></canvas><div class="shade"></div>
+  <header><span class="insignia" aria-hidden="true">◢</span><strong>VEHICULAR WARFARE</strong><span class="division"> / </span><span class="series">COMBINED ARMS</span><span class="callsign"><i></i> COBALT</span></header>
+  <section id="panel">
+    <div class="eyebrow"><span class="dash"></span><span id="chapter">COASTAL OPERATION</span></div>
+    <h1 id="title">Breakwater<br>Reach</h1>
+    <p id="desc">Move north with Cobalt. Disable the Ember relay to open your gate. Capture the gate and help your team disable <span id="defenderGoal"></span>.</p>
+    <div id="vehicleChoice">
+      <label for="vehicle">Your vehicle</label>
+      <select id="vehicle">
+        <option value="helicopter">Kestrel · Helicopter</option><option value="tank">Basalt · Tracked tank</option>
+        <option value="mech">Kiln · Walking mech</option><option value="ship">Tern · Surface cutter</option>
+      </select>
+      <div id="controlHint"></div>
+    </div>
+    <button id="primary">Deploy <b>↗</b></button><button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
+    <a href="./combined.html" id="reselect">Choose vehicle</a><a href="./" id="return">Mission board</a>
+    <details id="guide"><summary>Controls &amp; saved replays</summary>
+      <div class="keys"><span id="driveKeys"></span><span id="turnKeys"></span><span id="extraKeys"></span>
+        <span><kbd>← / →</kbd> Slew aim</span><span><kbd>↑ / ↓</kbd> Adjust elevation</span><span><kbd>Space / LMB</kbd> Fire · forward aim assist</span>
+        <span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Sight / chase</span><span><kbd>P / Esc</kbd> Pause</span></div>
+      <p class="assist-note">Hold fire to track visible Ember contacts ahead. The relay takes priority. Steer or use the arrow keys to aim manually. Your captured gate supplies cells and repairs. Release W to stay nearby.</p>
+      <label class="replay-check">Verify a Breakwater replay <input id="checkFile" type="file" accept=".json,application/json"></label>
+      <output id="checkResult" aria-live="polite"></output>
+    </details>
+  </section>
+  <section id="hud" hidden aria-label="Combined arms instruments">
+    <div id="compass"><small>HEADING</small><strong id="heading"></strong></div>
+    <div class="mission"><small>BREAKWATER REACH</small><div id="objectives"></div></div>
+    <aside id="chart"><div class="map-title"><b>ESTUARY</b><span>N ↑</span></div>
+      <canvas id="theatreMap" width="202" height="152" aria-label="North-up map of allied vehicles, visible opponents, relay and exit gate"></canvas>
+      <div class="legend"><span>● Cobalt</span><span>◆ Ember</span><span>○ Gate</span></div>
+    </aside>
+    <div id="contact"></div><div id="aimPoint" aria-label="Sight"><i></i></div><div id="message" role="status"></div>
+    <div class="instruments"><div><small id="vehicleName">KESTREL</small><b id="health"></b></div><div><small id="motionLabel"></small><b id="motion"></b></div>
+      <div><small>CELLS</small><b id="ammo"></b></div><div><small>MOUNT</small><b id="reload"></b></div></div>
+    <div class="station-actions"><button id="sound" aria-pressed="false">Sound off</button><button id="camera">Gun sight</button><button id="pause">Pause</button></div>
+  </section>
+  <footer><span id="movementHint"></span><span>SPACE FIRE　 C VIEW　 P PAUSE</span></footer>
+</main>
+<script type="module" src="./game/combined-main.js"></script>
+</body></html>

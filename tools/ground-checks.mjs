@@ -80,8 +80,8 @@ export async function groundChecks(io,{family,name,entry}){
 
     return lifecycle;
   }
-  async function checkDownload(win){
-    const downloadPath=join(output,'downloads');
+  async function checkDownload(win,folder='downloads'){
+    const downloadPath=join(output,folder);
     await mkdir(downloadPath,{recursive:true});
     await send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath},null);
     await click('save');

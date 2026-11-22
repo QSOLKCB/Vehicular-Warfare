@@ -5,6 +5,7 @@ import {terrainFlights} from './terrain-flights.mjs';
 import {tankSortie} from './tank-sortie.mjs';
 import {mechSortie} from './mech-sortie.mjs';
 import {navalSortie} from './naval-sortie.mjs';
+import {combinedSortie} from './combined-sortie.mjs';
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
@@ -106,7 +107,7 @@ try{
     assert.match(message,/^Verified ·/);console.log(message);
   }
   const family=process.argv[3];
-  const stationSorties={tank:tankSortie,mech:mechSortie,naval:navalSortie};
+  const stationSorties={tank:tankSortie,mech:mechSortie,naval:navalSortie,combined:combinedSortie};
   if(Object.hasOwn(stationSorties,family)){
     const sortie=stationSorties[family];
     const result=await sortie({click,key,mouse,evaluate,send,screenshot,sleep,output});
@@ -115,7 +116,9 @@ try{
     const report={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
       version,cpu:cpus()[0].model,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,family+'.json'),JSON.stringify(report,null,1)+'\n');
-    console.log(family,result.win.receipt.ticks,'ticks to victory');
+    if(family==='combined'){
+      for(const run of result.runs)console.log(run.selection,run.win.receipt.ticks,'ticks to victory');
+    }else console.log(family,result.win.receipt.ticks,'ticks to victory');
   }else if(process.argv[3]==='terrain'){
     const result=await terrainFlights({read,key,click,screenshot,evaluate,send,until,quantiles});
     assert.deepEqual(errors,[]);

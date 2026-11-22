@@ -20,7 +20,7 @@ function taperedShell(out,lower,upper,color){
   }
   facet(out,b[0],b[1],b[2],color);facet(out,b[0],b[2],b[3],color);
 }
-function crawlerParts(renderer,id){
+export function crawlerParts(renderer,id){
   const hull=[],turret=[],gun=[],color=colors[id];
   taperedShell(hull,[1.05,-.40,1.75],[1.19,.12,2.05],color);
   taperedShell(hull,[1.19,.12,2.05],[.94,.55,1.57],color);
@@ -49,6 +49,14 @@ function crawlerParts(renderer,id){
   boxVertices([0,0,-2.47],[.29,.27,.46],color,gun);
   boxVertices([0,0,-2.69],[.14,.15,.035],brass,gun);
   return {hull:new Model(renderer,hull),turret:new Model(renderer,turret),gun:new Model(renderer,gun)};
+}
+
+export function drawCrawler(r,{hull,turret,gun},actor){
+  const {right,up,forward}=tankBasis(actor),mount=tankGun(actor);
+  hull.drawBasis(r,actor.p,right,up,scale(forward,-1));
+  turret.draw(r,mount.pivot,turn(1,-actor.turretYaw));
+  gun.draw(r,mount.pivot,look(mount.direction));
+  return hull.mesh.count+turret.mesh.count+gun.mesh.count;
 }
 
 export class TankView {
@@ -92,12 +100,7 @@ export class TankView {
     let draws=2,vertices=this.land.count+this.sky.count;
     for(const actor of [p,w.enemy]){
       if(actor.hp<=0 || actor===p && mode==='sight')continue;
-      const {hull,turret,gun:barrel}=this.models[actor.id];
-      const {right,up,forward}=tankBasis(actor),mount=tankGun(actor);
-      hull.drawBasis(r,actor.p,right,up,scale(forward,-1));
-      turret.draw(r,mount.pivot,turn(1,-actor.turretYaw));
-      barrel.draw(r,mount.pivot,look(mount.direction));
-      draws+=3;vertices+=hull.mesh.count+turret.mesh.count+barrel.mesh.count;
+      vertices+=drawCrawler(r,this.models[actor.id],actor);draws+=3;
     }
     const s=this.stream.reset();
     for(const shot of w.shots)s.append(shot.p,[.20,.20,.20],shot.owner===p.id?[.32,1,.89]:[1,.40,.18]);

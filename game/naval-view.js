@@ -17,7 +17,7 @@ const quad=(out,a,b,c,d,tint,light=1)=>{facet(out,a,b,c,tint,light);facet(out,a,
 
 // Successive cross sections of a broad stern, stepped foredeck and fine bow.
 // Model space is +X starboard, +Y up, -Z ahead. The keel is 1 m below the origin.
-function cutter(tint){
+export function cutter(tint){
   const out=[],rings=[];
   for(const [z,width,deck] of [[3.95,1.17,.53],[2.8,1.53,.57],[-1.35,1.58,.65],[-2.95,.98,.79],[-4,.055,.95]]){
     rings.push([[-width,deck,z],[-width*.98,.07,z],[-width*.92,-.1,z],[-width*.67,-.7,z],
@@ -65,7 +65,7 @@ function cutter(tint){
 }
 
 // Gun geometry is unit length along local -Z, stretched to the authoritative muzzle.
-function deckGun(){
+export function deckGun(){
   const out=[];
   boxVertices([0,-.24,-.03],[.75,.59,.29],steel,out);
   boxVertices([0,-.08,-.08],[.68,.33,.26],ivory,out);
@@ -73,7 +73,7 @@ function deckGun(){
   boxVertices([0,0,-.91],[.22,.22,.18],steel,out);
   return out;
 }
-function stationBody(shore){
+export function stationBody(shore){
   const out=[],[x,y,z]=shore.half;
   boxVertices([0,-y*.54,0],[x*1.9,y*.92,z*1.8],steel,out);
   boxVertices([0,y*.03,0],[x*1.48,y*.62,z*1.35],ivory,out);
@@ -84,7 +84,7 @@ function stationBody(shore){
   return out;
 }
 
-function harbour(w){
+export function coastMeshes(w){
   const land=[],water=[],rng=seededRandom(w.seed+41),light=normalize([-.46,.73,-.49]);
   const {field}=w,level=w.water.level;
   for(let iz=0;iz<field.cellsZ;iz++)for(let ix=0;ix<field.cellsX;ix++){
@@ -115,6 +115,10 @@ function harbour(w){
     const width=.2+rng()*.9,s=rng()*.045+.025;
     facet(water,[x-width,h+.015,z+s],[x+width,h+.015,z],[x,h+.015,z-s],[.31,.57,.60],.94);
   }
+  return {land,water,sky:skyMesh(false,rng)};
+}
+function harbour(w){
+  const scene=coastMeshes(w),{land}=scene;
   const [bx,,bz]=w.beacon;
   for(const side of [-1,1]){
     const x=bx+side*BEACON_RADIUS,y=w.water.heightAt(x,bz);
@@ -123,7 +127,7 @@ function harbour(w){
     boxVertices([x,y+1.24,bz],[.11,.67,.11],ivory,land);
     boxVertices([x,y+1.62,bz],[.28,.18,.28],mint,land);
   }
-  return {land,water,sky:skyMesh(false,rng)};
+  return scene;
 }
 
 function mapSymbol(ctx,x,z,radius,color,filled){
@@ -136,7 +140,7 @@ function mapSymbol(ctx,x,z,radius,color,filled){
 // length and rudder motion curves the trace gently aft. They have no collision.
 const foamCorners=[[0,0],[0,1],[.97,1],[0,0],[.97,1],[.97,0]];
 const froth=[.65,.86,.82];
-function foamRibbon(out,cursor,w,ship){
+export function foamRibbon(out,cursor,w,ship){
   if(!ship.hp || ship.grounded || Math.abs(ship.speed)<.3)return cursor;
   const {right,forward}=vesselBasis(ship),sign=Math.sign(ship.speed);
   const distance=Math.min(12,Math.abs(ship.speed)*1.6);
