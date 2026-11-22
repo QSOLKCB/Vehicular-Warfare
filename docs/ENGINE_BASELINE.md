@@ -1,23 +1,31 @@
-# Engine verification — VANILLAJS v3.4.0
+# VANILLAJS v3.5.0 engine baseline
 
-**Exact source:** [VANILLAJS v3.4.0](https://github.com/QSOLKCB/VANILLAJS/releases/tag/v3.4.0) at commit **0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466**. This empty game repository has **no installed/vendored engine implementation yet**. Codex must examine MODULES.json, source APIs and dependency closure.
+Vehicular-Warfare vendors the public JavaScript modules it uses. The approved engine is **VANILLAJS v3.5.0 — THE SILICON FORGE**, commit `9d95d74b355ec17add32db0b55f0f71130f9c004`. The released game v0.2.0 (`0132dd22191ebfeddfce8bc76651e09eb2f12b48`) used engine v3.4.0 (`0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`). [Upstream release](https://github.com/QSOLKCB/VANILLAJS/releases/tag/v3.5.0) · [Pinned module registry](https://github.com/QSOLKCB/VANILLAJS/blob/9d95d74b355ec17add32db0b55f0f71130f9c004/MODULES.json)
 
-| Module | Existing capability | Do not assume |
+## Imported source
+
+| Module | Registered dependency | Contract |
 | --- | --- | --- |
-| terrain / Heightfield | Triangulated finite heightfield, sampled height/normal, segment crossing; ≤128 × 128 cells | General volumetric voxel renderer, full swept-hull collision or mutable terrain |
-| flight | Generic finite 6DOF body force/orientation integration | Full helicopter rotor/collective dynamics |
-| airframe | Simplified fixed-wing dynamics at 120 Hz | Hovering helicopter |
-| vehicle3d | Four-contact wheeled motion, 120 Hz | Tracks/mech legs/ship buoyancy |
-| cockpit-rig | Read-only cockpit/nose/chase cameras and weapon sights | Weapon/flight authority |
-| trajectory | Guided 120 Hz step with bounded moving AABB and wall contact | Terrain heightfield integration or damage |
-| sensing + geometry | Bounded AABB line-of-sight and static candidates | Automatic terrain occlusion adapter |
-| combat3d | 60 Hz character combat, 16 actors and 64 projectiles | A drop-in 120 Hz universal vehicle combat engine |
-| scenic3d / render-webgl / render-lit | Procedural scenery and native WebGL1 presentation | Authoritative height/LOS/physics |
-| world-vis | Presentation-only retained static-world LOD | Omitting colliders or AI perception |
-| render-packing | Reusable packed Float32 RGB box geometry | Projectile physics or automatic FPS gains |
-| GC-PROFILE-001 | Development-only allocation and GC sampling | A replacement browser collector or performance guarantee |
-| audio2d / soundtrack | Local original PCM and phrase playback | Weapon/mission authority |
+| terrain | math | Triangulated Heightfield for height samples, visibility and segment intersections |
+| collision | math | Swept contact queries |
+| math | — | Shared numeric, quaternion and matrix operations |
+| render-webgl | math | WebGL1 renderer, retained meshes and six-float XYZ/RGB vertices |
+| render-packing | — | Bounded reusable box vertex stream |
+| fx-pipe | integer-math | Bounded Q16.16 affine transforms and solid-colour triangles or quads into a live Float32 XYZ/RGB view |
+| integer-math | — | Signed Q16.16 operations and the scale constant imported by fx-pipe |
+| blit | — | Packed 16-bit words, up to four indexed bitplanes and masked Boolean blits |
+| copper | — | Validated scanline palette and horizontal scroll programs over an indexed frame, with reusable RGBA output |
 
-The older Comanche height-column visual algorithm is a **new optional experiment**, not an existing VANILLAJS public API. Use original height/colour maps; never import commercial maps or proprietary game data.
+The original five module entries and both licence files have identical Git blobs at the two engine commits. The four added entries are experimental and execute on the CPU. Copper takes a separate indexed byte buffer as input. BLIT's conversion to indices allocates a snapshot. FX-PIPE's live output aliases its own storage, and the caller owns any GPU upload. [SHA-256 receipts](../vendor/vanillajs/provenance.json) · [Engine licence](../vendor/vanillajs/LICENSE) · [Notice](../vendor/vanillajs/NOTICE)
 
-**Starting choice:** one immutable accepted Heightfield + a game-owned bounded 120 Hz rotorcraft/mission authority, built from verified public math/flight/collision primitives. Treat cross-module tick-rate and geometry differences explicitly and test them.
+## Reproduce the import
+
+Use a local Git clone containing the upstream release. From the game repository root run the following checks. The importer reads the approved commit's blobs and compares the registered dependency edges with the public entry imports. The default root set includes all seven directly selected modules.
+
+```sh
+python3 tools/vendor.py /path/to/VANILLAJS --check
+python3 tools/identity.py --check
+node --test test/*.test.js
+```
+
+Omit `--check` from the vendor command to copy the approved bytes and write their provenance. The identity command above only checks the six existing simulation identities. The fixed 120 Hz game simulation owns vehicle motion, terrain and water contacts, perception, hits, damage and objectives. Rendering consumes snapshots and presentation settings. Historical evidence directories identify the exact engine and game revisions used for those runs.

@@ -5,7 +5,7 @@ Read README.md, ROADMAP.md and all docs linked by README before editing. VW-000 
 ## Purpose and pin
 
 - Build an original offline-first combined-arms game, starting with **VW-001: a genuinely playable 3D helicopter-vs-ground encounter** where terrain is tactical concealment. Tanks, mechs and ships require their own later physics and acceptance gates.
-- Immutable VANILLAJS **v3.4.0** at **0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466**. Inspect source exports and MODULES.json, vendor the required transitive source closure with SHA-256 per-file receipts, LICENSE and NOTICE. Do not follow upstream main silently.
+- Immutable VANILLAJS **v3.5.0** at **9d95d74b355ec17add32db0b55f0f71130f9c004**. Inspect source exports and MODULES.json, vendor the required transitive source closure with SHA-256 per-file receipts, LICENSE and NOTICE. Do not follow upstream main silently.
 - Existing VANILLAJS flight is a 6DOF integrator **not** helicopter physics. Airframe is not rotorcraft lift. Vehicle3d models four wheels, not tank tracks. Ships and mechs need separate models.
 - Use **120 Hz fixed authoritative simulation** for initial flight and projectiles. Combat3D advances at 60 Hz; either explicitly bridge rates with an independently tested contract or keep a bounded game-owned 120 Hz weapon/damage ledger. Never call Combat3D as if it were a 120 Hz vehicle solver.
 

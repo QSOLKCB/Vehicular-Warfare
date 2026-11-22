@@ -10,7 +10,7 @@ AA needs 120 consecutive visible ticks, the convoy 240. Losing sight clears acqu
 
 ## Engine provenance
 
-The release tag was resolved to `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The copy tool reads Git blobs at that SHA and checks source imports against MODULES.json. Reproduce the vendored numerical closure with `python3 tools/vendor.py /path/to/VANILLAJS`. Upstream files, notices and individual SHA-256 records are in `vendor/vanillajs/`. Regenerate the numerical source receipt with `python3 tools/identity.py`.
+RIDGEFIRE originally shipped against engine v3.4.0 at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The current approved engine v3.5.0 has identical bytes for every module used by the simulation. Use `python3 tools/identity.py --check` to verify the existing source receipts. [Current pin, import closure and reproduction](ENGINE_BASELINE.md)
 
 The terrain, math and moving-segment collision APIs supply the numerical primitives. Flight exports a rigid-body integrator, while this mission uses a bounded assisted-rotor model. Trajectory and sensing query box geometry. The game also needs exact triangular terrain intersections. Combat3D advances timers and projectiles at 1/60. Cockpit-rig, scenic3d, render-webgl, render-lit, world-vis and render-packing provide presentation APIs. The RGB renderer and box stream use six floats per vertex, distinct from the 11-float lit layout. All gameplay geometry, controls and mission data are original.
 
