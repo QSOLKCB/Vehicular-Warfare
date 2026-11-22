@@ -1,0 +1,15 @@
+#station{--gold:#a7eadb}
+#station[data-mode=playing] .shade{background:linear-gradient(0deg,#14212799,transparent 24%,transparent 78%,#14212766)}
+#battlefield{touch-action:none}
+h1{font-size:clamp(50px,7.6vw,124px);line-height:.87}
+#return{display:inline-block;font-weight:600;font-size:13px;margin:8px 7px;color:var(--ink);text-underline-offset:4px}
+#contact{position:absolute;left:50%;top:17%;transform:translateX(-50%);font:600 11px var(--mono);color:#ffe0a5;background:#202729c7;padding:5px 9px;text-align:center}
+#aimPoint{position:absolute;transform:translate(-50%,-50%);color:#ffead0;width:28px;height:26px;filter:drop-shadow(0 1px 1px #112420)}
+#aimPoint:before,#aimPoint:after,#aimPoint i:before{position:absolute;content:"";background:currentColor}
+#aimPoint:before,#aimPoint:after{width:9px;height:2px;top:50%}
+#aimPoint:after{right:0}
+#aimPoint i:before{width:2px;height:7px;bottom:0;left:calc(50% - 1px)}
+#aimPoint i:after{position:absolute;content:"";width:3px;height:3px;top:calc(50% - 1px);left:calc(50% - 1px);background:currentColor}
+#message{bottom:28%;font-size:12px}
+@media(max-height:550px){h1 br{display:none}#title{font-size:40px}#panel{width:65vw;max-width:65vw}}
+#belts{display:block;font:10px var(--mono);color:#a7eadb;margin-top:3px}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#202c2b"><title>Cutbank Relay · Vehicular Warfare</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="./game/style.css"><link rel="stylesheet" href="./game/tank.css">
+</head>
+<body>
+<main id="station" data-mode="briefing" aria-label="Cutbank Relay ground station">
+  <canvas id="battlefield" aria-label="Cutbank Relay 3D battlefield"></canvas><div class="shade"></div>
+  <header><span class="insignia" aria-hidden="true">◢</span><strong>VEHICULAR WARFARE</strong><span class="division"> / </span><span class="series">GROUND OPERATIONS</span><span class="callsign"><i></i> BASALT 01</span></header>
+  <section id="panel">
+    <div class="eyebrow"><span class="dash"></span><span id="chapter">TRACKED SORTIE</span></div>
+    <h1 id="title">CUTBANK<br>RELAY</h1>
+    <p id="desc">Drive the Basalt north to the relay berm. Brake when the guard’s turret enters your sight. Hold the shelf and disable the guard before time runs out.</p>
+    <button id="primary">Deploy crawler <b>↗</b></button>
+    <button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
+    <a href="./" id="return">Flight board</a>
+    <details id="guide"><summary>Drive controls &amp; saved replays</summary>
+      <div class="keys">
+        <span><kbd>W / S</kbd> Drive / reverse</span><span><kbd>A / D</kbd> Differential steer</span>
+        <span><kbd>Shift</kbd> Brake</span><span><kbd>← / →</kbd> Traverse turret</span>
+        <span><kbd>↑ / ↓</kbd> Elevate / depress</span><span><kbd>Space / LMB</kbd> Fire</span>
+        <span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Gun sight / chase</span>
+        <span><kbd>P / Esc</kbd> Pause</span>
+      </div>
+      <label class="replay-check">Check saved ground replay <input id="checkFile" type="file" accept=".json,application/json"></label>
+      <output id="checkResult" aria-live="polite"></output>
+    </details>
+  </section>
+  <section id="hud" hidden aria-label="Crawler instruments">
+    <div id="compass"><small>TURRET BEARING</small><strong id="heading"></strong></div>
+    <div class="mission"><small>CUTBANK RELAY</small><div id="objectives"></div></div>
+    <div id="contact" aria-live="polite"></div>
+    <div id="aimPoint" aria-label="Gun sight"><i></i></div><div id="message" role="status"></div>
+    <div class="instruments"><div><small>HULL</small><b id="health"></b></div><div><small>ROUNDS</small><b id="ammo"></b></div><div><small>DRIVE</small><b id="speed"></b><span id="belts" aria-label="Left and right track speeds in metres per second"></span></div><div><small>GUN</small><b id="reload"></b></div></div>
+    <div class="station-actions"><button id="camera">Gun sight</button><button id="pause">Pause</button></div>
+  </section>
+  <footer><span>W/S DRIVE　 A/D STEER　 SHIFT BRAKE</span><span>ARROWS AIM　 SPACE FIRE</span></footer>
+</main>
+<script type="module" src="./game/tank-main.js"></script>
+</body></html>

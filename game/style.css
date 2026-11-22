@@ -54,3 +54,6 @@ select{font:inherit;padding:7px;color:var(--ink);background:#292f30;border:1px s
 .replay-check input{display:block;max-width:100%;margin-top:5px}
 #checkResult:empty{display:none}
 #panel:has(details[open]){max-height:76svh;overflow:auto}
+
+#groundSortie{display:none;color:var(--ink);margin-left:12px;font:600 13px Arial,sans-serif;text-underline-offset:4px}
+[data-mode=briefing] #groundSortie{display:inline-block}

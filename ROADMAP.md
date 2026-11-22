@@ -7,8 +7,8 @@
 | VW-000 — Charter | README, AGENTS, design, technical audit, Codex handoff | Owner reviews docs PR |
 | VW-001A — RIDGEFIRE authority | 120 Hz rotorcraft, immutable heightfield, LOS, AA, real rockets/damage, replay | Numerical hide→expose→hide, collision, AI, score and replay tests |
 | VW-001B — Playable RIDGEFIRE | Original mountain valley, cockpit/chase, CPU AA and convoy, real mission | Complete browser win/loss/restart, source receipts, no external runtime |
-| VW-VIS-001 — Voxel Terrain Laboratory | Implemented for review. Optional Survey and Fine height-column views on all three sorties | [Numerical, replay and Chromium evidence](evidence/voxel-terrain/) |
-| VW-002 — Tank (planned) | Tracks/traction, independently aimed turret, hull-down tactics | Verified contact and ballistics |
+| VW-VIS-001 — Voxel Terrain Laboratory | Accepted in [PR #8](https://github.com/QSOLKCB/Vehicular-Warfare/pull/8). Optional Survey and Fine height-column views on all three sorties | [Numerical, replay and Chromium evidence](evidence/voxel-terrain/) |
+| VW-002 — Tracked Warfare | Cutbank Relay, a playable tracked-vehicle encounter with independent turret aim | [Numerical and Chromium checks](evidence/tracked-warfare/) |
 | VW-003 — Mech (planned) | Tested stepping, balance, torso aiming | Real leg/ground physics and contact |
 | VW-004 — Naval (planned) | Buoyancy, hull drag, rudder, weapons | Water/terrain and combat replay |
 | VW-005 — Combined arms (planned) | Shared encounters across air/ground/sea | Cross-domain target/damage parity |
