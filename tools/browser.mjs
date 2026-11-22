@@ -4,6 +4,7 @@ import {routeFlights} from './route-flights.mjs';
 import {terrainFlights} from './terrain-flights.mjs';
 import {tankSortie} from './tank-sortie.mjs';
 import {mechSortie} from './mech-sortie.mjs';
+import {navalSortie} from './naval-sortie.mjs';
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
@@ -105,8 +106,9 @@ try{
     assert.match(message,/^Verified ·/);console.log(message);
   }
   const family=process.argv[3];
-  if(family==='tank' || family==='mech'){
-    const sortie=family==='tank'?tankSortie:mechSortie;
+  const stationSorties={tank:tankSortie,mech:mechSortie,naval:navalSortie};
+  if(Object.hasOwn(stationSorties,family)){
+    const sortie=stationSorties[family];
     const result=await sortie({click,key,mouse,evaluate,send,screenshot,sleep,output});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u.startsWith('blob:'+base+'/') || u==='data:,'));

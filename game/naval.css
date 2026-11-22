@@ -1,0 +1,14 @@
+#station{--gold:#a9efd9;--line:#a9d6d65e}
+#station .shade{background:linear-gradient(90deg,#10242bea,#142b36ac 31%,transparent 69%),linear-gradient(0deg,#092a378c,transparent 32%,transparent 85%,#12313b66)}
+#station[data-mode=playing] .shade{background:linear-gradient(0deg,#0a242db3,transparent 25%,transparent 82%,#19374277)}
+#panel h1{font-size:clamp(52px,8.3vw,134px);letter-spacing:-.075em}
+#hud .mission,#hud .instruments,#hud #contact,#chart{background:#102b35db}
+#hud #contact{color:#e0f9eb;max-width:37vw;white-space:nowrap}
+#hud #message{color:#ffdfbd;background:#4b362ad9}
+#hud .instruments{gap:18px}
+#chart{position:absolute;right:4%;top:15%;width:150px;border:1px solid var(--line);padding:6px}
+.chart-head,.chart-key{display:flex;align-items:center;justify-content:space-between;font:10px var(--mono);color:var(--gold);letter-spacing:.05em}
+#seaMap{position:static;display:block;width:100%;height:auto;margin:5px 0;background:#183642}
+.chart-key{font-size:9px;letter-spacing:0}.chart-key span:first-child{color:#ffb087}
+@media(max-width:800px){#chart{top:16%;width:107px}#hud .instruments{gap:11px}.chart-head,.chart-key{font-size:8px}}
+@media(max-width:600px),(max-height:520px){#chart{width:90px}.chart-key{display:none}#hud #contact{top:25%;font-size:9px}#panel h1{font-size:45px}}

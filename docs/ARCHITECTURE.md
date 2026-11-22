@@ -32,6 +32,10 @@ Cutbank Relay has a dedicated 120 Hz world with two track drive inputs, chassis 
 
 Glassworks Crossing runs its own fixed-step locomotion and mission ledger. Rendering reads the accepted body, planted feet, swinging feet and torso orientation. The tank and mech pages share the ground input, fixed clock, lifecycle and replay UI. Each supplies its own simulation, view and receipt verifier. [Walker and mission contract](MECH_WARFARE.md)
 
+## Surface vessel
+
+Lantern Sound adds a water surface to its seeded Heightfield. Both vessels sample that surface for displacement and check the seabed for keel clearance. The same surface determines water impacts and the height of the WebGL sea. The bridge supplies commands and reads accepted poses and events through the shared station lifecycle. [Water, vessel and naval mission API](NAVAL_WARFARE.md)
+
 ## Terrain views
 
 `View.render(world, camera, briefing = false, zoom = false, terrainMode = "webgl", profile = "survey")` reads the live world without advancing it. The optional `"voxel"` mode accepts `"survey"` or `"fine"`. Terrain selection belongs to the page and survives pause, restart and sortie changes within that page. Switching in flight takes effect on the next draw. Selecting a profile on pause takes effect on resume.
