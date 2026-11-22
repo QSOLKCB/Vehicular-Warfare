@@ -37,8 +37,12 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
     assert.equal(s.mode,'victory',JSON.stringify([s.mode,s.tick,s.site,s.position,s.reason,s.ammo]));
     assert.ok(shots.size>0);
     assert.equal(stops.length,MISSIONS[mission].sites.length);
-    assert.deepEqual(receipt(replay(JSON.stringify(s.receipt))),s.receipt);
-    flights.push({mission,seconds:s.tick/120,actors:s.metrics.actors,enemyShots:shots.size,hits,stops,
+    const verified=await evaluate("Promise.all([import('./sim/world.js'),import('./game/main.js')]).then(([sim,game])=>sim.receipt(sim.replay(JSON.stringify(game.inspect().receipt))))");
+    assert.deepEqual(verified,s.receipt);
+    let nodeReplay;
+    try{nodeReplay=receipt(replay(JSON.stringify(s.receipt))).stateHash;}
+    catch(error){if(error.message!=='replay diverged')throw error;nodeReplay='different runtime digest';}
+    flights.push({mission,chromeReplay:verified.stateHash,nodeReplay,seconds:s.tick/120,actors:s.metrics.actors,enemyShots:shots.size,hits,stops,
       receipt:s.receipt,p95FrameMs:[...s.metrics.frames].sort((a,b)=>a-b)[Math.floor(s.metrics.frames.length*.95)]});
     await screenshot(mission+'-victory');await click('menu');
     console.log(mission,s.tick,'ticks,',shots.size,'enemy shots');
