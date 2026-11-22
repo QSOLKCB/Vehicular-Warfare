@@ -36,6 +36,8 @@ Choose a helicopter, tank, mech or ship before deploying. Your other three crews
 
 Choose **FX gate beacon** to mark your capture gate with a rotating faceted light. Press **G** to switch between it and the original gate lamps during play. Workshop playtests and replays also support the marker. [FX-PIPE geometry and controls](docs/FX_PIPE.md)
 
+Select **Retro Tactical Display** in the mixed briefing, pause panel or workshop, or press **M** in a live mixed sortie to switch the map. Its four crew palettes use distinct symbols for the player, allies, visible enemies and the gate. The modern chart is the default. [Retro display and visibility rules](docs/RETRO_DISPLAY.md)
+
 ## Creator systems · Mission workshop
 
 Choose **Mission workshop** on the mission board. Give the mission a title, set its terrain seed and player crew, then place the gate and shore relay on the chart. You can click a landmark into place, use the arrow keys on the chart, or enter coordinates. **Apply changes** saves the accepted draft in this browser. **Export pack** creates a small JSON file that another player can import and play offline.

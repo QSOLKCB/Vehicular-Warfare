@@ -21,13 +21,13 @@ async function runInBrowser(recording,profile,stillTick){
   const canvas=document.querySelector('#battlefield'),world=makeWorld();
   const now=()=>performance.now(),frame=()=>new Promise(requestAnimationFrame);
   const creation=now();
-  const experiment=profile==='standard' || profile==='fx';
+  const experiment=profile==='standard' || profile==='fx' || profile==='retro';
   const detail=experiment?'balanced':profile;
-  const view=new CombinedView(canvas,world,{detail:detail==='base'?'full':detail,fx:profile==='fx'});
+  const view=new CombinedView(canvas,world,{detail:detail==='base'?'full':detail,fx:profile==='fx',retro:profile==='retro'});
   const createViewMs=now()-creation,gl=view.r.gl;
   const fields=['tick','camera','intervalMs','simulationMs','drawMs','hudMs','gpuMs','draws','vertices',
     'liveProjectiles','liveActors','nearActors','farActors','projectileBoxes','debrisBoxes','shadowDiscs','wakeVertices'];
-  if(experiment)fields.push('fxPrepMs','fxVertices','fxUpdated');
+  if(experiment)fields.push('fxPrepMs','fxVertices','fxUpdated','chartPrepMs','retroPrepMs');
   const samples=[],pending=[];
   const timer=gl.getExtension('EXT_disjoint_timer_query');
   let disjoint=0,dropped=0,issued=0;
@@ -104,7 +104,8 @@ async function runInBrowser(recording,profile,stillTick){
         d.debrisBoxes??null,d.shadowDiscs??null,d.wakeVertices??null];
       if(experiment){
         if(d.fxEnabled!==(profile==='fx') || !Number.isFinite(d.fxPrepMs))throw Error('Unexpected FX configuration');
-        row.push(d.fxPrepMs,d.fxVertices,Number(d.fxUpdated));
+        if(d.retroEnabled!==(profile==='retro') || !Number.isFinite(d.chartPrepMs))throw Error('Unexpected chart configuration');
+        row.push(d.fxPrepMs,d.fxVertices,Number(d.fxUpdated),d.chartPrepMs,d.retroPrepMs);
       }
       samples.push(row);
       if(query)pending.push({query,row});
@@ -117,7 +118,7 @@ async function runInBrowser(recording,profile,stillTick){
     return {detail,profile,createViewMs,graphics:{backend:gl.getParameter(debug.UNMASKED_RENDERER_WEBGL),
       width:gl.drawingBufferWidth,height:gl.drawingBufferHeight,antialias:gl.getContextAttributes().antialias},
       timer:{available:Boolean(timer),issued,discarded:dropped,disjoint},fields,samples,
-      resources:{fxRetainedBytes:lastDraw.fxRetainedBytes,liveMeshes:view.r.meshes.size,effectCapacity:lastDraw.effectCapacity,cpuGeometryBytes:lastDraw.cpuGeometryBytes,
+      resources:{retroRetainedBytes:lastDraw.retroRetainedBytes,fxRetainedBytes:lastDraw.fxRetainedBytes,liveMeshes:view.r.meshes.size,effectCapacity:lastDraw.effectCapacity,cpuGeometryBytes:lastDraw.cpuGeometryBytes,
         gpuGeometryMaxBytes:lastDraw.gpuGeometryMaxBytes},status:world.status,receipt:combinedReceipt(world)};
   }finally{
     cleanupTimers();view.dispose();
@@ -170,13 +171,14 @@ export async function releaseProfile(io,{baseOnly,backend,experiment}){
     assert.equal(pass.samples.length,Math.ceil(recording.ticks/2));
     const summary={};
     const metrics=['intervalMs','simulationMs','drawMs','hudMs','gpuMs','draws','vertices','nearActors','farActors','debrisBoxes'];
-    if(experiment)metrics.push('fxPrepMs','fxVertices','fxUpdated');
+    if(experiment)metrics.push('fxPrepMs','fxVertices','fxUpdated','chartPrepMs','retroPrepMs');
     for(const name of metrics){
       const i=pass.fields.indexOf(name);
       summary[name]=distribution(pass.samples.map(row=>row[i]).filter(Number.isFinite));
     }
     if(!baseOnly && detail==='balanced')assert.ok(summary.farActors.max>0,'Distance LOD exercised in the mixed mission');
     if(detail==='fx')assert.ok(summary.fxVertices.max>0,'The FX pass must draw the experimental marker');
+    if(detail==='retro')assert.ok(pass.resources.retroRetainedBytes>0,'The retro pass must draw with its packed chart');
     passes.push({...pass,summary});
   }
   const loads=pass=>pass.samples.map(row=>[row[0],row[1],row[9],row[10]]);

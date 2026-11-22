@@ -15,6 +15,7 @@ import {walkerParts,drawWalker,shadowDisc} from './mech-view.js';
 import {coastMeshes,cutter,deckGun,foamRibbon,stationBody} from './naval-view.js';
 import {EstuaryChart,roadCover} from './combined-chart.js';
 import {FxGateBeacon} from './fx-gate.js';
+import {RetroChart,packedWidth,chartWidth,chartHeight} from './retro-chart.js';
 import {DistantFleet,useDistantActor} from './distant-fleet.js';
 
 const cobalt=[.21,.53,.52],ember=[.83,.32,.19],mint=[.57,1,.76],lamp=[1,.66,.34],steel=[.32,.40,.43];
@@ -105,9 +106,10 @@ function fleet(r,color,side){
 }
 
 export class CombinedView{
-  constructor(canvas,w,{detail='balanced',fx}={}){
+  constructor(canvas,w,{detail='balanced',fx,retro=false}={}){
     if(!Object.hasOwn(profiles,detail))throw RangeError('Unknown scene detail');
     this.detail=detail;
+    this.setRetro(retro);
     this.fx=fx;
     this.fxControl=fx===undefined?document.getElementById('fxBeacon'):null;
     this.beacon=null;
@@ -133,6 +135,10 @@ export class CombinedView{
       this.dynamicBytes=this.stream.capacityBoxes*BOX_STREAM_FLOATS*Float32Array.BYTES_PER_ELEMENT+
         this.foamData.byteLength+this.shadowData.byteLength+(this.distant?.data.byteLength??0);
     }catch(error){r.dispose();throw error;}
+  }
+  setRetro(enabled){
+    this.retroEnabled=Boolean(enabled);
+    if(!enabled){this.retro=null;this.retroImage=null;}
   }
   draw(w,mode){
     const r=this.r,gl=r.gl,{eye,q,fov}=cameraPose(w,mode);
@@ -220,12 +226,25 @@ export class CombinedView{
     const stream=this.stream,debrisBoxes=packMixedEffects(stream,w,this.detail);
     if(stream.boxCount){r.update(this.effects,stream.view());r.draw(this.effects);vertices+=stream.vertexCount;draws++;}
     const sight=sightCombined(w);
-    if(mode!=='briefing')this.chart.draw(w,sight);
+    let chartPrepMs=0;
+    if(mode!=='briefing'){
+      const start=performance.now();
+      if(this.retroEnabled){
+        if(!this.retro){
+          this.retro=new RetroChart(w);
+          this.retroImage=new ImageData(this.retro.display.view(),packedWidth,chartHeight);
+        }
+        this.retro.draw(w,sight);
+        this.chart.ctx.putImageData(this.retroImage,0,0,0,0,chartWidth,chartHeight);
+      }else this.chart.draw(w,sight);
+      chartPrepMs=performance.now()-start;
+    }
     const delta=subtract(sight.point,eye),depth=dot(delta,rotate(q,north)),f=.5/Math.tan(fov/2);
     const x=depth>.1?.5+dot(delta,rotate(q,east))*f/(depth*aspect):0;
     const y=depth>.1?.5-dot(delta,rotate(q,up))*f/depth:0;
     return {x,y,sight,aimVisible:sight.clear && depth>.1 && x>=0 && x<=1 && y>=0 && y<=1,
       width:r.canvas.width,height:r.canvas.height,draws,vertices,waterLevel:w.water.level,
+      retroEnabled:this.retroEnabled,chartPrepMs,retroPrepMs:this.retroEnabled?chartPrepMs:0,retroRetainedBytes:this.retro?.retainedBytes??0,
       detailProfile:this.detail,nearActors,farActors:this.distant?.count??0,projectileBoxes:w.shots.length,debrisBoxes,
       shadowDiscs:shadowEnd/(8*3*6),wakeVertices:foamEnd/6,
       fxEnabled,fxUpdated,fxPrepMs,fxVertices,fxRetainedBytes,
@@ -234,5 +253,5 @@ export class CombinedView{
       gpuGeometryMaxBytes:(this.beacon?.pipe.retainedBytes??0)+this.staticBytes+this.modelBytes+this.dynamicBytes,
       effectCapacity:this.stream.capacityBoxes};
   }
-  dispose(){this.r.dispose();this.beacon=null;this.beaconMesh=null;}
+  dispose(){this.setRetro(false);this.r.dispose();this.beacon=null;this.beaconMesh=null;}
 }

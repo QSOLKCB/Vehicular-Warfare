@@ -1,4 +1,5 @@
 import {Clock,HZ} from '../sim/clock.js';
+import {bindChartControls} from './chart-controls.js';
 import {crewKeys,SimpleSteering} from './drive-controls.js';
 
 export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft,aimRight,
@@ -10,6 +11,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
   const pressed=new Set();
   let vehicle=vehicleSelect?.value;
   let world=createWorld(vehicle),mode='briefing',camera='chase',view=null,session=null,raf=0;
+  const mapMode=bindChartControls(enabled=>view?.setRetro(enabled));
   let held=0,trigger=false,mouseX=0,mouseY=0,lastFrame=null;
   let sound=null,soundEnabled=false;
   let lastDraw=null,retired=0,peaks=0;
@@ -74,6 +76,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
       if(e.code==='KeyG' && fxBeacon){
         fxBeacon.checked=!fxBeacon.checked;fxBeacon.dispatchEvent(new Event('change'));
       }
+      if(e.code==='KeyM')mapMode?.click();
       if(e.code==='KeyC')setCamera();
       if(e.code==='KeyP'||e.code==='Escape'){e.preventDefault();pause();}
     });
@@ -127,14 +130,14 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
       world=createWorld(vehicle);camera='chase';el('camera').textContent='Gun sight';
       frames.length=costs.length=viewMs.length=0;peaks=0;
     }
-    try{view=new View(canvas,world);}
+    try{view=new View(canvas,world,{retro:mapMode?.checked});}
     catch(error){errorPanel(error);return;}
     mode='playing';station.dataset.mode=mode;el('panel').hidden=true;el('hud').hidden=false;
     if(vehicleSelect)vehicleSelect.disabled=true;
     document.activeElement?.blur();syncSound();listen();raf=requestAnimationFrame(frame);
   }
   function preview(){
-    try{view??=new View(canvas,world);lastDraw=view.draw(world,'briefing');}
+    try{view??=new View(canvas,world,{retro:mapMode?.checked});lastDraw=view.draw(world,'briefing');}
     catch(error){errorPanel(error);}
   }
   fxBeacon?.addEventListener('change',()=>{if(mode==='briefing')preview();});
@@ -183,6 +186,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
       score:world.score,held,trigger,player:world.player,enemy:world.enemy,events:world.events,
       ...(world.beacon?{beacon:world.beacon}:{}),...observe?.(world),sight:lastDraw?.sight,shots:world.shots,receipt:receipt(world),
       metrics:{frames,costs,viewMs,lastDraw,peaks,actors,buffers:view?.r.meshes.size??0,
+        ...(mapMode?{liveRetroBytes:view?.retro?.retainedBytes??0}:{}),
         ...(Sound?{audioActive:Boolean(sound)}:{}),rafActive:Boolean(raf),sessionActive:Boolean(session),retired}});
   }
   preview();
