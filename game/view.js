@@ -1,3 +1,4 @@
+import {Tracers} from './tracers.js';
 import {Renderer} from '../vendor/vanillajs/modules/render-webgl/index.js';
 import {BoxVertexStream} from '../vendor/vanillajs/modules/render-packing/index.js';
 import {add,clamp,dot,normalize,perspective,viewMatrix,multiplyMatrices,quatMultiply,rotate,scale,subtract} from '../vendor/vanillajs/modules/math/index.js';
@@ -34,7 +35,9 @@ export class View {
     this.sky=r.mesh(sky); this.land=r.mesh(land);
     this.models={player:new Model(r,aircraft()),rotor:new Model(r,rotor()),
       aa:new Model(r,groundUnit('aa')),convoy:new Model(r,groundUnit('convoy'))};
+    this.tracers=new Tracers(r);
     if(w.route){
+      this.models.scout=new Model(r,groundUnit('scout'));
       const ring=[];
       for(let i=0;i<48;i++) for(const j of [i,i+1]){
         const a=j*Math.PI/24;
@@ -44,13 +47,13 @@ export class View {
       this.beacon.mesh.mode=r.gl.LINES;
     }
     this.stream=new BoxVertexStream(512); this.fx=r.mesh([]);
-    this.bytes=land.length*4+sky.length*4+this.stream.capacityBoxes*216*4+
+    this.bytes=this.tracers.data.byteLength+(this.beacon?this.beacon.data.byteLength*2:0)+land.length*4+sky.length*4+this.stream.capacityBoxes*216*4+
       Object.values(this.models).reduce((n,m)=>n+m.data.byteLength+m.src.byteLength,0);
   }
-  render(w,mode,briefing=false) {
+  render(w,mode,briefing=false,zoom=false) {
     const r=this.r,p=w.player, yaw=turn(1,-p.yaw);
     const body=quatMultiply(yaw,quatMultiply(turn(0,-p.pitch),turn(2,-p.bank)));
-    const fov=briefing ? .90 : 1.02;
+    const fov=briefing ? .90 : (zoom && mode==='cockpit'?2*Math.atan(Math.tan(.51)/1.6):1.02);
     let eye, camera;
     if(briefing) {
       eye=add(p.p,[7.8,2.2,-8.8]);
@@ -62,7 +65,9 @@ export class View {
       camera=look(subtract(add(p.p,rotate(yaw,[0,0,-18])),eye));
     } else {
       eye=add(p.p,rotate(body,[0,.45,-1.15]));
-      camera=quatMultiply(body,turn(0,-.11));
+      // Lower the zoomed optical axis so a downhill contact stays above
+      // the instrument rail. Sight elevation also pans this read-only view.
+      camera=quatMultiply(body,turn(0,zoom ? p.aim*.85-.30 : p.aim*.45-.13));
     }
     r.begin([0,0,0],camera,{fov,fog:0});
     r.draw(this.sky);
@@ -80,7 +85,7 @@ export class View {
     }
     for(const id of enemyIds(w)){
       const e=w[id],kind=unitType(e);
-      if(e.hp) draw(kind==='scout'?'convoy':kind,e.p,[0,0,0,1]);
+      if(e.hp) draw(kind,e.p,[0,0,0,1]);
     }
     const site=zone(w);
     if(site){
@@ -89,10 +94,8 @@ export class View {
       calls++;vertices+=this.beacon.mesh.count;
     }
     const stream=this.stream.reset();
-    for(const s of w.shots) for(let i=0;i<4;i++) {
-      const point=add(s.p,scale(s.step,-i*.8)),size=.21-i*.028;
-      stream.append(point,[size,size,size],s.owner==='player'?[1,.85,.4]:[1,.29,.14]);
-    }
+    const trails=this.tracers.draw(r,w,eye,camera);
+    if(trails.vertices){calls++;vertices+=trails.vertices;}
     for(let j=w.events.length-1;j>=0;j--) {
       const e=w.events[j],age=(w.tick-e.tick)/120;
       if(age>.55 || stream.boxCount+12>stream.capacityBoxes) break;
@@ -110,7 +113,7 @@ export class View {
     const forward=dot(delta,rotate(camera,[0,0,-1])), f=1/Math.tan(fov/2);
     const x=.5+.5*dot(delta,rotate(camera,[1,0,0]))*f/forward*r.canvas.height/r.canvas.width;
     const y=.5-.5*dot(delta,rotate(camera,[0,1,0]))*f/forward;
-    return {target,x,y,calls,vertices,buffers:r.meshes.size};
+    return {target,zoom:zoom && mode==='cockpit',incoming:trails.incoming,x,y,calls,vertices,buffers:r.meshes.size};
   }
   dispose(){this.r.dispose();}
 }

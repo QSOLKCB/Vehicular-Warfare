@@ -11,6 +11,11 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
     await evaluate(`(()=>{const s=document.querySelector('#sortie');s.value='${mission}';s.dispatchEvent(new Event('change'));})()`);
     await screenshot(mission+'-briefing');
     await click('primary');
+    if(mission==='longwatch')await click('sound');
+    assert.equal((await read()).metrics.audioActive,true);
+    assert.equal(await evaluate("document.querySelector('#navPod').hidden"),false);
+    await key('KeyV',true);await key('KeyV',false);
+    assert.equal(await evaluate("document.querySelector('#zoom').getAttribute('aria-pressed')"),'true');
     let active=0,previous=0,gotIncoming=false;
     const shots=new Set(),stops=[],hits=[];
     let s;
@@ -31,11 +36,12 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
         if((active&bit)!==(cmd&bit))await key(code,Boolean(cmd&bit));
       }
       active=cmd;
-      if(!gotIncoming && shots.size){await screenshot(mission+'-cockpit');gotIncoming=true;}
+      if(!gotIncoming && shots.size && s.metrics.lastDraw.incoming){await screenshot(mission+'-cockpit');gotIncoming=true;}
       await sleep(85);
     }
     assert.equal(s.mode,'victory',JSON.stringify([s.mode,s.tick,s.site,s.position,s.reason,s.ammo]));
     assert.ok(shots.size>0);
+    assert.equal(gotIncoming,true);assert.equal(s.metrics.audioActive,false);
     assert.equal(stops.length,MISSIONS[mission].sites.length);
     const verified=await evaluate("Promise.all([import('./sim/world.js'),import('./game/main.js')]).then(([sim,game])=>sim.receipt(sim.replay(JSON.stringify(game.inspect().receipt))))");
     assert.deepEqual(verified,s.receipt);
@@ -47,5 +53,22 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
     await screenshot(mission+'-victory');await click('menu');
     console.log(mission,s.tick,'ticks,',shots.size,'enemy shots');
   }
+  await evaluate("(()=>{const s=document.querySelector('#sortie');s.value='longwatch';s.dispatchEvent(new Event('change'));})()");
+  await click('primary');await key('KeyR',true);
+  let s,damaged=false,climbing=true;
+  const deadline=Date.now()+40000;
+  while(Date.now()<deadline){
+    s=await read();
+    if(climbing && s.position[1]>=47){await key('KeyR',false);climbing=false;}
+    if(!damaged && s.hp<100 && s.hp>0){await screenshot('longwatch-hull-hit');damaged=true;}
+    if(s.mode==='defeat')break;
+    await sleep(90);
+  }
+  assert.equal(s.mode,'defeat');assert.equal(s.hp,0);assert.equal(damaged,true);
+  const hits=s.events.filter(e=>e.type==='damage' && e.target==='player');
+  assert.ok(hits.every(e=>e.shot>0));assert.equal(hits.length,9);
+  const check=await evaluate("Promise.all([import('./sim/world.js'),import('./game/main.js')]).then(([sim,game])=>sim.receipt(sim.replay(JSON.stringify(game.inspect().receipt))))");
+  assert.deepEqual(check,s.receipt);
+  await writeFile(join(output,'exposure.json'),JSON.stringify({hits,receipt:s.receipt},null,1)+'\n');
   await writeFile(join(output,'flights.json'),JSON.stringify(flights,null,1)+'\n');
 }

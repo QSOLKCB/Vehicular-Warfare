@@ -8,6 +8,8 @@ Fly the Kestrel in three sorties. Choose a route on the mission board before lau
 | Long Watch | 9 | Clear four relay sites and hold inside each beacon for three seconds. |
 | Frostline Run | 15 | Clear six patrols and fly low through the crossings in order. |
 
+The long sorties launch in cockpit view. Its north-up route display shows the aircraft, the active beacon, and ground contacts that currently see you. Warm tracers and an **Incoming fire** warning follow live enemy rounds. Diamonds beside the target name show remaining hits, and a hull-hit notice confirms damage. Frostline has snow-covered slopes and pale morning light. Long Watch takes place at dusk.
+
 Long Watch and Frostline use a 960 m valley. Follow the distance and compass bearing on the HUD. Once a patrol is cleared, enter the teal circle below 34 m above ground. Each confirmed beacon repairs up to 32 hull points and refills the rocket pods. Return to **Mission board** from pause or the debrief to choose another sortie.
 
 ## Launch locally
@@ -28,6 +30,7 @@ Open [RIDGEFIRE on localhost](http://127.0.0.1:8080/) in desktop Chromium with W
 | Up / down arrows | Adjust sight elevation. |
 | Space or left mouse | Launch a rocket. Hold for repeated fire. |
 | Right mouse | Capture mouse steering and sight elevation. Escape releases capture and pauses. |
+| V | Toggle the 1.6× cockpit sight. |
 | C | Switch between chase and cockpit cameras. |
 | P or Escape | Pause. Resume, restart or save a replay from the panel. |
 
@@ -44,7 +47,7 @@ CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-verification
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-routes routes
 ```
 
-**Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. To verify a saved receipt in Node from the repository root, run
+**Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. Open **Flight controls & saved replays → Check saved flight** to verify the file locally in the recording browser. The report shows sortie, elapsed time and outcome. Node can verify a receipt when its runtime reproduces the checksums. From the repository root, run
 
 ```sh
 node --input-type=module -e "import {readFileSync} from 'node:fs'; import {replay} from './sim/world.js'; console.log(replay(readFileSync(process.argv[1],'utf8')).status)" ridgefire-replay.json
@@ -52,7 +55,13 @@ node --input-type=module -e "import {readFileSync} from 'node:fs'; import {repla
 
 The [numerical evidence](evidence/authority/) records eight passing tests at `91eb991ba861a772fe616ee0ae5b16179b4c8836`. [PR #2](https://github.com/QSOLKCB/Vehicular-Warfare/pull/2) merged that authority and its evidence into main at `3e37e8b66d998f083b5f1872c9531b5b25a53d8d`. See the [simulation contract](docs/AUTHORITY.md) for replay scope, sweep geometry and sensor timers.
 
-### Executed browser results
+### Mission playthroughs
+
+The mission acceptance flights completed Long Watch in 71 seconds and Frostline Run in 79 seconds using keyboard controls in Chromium. The ground units launched 12 and 18 projectiles respectively. Those times measure a rehearsed route. Both receipts reproduced in the recording Chromium runtime. Node on this machine produced different checksums for those long browser recordings. Use the in-game checker for browser saves. [Mission receipts and screenshots](evidence/valley-missions/)
+
+The cockpit pass repeated both routes at 1.6× sight zoom with sound enabled and recorded an exposed-hover defeat. The [cockpit evidence](evidence/cockpit-polish/) includes screenshots, replay receipts, and the accepted impacts on the aircraft.
+
+### Original Sable Valley benchmark
 
 At `a0ad1738085d3bb9bbdfe1b83238028003d484eb`, Chrome 158.0.8127.36 completed the mission through keyboard and mouse input. AA first fired on its 120th consecutive visible tick. A player rocket damaged the moving convoy, descent broke AA sight, and the player reappeared to finish both objectives. A separate exposed hover ended in destruction by enemy fire. Both exported command traces reproduced their recorded state and event checksums in Node. The [raw browser report](evidence/browser/playthrough.json) includes commands, events, frame and tick samples, debugger heap measurements and teardown observations.
 
@@ -71,6 +80,6 @@ Pause, pointer unlock and switching to another foreground tab stopped the simula
 
 VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
 
-The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. The presentation is silent. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance, mobile touch controls and other vehicle classes are outside the verified scope.
+The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance, mobile touch controls and other vehicle classes are outside the verified scope.
 
 [Agent instructions](AGENTS.md) · [Roadmap](ROADMAP.md) · [Original handoff](docs/CODEX_CLI_HANDOFF.md) · [Game design](docs/GAME_DESIGN.md) · [Architecture](docs/ARCHITECTURE.md) · [Engine baseline](docs/ENGINE_BASELINE.md) · [DOS-era techniques](docs/DOS_TECHNIQUES.md) · [Acceptance contract](docs/ACCEPTANCE.md)
