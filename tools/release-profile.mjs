@@ -13,7 +13,7 @@ export function qualifyRenderer(requested,renderer){
 
 // This function is serialized into the recording browser. The modules, renderer,
 // HUD, fixed step and receipt all come from the game checkout being measured.
-async function runInBrowser(recording,detail,stillTick){
+async function runInBrowser(recording,profile,stillTick){
   const {CombinedView}=await import('./game/combined-view.js');
   const {combinedHud}=await import('./game/combined-hud.js');
   const {createCombinedWorld,stepCombined,combinedReceipt}=await import('./sim/combined-world.js');
@@ -21,10 +21,13 @@ async function runInBrowser(recording,detail,stillTick){
   const canvas=document.querySelector('#battlefield'),world=makeWorld();
   const now=()=>performance.now(),frame=()=>new Promise(requestAnimationFrame);
   const creation=now();
-  const view=new CombinedView(canvas,world,{detail:detail==='base'?'full':detail});
+  const experiment=profile==='standard' || profile==='fx';
+  const detail=experiment?'balanced':profile;
+  const view=new CombinedView(canvas,world,{detail:detail==='base'?'full':detail,fx:profile==='fx'});
   const createViewMs=now()-creation,gl=view.r.gl;
   const fields=['tick','camera','intervalMs','simulationMs','drawMs','hudMs','gpuMs','draws','vertices',
     'liveProjectiles','liveActors','nearActors','farActors','projectileBoxes','debrisBoxes','shadowDiscs','wakeVertices'];
+  if(experiment)fields.push('fxPrepMs','fxVertices','fxUpdated');
   const samples=[],pending=[];
   const timer=gl.getExtension('EXT_disjoint_timer_query');
   let disjoint=0,dropped=0,issued=0;
@@ -99,6 +102,10 @@ async function runInBrowser(recording,detail,stillTick){
       const row=[world.tick,cameras[camera],interval,simulationMs,drawMs,hudMs,null,d.draws,d.vertices,world.shots.length,
         liveActors,d.nearActors??null,d.farActors??null,d.projectileBoxes??null,
         d.debrisBoxes??null,d.shadowDiscs??null,d.wakeVertices??null];
+      if(experiment){
+        if(d.fxEnabled!==(profile==='fx') || !Number.isFinite(d.fxPrepMs))throw Error('Unexpected FX configuration');
+        row.push(d.fxPrepMs,d.fxVertices,Number(d.fxUpdated));
+      }
       samples.push(row);
       if(query)pending.push({query,row});
       lastDraw=d;
@@ -107,10 +114,10 @@ async function runInBrowser(recording,detail,stillTick){
     cleanupTimers();
     if(gl.getError()!==gl.NO_ERROR)throw Error('WebGL reported an error during profiling');
     const debug=gl.getExtension('WEBGL_debug_renderer_info');
-    return {detail,createViewMs,graphics:{backend:gl.getParameter(debug.UNMASKED_RENDERER_WEBGL),
+    return {detail,profile,createViewMs,graphics:{backend:gl.getParameter(debug.UNMASKED_RENDERER_WEBGL),
       width:gl.drawingBufferWidth,height:gl.drawingBufferHeight,antialias:gl.getContextAttributes().antialias},
       timer:{available:Boolean(timer),issued,discarded:dropped,disjoint},fields,samples,
-      resources:{liveMeshes:view.r.meshes.size,effectCapacity:lastDraw.effectCapacity,cpuGeometryBytes:lastDraw.cpuGeometryBytes,
+      resources:{fxRetainedBytes:lastDraw.fxRetainedBytes,liveMeshes:view.r.meshes.size,effectCapacity:lastDraw.effectCapacity,cpuGeometryBytes:lastDraw.cpuGeometryBytes,
         gpuGeometryMaxBytes:lastDraw.gpuGeometryMaxBytes},status:world.status,receipt:combinedReceipt(world)};
   }finally{
     cleanupTimers();view.dispose();
@@ -126,7 +133,21 @@ function distribution(numbers){
     mean:numbers.reduce((sum,n)=>sum+n,0)/numbers.length};
 }
 
-export async function releaseProfile(io,{baseOnly,backend}){
+// Run the allocation sampler separately so its instrumentation never overlaps the timed passes.
+// V8 reports sampled bytes, including collected objects. Aggregate by the nearest local source frame.
+function allocationSites(profile){
+  const bytes=new Map();
+  function visit(node,caller){
+    const url=node.callFrame.url;
+    const site=url?.includes('/ridgefire/')?url.split('/ridgefire/').at(-1)+'#'+(node.callFrame.functionName||'(module)'):caller;
+    if(node.selfSize)bytes.set(site,(bytes.get(site)??0)+node.selfSize);
+    for(const child of node.children??[])visit(child,site);
+  }
+  visit(profile.head,'(unattributed)');
+  return Object.fromEntries([...bytes].sort((a,b)=>b[1]-a[1]));
+}
+
+export async function releaseProfile(io,{baseOnly,backend,experiment}){
   const {click,evaluate,screenshot,sleep}=io;
   const recording=JSON.parse(await readFile(recordingPath,'utf8'));
   await click('combinedSortie');
@@ -139,7 +160,8 @@ export async function releaseProfile(io,{baseOnly,backend}){
   await evaluate("document.querySelector('#panel').hidden=true;document.querySelector('#hud').hidden=false;document.querySelector('#station').dataset.mode='playing'");
   const run=(detail,stillTick=0)=>evaluate('('+runInBrowser.toString()+')('+JSON.stringify(recording)+','+
     JSON.stringify(detail)+','+String(stillTick)+')',120000);
-  const order=baseOnly?['base','base']:['full','balanced','balanced','full'];
+  const order=experiment?['standard',experiment,experiment,'standard']:
+    baseOnly?['base','base']:['full','balanced','balanced','full'];
   const passes=[];
   for(const detail of order){
     const pass=await run(detail);
@@ -147,11 +169,14 @@ export async function releaseProfile(io,{baseOnly,backend}){
     assert.deepEqual(pass.receipt,recording);assert.equal(pass.status,'victory');
     assert.equal(pass.samples.length,Math.ceil(recording.ticks/2));
     const summary={};
-    for(const name of ['intervalMs','simulationMs','drawMs','hudMs','gpuMs','draws','vertices','nearActors','farActors','debrisBoxes']){
+    const metrics=['intervalMs','simulationMs','drawMs','hudMs','gpuMs','draws','vertices','nearActors','farActors','debrisBoxes'];
+    if(experiment)metrics.push('fxPrepMs','fxVertices','fxUpdated');
+    for(const name of metrics){
       const i=pass.fields.indexOf(name);
       summary[name]=distribution(pass.samples.map(row=>row[i]).filter(Number.isFinite));
     }
     if(!baseOnly && detail==='balanced')assert.ok(summary.farActors.max>0,'Distance LOD exercised in the mixed mission');
+    if(detail==='fx')assert.ok(summary.fxVertices.max>0,'The FX pass must draw the experimental marker');
     passes.push({...pass,summary});
   }
   const loads=pass=>pass.samples.map(row=>[row[0],row[1],row[9],row[10]]);
@@ -168,6 +193,19 @@ export async function releaseProfile(io,{baseOnly,backend}){
     assert.equal(new Set(snapshots.map(c=>c.stateHash)).size,1);
     captures.push(...snapshots);
   }
-  return {recordingPath,warmupFrames:24,ticksPerFrame:2,gpuQueryEveryFrames:8,
+  const allocations=[];
+  if(experiment){
+    for(const profile of ['standard',experiment]){
+      await io.send('HeapProfiler.collectGarbage');
+      const before=await io.send('Runtime.getHeapUsage');
+      await io.send('HeapProfiler.startSampling',{samplingInterval:8192,includeObjectsCollectedByMajorGC:true,includeObjectsCollectedByMinorGC:true});
+      let sample;
+      try{assert.deepEqual((await run(profile)).receipt,recording);}
+      finally{sample=(await io.send('HeapProfiler.stopSampling')).profile;}
+      allocations.push({profile,samplingIntervalBytes:8192,before,after:await io.send('Runtime.getHeapUsage'),
+        sampledBytesBySite:allocationSites(sample)});
+    }
+  }
+  return {recordingPath,allocations,warmupFrames:24,ticksPerFrame:2,gpuQueryEveryFrames:8,
     cameraThroughTick:{chase:480,sight:840,overview:recording.ticks},order,passes,captures};
 }

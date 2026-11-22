@@ -34,6 +34,8 @@ Choose **Naval sortie** to pilot a cutter through the island channel. **W/S** ap
 
 Choose a helicopter, tank, mech or ship before deploying. Your other three crews join you against four mobile defenders and a shore relay. Disable the relay to open your crew's gate, enter the gate and help the team disable two mobile defenders. Holding the gate lets your crew draw on its limited repair supply. The briefing lists controls for each vehicle, and the debrief lets you save the run or choose another crew. [Theatre, vehicle and replay API](docs/COMBINED_ARMS.md) · [Playthroughs and measurements](evidence/combined-arms/)
 
+Choose **FX gate beacon** to mark your capture gate with a rotating faceted light. Press **G** to switch between it and the original gate lamps during play. Workshop playtests and replays also support the marker. [FX-PIPE geometry and controls](docs/FX_PIPE.md)
+
 ## Creator systems · Mission workshop
 
 Choose **Mission workshop** on the mission board. Give the mission a title, set its terrain seed and player crew, then place the gate and shore relay on the chart. You can click a landmark into place, use the arrow keys on the chart, or enter coordinates. **Apply changes** saves the accepted draft in this browser. **Export pack** creates a small JSON file that another player can import and play offline.

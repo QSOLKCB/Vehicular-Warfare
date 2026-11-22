@@ -21,6 +21,7 @@
       </select>
       <div id="controlHint"></div>
     </div>
+    <label class="fx-setting" title="Show a rotating marker above your capture gate"><input id="fxBeacon" type="checkbox"> FX gate beacon <kbd>G</kbd></label>
     <div id="driveSetup" hidden>
       <label for="driveStyle">Controls</label>
       <select id="driveStyle" aria-describedby="driveHelp"><option value="simple">Simple</option><option value="independent">Independent</option></select>
@@ -49,7 +50,7 @@
       <div><small>CELLS</small><b id="ammo"></b></div><div><small>MOUNT</small><b id="reload"></b></div></div>
     <div class="station-actions"><button id="sound" aria-pressed="false">Sound off</button><button id="camera">Gun sight</button><button id="pause">Pause</button></div>
   </section>
-  <footer><span id="movementHint"></span><span>SPACE FIRE　 C VIEW　 P PAUSE</span></footer>
+  <footer><span id="movementHint"></span><span>SPACE FIRE　 C VIEW　 G BEACON　 P PAUSE</span></footer>
 </main>
 <script type="module" src="./game/combined-main.js"></script>
 </body></html>

@@ -1,9 +1,11 @@
 import {crewControls as controls,combinedHud as hud,objective} from './combined-hud.js';
 import {BK,REQUIRED_DEFENDERS,createCombinedWorld,stepCombined,combinedReceipt,replayCombined} from '../sim/combined-world.js';
+import {configureFxControl} from './fx-gate.js';
 import {CombinedView} from './combined-view.js';
 import {VehicleAudio} from './vehicle-audio.js';
 import {groundStation} from './ground-station.js';
 
+configureFxControl();
 const el=id=>document.getElementById(id);
 const defenderGoal=REQUIRED_DEFENDERS+' mobile defender'+(REQUIRED_DEFENDERS===1?'':'s');
 el('defenderGoal').textContent=defenderGoal;

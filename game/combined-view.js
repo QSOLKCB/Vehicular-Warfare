@@ -14,6 +14,7 @@ import {crawlerParts,drawCrawler} from './tank-view.js';
 import {walkerParts,drawWalker,shadowDisc} from './mech-view.js';
 import {coastMeshes,cutter,deckGun,foamRibbon,stationBody} from './naval-view.js';
 import {EstuaryChart,roadCover} from './combined-chart.js';
+import {FxGateBeacon} from './fx-gate.js';
 import {DistantFleet,useDistantActor} from './distant-fleet.js';
 
 const cobalt=[.21,.53,.52],ember=[.83,.32,.19],mint=[.57,1,.76],lamp=[1,.66,.34],steel=[.32,.40,.43];
@@ -104,9 +105,13 @@ function fleet(r,color,side){
 }
 
 export class CombinedView{
-  constructor(canvas,w,{detail='balanced'}={}){
+  constructor(canvas,w,{detail='balanced',fx}={}){
     if(!Object.hasOwn(profiles,detail))throw RangeError('Unknown scene detail');
     this.detail=detail;
+    this.fx=fx;
+    this.fxControl=fx===undefined?document.getElementById('fxBeacon'):null;
+    this.beacon=null;
+    this.beaconMesh=null;
     const profile=profiles[detail];
     const r=this.r=new Renderer(canvas);
     try{
@@ -136,6 +141,21 @@ export class CombinedView{
     gl.uniformMatrix4fv(r.vp,false,multiplyMatrices(perspective(fov,aspect),viewMatrix(eye,q)));
     gl.uniform1f(r.fog,.00125);r.draw(this.sea);r.draw(this.land);
     let draws=3,vertices=this.sea.count+this.land.count+this.sky.count,foamEnd=0;
+    const fxEnabled=this.fx??this.fxControl?.checked??false;
+    let fxUpdated=false,fxPrepMs=0,fxVertices=0;
+    if(fxEnabled){
+      const start=performance.now();
+      this.beacon??=new FxGateBeacon(w.beacon);
+      fxUpdated=this.beacon.prepare(w.tick,w.relay.hp>0,w.captured);
+      fxPrepMs=performance.now()-start;
+      if(fxUpdated){
+        this.beaconMesh??=r.mesh([]);
+        r.update(this.beaconMesh,this.beacon.pipe.view());
+      }
+      r.draw(this.beaconMesh);
+      fxVertices=this.beaconMesh.count;vertices+=fxVertices;draws++;
+    }
+    const fxRetainedBytes=this.beacon?.retainedBytes??0;
     let shadowEnd=0,nearActors=0;
     this.distant?.reset();
     for(const a of w.actors){
@@ -208,10 +228,11 @@ export class CombinedView{
       width:r.canvas.width,height:r.canvas.height,draws,vertices,waterLevel:w.water.level,
       detailProfile:this.detail,nearActors,farActors:this.distant?.count??0,projectileBoxes:w.shots.length,debrisBoxes,
       shadowDiscs:shadowEnd/(8*3*6),wakeVertices:foamEnd/6,
-      geometryBytes:this.staticBytes+2*this.modelBytes+this.dynamicBytes+(this.distant?.templateBytes??0),
-      cpuGeometryBytes:2*this.modelBytes+this.dynamicBytes+(this.distant?.templateBytes??0),
-      gpuGeometryMaxBytes:this.staticBytes+this.modelBytes+this.dynamicBytes,
+      fxEnabled,fxUpdated,fxPrepMs,fxVertices,fxRetainedBytes,
+      geometryBytes:fxRetainedBytes+this.staticBytes+2*this.modelBytes+this.dynamicBytes+(this.distant?.templateBytes??0),
+      cpuGeometryBytes:fxRetainedBytes+2*this.modelBytes+this.dynamicBytes+(this.distant?.templateBytes??0),
+      gpuGeometryMaxBytes:(this.beacon?.pipe.retainedBytes??0)+this.staticBytes+this.modelBytes+this.dynamicBytes,
       effectCapacity:this.stream.capacityBoxes};
   }
-  dispose(){this.r.dispose();}
+  dispose(){this.r.dispose();this.beacon=null;this.beaconMesh=null;}
 }

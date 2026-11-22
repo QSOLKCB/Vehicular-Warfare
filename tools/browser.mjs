@@ -121,6 +121,12 @@ try{
   await send('Emulation.setDeviceMetricsOverride',{width:1100,height:720,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url:base+'/ridgefire/'});
   for(let i=0;i<100 && !await evaluate("document.querySelector('#primary')!==null && document.readyState==='complete'");i++) await sleep(60);
+  // Set the same browser preference as the briefing before entering the historical sorties.
+  const presentation=process.env.VW_TEST_PRESENTATION;
+  if(presentation!==undefined){
+    if(presentation!=='fx')throw RangeError('Unknown test presentation');
+    await evaluate("localStorage.setItem('vw:fx-gate','on')");
+  }
   const initial=await read();
   assert.equal(initial.mode,'briefing');
   const gpu=await evaluate("(()=>{const g=document.querySelector('canvas').getContext('webgl'),e=g.getExtension('WEBGL_debug_renderer_info');return {backend:g.getParameter(e.UNMASKED_RENDERER_WEBGL),width:g.drawingBufferWidth,height:g.drawingBufferHeight}})()");
@@ -142,17 +148,19 @@ try{
     const result=await archivedReplays({evaluate,webRoot});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
-    const report={source,servedTree,version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
+    const report={source,servedTree,presentation,version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,'archives.json'),JSON.stringify(report,null,1)+'\n');
     console.log('Verified',result.distinct,'distinct archived recordings from',result.occurrences,'occurrences');
-  }else if(family==='profile' || family==='profile-base' || family==='controls'){
+  }else if(['profile','profile-base','profile-fx','fx','controls'].includes(family)){
     const io={click,key,mouse,evaluate,send,screenshot,sleep,output};
-    const result=family==='controls'?await (await import('./control-sortie.mjs')).controlSortie(io):
-      await releaseProfile(io,{baseOnly:family==='profile-base',backend});
+    let result;
+    if(family==='controls')result=await (await import('./control-sortie.mjs')).controlSortie(io);
+    else if(family==='fx')result=await (await import('./fx-sortie.mjs')).fxSortie(io);
+    else result=await releaseProfile(io,{baseOnly:family==='profile-base',backend,experiment:family==='profile-fx'?'fx':undefined});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u.startsWith('blob:'+base+'/') || u==='data:,'));
     const {gpu:system}=await send('SystemInfo.getInfo',{},null);
-    const report={source,servedTree,host:{platform:process.platform,arch:process.arch,osRelease:release()},
+    const report={source,servedTree,presentation,host:{platform:process.platform,arch:process.arch,osRelease:release()},
       driver:execFileSync('git',['rev-parse','HEAD'],{cwd:new URL('.',import.meta.url),encoding:'utf8'}).trim(),
       version,cpu:cpus()[0].model,backend,graphicsFlags,gpu,devices:system.devices,webgl:system.featureStatus?.webgl,
       requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
@@ -163,7 +171,7 @@ try{
     const result=await sortie({click,key,mouse,evaluate,send,screenshot,sleep,output});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u.startsWith('blob:'+base+'/') || u==='data:,'));
-    const report={source,servedTree,
+    const report={source,servedTree,presentation,
       version,cpu:cpus()[0].model,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,family+'.json'),JSON.stringify(report,null,1)+'\n');
     if(family==='combined'){
@@ -173,7 +181,7 @@ try{
     const result=await terrainFlights({read,key,click,screenshot,evaluate,send,until,quantiles});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
-    const report={source,servedTree,
+    const report={source,servedTree,presentation,
       version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,'terrain.json'),JSON.stringify(report,null,1)+'\n');
     console.log(report.measurements.map(({mode,summary})=>({mode,summary})));
@@ -182,7 +190,7 @@ try{
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
     await writeFile(join(output,'runtime.json'),JSON.stringify({version,gpu,cpu:cpus()[0].model,
-      source,servedTree,errors},null,2));
+      source,servedTree,presentation,errors},null,2));
   }else{
   await evaluate("const sel=document.querySelector('#sortie');sel.value='sable';sel.dispatchEvent(new Event('change'))");
   await screenshot('01-briefing');
@@ -268,7 +276,7 @@ try{
   assert.equal((await read()).mode,'error');
   assert.deepEqual(errors,[]);
   assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
-  const report={source,servedTree,
+  const report={source,servedTree,presentation,
     version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,
     marks,lifecycle,renderIntervalsMs:quantiles(win.metrics.frames),tickTimeMs:quantiles(win.metrics.costs),
     win:{receipt:win.receipt,metrics:win.metrics,events:win.events},loss:{receipt:loss.receipt,metrics:loss.metrics,events:loss.events}};

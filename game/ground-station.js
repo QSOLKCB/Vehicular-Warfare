@@ -5,7 +5,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
   vehicleKind,activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,soundLabel='Sound',actors=2,observe,vehicleSelect}){
   const el=id=>document.getElementById(id);
   const canvas=el('battlefield'),station=el('station'),clock=new Clock();
-  const style=el('driveStyle');
+  const style=el('driveStyle'),fxBeacon=el('fxBeacon');
   let controls,steering;
   const pressed=new Set();
   let vehicle=vehicleSelect?.value;
@@ -71,6 +71,9 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
         e.preventDefault();pressed.add(e.code);held|=controls[e.code];return;
       }
       if(e.repeat)return;
+      if(e.code==='KeyG' && fxBeacon){
+        fxBeacon.checked=!fxBeacon.checked;fxBeacon.dispatchEvent(new Event('change'));
+      }
       if(e.code==='KeyC')setCamera();
       if(e.code==='KeyP'||e.code==='Escape'){e.preventDefault();pause();}
     });
@@ -134,6 +137,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
     try{view??=new View(canvas,world);lastDraw=view.draw(world,'briefing');}
     catch(error){errorPanel(error);}
   }
+  fxBeacon?.addEventListener('change',()=>{if(mode==='briefing')preview();});
   vehicleSelect?.addEventListener('change',()=>{
     if(mode!=='briefing')return;
     vehicle=vehicleSelect.value;
