@@ -1,4 +1,4 @@
-# RIDGEFIRE
+![RIDGEFIRE — VEHICULAR WARFARE. Fly low, strike fast, disappear.](assets/ridgefire-banner.svg)
 
 Fly the Kestrel in three sorties. Choose a route on the mission board before launch.
 
