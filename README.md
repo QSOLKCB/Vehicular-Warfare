@@ -2,9 +2,9 @@
 
 **Mechs. Tanks. Aircraft. Ships. One original battlefield.**
 
-A planned offline-first 3D warfare game built with [VANILLAJS](https://github.com/QSOLKCB/VANILLAJS). Its first playable experiment, **RIDGEFIRE**, draws a gameplay lesson from *Comanche: Maximum Overkill*: a ridgeline should conceal an aircraft from enemy sight and weapons, letting the pilot climb, fire, and retreat to cover.
+An offline-first 3D warfare game built with [VANILLAJS](https://github.com/QSOLKCB/VANILLAJS). Its first playable experiment, **RIDGEFIRE**, draws a gameplay lesson from *Comanche: Maximum Overkill*: a ridgeline should conceal an aircraft from enemy sight and weapons, letting the pilot climb, fire, and retreat to cover.
 
-**Current status: VW-000 planning only. No playable game or measured performance is claimed.**
+**VW-001A implements the independently runnable numerical mission.** Run `node --test test/authority.test.js` and `node tools/measure.mjs` from the repository root. The [simulation contract](docs/AUTHORITY.md) documents controls, terrain clearance, combat and replay. The browser game follows on the dependent VW-001B branch.
 
 **Starting engine:** VANILLAJS [v3.4.0](https://github.com/QSOLKCB/VANILLAJS/releases/tag/v3.4.0), pinned to commit **0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466**.
 
