@@ -14,6 +14,11 @@ export function projection(width,height,cx=0,cz=0,zoom=1){
 }
 export const callSign={helicopter:'Kestrel',tank:'Basalt',mech:'Kiln',ship:'Tern',relay:'Relay'};
 
+export function crewName(actor){
+  const name=callSign[actor.kind];
+  return actor.section ? name+' '+actor.section : name;
+}
+
 function relief(world){
   const size=576,atlas=document.createElement('canvas');
   atlas.width=atlas.height=size;
@@ -132,7 +137,7 @@ export class StrategicMap{
         const row=['tank','ship'].includes(a.kind)?31:20;
         ctx.font='bold 10px monospace';ctx.textAlign='center';ctx.lineWidth=3;
         ctx.strokeStyle='#1f3838';ctx.fillStyle='#e2f8e1';
-        ctx.strokeText(callSign[a.kind].toUpperCase(),x,y+row);ctx.fillText(callSign[a.kind].toUpperCase(),x,y+row);
+        ctx.strokeText(crewName(a).toUpperCase(),x,y+row);ctx.fillText(crewName(a).toUpperCase(),x,y+row);
         ctx.textAlign='left';
       }
     }

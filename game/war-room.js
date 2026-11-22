@@ -6,7 +6,7 @@ import {commandContacts,MAX_COMMAND_REPLAY_BYTES} from '../sim/command-world.js'
 import {FORMATION_REPLAY_BYTES} from '../sim/formation-world.js';
 import {commandScenarios} from './command-scenarios.js';
 import {CombinedView} from './combined-view.js';
-import {StrategicMap,callSign} from './strategic-map.js';
+import {StrategicMap,crewName} from './strategic-map.js';
 import {CreatorMusic} from './creator-music.js';
 import {directorSubject,directorAngle,directorPose} from './battle-director.js';
 
@@ -106,7 +106,7 @@ function initRoster(){
     const button=document.createElement('button'),name=document.createElement('b');
     const hp=document.createElement('em'),state=document.createElement('span');
     button.type='button';button.className='unit';button.dataset.unit=a.id;
-    name.textContent=callSign[a.kind]+' / '+a.kind;
+    name.textContent=crewName(a)+' / '+a.kind;
     button.append(name,hp,state);rows.push(button);roster.set(a.id,{button,hp,state});
   }
   el('roster').replaceChildren(...rows);
@@ -162,7 +162,7 @@ function draw(){
       lastDirector={subject:subject?.id??null,eye:pose.eye,bearing,tilt,range,tick:world.tick};
     }
     const shell=presentation(visible,subject??cameraCrew());
-    view??=new CombinedView(battle,shell,{retro:el('retro').checked,fx:el('fx').checked});
+    view??=new CombinedView(battle,shell,{retro:el('retro').checked,fx:el('fx').checked,crewSets:world.crewSets??1});
     view.setRetro(el('retro').checked);view.fx=el('fx').checked;
     metrics.lastDraw=view.draw(shell,camera,pose);
     metrics.draws=metrics.lastDraw.draws;
@@ -181,7 +181,7 @@ function showScreen(next){
 }
 function dialog(next,text){
   clearSession();mode=next;
-  const names={briefing:scenario===commandScenarios.formation?'Formation command':'The War Room',paused:'Command paused',debrief:world.status==='victory'?'Crossing secured':'Operation ended',
+  const names={briefing:scenario.title??'The War Room',paused:'Command paused',debrief:world.status==='victory'?'Crossing secured':'Operation ended',
     verified:'Replay verified'};
   el('panelTitle').textContent=names[next];if(text)el('panelText').textContent=text;
   el('primary').textContent=next==='paused'?'Resume command':next==='briefing'?'Deploy crews':'New mission';
@@ -275,7 +275,7 @@ function give(order,append){
   const t=performance.now();
   try{
     const accepted=issueOrder(world,{tick:world.tick,units:[...selected],append,...order});
-    el('feedback').textContent=accepted.type+(append?' queued for ':' issued to ')+accepted.units.map(id=>callSign[id.slice(7)]).join(', ')+'.';
+    el('feedback').textContent=accepted.type+(append?' queued for ':' issued to ')+accepted.units.map(id=>crewName(world.actors.find(a=>a.id===id))).join(', ')+'.';
   }catch(error){el('feedback').textContent='Order rejected. '+error.message;}
   sample(metrics.orderMs,performance.now()-t);updateUi(visibleActors());
 }
@@ -461,7 +461,6 @@ export function inspect(){
     camera,screen,director:screen==='observation' && camera==='director'?lastDirector:null,units:world.units,metrics:{...metrics,buffers:view?.r.meshes.size??0,rafActive:Boolean(raf),
       dragging:Boolean(drag),audioActive:Boolean(music)},receipt:commandReceipt(world),zoom:map.zoom,cx:map.cx,cz:map.cz});
 }
-if(scenario===commandScenarios.formation){
-  el('panelText').textContent='Select crews and give them a shared MOVE or DEFEND destination. Each crew receives a spaced slot and searches the terrain for a route. Disable the relay and two mobile defenders, then secure the crossing with a surviving crew.';
-}
+if(scenario.briefing)el('panelText').textContent=scenario.briefing;
+document.body.classList.toggle('big-battle',scenario===commandScenarios.big);
 initRoster();draw();dialog('briefing');

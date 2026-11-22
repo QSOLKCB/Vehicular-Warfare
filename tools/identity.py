@@ -44,3 +44,5 @@ source_id("vw-cmd-001", "COMMAND_SOURCE", "command-identity.js",
 formation_modules = combined_modules + ("combined-identity", "command-control", "command-world",
                                         "command-identity", "formation-routes", "formation-world")
 source_id("vw-cmd-003", "FORMATION_SOURCE", "formation-identity.js", formation_modules)
+source_id("vw-cmd-005", "BIG_BATTLE_SOURCE", "big-battle-identity.js",
+          formation_modules + ("formation-identity", "big-battle"))
