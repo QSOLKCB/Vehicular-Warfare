@@ -1,6 +1,7 @@
 import {Renderer} from '../vendor/vanillajs/modules/render-webgl/index.js';
 import {BoxVertexStream} from '../vendor/vanillajs/modules/render-packing/index.js';
-import {add,clamp,dot,normalize,quatMultiply,rotate,scale,subtract} from '../vendor/vanillajs/modules/math/index.js';
+import {add,clamp,dot,normalize,perspective,viewMatrix,multiplyMatrices,quatMultiply,rotate,scale,subtract} from '../vendor/vanillajs/modules/math/index.js';
+import {enemyIds,unitType,minZ,zone,zoneRadius} from '../sim/missions.js';
 import {aim} from '../sim/world.js';
 import {aircraft,groundUnit,rotor} from './models.js';
 import {landscape} from './scenery.js';
@@ -33,6 +34,15 @@ export class View {
     this.sky=r.mesh(sky); this.land=r.mesh(land);
     this.models={player:new Model(r,aircraft()),rotor:new Model(r,rotor()),
       aa:new Model(r,groundUnit('aa')),convoy:new Model(r,groundUnit('convoy'))};
+    if(w.route){
+      const ring=[];
+      for(let i=0;i<48;i++) for(const j of [i,i+1]){
+        const a=j*Math.PI/24;
+        ring.push(zoneRadius*Math.cos(a),1,zoneRadius*Math.sin(a),.45,1,.85);
+      }
+      this.beacon=new Model(r,ring);
+      this.beacon.mesh.mode=r.gl.LINES;
+    }
     this.stream=new BoxVertexStream(512); this.fx=r.mesh([]);
     this.bytes=land.length*4+sky.length*4+this.stream.capacityBoxes*216*4+
       Object.values(this.models).reduce((n,m)=>n+m.data.byteLength+m.src.byteLength,0);
@@ -47,15 +57,17 @@ export class View {
       camera=look(subtract(add(p.p,[3.0,.8,2.65]),eye));
     } else if(mode==='chase') {
       eye=add(p.p,rotate(yaw,[0,6.8,13]));
-      eye[0]=clamp(eye[0],-144,144); eye[2]=clamp(eye[2],-144,144);
+      eye[0]=clamp(eye[0],-144,144); eye[2]=clamp(eye[2],minZ(w),144);
       eye[1]=Math.max(eye[1],w.field.sample(eye[0],eye[2]).height+1.5);
       camera=look(subtract(add(p.p,rotate(yaw,[0,0,-18])),eye));
     } else {
       eye=add(p.p,rotate(body,[0,.45,-1.15]));
       camera=quatMultiply(body,turn(0,-.11));
     }
-    r.begin(eye,camera,{fov,fog:0});
+    r.begin([0,0,0],camera,{fov,fog:0});
     r.draw(this.sky);
+    r.gl.clear(r.gl.DEPTH_BUFFER_BIT);
+    r.gl.uniformMatrix4fv(r.vp,false,multiplyMatrices(perspective(fov,r.canvas.width/r.canvas.height),viewMatrix(eye,camera)));
     r.gl.uniform1f(r.fog,.00165);
     r.draw(this.land);
     let calls=2,vertices=this.sky.count+this.land.count;
@@ -66,7 +78,16 @@ export class View {
       draw('player',p.p,body);
       draw('rotor',p.p,quatMultiply(body,turn(1,w.tick*.21+.46)));
     }
-    for(const id of ['aa','convoy']) if(w[id].hp) draw(id,w[id].p,[0,0,0,1]);
+    for(const id of enemyIds(w)){
+      const e=w[id],kind=unitType(e);
+      if(e.hp) draw(kind==='scout'?'convoy':kind,e.p,[0,0,0,1]);
+    }
+    const site=zone(w);
+    if(site){
+      const [,x,z]=site;
+      this.beacon.draw(r,[x,w.field.sample(x,z).height+1,z],[0,0,0,1]);
+      calls++;vertices+=this.beacon.mesh.count;
+    }
     const stream=this.stream.reset();
     for(const s of w.shots) for(let i=0;i<4;i++) {
       const point=add(s.p,scale(s.step,-i*.8)),size=.21-i*.028;

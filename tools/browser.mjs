@@ -1,5 +1,6 @@
 // Developer acceptance driver for a local Chromium binary. All flight controls
 // go through CDP Input events. The game exposes detached observations only.
+import {routeFlights} from './route-flights.mjs';
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
@@ -90,6 +91,14 @@ try{
   const initial=await read();
   assert.equal(initial.mode,'briefing');
   const gpu=await evaluate("(()=>{const g=document.querySelector('canvas').getContext('webgl'),e=g.getExtension('WEBGL_debug_renderer_info');return {backend:g.getParameter(e.UNMASKED_RENDERER_WEBGL),width:g.drawingBufferWidth,height:g.drawingBufferHeight}})()");
+  if(process.argv[3]==='routes'){
+    await routeFlights({read,key,click,screenshot,evaluate,sleep,output});
+    assert.deepEqual(errors,[]);
+    assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
+    await writeFile(join(output,'runtime.json'),JSON.stringify({version,gpu,cpu:cpus()[0].model,
+      source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),errors},null,2));
+  }else{
+  await evaluate("const sel=document.querySelector('#sortie');sel.value='sable';sel.dispatchEvent(new Event('change'))");
   await screenshot('01-briefing');
   await click('primary');
   let s=await until(v=>v.tick>=35,'startup');
@@ -163,6 +172,7 @@ try{
     win:{receipt:win.receipt,metrics:win.metrics,events:win.events},loss:{receipt:loss.receipt,metrics:loss.metrics,events:loss.events}};
   await writeFile(join(output,'playthrough.json'),JSON.stringify(report,null,1)+'\n');
   console.log(JSON.stringify({version:version.product,gpu,marks,frames:report.renderIntervalsMs,errors},null,2));
+  }
 }finally{
   browser.kill();server.kill();
   if(browser.exitCode===null && browser.signalCode===null) await once(browser,'exit');
