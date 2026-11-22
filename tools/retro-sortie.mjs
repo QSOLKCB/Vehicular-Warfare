@@ -49,7 +49,17 @@ export async function retroSortie({evaluate,click,key,send,screenshot,sleep,outp
     throw Error(label+' timed out at '+JSON.stringify({mode:result?.mode,tick:result?.tick,draw:result?.metrics?.lastDraw?.retroEnabled}));
   }
   const state=(condition,label)=>wait(inspect,condition,label);
-  const ready=id=>wait(()=>evaluate("document.readyState==='complete' && !!document.getElementById("+JSON.stringify(id)+")"),Boolean,id);
+  function ready(selector){
+    const expression="document.readyState==='complete' && !!document.querySelector("+JSON.stringify(selector)+")";
+    // A same-tab navigation can retire the old execution context during this read.
+    return wait(async()=>{
+      try{return await evaluate(expression);}
+      catch(error){
+        if(error.message!=='Inspected target navigated or closed')throw error;
+        return false;
+      }
+    },Boolean,selector);
+  }
   async function button(id){
     await evaluate('document.getElementById('+JSON.stringify(id)+').scrollIntoView({block:"center"})');await click(id);
   }
@@ -70,7 +80,7 @@ export async function retroSortie({evaluate,click,key,send,screenshot,sleep,outp
   const mode=enabled=>state(s=>s.metrics?.lastDraw?.retroEnabled===enabled && s.mode==='playing' && s.tick>0,'playing map '+enabled);
   const pixels=()=>evaluate('('+chartPixels+')()');
   await evaluate("localStorage.removeItem('vw-gfx:tactical-display')");
-  await button('combinedSortie');await ready('vehicle');assert.equal(await checked(),false);
+  await button('combinedSortie');await ready('#vehicle');assert.equal(await checked(),false);
   for(const crew of ['helicopter','tank','mech','ship']){
     await choose('vehicle',crew);
     await state(s=>s.selection===crew && s.mode==='briefing','crew '+crew);
@@ -112,7 +122,7 @@ export async function retroSortie({evaluate,click,key,send,screenshot,sleep,outp
       afterDisableBytes:resumed.metrics.liveRetroBytes,pausedTick:paused.tick,restartTick:restarted.tick});
     await keyPress('KeyP');await state(s=>s.mode==='paused','choose crew');
     if(crew!=='ship'){
-      await button('retroChart');await button('reselect');await ready('vehicle');
+      await button('retroChart');await button('reselect');await ready('#vehicle');
       await state(s=>s.mode==='briefing','new briefing');assert.equal(await checked(),false);
     }
   }
@@ -121,15 +131,15 @@ export async function retroSortie({evaluate,click,key,send,screenshot,sleep,outp
   for(const row of privacy.results){
     assert.equal(row.hidden,privacy.base);assert.equal(row.hiddenAgain,privacy.base);assert.notEqual(row.visible,privacy.base);
   }
-  await send('Page.navigate',{url:board});await ready('creatorStudio');
-  await button('creatorStudio');await ready('packCrew');await choose('packCrew','mech');
-  await button('playPack');await ready('retroChart');module='creator-station';
+  await send('Page.navigate',{url:board});await ready('#creatorStudio');
+  await button('creatorStudio');await ready('#packCrew');await choose('packCrew','mech');
+  await button('playPack');await ready('#retroChart');module='creator-station';
   await state(s=>s.mode==='briefing','workshop');assert.equal(await checked(),true);
   await button('primary');await mode(true);
   await state(s=>s.tick>=96 && s.mode==='playing','partial recording');await keyPress('KeyP');
   const pause=await state(s=>s.mode==='paused','workshop pause');assert.equal(pause.metrics.liveRetroBytes,0);
   await button('watch');
-  await wait(()=>evaluate("document.querySelector('#station').dataset.kind"),s=>s==='replay','replay page');
+  await ready('#station[data-kind="replay"]');
   const initial=await state(s=>s.mode==='reviewing','verified workshop replay');
   const midpoint=Math.floor(pause.tick/2);
   await choose('timeline',String(midpoint));
