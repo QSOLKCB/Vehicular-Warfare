@@ -1,2 +1,2 @@
 # Vehicular-Warfare
-A VANILLAJS Powered Vehicle Warfare Game - Mech, Tanks, Planes, Ships.
+A VANILLAJS Powered 3D Vehicle Warfare Game - Mech, Tanks, Planes, Ships.
