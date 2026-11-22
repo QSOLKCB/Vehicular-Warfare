@@ -43,6 +43,21 @@ node --input-type=module -e "import {readFileSync} from 'node:fs'; import {repla
 
 The [numerical evidence](evidence/authority/) records eight passing tests at `91eb991ba861a772fe616ee0ae5b16179b4c8836`. [PR #2](https://github.com/QSOLKCB/Vehicular-Warfare/pull/2) merged that authority and its evidence into main at `3e37e8b66d998f083b5f1872c9531b5b25a53d8d`. See the [simulation contract](docs/AUTHORITY.md) for replay scope, sweep geometry and sensor timers.
 
+### Executed browser results
+
+At `a0ad1738085d3bb9bbdfe1b83238028003d484eb`, Chrome 158.0.8127.36 completed the mission through keyboard and mouse input. AA first fired on its 120th consecutive visible tick. A player rocket damaged the moving convoy, descent broke AA sight, and the player reappeared to finish both objectives. A separate exposed hover ended in destruction by enemy fire. Both exported command traces reproduced their recorded state and event checksums in Node. The [raw browser report](evidence/browser/playthrough.json) includes commands, events, frame and tick samples, debugger heap measurements and teardown observations.
+
+| Run | Accepted ticks | State checksum | Event checksum |
+| --- | ---: | --- | --- |
+| Victory | 1,036 | `4c7c7425` | `44e841ed` |
+| Defeat | 763 | `8c57c19c` | `24b0cc00` |
+
+[Concealed](evidence/browser/02-masked.png) · [Exposed](evidence/browser/03-exposed.png) · [Retreat](evidence/browser/04-search.png) · [Cockpit](evidence/browser/05-cockpit.png) · [Victory](evidence/browser/06-victory.png) · [Defeat](evidence/browser/07-defeat.png)
+
+The Linux run used an AMD Ryzen 9 5950X and ANGLE Vulkan SwiftShader software rendering at 1100 × 720. The winning run recorded 496 frame intervals, with p50 16.7 ms and p95 16.8 ms. The concealed chase frame submitted 45,255 vertices in six draws. Three actors and at most six projectiles were active in the winning run. The independent Node trace measured 26 µs median and 99 µs p95 per tick. Browser tick timings include zero-duration samples at the browser clock's resolution.
+
+Pause, pointer unlock and switching to another foreground tab stopped the simulation. The driver also dispatched isolated blur and hidden-state notifications. Across four sampled teardowns, the renderer reported zero owned mesh buffers, the flight session had no scheduled frame, and Chrome counted nine page-level listeners after garbage collection. These short-run measurements leave long-session memory growth and physical GPU performance unverified. Every observed game request stayed under the loopback subpath. The WebGL-unavailable message was exercised by denying context creation on reload.
+
 ## Source and scope
 
 VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
