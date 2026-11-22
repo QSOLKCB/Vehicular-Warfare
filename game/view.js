@@ -6,6 +6,7 @@ import {enemyIds,unitType,minZ,zone,zoneRadius} from '../sim/missions.js';
 import {aim} from '../sim/world.js';
 import {aircraft,groundUnit,rotor} from './models.js';
 import {landscape} from './scenery.js';
+import {ColumnLayer} from './column-layer.js';
 
 function turn(axis, radians) {
   const q=[0,0,0,Math.cos(radians/2)]; q[axis]=Math.sin(radians/2); return q;
@@ -31,8 +32,12 @@ class Model {
 export class View {
   constructor(canvas,w) {
     this.r=new Renderer(canvas);
-    const {land,sky}=landscape(w),r=this.r;
+    const {land,terrainVertices,sky}=landscape(w),r=this.r;
     this.sky=r.mesh(sky); this.land=r.mesh(land);
+    // The first range contains only Heightfield triangles. The original
+    // landscape stays in one GPU allocation in both presentation modes.
+    this.surface={...this.land,count:terrainVertices};
+    this.columns=null;
     this.models={player:new Model(r,aircraft()),rotor:new Model(r,rotor()),
       aa:new Model(r,groundUnit('aa')),convoy:new Model(r,groundUnit('convoy'))};
     this.tracers=new Tracers(r);
@@ -50,7 +55,12 @@ export class View {
     this.bytes=this.tracers.data.byteLength+(this.beacon?this.beacon.data.byteLength*2:0)+land.length*4+sky.length*4+this.stream.capacityBoxes*216*4+
       Object.values(this.models).reduce((n,m)=>n+m.data.byteLength+m.src.byteLength,0);
   }
-  render(w,mode,briefing=false,zoom=false) {
+  get columnResources() {
+    const layer=this.columns;
+    return {programs:Number(Boolean(layer?.program)),buffers:Number(Boolean(layer?.buffer)),
+      textures:Number(Boolean(layer?.texture)),bytes:layer?.atlas?.bytes??0};
+  }
+  render(w,mode,briefing=false,zoom=false,terrainMode='webgl',profile='survey') {
     const r=this.r,p=w.player, yaw=turn(1,-p.yaw);
     const body=quatMultiply(yaw,quatMultiply(turn(0,-p.pitch),turn(2,-p.bank)));
     const fov=briefing ? .90 : (zoom && mode==='cockpit'?2*Math.atan(Math.tan(.51)/1.6):1.02);
@@ -74,8 +84,28 @@ export class View {
     r.gl.clear(r.gl.DEPTH_BUFFER_BIT);
     r.gl.uniformMatrix4fv(r.vp,false,multiplyMatrices(perspective(fov,r.canvas.width/r.canvas.height),viewMatrix(eye,camera)));
     r.gl.uniform1f(r.fog,.00165);
-    r.draw(this.land);
     let calls=2,vertices=this.sky.count+this.land.count;
+    const terrainStart=performance.now();
+    if(this.columns && (terrainMode!=='voxel' || this.columns.profile!==profile)){
+      this.columns.dispose();
+      this.columns=null;
+    }
+    if(terrainMode==='voxel'){
+      this.columns??=new ColumnLayer(r,w.field,w.route?.id==='frostline',profile);
+      this.columns.draw(eye,camera,fov);
+      // Columns supply colour. The original triangles supply full-resolution
+      // camera-space depth for models, trees, lamps, tracers and terrain hits.
+      const gl=r.gl;
+      gl.colorMask(false,false,false,false);
+      r.draw(this.surface);
+      gl.colorMask(true,true,true,true);
+      gl.drawArrays(this.land.mode,this.surface.count,this.land.count-this.surface.count);
+      calls+=2;
+      vertices+=3;
+    }else{
+      r.draw(this.land);
+    }
+    const terrainCpuMs=performance.now()-terrainStart;
     const draw=(id,pos,q)=>{
       const m=this.models[id]; m.draw(r,pos,q); calls++; vertices+=m.mesh.count;
     };
@@ -113,7 +143,12 @@ export class View {
     const forward=dot(delta,rotate(camera,[0,0,-1])), f=1/Math.tan(fov/2);
     const x=.5+.5*dot(delta,rotate(camera,[1,0,0]))*f/forward*r.canvas.height/r.canvas.width;
     const y=.5-.5*dot(delta,rotate(camera,[0,1,0]))*f/forward;
-    return {target,zoom:zoom && mode==='cockpit',incoming:trails.incoming,x,y,calls,vertices,buffers:r.meshes.size};
+    const atlas=this.columns?.atlas,resources=this.columnResources;
+    return {target,zoom:zoom && mode==='cockpit',incoming:trails.incoming,x,y,calls,vertices,
+      buffers:r.meshes.size+resources.buffers,terrainMode,terrainProfile:atlas?profile:'native',
+      terrainWidth:atlas?.width??r.gl.drawingBufferWidth,terrainHeight:atlas?.height??r.gl.drawingBufferHeight,
+      terrainSamples:atlas?.samples??0,terrainCpuMs,columnBytes:resources.bytes,
+      columnTextures:resources.textures,columnPrograms:resources.programs};
   }
-  dispose(){this.r.dispose();}
+  dispose(){this.columns?.dispose();this.columns=null;this.r.dispose();}
 }

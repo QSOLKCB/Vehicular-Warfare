@@ -1,0 +1,108 @@
+TAP version 13
+# Subtest: upstream bytes and simulation content identity
+ok 1 - upstream bytes and simulation content identity
+  ---
+  duration_ms: 26.202884
+  type: 'test'
+  ...
+# Subtest: immutable field and triangle centroids agree across the seeded grid
+ok 2 - immutable field and triangle centroids agree across the seeded grid
+  ---
+  duration_ms: 18.873897
+  type: 'test'
+  ...
+# Subtest: hover trim, rotor tilt, yaw and fully swept terrain envelope
+ok 3 - hover trim, rotor tilt, yaw and fully swept terrain envelope
+  ---
+  duration_ms: 33.178781
+  type: 'test'
+  ...
+# Subtest: mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+ok 4 - mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+  ---
+  duration_ms: 64.78027
+  type: 'test'
+  ...
+# Subtest: terrain and fast moving hitboxes compete on the same interval
+ok 5 - terrain and fast moving hitboxes compete on the same interval
+  ---
+  duration_ms: 2.189472
+  type: 'test'
+  ...
+# Subtest: moving convoy, real enemy defeat, cooldown and last-round exhaustion
+ok 6 - moving convoy, real enemy defeat, cooldown and last-round exhaustion
+  ---
+  duration_ms: 52.591558
+  type: 'test'
+  ...
+# Subtest: same accepted controls at 30, 60 and 144 presentation Hz replay identically
+ok 7 - same accepted controls at 30, 60 and 144 presentation Hz replay identically
+  ---
+  duration_ms: 106.174918
+  type: 'test'
+  ...
+# Subtest: malformed packs, commands and replay are atomic
+ok 8 - malformed packs, commands and replay are atomic
+  ---
+  duration_ms: 2.170852
+  type: 'test'
+  ...
+# Subtest: column samples agree with the WebGL triangles on vertices, edges and both sides of a diagonal
+ok 9 - column samples agree with the WebGL triangles on vertices, edges and both sides of a diagonal
+  ---
+  duration_ms: 66.962162
+  type: 'test'
+  ...
+# Subtest: finite planar horizon and sky match the angular rows, including the last sample at the far edge
+ok 10 - finite planar horizon and sky match the angular rows, including the last sample at the far edge
+  ---
+  duration_ms: 23.948222
+  type: 'test'
+  ...
+# Subtest: a near ridge hides changes to the far surface behind it
+ok 11 - a near ridge hides changes to the far surface behind it
+  ---
+  duration_ms: 3.158653
+  type: 'test'
+  ...
+# Subtest: drawing alternate profiles leaves all three accepted command traces and replays identical
+ok 12 - drawing alternate profiles leaves all three accepted command traces and replays identical
+  ---
+  duration_ms: 872.924812
+  type: 'test'
+  ...
+# longwatch 8574 ticks; 9 enemy shooters; 15c5e71d 82d0a642
+# frostline 9490 ticks; 15 enemy shooters; d243d88b 610a1900
+# Subtest: longwatch full route with finite ammunition, enemy fire and replay
+ok 13 - longwatch full route with finite ammunition, enemy fire and replay
+  ---
+  duration_ms: 414.754811
+  type: 'test'
+  ...
+# Subtest: frostline full route with finite ammunition, enemy fire and replay
+ok 14 - frostline full route with finite ammunition, enemy fire and replay
+  ---
+  duration_ms: 570.731255
+  type: 'test'
+  ...
+# Subtest: a cleared site must be visited low, in order, with an uninterrupted survey
+ok 15 - a cleared site must be visited low, in order, with an uninterrupted survey
+  ---
+  duration_ms: 13.334922
+  type: 'test'
+  ...
+# Subtest: old field receipts verified, unknown operations rejected
+ok 16 - old field receipts verified, unknown operations rejected
+  ---
+  duration_ms: 75.001589
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1129.005237

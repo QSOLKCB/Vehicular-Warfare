@@ -1,6 +1,7 @@
 // Developer acceptance driver for a local Chromium binary. All flight controls
 // go through CDP Input events. The game exposes detached observations only.
 import {routeFlights} from './route-flights.mjs';
+import {terrainFlights} from './terrain-flights.mjs';
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
@@ -101,7 +102,15 @@ try{
     }
     assert.match(message,/^Verified ·/);console.log(message);
   }
-  if(process.argv[3]==='routes'){
+  if(process.argv[3]==='terrain'){
+    const result=await terrainFlights({read,key,click,screenshot,evaluate,send,until,quantiles});
+    assert.deepEqual(errors,[]);
+    assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
+    const report={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+      version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
+    await writeFile(join(output,'terrain.json'),JSON.stringify(report,null,1)+'\n');
+    console.log(report.measurements.map(({mode,summary})=>({mode,summary})));
+  }else if(process.argv[3]==='routes'){
     await routeFlights({read,key,click,screenshot,evaluate,sleep,output});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));

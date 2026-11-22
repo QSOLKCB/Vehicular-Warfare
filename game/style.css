@@ -34,7 +34,7 @@ summary{margin-top:24px;cursor:pointer;color:#e8ddca;font-size:11px;width:fit-co
 #valley{touch-action:none}
 #hud{z-index:1}
 
-#sortieLabel{display:flex;align-items:center;gap:10px;margin:0 0 14px;font:12px var(--mono);color:var(--gold)}
+#sortieLabel,#terrainLabel{display:flex;align-items:center;gap:10px;margin:0 0 14px;font:12px var(--mono);color:var(--gold)}
 select{font:inherit;padding:7px;color:var(--ink);background:#292f30;border:1px solid var(--line);max-width:100%}
 #threat[data-hot=yes]{color:#fff3dd;background:#822f27ed;border:1px solid #ffb288;letter-spacing:.13em}
 #message{position:absolute;left:50%;bottom:25%;transform:translateX(-50%);color:#c6ffdf;background:#213932dc;padding:6px 12px;font:600 11px var(--mono);letter-spacing:.07em}
