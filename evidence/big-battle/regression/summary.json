@@ -1,0 +1,50 @@
+{
+  "testedCommit": "4c45f35e6092c8b7d4ebd8a1a0d1477338254b75",
+  "zipSha256": "bc78130b0a243e89bc9160a0199ebdaafe040d3d58b525d2f7a6aa219178ae52",
+  "servedTree": {
+    "revision": "4c45f35e6092c8b7d4ebd8a1a0d1477338254b75",
+    "files": 93,
+    "sha256": "4e4729ec81f011612d1c1e6dd28e5ece777f3f9320891ecf74583cc54c88444c"
+  },
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "suites": {
+    "war-room": {
+      "report": "war-room.json.gz",
+      "browserErrors": [],
+      "exit": 0,
+      "elapsedSeconds": 26.8
+    },
+    "formation": {
+      "report": "formation.json.gz",
+      "browserErrors": [],
+      "exit": 0,
+      "elapsedSeconds": 23.73
+    },
+    "director": {
+      "report": "director.json.gz",
+      "browserErrors": [],
+      "exit": 0,
+      "elapsedSeconds": 4.17
+    },
+    "archives": {
+      "report": "archives.json.gz",
+      "browserErrors": [],
+      "exit": 0,
+      "elapsedSeconds": 10.09,
+      "distinct": 107,
+      "occurrences": 204
+    },
+    "combined": {
+      "report": "combined.json.gz",
+      "browserErrors": [],
+      "exit": 0,
+      "elapsedSeconds": 64.85
+    },
+    "creator": {
+      "report": "creator.json.gz",
+      "browserErrors": [],
+      "exit": 0,
+      "elapsedSeconds": 30.96
+    }
+  }
+}
