@@ -17,6 +17,7 @@ const pressed=new Set();
 const selectedWorld=()=>createWorld({seed:mission(el('sortie').value).seed},el('sortie').value);
 let world=selectedWorld(),mode='briefing',camera='chase',view=null,session=null,raf=0;
 let zoom=false;
+let terrainView='webgl',voxelView='voxel';
 let audio=null,soundEnabled=false,lastFeedback=0,notice=null;
 let held=0,trigger=false,mouseTurn=0,mouseTilt=0,lastFrame=null;
 let frames=[],costs=[],peaks=0,lastDraw=null,retired=0,disposals=0;
@@ -43,6 +44,7 @@ function panel(state,title,desc,action){
   el('title').textContent=title; el('desc').textContent=desc;
   el('primary').firstChild.textContent=action+' ';
   el('sortieLabel').hidden=state!=='briefing';
+  el('terrainLabel').hidden=state!=='briefing' && state!=='paused' && state!=='error';
   el('menu').hidden=!['paused','victory','defeat'].includes(state);
   el('again').hidden=state!=='paused';
   el('save').hidden=!['paused','victory','defeat'].includes(state);
@@ -56,6 +58,25 @@ function pause(){
   if(mode!=='flying') return;
   dispose();
   panel('paused','Holding','Flight paused. Resume with neutral controls or start a new sortie.','Resume flight');
+}
+function toggleTerrain(){
+  const selector=el('terrain');
+  selector.value=selector.value==='webgl'?voxelView:'webgl';
+  terrainChanged();
+}
+function terrainChanged(){
+  terrainView=el('terrain').value;
+  if(terrainView!=='webgl')voxelView=terrainView;
+  el('terrainToggle').textContent=terrainView==='webgl'?'WebGL terrain':'Voxel terrain';
+  el('terrainToggle').setAttribute('aria-pressed',String(terrainView!=='webgl'));
+  if(mode==='briefing' && view)drawView();
+}
+function drawView(){
+  try {
+    lastDraw=view.render(world,camera,mode==='briefing',zoom,
+      terrainView==='webgl'?'webgl':'voxel',terrainView==='voxel-fine'?'fine':'survey');
+    return true;
+  }catch(error){failure(error.message);return false;}
 }
 function setZoom(active){
   zoom=active && camera==='cockpit';
@@ -81,6 +102,7 @@ function listen(){
     if(e.repeat)return;
     if(e.code==='KeyV')setZoom(!zoom);
     if(e.code==='KeyC') setCamera();
+    if(e.code==='KeyT') toggleTerrain();
     if(['Escape','KeyP'].includes(e.code)) pause();
   });
   on(window,'keyup',e=>{
@@ -176,7 +198,8 @@ function frame(now){
     const start=performance.now(); step(world,cmd);
     keep(costs,performance.now()-start,2048);peaks=Math.max(peaks,world.shots.length);
   });
-  lastDraw=view.render(world,camera,false,zoom); hud(lastDraw);
+  if(!drawView())return;
+  hud(lastDraw);
   if(world.status==='flying'){ raf=requestAnimationFrame(frame); return; }
   dispose();
   const won=world.status==='victory';
@@ -192,7 +215,7 @@ function briefing(){
   el('chapter').textContent=spec.name.toUpperCase()+' / MISSION BRIEFING';
   try{
     view=new View(canvas,world);
-    lastDraw=view.render(world,camera,true);
+    drawView();
   }catch(e){failure(e.message);}
 }
 el('checkFile').addEventListener('change',async event=>{
@@ -207,6 +230,8 @@ el('checkFile').addEventListener('change',async event=>{
   finally{input.disabled=false;input.value='';}
 });
 el('sortie').addEventListener('change',briefing);
+el('terrain').addEventListener('change',terrainChanged);
+el('terrainToggle').addEventListener('click',toggleTerrain);
 el('menu').addEventListener('click',briefing);
 el('primary').addEventListener('click',()=>begin(mode!=='paused'));
 el('again').addEventListener('click',()=>begin(true));
@@ -228,17 +253,19 @@ el('zoom').addEventListener('click',()=>setZoom(!zoom));
 el('sound').addEventListener('click',()=>{soundEnabled=!soundEnabled;syncSound();});
 el('camera').addEventListener('click',setCamera);el('pause').addEventListener('click',pause);
 canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();failure('WebGL context lost. Restore the context and retry the flight.');});
-window.addEventListener('resize',()=>{if(mode==='briefing' && view) view.render(world,camera,true);});
+window.addEventListener('resize',()=>{if(mode==='briefing' && view) drawView();});
 window.addEventListener('pagehide',()=>{if(mode==='flying') pause(); else dispose();});
 window.addEventListener('pageshow',e=>{if(e.persisted && mode==='briefing') briefing();});
 
 // Detached snapshots for local review tooling. No control or state mutation API.
 export function inspect(){
+  const columns=view?.columnResources;
   return structuredClone({mode,camera,held,trigger,tick:world.tick,status:world.status,reason:world.reason,
     hp:world.player.hp,ammo:world.player.ammo,position:world.player.p,aa:world.aa,convoy:world.convoy,
     route:world.route,site:zone(world),clear:world.route?siteClear(world):false,velocity:world.player.v,
     events:world.events,receipt:receipt(world),metrics:{frames,costs,peaks,lastDraw,
-      audioActive:Boolean(audio),actors:enemyIds(world).length+1,buffers:view?.r.meshes.size??0,geometryBytes:view?.bytes??0,retired,disposals,
+      columnResources:columns?columns.buffers+columns.textures+columns.programs:0,
+      audioActive:Boolean(audio),actors:enemyIds(world).length+1,buffers:(view?.r.meshes.size??0)+(columns?.buffers??0),geometryBytes:view?.bytes??0,retired,disposals,
       rafActive:Boolean(raf),sessionActive:Boolean(session)}});
 }
 briefing();

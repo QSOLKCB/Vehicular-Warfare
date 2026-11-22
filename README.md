@@ -12,6 +12,12 @@ The long sorties launch in cockpit view. Its north-up route display shows the ai
 
 Long Watch and Frostline use a 960 m valley. Follow the distance and compass bearing on the HUD. Once a patrol is cleared, enter the teal circle below 34 m above ground. Each confirmed beacon repairs up to 32 hull points and refills the rocket pods. Return to **Mission board** from pause or the debrief to choose another sortie.
 
+## Terrain view
+
+Choose **Original WebGL** or **Experimental voxel** on the mission board or pause panel. In flight, press **T** or use the terrain button to switch at the current aircraft pose. Survey uses a 256 × 160 working image. Fine uses 384 × 240. Both use WebGL1 for the sky, 3D objects and final composition.
+
+The voxel view colours the visible face of each ridge with stepped spans. The sight, hull and rocket impacts still use the sortie’s accepted terrain. A low-resolution silhouette can differ by several pixels from the edge that actually blocks a target. See the [renderer contract](docs/ARCHITECTURE.md#terrain-views) and [Chromium comparison](evidence/voxel-terrain/).
+
 ## Launch locally
 
 From the repository root, run the following command with Python 3.
@@ -48,6 +54,7 @@ node --test test/*.test.js
 node tools/measure.mjs
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-verification
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-routes routes
+CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-columns terrain
 ```
 
 **Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. Open **Flight controls & saved replays → Check saved flight** to verify the file locally in the recording browser. The report shows sortie, elapsed time and outcome. Node can verify a receipt when its runtime reproduces the checksums. From the repository root, run

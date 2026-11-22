@@ -7,11 +7,11 @@
 | VW-000 — Charter | README, AGENTS, design, technical audit, Codex handoff | Owner reviews docs PR |
 | VW-001A — RIDGEFIRE authority | 120 Hz rotorcraft, immutable heightfield, LOS, AA, real rockets/damage, replay | Numerical hide→expose→hide, collision, AI, score and replay tests |
 | VW-001B — Playable RIDGEFIRE | Original mountain valley, cockpit/chase, CPU AA and convoy, real mission | Complete browser win/loss/restart, source receipts, no external runtime |
-| VW-VIS-001 — Optional voxel-view | Original 2.5D height-column terrain renderer, same accepted heightfield | Compare visuals and measured costs without changing hits/physics |
-| VW-002 — Tank | Tracks/traction, independently aimed turret, hull-down tactics | Verified contact and ballistics |
-| VW-003 — Mech | Tested stepping, balance, torso aiming | Real leg/ground physics and contact |
-| VW-004 — Naval | Buoyancy, hull drag, rudder, weapons | Water/terrain and combat replay |
-| VW-005 — Combined arms | Shared encounters across air/ground/sea | Cross-domain target/damage parity |
+| VW-VIS-001 — Voxel Terrain Laboratory | Implemented for review. Optional Survey and Fine height-column views on all three sorties | [Numerical, replay and Chromium evidence](evidence/voxel-terrain/) |
+| VW-002 — Tank (planned) | Tracks/traction, independently aimed turret, hull-down tactics | Verified contact and ballistics |
+| VW-003 — Mech (planned) | Tested stepping, balance, torso aiming | Real leg/ground physics and contact |
+| VW-004 — Naval (planned) | Buoyancy, hull drag, rudder, weapons | Water/terrain and combat replay |
+| VW-005 — Combined arms (planned) | Shared encounters across air/ground/sea | Cross-domain target/damage parity |
 | VW-006 — Creator systems | Seeded editor, replay views, original dynamic music | Inert validated content and repeatable replay |
 | VW-007 — Release/performance | Native GPU profiling, LOD, effect budgets, polish | CI, owner acceptance and manually approved tag |
 

@@ -14,6 +14,7 @@
     <div class="eyebrow"><span class="dash"></span><span id="chapter">MISSION 001 / RIDGE SECTOR</span></div>
     <h1 id="title">RIDGEFIRE</h1>
     <label id="sortieLabel">Select sortie <select id="sortie"><option value="longwatch">Long Watch · 4 sectors</option><option value="frostline">Frostline Run · 6 sectors</option><option value="sable">Sable Valley · training</option></select></label>
+    <label id="terrainLabel">Terrain view <select id="terrain"><option value="webgl">Original WebGL</option><option value="voxel">Experimental voxel · Survey</option><option value="voxel-fine">Experimental voxel · Fine</option></select></label>
     <p id="desc">Fly the Kestrel through Sable Valley. Use the ridgeline to break contact and destroy both ground units.</p>
     <button id="primary">Launch mission <b>↗</b></button>
     <button id="menu" hidden>Mission board</button>
@@ -22,7 +23,7 @@
       <span><kbd>W / S</kbd> Forward / back</span><span><kbd>A / D</kbd> Turn left / right</span>
       <span><kbd>E / Q</kbd> Climb / descend</span><span><kbd>Space / LMB</kbd> Fire</span>
       <span><kbd>Z / X</kbd> Slide sideways</span><span><kbd>↑ / ↓</kbd> Adjust sight</span>
-      <span><kbd>V</kbd> Cockpit sight zoom</span><span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Change camera</span><span><kbd>P / Esc</kbd> Pause</span>
+      <span><kbd>V</kbd> Cockpit sight zoom</span><span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Change camera</span><span><kbd>P / Esc</kbd> Pause</span><span><kbd>T</kbd> Switch terrain view</span>
     </div><label class="replay-check">Check saved flight <input id="checkFile" type="file" accept=".json,application/json"></label>
     <output id="checkResult" aria-live="polite"></output></details>
   </section>
@@ -36,7 +37,7 @@
       <div class="nav-foot"><span id="speed"></span><span id="climb"></span></div></aside>
     <div id="reticle"><i></i><span id="mark"></span></div>
     <div class="instruments"><div><small>HULL</small><b id="health"></b></div><div><small>ROCKETS</small><b id="ammo"></b></div><div><small>ALT / AGL</small><b id="alt"></b></div></div>
-    <div class="station-actions"><button id="zoom" hidden aria-pressed="false">Sight 1×</button><button id="sound" aria-pressed="false">Sound off</button><button id="camera">Chase view</button><button id="pause">Pause</button></div>
+    <div class="station-actions"><button id="terrainToggle" title="Switch terrain view (T)" aria-pressed="false">WebGL terrain</button><button id="zoom" hidden aria-pressed="false">Sight 1×</button><button id="sound" aria-pressed="false">Sound off</button><button id="camera">Chase view</button><button id="pause">Pause</button></div>
     <div id="canopy" hidden><div class="attitude" aria-label="Attitude indicator"><i id="horizon"></i><b>─ • ─</b></div></div>
   </div>
   <footer><span id="footerLeft">SABLE VALLEY</span><span id="footerRight">QSOL–IMC　 /　VW–001</span></footer>

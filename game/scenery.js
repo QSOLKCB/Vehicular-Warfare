@@ -15,6 +15,7 @@ export function landscape(w) {
     const base=snow?[.83,.89,.91]:winter?(n[1]>.58?[.39,.48,.53]:[.28,.37,.45]):h>38?[.54,.49,.50]:h>19?[.61,.46,.39]:h>8?[.64,.49,.36]:[.59,.53,.37];
     facet(out,a,b,c,base,shade);
   }
+  const terrainVertices=out.length/6;
   // Angular junipers give the ridgeline scale. Keep the convoy corridor open.
   for(let i=0;i<(w.route?2000:850);i++){
     const x=(rng()-.5)*270,z=w.route?132-rng()*930:(rng()-.5)*270;
@@ -67,5 +68,5 @@ export function landscape(w) {
     const v=k=>[96+37*Math.cos(k*Math.PI/36),65+37*Math.sin(k*Math.PI/36),-416];
     facet(sky,[96,65,-416],v(i),v(i+1),winter?[1,.96,.81]:[1,.86,.58]);
   }
-  return {land:out,sky};
+  return {land:out,terrainVertices,sky};
 }
