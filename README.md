@@ -1,6 +1,6 @@
 ![RIDGEFIRE — VEHICULAR WARFARE. Fly low, strike fast, disappear.](assets/ridgefire-banner.svg)
 
-Choose a Kestrel helicopter sortie on the mission board, **Tracked sortie** for Cutbank Relay or **Mech sortie** for Glassworks Crossing.
+Choose a Kestrel helicopter sortie on the mission board, or take a crawler to Cutbank Relay, a walker to Glassworks Crossing or a ship to Lantern Sound.
 
 | Sortie | Opponents | Objective |
 | --- | ---: | --- |
@@ -19,6 +19,10 @@ Open the ground sortie from the mission board to drive a tracked vehicle against
 ## Walking sortie · Glassworks Crossing
 
 Pilot a six-legged walker across the terraces, disable the sentinel and reach the survey beacon. **W/S** walk forward or backward, **A/D** turn the legs, and the arrow keys aim the torso independently. **Space** fires, **C** changes the camera, and **P** pauses. The mech page includes local sound, a replay download and a checker for saved Glassworks runs. [Walking and combat contract](docs/MECH_WARFARE.md) · [Chromium playthrough and measurements](evidence/mech-warfare/)
+
+## Naval sortie · Lantern Sound
+
+Choose **Naval sortie** to pilot a cutter through the island channel. **W/S** apply forward or reverse thrust. **A/D** turn the rudder, which needs water flowing past the hull to turn the ship. The arrow keys traverse and elevate the deck mount. **Space** fires, **C** switches views and **P** pauses. Disable the patrol and shore relay, then sail into the exit buoy. [Vessel, water and replay contract](docs/NAVAL_WARFARE.md) · [Playthrough, screenshots and measurements](evidence/naval-warfare/)
 
 ## Terrain view
 
@@ -61,11 +65,13 @@ The separately tested authority runs at 120 Hz. Run the numerical tests with Nod
 node --test test/*.test.js
 node tools/measure.mjs
 node tools/measure.mjs mech
+node tools/measure.mjs naval
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-verification
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-routes routes
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-columns terrain
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-tracked tank
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-walking mech
+CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-sailing naval
 ```
 
 **Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. Open **Flight controls & saved replays → Check saved flight** to verify the file locally in the recording browser. The report shows sortie, elapsed time and outcome. Node can verify a receipt when its runtime reproduces the checksums. From the repository root, run
@@ -101,6 +107,6 @@ Pause, pointer unlock and switching to another foreground tab stopped the simula
 
 VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
 
-The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance and mobile touch controls remain unverified. Surface ships and mixed-vehicle encounters are later milestones.
+The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance and mobile touch controls remain unverified. The mixed-vehicle encounter is planned for VW-005.
 
 [Agent instructions](AGENTS.md) · [Roadmap](ROADMAP.md) · [Original handoff](docs/CODEX_CLI_HANDOFF.md) · [Game design](docs/GAME_DESIGN.md) · [Architecture](docs/ARCHITECTURE.md) · [Engine baseline](docs/ENGINE_BASELINE.md) · [DOS-era techniques](docs/DOS_TECHNIQUES.md) · [Acceptance contract](docs/ACCEPTANCE.md)

@@ -22,3 +22,5 @@ source_id("vw-001a", "SOURCE", "identity.js", ("clock", "world", "terrain", "mis
 source_id("vw-002", "TANK_SOURCE", "tank-identity.js", ("clock", "terrain", "tracks", "tank-combat", "tank-world"))
 source_id("vw-003", "MECH_SOURCE", "mech-identity.js",
           ("clock", "identity", "missions", "terrain", "world", "walker", "mech-world"))
+source_id("vw-004", "NAVAL_SOURCE", "naval-identity.js",
+          ("clock", "identity", "missions", "terrain", "world", "vessel", "naval-world"))

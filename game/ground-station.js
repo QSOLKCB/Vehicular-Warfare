@@ -1,7 +1,7 @@
 import {Clock,HZ} from '../sim/clock.js';
 
 export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft,aimRight,
-  extraControls={},activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound}){
+  extraControls={},activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,actors=2,observe}){
   const el=id=>document.getElementById(id);
   const canvas=el('battlefield'),station=el('station'),clock=new Clock();
   const controls={KeyW:keys.forward,KeyS:keys.back,KeyA:keys.left,KeyD:keys.right,
@@ -26,7 +26,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
     mode=state;station.dataset.mode=state;
     el('panel').hidden=false;el('hud').hidden=true;el('guide').open=false;
     el('title').textContent=title;el('desc').textContent=description;
-    el('chapter').textContent=state==='paused'?'SORTIE SUSPENDED':state==='error'?'GROUND STATION':'MISSION DEBRIEF';
+    el('chapter').textContent=state==='paused'?'SORTIE SUSPENDED':state==='error'?(station.dataset.offlineLabel||'GROUND STATION'):'MISSION DEBRIEF';
     el('primary').firstChild.textContent=action+' ';
     el('again').hidden=state!=='paused';
     el('save').hidden=!['victory','defeat','paused'].includes(state);
@@ -149,8 +149,8 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
   function inspect(){
     return structuredClone({mode,camera,tick:world.tick,status:world.status,reason:world.reason,
       score:world.score,held,trigger,player:world.player,enemy:world.enemy,events:world.events,
-      ...(world.beacon?{beacon:world.beacon}:{}),sight:lastDraw?.sight,shots:world.shots,receipt:receipt(world),
-      metrics:{frames,costs,viewMs,lastDraw,peaks,actors:2,buffers:view?.r.meshes.size??0,
+      ...(world.beacon?{beacon:world.beacon}:{}),...observe?.(world),sight:lastDraw?.sight,shots:world.shots,receipt:receipt(world),
+      metrics:{frames,costs,viewMs,lastDraw,peaks,actors,buffers:view?.r.meshes.size??0,
         ...(Sound?{audioActive:Boolean(sound)}:{}),rafActive:Boolean(raf),sessionActive:Boolean(session),retired}});
   }
   preview();

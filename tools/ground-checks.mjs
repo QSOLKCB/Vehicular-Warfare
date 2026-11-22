@@ -33,7 +33,7 @@ export async function groundChecks(io,{family,name,entry}){
       [0,0,false,false,false]);
   }
   async function verify(s){
-    const replayMethod=family==='tank'?'replayTank':'replayMech';
+    const replayMethod='replay'+family[0].toUpperCase()+family.slice(1);
     const json=JSON.stringify(JSON.stringify(s.receipt));
     const actual=await evaluate(`import('./sim/${family}-world.js').then(m=>m.${family}Receipt(m.${replayMethod}(${json})))`);
     assert.deepEqual(actual,s.receipt);

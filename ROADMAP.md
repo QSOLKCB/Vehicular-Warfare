@@ -9,8 +9,8 @@
 | VW-001B — Playable RIDGEFIRE | Original mountain valley, cockpit/chase, CPU AA and convoy, real mission | Complete browser win/loss/restart, source receipts, no external runtime |
 | VW-VIS-001 — Voxel Terrain Laboratory | Accepted in [PR #8](https://github.com/QSOLKCB/Vehicular-Warfare/pull/8). Optional Survey and Fine height-column views on all three sorties | [Numerical, replay and Chromium evidence](evidence/voxel-terrain/) |
 | VW-002 — Tracked Warfare | Accepted in [PR #9](https://github.com/QSOLKCB/Vehicular-Warfare/pull/9). Cutbank Relay, a playable tracked-vehicle encounter with independent turret aim | [Numerical and Chromium checks](evidence/tracked-warfare/) |
-| VW-003 — Mech Warfare | Glassworks Crossing, a six-legged walker with independent torso aim and a survey objective | [Numerical contact tests and playable Chromium run](evidence/mech-warfare/) |
-| VW-004 — Naval (planned) | Buoyancy, hull drag, rudder, weapons | Water/terrain and combat replay |
+| VW-003 — Mech Warfare | Accepted in [PR #10](https://github.com/QSOLKCB/Vehicular-Warfare/pull/10). Glassworks Crossing, a six-legged walker with independent torso aim and a survey objective | [Numerical contact tests and playable Chromium run](evidence/mech-warfare/) |
+| VW-004 — Naval Warfare | Lantern Sound, a buoyant surface cutter, patrol, shore relay and navigable channel | [Water, grounding and mission verification](evidence/naval-warfare/) |
 | VW-005 — Combined arms (planned) | Shared encounters across air/ground/sea | Cross-domain target/damage parity |
 | VW-006 — Creator systems | Seeded editor, replay views, original dynamic music | Inert validated content and repeatable replay |
 | VW-007 — Release/performance | Native GPU profiling, LOD, effect budgets, polish | CI, owner acceptance and manually approved tag |
