@@ -1,6 +1,8 @@
-import {createWorld,step,receipt,K,siteClear} from '../sim/world.js';
+import {createWorld,step,receipt,replay,K,siteClear} from '../sim/world.js';
 import {mission,enemyIds,zone} from '../sim/missions.js';
 import {Clock} from '../sim/clock.js';
+import {drawNavigation} from './navigation.js';
+import {FlightAudio} from './audio.js';
 import {View} from './view.js';
 
 const el=id=>document.getElementById(id);
@@ -9,6 +11,8 @@ const keys={KeyR:K.up,KeyF:K.down,KeyW:K.forward,KeyS:K.back,KeyA:K.left,KeyD:K.
   ArrowLeft:K.yawLeft,ArrowRight:K.yawRight,ArrowUp:K.aimUp,ArrowDown:K.aimDown,Space:K.fire};
 const selectedWorld=()=>createWorld({seed:mission(el('sortie').value).seed},el('sortie').value);
 let world=selectedWorld(),mode='briefing',camera='chase',view=null,session=null,raf=0;
+let zoom=false;
+let audio=null,soundEnabled=false,lastFeedback=0,notice=null;
 let held=0,trigger=false,mouseTurn=0,mouseTilt=0,lastFrame=null;
 let frames=[],costs=[],peaks=0,lastDraw=null,retired=0,disposals=0;
 const keep=(list,value,limit)=>{if(list.length===limit) list.shift(); list.push(value);};
@@ -17,6 +21,7 @@ function clearInput(){
 }
 function dispose(){
   cancelAnimationFrame(raf); raf=0; clearInput();
+  audio?.dispose();audio=null;
   session?.abort(); session=null;
   if(document.pointerLockElement===canvas) document.exitPointerLock();
   if(view){
@@ -47,10 +52,16 @@ function pause(){
   dispose();
   panel('paused','Holding','Flight paused. Resume with neutral controls or start a new sortie.','Resume flight');
 }
+function setZoom(active){
+  zoom=active && camera==='cockpit';
+  el('zoom').textContent=zoom?'Sight 1.6×':'Sight 1×';
+  el('zoom').setAttribute('aria-pressed',String(zoom));
+}
 function setCamera(){
   camera=camera==='chase'?'cockpit':'chase';
   el('camera').textContent=camera==='chase'?'Chase view':'Cockpit view';
   el('canopy').hidden=camera!=='cockpit';
+  el('navPod').hidden=camera!=='cockpit';el('zoom').hidden=camera!=='cockpit';setZoom(false);
 }
 function listen(){
   session=new AbortController();
@@ -58,6 +69,7 @@ function listen(){
   on(window,'keydown',e=>{
     if(e.ctrlKey||e.metaKey||e.altKey||e.repeat) return;
     if(Object.hasOwn(keys,e.code)) { e.preventDefault(); held|=keys[e.code]; }
+    if(e.code==='KeyV')setZoom(!zoom);
     if(e.code==='KeyC') setCamera();
     if(['Escape','KeyP'].includes(e.code)) pause();
   });
@@ -81,8 +93,8 @@ function listen(){
 function begin(fresh){
   dispose();
   if(fresh) {
-    world=selectedWorld(); camera='chase'; frames=[]; costs=[]; peaks=0;
-    el('camera').textContent='Chase view'; el('canopy').hidden=true;
+    world=selectedWorld();camera=world.route?'chase':'cockpit';setCamera();
+    frames=[];costs=[];peaks=0;notice=null;lastFeedback=0;
   }
   try { view=new View(canvas,world); }
   catch(e) { failure(e.message); return; }
@@ -91,7 +103,7 @@ function begin(fresh){
   document.activeElement?.blur();
   el('footerLeft').textContent='R/F LIFT　 WASD CYCLIC　 ← → TURN　 SPACE FIRE';
   el('footerRight').textContent='C VIEW　 P PAUSE';
-  listen(); raf=requestAnimationFrame(frame);
+  syncSound();listen(); raf=requestAnimationFrame(frame);
 }
 function hud(d){
   const p=world.player;
@@ -113,10 +125,29 @@ function hud(d){
   const modes=ids.map(id=>world[id].mode);
   const warning=modes.some(m=>m==='firing'||m==='tracking')?'TRACKED':
     modes.includes('acquiring')?'EXPOSED':modes.includes('search')?'SEARCHING':'MASKED';
-  el('threat').textContent=warning;
+  el('threat').textContent=d.incoming?'INCOMING FIRE':warning;
+  el('threat').dataset.hot=d.incoming?'yes':'no';
+  const fresh=[];
+  for(let i=world.events.length-1;i>=0 && world.events[i].tick>lastFeedback;i--)fresh.unshift(world.events[i]);
+  lastFeedback=world.tick;
+  for(const e of fresh){
+    if(e.type==='damage' && e.target==='player')notice={text:'HULL HIT',until:e.tick+100};
+    if(e.type==='destroy' && e.source==='player')notice={text:'CONTACT DOWN · +100',until:e.tick+105};
+    if(e.type==='beacon')notice={text:e.name.toUpperCase()+' · RESUPPLIED',until:e.tick+200};
+  }
+  el('message').textContent=notice && world.tick<notice.until?notice.text:
+    world.route && world.tick<1100 && p.ammo===16 && warning==='MASKED'?'R · CLIMB     W · APPROACH BEACON':'';
+  audio?.update(world,fresh);
+  if(camera==='cockpit'){
+    el('horizon').style.transform='rotate('+(-p.bank)+'rad) translateY('+(-p.pitch*27)+'px)';
+    drawNavigation(el('navMap'),world);
+    el('speed').textContent=Math.round(Math.hypot(p.v[0],p.v[2]))+' m/s';
+    el('climb').textContent='V/S '+(p.v[1]>=0?'+':'')+p.v[1].toFixed(1);
+  }
   const ret=el('reticle'); ret.hidden=d.x<0||d.x>1||d.y<0||d.y>1;
   ret.style.left=d.x*100+'%';ret.style.top=d.y*100+'%';
-  el('mark').textContent=d.target?.toUpperCase()??'';
+  const contact=d.target && world[d.target];
+  el('mark').textContent=contact?(contact.kind??contact.id).toUpperCase()+' '+('◆'.repeat(Math.ceil(contact.hp/30))):'';
 }
 function frame(now){
   raf=0;
@@ -130,7 +161,7 @@ function frame(now){
     const start=performance.now(); step(world,cmd);
     keep(costs,performance.now()-start,2048);peaks=Math.max(peaks,world.shots.length);
   });
-  lastDraw=view.render(world,camera); hud(lastDraw);
+  lastDraw=view.render(world,camera,false,zoom); hud(lastDraw);
   if(world.status==='flying'){ raf=requestAnimationFrame(frame); return; }
   dispose();
   const won=world.status==='victory';
@@ -149,6 +180,17 @@ function briefing(){
     lastDraw=view.render(world,camera,true);
   }catch(e){failure(e.message);}
 }
+el('checkFile').addEventListener('change',async event=>{
+  const input=event.currentTarget,file=input.files[0],result=el('checkResult');
+  if(!file)return;
+  input.disabled=true;
+  try{
+    if(file.size>1200000)throw Error('Replay exceeds the size limit');
+    const recorded=replay(await file.text()),name=mission(recorded.route?.id??'sable').name;
+    result.textContent='Verified · '+name+' · '+(recorded.tick/120).toFixed(2)+' s · '+recorded.status;
+  }catch(error){result.textContent='Could not verify this flight. '+error.message;}
+  finally{input.disabled=false;input.value='';}
+});
 el('sortie').addEventListener('change',briefing);
 el('menu').addEventListener('click',briefing);
 el('primary').addEventListener('click',()=>begin(mode!=='paused'));
@@ -158,6 +200,17 @@ el('save').addEventListener('click',()=>{
   const a=document.createElement('a'); a.href=url;a.download='ridgefire-'+world.tick+'.json';a.click();
   setTimeout(()=>URL.revokeObjectURL(url),500);
 });
+function syncSound(){
+  audio?.dispose();audio=null;
+  if(soundEnabled){
+    try{audio=new FlightAudio();}
+    catch{soundEnabled=false;}
+  }
+  el('sound').textContent=soundEnabled?'Sound on':'Sound off';
+  el('sound').setAttribute('aria-pressed',String(soundEnabled));
+}
+el('zoom').addEventListener('click',()=>setZoom(!zoom));
+el('sound').addEventListener('click',()=>{soundEnabled=!soundEnabled;syncSound();});
 el('camera').addEventListener('click',setCamera);el('pause').addEventListener('click',pause);
 canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();failure('WebGL context lost. Restore the context and retry the flight.');});
 window.addEventListener('resize',()=>{if(mode==='briefing' && view) view.render(world,camera,true);});
@@ -170,7 +223,7 @@ export function inspect(){
     hp:world.player.hp,ammo:world.player.ammo,position:world.player.p,aa:world.aa,convoy:world.convoy,
     route:world.route,site:zone(world),clear:world.route?siteClear(world):false,velocity:world.player.v,
     events:world.events,receipt:receipt(world),metrics:{frames,costs,peaks,lastDraw,
-      actors:enemyIds(world).length+1,buffers:view?.r.meshes.size??0,geometryBytes:view?.bytes??0,retired,disposals,
+      audioActive:Boolean(audio),actors:enemyIds(world).length+1,buffers:view?.r.meshes.size??0,geometryBytes:view?.bytes??0,retired,disposals,
       rafActive:Boolean(raf),sessionActive:Boolean(session)}});
 }
 briefing();

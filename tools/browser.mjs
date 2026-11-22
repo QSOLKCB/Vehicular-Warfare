@@ -91,6 +91,16 @@ try{
   const initial=await read();
   assert.equal(initial.mode,'briefing');
   const gpu=await evaluate("(()=>{const g=document.querySelector('canvas').getContext('webgl'),e=g.getExtension('WEBGL_debug_renderer_info');return {backend:g.getParameter(e.UNMASKED_RENDERER_WEBGL),width:g.drawingBufferWidth,height:g.drawingBufferHeight}})()");
+  if(process.env.RIDGEFIRE_TEST_REPLAY){
+    const dom=await send('DOM.getDocument');
+    const {nodeId}=await send('DOM.querySelector',{nodeId:dom.root.nodeId,selector:'#checkFile'});
+    await send('DOM.setFileInputFiles',{nodeId,files:[resolve(process.env.RIDGEFIRE_TEST_REPLAY)]});
+    let message='';
+    for(let i=0;i<100 && !message;i++){
+      message=await evaluate("document.querySelector('#checkResult').textContent");await sleep(20);
+    }
+    assert.match(message,/^Verified ·/);console.log(message);
+  }
   if(process.argv[3]==='routes'){
     await routeFlights({read,key,click,screenshot,evaluate,sleep,output});
     assert.deepEqual(errors,[]);

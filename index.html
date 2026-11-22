@@ -18,21 +18,26 @@
     <button id="primary">Launch mission <b>↗</b></button>
     <button id="menu" hidden>Mission board</button>
     <button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
-    <details id="guide"><summary>Flight controls</summary><div class="keys">
+    <details id="guide"><summary>Flight controls &amp; saved replays</summary><div class="keys">
       <span><kbd>R / F</kbd> Climb / descend</span><span><kbd>W / S</kbd> Pitch / translate</span>
       <span><kbd>A / D</kbd> Bank / strafe</span><span><kbd>← / →</kbd> Turn</span>
       <span><kbd>↑ / ↓</kbd> Adjust sight</span><span><kbd>Space / LMB</kbd> Fire</span>
-      <span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Change camera</span><span><kbd>P / Esc</kbd> Pause</span>
-    </div></details>
+      <span><kbd>V</kbd> Cockpit sight zoom</span><span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Change camera</span><span><kbd>P / Esc</kbd> Pause</span>
+    </div><label class="replay-check">Check saved flight <input id="checkFile" type="file" accept=".json,application/json"></label>
+    <output id="checkResult" aria-live="polite"></output></details>
   </section>
   <div id="hud" hidden>
     <div id="compass"><small>HEADING</small><strong id="heading">000°</strong><span>┊　┊　┃　┊　┊</span></div>
     <div class="mission"><small>GROUND OBJECTIVES</small><div id="objectives"></div></div>
     <div id="threat" role="status"></div>
+    <div id="message" role="status"></div>
+    <aside id="navPod" hidden><div class="nav-head"><span>ROUTE DISPLAY</span><span>N ↑</span></div>
+      <canvas id="navMap" width="178" height="102" aria-label="North-up map of beacon, aircraft and contacts"></canvas>
+      <div class="nav-foot"><span id="speed"></span><span id="climb"></span></div></aside>
     <div id="reticle"><i></i><span id="mark"></span></div>
     <div class="instruments"><div><small>HULL</small><b id="health"></b></div><div><small>ROCKETS</small><b id="ammo"></b></div><div><small>ALT / AGL</small><b id="alt"></b></div></div>
-    <div class="station-actions"><button id="camera">Chase view</button><button id="pause">Pause</button></div>
-    <div id="canopy" hidden></div>
+    <div class="station-actions"><button id="zoom" hidden aria-pressed="false">Sight 1×</button><button id="sound" aria-pressed="false">Sound off</button><button id="camera">Chase view</button><button id="pause">Pause</button></div>
+    <div id="canopy" hidden><div class="attitude" aria-label="Attitude indicator"><i id="horizon"></i><b>─ • ─</b></div></div>
   </div>
   <footer><span id="footerLeft">SABLE VALLEY</span><span id="footerRight">QSOL–IMC　 /　VW–001</span></footer>
 </main>

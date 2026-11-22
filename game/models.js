@@ -51,6 +51,7 @@ export function aircraft() {
     for(const z of [-.93,.82]) rod(out,[s*.64,-.46,z],[s*1.03,-.99,z],.065,dark);
     rod(out,[s*1.03,-.99,-1.6],[s*1.03,-.99,1.65],.085,light);
     rod(out,[s*1.03,-.99,-1.6],[s*1.03,-.75,-1.97],.085,light);
+    boxVertices([s*1.46,-.11,.8],[.12,.11,.25],s<0?[1,.15,.08]:[.26,1,.65],out);
     boxVertices([s*.96,.12,.1],[.1,.16,.9],gold,out);
     boxVertices([s*1.2,.65,3.65],[1.05,.1,.42],sand,out);
   }
@@ -79,6 +80,14 @@ export function groundUnit(id) {
     boxVertices([0,.44,0],[2.3,.7,2.15],red,out);
     for(const s of [-1,1]) rod(out,[s*.7,.5,0],[s*.7,1.48,2.6],.22,dark);
     rod(out,[0,.5,-.7],[0,2,-.7],.08,light);
+  } else if(id==='scout'){
+    shell(out,[[-1.6,-.4,.04,.04],[-.8,-.14,.90,.53],[.65,-.18,1,.48],[1.4,-.35,.3,.20]]);
+    for(const sign of [-1,1]){
+      boxVertices([sign*1.12,-.55,0],[.45,.47,2.6],dark,out);
+      boxVertices([sign*1.12,-.32,-.85],[.45,.09,.48],red,out);
+    }
+    rod(out,[0,.16,.38],[0,1.15,.38],.11,dark);
+    boxVertices([0,1.08,.38],[1.5,.25,.42],gold,out);
   } else {
     boxVertices([0,-.48,0],[4.9,.7,2.6],dark,out);
     boxVertices([1.55,.20,0],[1.5,1.55,2.4],sand,out);

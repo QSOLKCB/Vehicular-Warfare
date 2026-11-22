@@ -11,6 +11,11 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
     await evaluate(`(()=>{const s=document.querySelector('#sortie');s.value='${mission}';s.dispatchEvent(new Event('change'));})()`);
     await screenshot(mission+'-briefing');
     await click('primary');
+    if(mission==='longwatch')await click('sound');
+    assert.equal((await read()).metrics.audioActive,true);
+    assert.equal(await evaluate("document.querySelector('#navPod').hidden"),false);
+    await key('KeyV',true);await key('KeyV',false);
+    assert.equal(await evaluate("document.querySelector('#zoom').getAttribute('aria-pressed')"),'true');
     let active=0,previous=0,gotIncoming=false;
     const shots=new Set(),stops=[],hits=[];
     let s;
@@ -31,11 +36,12 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
         if((active&bit)!==(cmd&bit))await key(code,Boolean(cmd&bit));
       }
       active=cmd;
-      if(!gotIncoming && shots.size){await screenshot(mission+'-cockpit');gotIncoming=true;}
+      if(!gotIncoming && shots.size && s.metrics.lastDraw.incoming){await screenshot(mission+'-cockpit');gotIncoming=true;}
       await sleep(85);
     }
     assert.equal(s.mode,'victory',JSON.stringify([s.mode,s.tick,s.site,s.position,s.reason,s.ammo]));
     assert.ok(shots.size>0);
+    assert.equal(gotIncoming,true);assert.equal(s.metrics.audioActive,false);
     assert.equal(stops.length,MISSIONS[mission].sites.length);
     const verified=await evaluate("Promise.all([import('./sim/world.js'),import('./game/main.js')]).then(([sim,game])=>sim.receipt(sim.replay(JSON.stringify(game.inspect().receipt))))");
     assert.deepEqual(verified,s.receipt);
