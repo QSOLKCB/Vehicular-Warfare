@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 460" role="img" aria-labelledby="title description">
+  <title id="title">RIDGEFIRE — Vehicular Warfare</title>
+  <desc id="description">A retro industrial mountain battlefield banner: an original attack rotorcraft flies above sharp ridges at dusk. Fly low. Strike fast. Disappear.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2=".14" y2="1">
+      <stop offset="0" stop-color="#070e19"/><stop offset=".58" stop-color="#17283b"/><stop offset="1" stop-color="#344356"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#f9b66b"/><stop offset=".54" stop-color="#e97046"/><stop offset="1" stop-color="#8d3b3e"/>
+    </linearGradient>
+    <linearGradient id="ridge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#294b56"/><stop offset="1" stop-color="#0a1e29"/>
+    </linearGradient>
+    <linearGradient id="headline" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4d5"/><stop offset="1" stop-color="#f8ae65"/>
+    </linearGradient>
+    <linearGradient id="beacon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#62d2c7"/><stop offset="1" stop-color="#62d2c7" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="scan" width="6" height="6" patternUnits="userSpaceOnUse">
+      <path d="M0 5.5H6" stroke="#d4f4f6" stroke-opacity=".08" stroke-width=".65"/>
+    </pattern>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#8ac9ce" stroke-width=".8" stroke-opacity=".14"/>
+    </pattern>
+    <clipPath id="frame"><rect width="1600" height="460" rx="14"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="460" fill="url(#sky)"/>
+    <rect width="1600" height="460" fill="url(#grid)"/>
+    <g opacity=".65" stroke="#6fa6af" stroke-width="1">
+      <path d="M0 108H1600M0 234H1600M0 354H1600" stroke-dasharray="3 13" opacity=".35"/>
+      <path d="M1238 0V460" opacity=".21"/>
+    </g>
+    <!-- Low-angle atmosphere and sun, deliberately free of external image assets. -->
+    <circle cx="1246" cy="157" r="135" fill="#f8a457" opacity=".055"/>
+    <circle cx="1246" cy="157" r="109" fill="url(#sun)" opacity=".91"/>
+    <path d="M1134 143h225m-225 17h225m-222 17h217m-207 17h195" stroke="#17283b" stroke-width="4" opacity=".2"/>
+    <path d="M0 326 96 290 180 318 279 255 362 300 444 262 546 326 670 257 784 295 895 225 1003 288 1134 221 1238 274 1367 193 1473 251 1600 207V460H0Z" fill="#52717c" opacity=".55"/>
+    <path d="M0 365 150 328 260 342 384 291 495 344 611 303 735 353 858 275 945 310 1081 262 1184 326 1324 245 1426 294 1558 250 1600 270V460H0Z" fill="url(#ridge)"/>
+    <path d="M0 395 146 376 275 400 423 354 522 394 655 361 792 410 910 343 1030 378 1189 320 1327 374 1460 321 1600 361V460H0Z" fill="#071823"/>
+    <path d="M850 458 1012 376 1115 402 1248 348 1367 378 1481 334 1600 362V460Z" fill="#06131c" opacity=".95"/>
+    <path d="M796 460 1000 377 1114 400 1248 348 1359 377 1481 334 1600 360" fill="none" stroke="#62d2c7" stroke-opacity=".45" stroke-width="2"/>
+    <!-- Original high-contrast fictional rotorcraft silhouette. -->
+    <g transform="translate(1146 181)">
+      <path d="M-185 -78H135" stroke="#c8e4df" stroke-width="4" stroke-linecap="round" opacity=".86"/>
+      <path d="M-103 -81H99" stroke="#fff2d5" stroke-width="1.5" opacity=".8"/>
+      <path d="M-8 -79v31" stroke="#cedee3" stroke-width="6"/>
+      <path d="M-20 -43 3 -48 33 -43 51 -23 93 -13 114 4 83 19 49 29 11 28 -18 16 -53 11 -74 -1 -51 -19 -34 -38Z" fill="#08111a" stroke="#9cd3d1" stroke-opacity=".85" stroke-width="2.6"/>
+      <path d="M16 -40 33 -36 51 -21 20 -18 -2 -29Z" fill="#79c7cc" opacity=".52"/>
+      <path d="M20 -34 33 -30 42 -22 20 -22Z" fill="#eff3dc" opacity=".56"/>
+      <path d="M-43 -3 -115 -12 -161 -10 -177 0 -161 8 -112 9 -45 13" fill="#07131d" stroke="#9bc9c6" stroke-opacity=".75" stroke-width="2.5"/>
+      <path d="M-140 -20 -144 -2 -157 5" fill="none" stroke="#c5d4d0" stroke-width="3"/>
+      <path d="M-169 -34v52m-14 -25h30" stroke="#a7d7d2" stroke-width="3" opacity=".8"/>
+      <path d="M-8 6 -39 23 -49 37 10 26 55 32 61 22 31 16Z" fill="#09121c" stroke="#9fd7d3" stroke-width="2"/>
+      <path d="M-35 30v18m17 -19v19m58 -13v18m18 -17v17" stroke="#c9dad8" stroke-width="3" opacity=".8"/>
+      <path d="M-36 47H-9m42 6h34" stroke="#c9dad8" stroke-width="3" opacity=".7"/>
+      <path d="M-28 31h20m52 4h22" stroke="#f4af6d" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-181 -79h-14m335 0h14" stroke="#f5b77f" stroke-width="2.5"/>
+    </g>
+    <!-- Reticle and digital instrument markings. -->
+    <g transform="translate(1146 178)" stroke="#6ce1d0" fill="none" stroke-width="1.4" opacity=".46">
+      <circle r="127" stroke-dasharray="13 18"/>
+      <path d="M0 -146v-14M0 146v14M-146 0h-14M146 0h14"/>
+      <path d="M-119 -60  -129 -64M119 60 129 64"/>
+    </g>
+    <path d="M1093 324V337H1369V324M1093 321H1133M1330 321h39" stroke="#70d9ce" stroke-width="2" fill="none" opacity=".66"/>
+    <text x="1101" y="351" fill="#79d8ce" font-family="monospace" font-size="14" letter-spacing="3" opacity=".94">ALT 032M  /  RIDGE MASK ACTIVE</text>
+    <!-- Readable title zone with opaque dark underlay. -->
+    <path d="M0 0H865L1015 460H0Z" fill="#07131f" opacity=".88"/>
+    <path d="M858 0 1011 460" fill="none" stroke="#6acdc6" stroke-width="2" opacity=".28"/>
+    <path d="M55 50H236" stroke="#ef9f5a" stroke-width="4"/>
+    <text x="55" y="84" fill="#9ed9d5" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="5">QSOL-IMC  //  VANILLAJS</text>
+    <text x="48" y="224" fill="url(#headline)" font-family="DejaVu Sans,Arial,sans-serif" font-size="112" font-weight="900" letter-spacing="-2">RIDGEFIRE</text>
+    <path d="M56 244H733" stroke="#ed945c" stroke-width="5"/>
+    <text x="55" y="290" fill="#e0eaf0" font-family="DejaVu Sans,Arial,sans-serif" font-size="27" font-weight="700" letter-spacing="9">VEHICULAR WARFARE</text>
+    <text x="55" y="349" fill="#89c6c3" font-family="monospace" font-size="19" letter-spacing="1.7">FLY LOW.   STRIKE FAST.   DISAPPEAR.</text>
+    <path d="M55 377H530" stroke="#8fb8bb" stroke-opacity=".3" stroke-width="1"/>
+    <text x="55" y="413" fill="#b2bfc6" font-family="monospace" font-size="15" letter-spacing="3">KESTREL  /  SABLE VALLEY  /  LONG WATCH  /  FROSTLINE</text>
+    <rect width="1600" height="460" fill="url(#scan)" opacity=".75"/>
+    <rect x="6" y="6" width="1588" height="448" rx="10" stroke="#8ca9ae" stroke-opacity=".5" fill="none" stroke-width="2"/>
+    <path d="M22 22h50M22 22v50M1578 22h-50M1578 22v50M22 438h50M22 438v-50M1578 438h-50M1578 438v-50" fill="none" stroke="#70d2c8" stroke-width="3" opacity=".75"/>
+  </g>
+</svg>
