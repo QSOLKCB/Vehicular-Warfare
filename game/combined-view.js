@@ -47,7 +47,12 @@ function cameraPose(w,mode){
   const p=w.player,d=cameraDistance[p.kind],gun=vehicleGun(p);
   if(mode==='sight')return {eye:gun.muzzle,q:look(gun.direction),fov:.62};
   let eye,focus;
-  if(mode==='briefing'){
+  if(mode==='overview'){
+    const target=w.relay.hp?w.relay.p:w.beacon;
+    focus=p.p.map((value,i)=>value+(target[i]-value)*.38);
+    const distance=clamp(Math.hypot(p.p[0]-target[0],p.p[2]-target[2]),44,150);
+    eye=add(focus,[distance*.22,distance*1.12,distance*.65]);
+  }else if(mode==='briefing'){
     eye=add(p.p,[d*.77,d*.30,-d*.82]);
     const right=normalize(cross(subtract(p.p,eye),up));
     focus=add(p.p,scale(right,-d*.27));focus[1]+=.35;

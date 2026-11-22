@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1b2928">
+  <title>Workshop playtest · Vehicular Warfare</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./game/style.css">
+  <link rel="stylesheet" href="./game/tank.css">
+  <link rel="stylesheet" href="./game/combined.css">
+  <link rel="stylesheet" href="./game/creator-station.css">
+</head>
+<body>
+<main id="station" data-mode="briefing" data-offline-label="WORKSHOP STATION" aria-label="Workshop sortie">
+  <canvas id="battlefield" aria-label="Three-dimensional view of the authored sortie"></canvas>
+  <div class="shade"></div>
+  <header><span class="insignia" aria-hidden="true">◢</span><strong>VEHICULAR WARFARE</strong><span class="division">/</span><span class="series">CREATOR WORKSHOP</span>
+    <span id="musicCue" hidden></span><a id="return" href="./creator.html">← Editor</a></header>
+  <section id="panel">
+    <div class="eyebrow"><span class="dash"></span><span id="chapter">WORKSHOP PLAYTEST</span></div>
+    <h1 id="title">Prepare sortie</h1>
+    <p id="desc">Loading mission data…</p>
+    <div class="panel-actions">
+      <button id="primary" type="button">Deploy <b aria-hidden="true">↗</b></button>
+      <button id="again" type="button" hidden>Restart</button>
+      <button id="watch" type="button">Watch replay</button>
+      <button id="save" type="button" hidden>Save replay</button>
+    </div>
+    <details id="guide"><summary>Crew controls</summary>
+      <div class="keys">
+        <span id="driveKeys"></span><span id="turnKeys"></span><span id="extraKeys"></span>
+        <span><kbd>Arrows</kbd> Aim mount</span><span><kbd>Space / LMB</kbd> Fire</span>
+        <span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Change camera</span><span><kbd>P / Esc</kbd> Pause</span>
+      </div>
+    </details>
+    <output id="checkResult" aria-live="polite"></output>
+  </section>
+  <section id="hud" hidden aria-label="Crew instruments">
+    <div id="compass"><small>HEADING</small><strong id="heading"></strong></div>
+    <div class="mission"><small id="missionLabel"></small><div id="objectives"></div></div>
+    <aside id="chart"><div class="map-title"><b>ESTUARY</b><span>N ↑</span></div>
+      <canvas id="theatreMap" width="202" height="152" aria-label="Map of the selected crew and gate"></canvas>
+      <div class="legend"><span>● Cobalt</span><span>◆ Ember</span><span>○ Gate</span></div>
+    </aside>
+    <div id="contact"></div><div id="aimPoint" aria-label="Sight"><i></i></div><div id="message" role="status"></div>
+    <div class="instruments"><div><small id="vehicleName">CREW</small><b id="health"></b></div><div><small id="motionLabel"></small><b id="motion"></b></div>
+      <div><small>CELLS</small><b id="ammo"></b></div><div><small>MOUNT</small><b id="reload"></b></div></div>
+    <div class="station-actions" id="liveActions"><button id="sound" type="button" aria-pressed="false">Music off</button><button id="camera" type="button">Gun sight</button><button id="pause" type="button">Pause</button></div>
+  </section>
+  <section id="replayDeck" hidden aria-label="Replay transport">
+    <div class="timecode"><label for="timeline">Recording <span id="replayState"></span></label><output id="timecode" for="timeline"></output></div>
+    <input id="timeline" type="range" min="0" max="0" value="0" step="1" aria-label="Recording tick">
+    <div class="transport"><button id="replayToggle" type="button">Play</button><button id="rewind" type="button">Start</button>
+      <label class="angle">Camera <select id="replayCamera"><option value="chase">Chase</option><option value="sight">Gun sight</option><option value="overview">Overhead</option></select></label>
+      <button id="replayMusic" type="button" aria-pressed="false">Music off</button>
+    </div>
+  </section>
+  <footer><span id="movementHint"></span><span id="modeHint">SPACE FIRE　 C VIEW　 P PAUSE</span></footer>
+</main>
+<script type="module" src="./game/creator-station.js"></script>
+</body>
+</html>

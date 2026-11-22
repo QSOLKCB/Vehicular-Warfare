@@ -6,6 +6,7 @@ import {tankSortie} from './tank-sortie.mjs';
 import {mechSortie} from './mech-sortie.mjs';
 import {navalSortie} from './naval-sortie.mjs';
 import {combinedSortie} from './combined-sortie.mjs';
+import {creatorSortie} from './creator-sortie.mjs';
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
@@ -68,7 +69,7 @@ async function until(check,label){
   throw Error(label+' timed out at '+JSON.stringify([s.mode,s.tick,s.position,s.aa.mode,s.hp,s.ammo,s.reason,errors]));
 }
 const key=(code,down)=>send('Input.dispatchKeyEvent',{type:down?'keyDown':'keyUp',code,
-  key:code==='Space'?' ':code.replace(/^Key/,'').toLowerCase()});
+  key:code==='Space'?' ':code.startsWith('Key')?code.slice(3).toLowerCase():code});
 async function click(id){
   const [x,y]=await evaluate("(()=>{const r=document.getElementById("+JSON.stringify(id)+").getBoundingClientRect();return [r.x+r.width/2,r.y+r.height/2]})()");
   await mouse('mousePressed',x,y);await mouse('mouseReleased',x,y);
@@ -107,7 +108,7 @@ try{
     assert.match(message,/^Verified ·/);console.log(message);
   }
   const family=process.argv[3];
-  const stationSorties={tank:tankSortie,mech:mechSortie,naval:navalSortie,combined:combinedSortie};
+  const stationSorties={tank:tankSortie,mech:mechSortie,naval:navalSortie,combined:combinedSortie,creator:creatorSortie};
   if(Object.hasOwn(stationSorties,family)){
     const sortie=stationSorties[family];
     const result=await sortie({click,key,mouse,evaluate,send,screenshot,sleep,output});

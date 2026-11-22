@@ -1,7 +1,7 @@
 import {Clock,HZ} from '../sim/clock.js';
 
 export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft,aimRight,
-  extraControls={},activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,actors=2,observe,vehicleSelect}){
+  extraControls={},activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,soundLabel='Sound',actors=2,observe,vehicleSelect}){
   const el=id=>document.getElementById(id);
   const canvas=el('battlefield'),station=el('station'),clock=new Clock();
   const controls={KeyW:keys.forward,KeyS:keys.back,KeyA:keys.left,KeyD:keys.right,
@@ -125,7 +125,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
     if(soundEnabled){
       try{sound=new Sound(world);}catch{soundEnabled=false;}
     }
-    el('sound').textContent=soundEnabled?'Sound on':'Sound off';
+    el('sound').textContent=soundLabel+(soundEnabled?' on':' off');
     el('sound').setAttribute('aria-pressed',String(soundEnabled));
   }
   if(Sound)el('sound').addEventListener('click',()=>{soundEnabled=!soundEnabled;syncSound();});
@@ -137,7 +137,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
     const a=document.createElement('a');a.href=url;a.download=replayPrefix+'-'+world.tick+'.json';a.click();
     setTimeout(()=>URL.revokeObjectURL(url),500);
   });
-  el('checkFile').addEventListener('change',async event=>{
+  el('checkFile')?.addEventListener('change',async event=>{
     const input=event.currentTarget,file=input.files[0];if(!file)return;
     input.disabled=true;
     try{
