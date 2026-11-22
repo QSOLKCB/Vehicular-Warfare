@@ -7,8 +7,13 @@ import {View} from './view.js';
 
 const el=id=>document.getElementById(id);
 const canvas=el('valley'), station=el('station'), clock=new Clock();
-const keys={KeyR:K.up,KeyF:K.down,KeyW:K.forward,KeyS:K.back,KeyA:K.left,KeyD:K.right,
-  ArrowLeft:K.yawLeft,ArrowRight:K.yawRight,ArrowUp:K.aimUp,ArrowDown:K.aimDown,Space:K.fire};
+const keys={
+  KeyW:K.forward,KeyS:K.back,KeyA:K.yawLeft,KeyD:K.yawRight,
+  KeyE:K.up,KeyQ:K.down,Space:K.fire,KeyZ:K.left,KeyX:K.right,
+  ArrowUp:K.aimUp,ArrowDown:K.aimDown,
+  KeyR:K.up,KeyF:K.down,ArrowLeft:K.yawLeft,ArrowRight:K.yawRight,
+};
+const pressed=new Set();
 const selectedWorld=()=>createWorld({seed:mission(el('sortie').value).seed},el('sortie').value);
 let world=selectedWorld(),mode='briefing',camera='chase',view=null,session=null,raf=0;
 let zoom=false;
@@ -17,7 +22,7 @@ let held=0,trigger=false,mouseTurn=0,mouseTilt=0,lastFrame=null;
 let frames=[],costs=[],peaks=0,lastDraw=null,retired=0,disposals=0;
 const keep=(list,value,limit)=>{if(list.length===limit) list.shift(); list.push(value);};
 function clearInput(){
-  held=0; trigger=false; mouseTurn=0; mouseTilt=0; clock.reset(); lastFrame=null;
+  pressed.clear(); held=0; trigger=false; mouseTurn=0; mouseTilt=0; clock.reset(); lastFrame=null;
 }
 function dispose(){
   cancelAnimationFrame(raf); raf=0; clearInput();
@@ -67,13 +72,23 @@ function listen(){
   session=new AbortController();
   const on=(target,event,fn)=>target.addEventListener(event,fn,{signal:session.signal});
   on(window,'keydown',e=>{
-    if(e.ctrlKey||e.metaKey||e.altKey||e.repeat) return;
-    if(Object.hasOwn(keys,e.code)) { e.preventDefault(); held|=keys[e.code]; }
+    if(e.ctrlKey||e.metaKey||e.altKey) return;
+    if(Object.hasOwn(keys,e.code)){
+      e.preventDefault();
+      if(!e.repeat){pressed.add(e.code);held|=keys[e.code];}
+      return;
+    }
+    if(e.repeat)return;
     if(e.code==='KeyV')setZoom(!zoom);
     if(e.code==='KeyC') setCamera();
     if(['Escape','KeyP'].includes(e.code)) pause();
   });
-  on(window,'keyup',e=>{if(Object.hasOwn(keys,e.code)){held&=~keys[e.code];e.preventDefault();}});
+  on(window,'keyup',e=>{
+    if(!pressed.delete(e.code))return;
+    e.preventDefault();
+    held=0;
+    for(const code of pressed)held|=keys[code];
+  });
   on(canvas,'pointerdown',e=>{if(e.button===0) trigger=true;});
   on(window,'pointerup',()=>{trigger=false;});
   on(canvas,'contextmenu',e=>{
@@ -101,7 +116,7 @@ function begin(fresh){
   mode='flying'; station.dataset.mode=mode;
   el('panel').hidden=true; el('hud').hidden=false;
   document.activeElement?.blur();
-  el('footerLeft').textContent='R/F LIFT　 WASD CYCLIC　 ← → TURN　 SPACE FIRE';
+  el('footerLeft').textContent='W/S FLY　 A/D TURN　 E↑ Q↓　 SPACE FIRE';
   el('footerRight').textContent='C VIEW　 P PAUSE';
   syncSound();listen(); raf=requestAnimationFrame(frame);
 }
@@ -136,7 +151,7 @@ function hud(d){
     if(e.type==='beacon')notice={text:e.name.toUpperCase()+' · RESUPPLIED',until:e.tick+200};
   }
   el('message').textContent=notice && world.tick<notice.until?notice.text:
-    world.route && world.tick<1100 && p.ammo===16 && warning==='MASKED'?'R · CLIMB     W · APPROACH BEACON':'';
+    world.route && world.tick<1100 && p.ammo===16 && warning==='MASKED'?'E · CLIMB     W · APPROACH BEACON':'';
   audio?.update(world,fresh);
   if(camera==='cockpit'){
     el('horizon').style.transform='rotate('+(-p.bank)+'rad) translateY('+(-p.pitch*27)+'px)';

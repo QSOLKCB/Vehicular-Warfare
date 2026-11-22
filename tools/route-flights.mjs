@@ -31,8 +31,8 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
       if(s.mode!=='flying')break;
       if(s.camera==='chase'){await key('KeyC',true);await key('KeyC',false);}
       const cmd=routeControls(s.site,s.clear,s.position,s.velocity,s.metrics.lastDraw.target);
-      for(const [code,bit] of [['KeyW',K.forward],['KeyS',K.back],['KeyD',K.right],['KeyA',K.left],
-          ['Space',K.fire],['KeyR',K.up],['KeyF',K.down]]){
+      for(const [code,bit] of [['KeyW',K.forward],['KeyS',K.back],['KeyX',K.right],['KeyZ',K.left],
+          ['Space',K.fire],['KeyE',K.up],['KeyQ',K.down]]){
         if((active&bit)!==(cmd&bit))await key(code,Boolean(cmd&bit));
       }
       active=cmd;
@@ -54,12 +54,12 @@ export async function routeFlights({read,key,click,screenshot,evaluate,sleep,out
     console.log(mission,s.tick,'ticks,',shots.size,'enemy shots');
   }
   await evaluate("(()=>{const s=document.querySelector('#sortie');s.value='longwatch';s.dispatchEvent(new Event('change'));})()");
-  await click('primary');await key('KeyR',true);
+  await click('primary');await key('KeyE',true);
   let s,damaged=false,climbing=true;
   const deadline=Date.now()+40000;
   while(Date.now()<deadline){
     s=await read();
-    if(climbing && s.position[1]>=47){await key('KeyR',false);climbing=false;}
+    if(climbing && s.position[1]>=47){await key('KeyE',false);climbing=false;}
     if(!damaged && s.hp<100 && s.hp>0){await screenshot('longwatch-hull-hit');damaged=true;}
     if(s.mode==='defeat')break;
     await sleep(90);

@@ -7,7 +7,7 @@ import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
 import {tmpdir,cpus} from 'node:os';
 import {join,resolve} from 'node:path';
 import {once} from 'node:events';
-import {replay,receipt} from '../sim/world.js';
+import {K,replay,receipt} from '../sim/world.js';
 
 const chrome=process.env.CHROMIUM || 'google-chrome';
 const output=resolve(process.argv[2] || 'evidence/browser');
@@ -110,25 +110,41 @@ try{
   }else{
   await evaluate("const sel=document.querySelector('#sortie');sel.value='sable';sel.dispatchEvent(new Event('change'))");
   await screenshot('01-briefing');
+  // Exercise the advertised turn keys in a real flight and verify that
+  // releasing a legacy alias still leaves its companion key held.
+  await click('primary');
+  await key('KeyW',true);await key('KeyD',true);
+  await until(v=>v.position[2]<37.8 && v.held===(K.forward|K.yawRight),'forward right turn');
+  const heading=()=>evaluate("Number.parseInt(document.querySelector('#heading').textContent)");
+  assert.ok(await heading()>0);
+  await key('KeyW',false);await key('KeyD',false);
+  await key('KeyA',true);
+  await until(v=>v.held===K.yawLeft && v.position[2]<37.7,'left turn');
+  await key('ArrowLeft',true);await key('KeyA',false);assert.equal((await read()).held,K.yawLeft);
+  await key('ArrowLeft',false);
+  await key('KeyE',true);await key('KeyR',true);await key('KeyR',false);
+  assert.equal((await read()).held,K.up);
+  await key('KeyP',true);await key('KeyP',false);assert.equal((await read()).held,0);
+  await key('KeyE',false);await click('menu');
   await click('primary');
   let s=await until(v=>v.tick>=35,'startup');
   mark('concealed',s);assert.equal(s.aa.visible,false);assert.equal(s.aa.lastSeen,null);
   await screenshot('02-masked');
   await key('Space',true);await until(v=>v.ammo===15,'launch into ridge');await key('Space',false);
   await until(v=>v.events.some(e=>e.type==='impact'&&e.target==='terrain'),'ridge contact');
-  await key('KeyR',true);s=await until(v=>v.aa.visible,'exposure');await key('KeyR',false);
+  await key('KeyE',true);s=await until(v=>v.aa.visible,'exposure');await key('KeyE',false);
   const first=s.tick-s.aa.seen+1; mark('acquiring',s);
   s=await until(v=>v.events.some(e=>e.type==='launch'&&e.owner==='aa'),'AA reaction');
   assert.equal(s.events.find(e=>e.type==='launch'&&e.owner==='aa').tick-first,119);
   await mouse('mousePressed');await until(v=>v.ammo===14,'mouse launch');await mouse('mouseReleased');
   await screenshot('03-exposed');
-  await key('KeyF',true);s=await until(v=>v.aa.mode==='search','search');await key('KeyF',false);
+  await key('KeyQ',true);s=await until(v=>v.aa.mode==='search','search');await key('KeyQ',false);
   mark('search',s);
   await screenshot('04-search');
   await until(v=>v.aa.mode==='idle','memory expires');
   await key('KeyC',true);await key('KeyC',false);assert.equal((await read()).camera,'cockpit');
   await screenshot('05-cockpit');
-  await key('KeyR',true);await until(v=>v.position[1]>21,'second climb');await key('KeyR',false);
+  await key('KeyE',true);await until(v=>v.position[1]>21,'second climb');await key('KeyE',false);
   await key('Space',true);s=await until(v=>v.mode==='victory','victory');await key('Space',false);
   assert.equal(s.metrics.buffers,0);assert.equal(s.metrics.retired,0);assert.equal(s.metrics.rafActive,false);
   mark('victory',s); await screenshot('06-victory');
@@ -136,7 +152,7 @@ try{
   assert.deepEqual(receipt(replay(JSON.stringify(s.receipt))),s.receipt);
   await click('primary');s=await until(v=>v.tick>2,'rematch');
   assert.equal(s.held,0);assert.equal(s.hp,100);assert.equal(s.ammo,16);
-  await key('KeyR',true);await until(v=>v.position[1]>20,'expose for defeat');await key('KeyR',false);
+  await key('KeyE',true);await until(v=>v.position[1]>20,'expose for defeat');await key('KeyE',false);
   s=await until(v=>v.mode==='defeat','combat defeat');assert.equal(s.hp,0);
   assert.ok(s.events.some(e=>e.type==='destroy'&&e.target==='player'&&e.shot>0));
   const loss=s;mark('defeat',s);await screenshot('07-defeat');
