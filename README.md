@@ -1,27 +1,52 @@
-# Vehicular-Warfare
+# RIDGEFIRE
 
-**Mechs. Tanks. Aircraft. Ships. One original battlefield.**
+Pilot the Kestrel through Sable Valley. A ridgeline hides you from a fixed AA emplacement and a moving convoy carrier. Both can see and fire once you climb into view. Destroy both units and survive the sortie.
 
-An offline-first 3D warfare game built with [VANILLAJS](https://github.com/QSOLKCB/VANILLAJS). Its first playable experiment, **RIDGEFIRE**, draws a gameplay lesson from *Comanche: Maximum Overkill*: a ridgeline should conceal an aircraft from enemy sight and weapons, letting the pilot climb, fire, and retreat to cover.
+## Launch locally
 
-**VW-001A implements the independently runnable numerical mission.** Run `node --test test/authority.test.js` and `node tools/measure.mjs` from the repository root. The [simulation contract](docs/AUTHORITY.md) documents controls, terrain clearance, combat and replay. The browser game follows on the dependent VW-001B branch.
+From the repository root, run the following command with Python 3.
 
-**Starting engine:** VANILLAJS [v3.4.0](https://github.com/QSOLKCB/VANILLAJS/releases/tag/v3.4.0), pinned to commit **0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466**.
+```sh
+python3 -m http.server 8080 --bind 127.0.0.1
+```
 
-## Start here
+Open [RIDGEFIRE on localhost](http://127.0.0.1:8080/) in desktop Chromium with WebGL enabled, then select **Launch mission**. All executable code, geometry and shaders are local. The same files can be served below a directory prefix.
 
-- [AGENTS.md](AGENTS.md) — engineering and owner-review rules.
-- [Codex CLI handoff](docs/CODEX_CLI_HANDOFF.md) — ready-to-paste first implementation assignment.
-- [Roadmap](ROADMAP.md) — helicopter → tanks → mechs → ships → combined arms.
-- [Game design](docs/GAME_DESIGN.md), [architecture](docs/ARCHITECTURE.md), [engine baseline](docs/ENGINE_BASELINE.md).
-- [DOS-era technical lessons](docs/DOS_TECHNIQUES.md) and [acceptance criteria](docs/ACCEPTANCE.md).
+| Control | Action |
+| --- | --- |
+| R / F | Raise / lower collective. Release to settle into hover. |
+| W / S and A / D | Pitch forward / back and bank left / right to translate. |
+| Left / right arrows | Turn the helicopter. |
+| Up / down arrows | Adjust sight elevation. |
+| Space or left mouse | Launch a rocket. Hold for repeated fire. |
+| Right mouse | Capture mouse steering and sight elevation. Escape releases capture and pauses. |
+| C | Switch between chase and cockpit cameras. |
+| P or Escape | Pause. Resume, restart or save a replay from the panel. |
 
-## First game: RIDGEFIRE
+Begin in cover and tap Space to see a rocket hit the ridge. Hold R until the threat indicator reads **EXPOSED**, then release. A named reticle identifies a visible target inside the assisted sight cone. Rockets fly straight from launch. Hold F briefly to break contact. The defenders search the last observed position while their airborne shots continue. A hard descent can destroy the aircraft. The mission ends on destruction of both targets, loss of the Kestrel, exhaustion of usable rockets, or the three-minute time limit.
 
-Pilot an original fictional rotorcraft through an original seeded valley. A hostile AA emplacement and a mobile convoy unit operate under physical line-of-sight rules. Fly behind terrain to avoid being tracked, pop above the ridge to attack, then descend before enemy fire can reach you. Shots, damage, collision, success, failure and replay must be **real authoritative simulation**, not visual scripts.
+## Verification
 
-The planned Voxel Space-style column renderer is an **optional later experiment**, not an existing engine feature. A verified WebGL1 heightfield-based scene is enough for the first playable game.
+The separately tested authority runs at 120 Hz. Run the numerical tests with Node 22 and Python 3. The browser acceptance driver starts an ephemeral loopback server and an isolated headless Chromium profile, flies via keyboard and mouse, captures screenshots and writes raw measurements to the chosen directory.
 
-Native browser JavaScript, original art/audio, no cloud or mandatory npm runtime, Apache-2.0. No engine or other repo may be changed without owner approval.
+```sh
+node --test test/authority.test.js
+node tools/measure.mjs
+CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-verification
+```
 
-**QSOL-IMC — THIS IS NOT A PRODUCT. THIS IS INDEPENDENCE.**
+**Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. To verify a saved receipt in Node from the repository root, run
+
+```sh
+node --input-type=module -e "import {readFileSync} from 'node:fs'; import {replay} from './sim/world.js'; console.log(replay(readFileSync(process.argv[1],'utf8')).status)" ridgefire-replay.json
+```
+
+The [numerical evidence](evidence/authority/) records eight passing tests at `91eb991ba861a772fe616ee0ae5b16179b4c8836`. [PR #2](https://github.com/QSOLKCB/Vehicular-Warfare/pull/2) merged that authority and its evidence into main at `3e37e8b66d998f083b5f1872c9531b5b25a53d8d`. See the [simulation contract](docs/AUTHORITY.md) for replay scope, sweep geometry and sensor timers.
+
+## Source and scope
+
+VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
+
+This release candidate has one fictional aircraft, one seeded mission and two ground opponents. The hull uses conservative terrain clearance and assisted lift. The presentation is silent. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance, mobile touch controls and other vehicle classes are outside the verified scope.
+
+[Agent instructions](AGENTS.md) · [Roadmap](ROADMAP.md) · [Original handoff](docs/CODEX_CLI_HANDOFF.md) · [Game design](docs/GAME_DESIGN.md) · [Architecture](docs/ARCHITECTURE.md) · [Engine baseline](docs/ENGINE_BASELINE.md) · [DOS-era techniques](docs/DOS_TECHNIQUES.md) · [Acceptance contract](docs/ACCEPTANCE.md)

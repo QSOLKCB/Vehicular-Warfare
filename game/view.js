@@ -1,0 +1,95 @@
+import {Renderer} from '../vendor/vanillajs/modules/render-webgl/index.js';
+import {BoxVertexStream} from '../vendor/vanillajs/modules/render-packing/index.js';
+import {add,clamp,dot,normalize,quatMultiply,rotate,scale,subtract} from '../vendor/vanillajs/modules/math/index.js';
+import {aim} from '../sim/world.js';
+import {aircraft,groundUnit,rotor} from './models.js';
+import {landscape} from './scenery.js';
+
+function turn(axis, radians) {
+  const q=[0,0,0,Math.cos(radians/2)]; q[axis]=Math.sin(radians/2); return q;
+}
+function look(direction) {
+  const d=normalize(direction);
+  return quatMultiply(turn(1,Math.atan2(-d[0],-d[2])),turn(0,Math.asin(d[1])));
+}
+class Model {
+  constructor(renderer, vertices) {
+    this.src=new Float32Array(vertices); this.data=this.src.slice(); this.mesh=renderer.mesh(this.data);
+  }
+  draw(renderer,p,q) {
+    const x=rotate(q,[1,0,0]),y=rotate(q,[0,1,0]),z=rotate(q,[0,0,1]);
+    for(let i=0;i<this.src.length;i+=6) {
+      const a=this.src[i],b=this.src[i+1],c=this.src[i+2];
+      for(let k=0;k<3;k++) this.data[i+k]=p[k]+x[k]*a+y[k]*b+z[k]*c;
+    }
+    renderer.update(this.mesh,this.data); renderer.draw(this.mesh);
+  }
+}
+
+export class View {
+  constructor(canvas,w) {
+    this.r=new Renderer(canvas);
+    const {land,sky}=landscape(w),r=this.r;
+    this.sky=r.mesh(sky); this.land=r.mesh(land);
+    this.models={player:new Model(r,aircraft()),rotor:new Model(r,rotor()),
+      aa:new Model(r,groundUnit('aa')),convoy:new Model(r,groundUnit('convoy'))};
+    this.stream=new BoxVertexStream(512); this.fx=r.mesh([]);
+    this.bytes=land.length*4+sky.length*4+this.stream.capacityBoxes*216*4+
+      Object.values(this.models).reduce((n,m)=>n+m.data.byteLength+m.src.byteLength,0);
+  }
+  render(w,mode,briefing=false) {
+    const r=this.r,p=w.player, yaw=turn(1,-p.yaw);
+    const body=quatMultiply(yaw,quatMultiply(turn(0,-p.pitch),turn(2,-p.bank)));
+    const fov=briefing ? .90 : 1.02;
+    let eye, camera;
+    if(briefing) {
+      eye=add(p.p,[7.8,2.2,-8.8]);
+      camera=look(subtract(add(p.p,[3.0,.8,2.65]),eye));
+    } else if(mode==='chase') {
+      eye=add(p.p,rotate(yaw,[0,6.8,13]));
+      eye[0]=clamp(eye[0],-144,144); eye[2]=clamp(eye[2],-144,144);
+      eye[1]=Math.max(eye[1],w.field.sample(eye[0],eye[2]).height+1.5);
+      camera=look(subtract(add(p.p,rotate(yaw,[0,0,-18])),eye));
+    } else {
+      eye=add(p.p,rotate(body,[0,.45,-1.15]));
+      camera=quatMultiply(body,turn(0,-.11));
+    }
+    r.begin(eye,camera,{fov,fog:0});
+    r.draw(this.sky);
+    r.gl.uniform1f(r.fog,.00165);
+    r.draw(this.land);
+    let calls=2,vertices=this.sky.count+this.land.count;
+    const draw=(id,pos,q)=>{
+      const m=this.models[id]; m.draw(r,pos,q); calls++; vertices+=m.mesh.count;
+    };
+    if((briefing || mode==='chase') && p.hp) {
+      draw('player',p.p,body);
+      draw('rotor',p.p,quatMultiply(body,turn(1,w.tick*.21+.46)));
+    }
+    for(const id of ['aa','convoy']) if(w[id].hp) draw(id,w[id].p,[0,0,0,1]);
+    const stream=this.stream.reset();
+    for(const s of w.shots) for(let i=0;i<4;i++) {
+      const point=add(s.p,scale(s.step,-i*.8)),size=.21-i*.028;
+      stream.append(point,[size,size,size],s.owner==='player'?[1,.85,.4]:[1,.29,.14]);
+    }
+    for(let j=w.events.length-1;j>=0;j--) {
+      const e=w.events[j],age=(w.tick-e.tick)/120;
+      if(age>.55 || stream.boxCount+12>stream.capacityBoxes) break;
+      if(e.type!=='impact' && e.type!=='destroy') continue;
+      for(let i=0;i<12;i++) {
+        const a=i*2.4+e.tick,dist=(.1+age*5)*(e.type==='destroy'?2:1);
+        const pos=add(e.point,[Math.cos(a)*dist,dist*(.32+i%4*.23),Math.sin(a)*dist]);
+        const size=.10+(.55-age)*(e.type==='destroy'?1.5:.55);
+        stream.append(pos,[size,size,size],i%3?[1,.47,.13]:[.40,.34,.32]);
+      }
+    }
+    if(stream.boxCount) { r.update(this.fx,stream.view()); r.draw(this.fx); calls++; vertices+=this.fx.count; }
+    const {target,direction}=aim(w);
+    const point=target?w[target].p:add(p.p,scale(direction,70)),delta=subtract(point,eye);
+    const forward=dot(delta,rotate(camera,[0,0,-1])), f=1/Math.tan(fov/2);
+    const x=.5+.5*dot(delta,rotate(camera,[1,0,0]))*f/forward*r.canvas.height/r.canvas.width;
+    const y=.5-.5*dot(delta,rotate(camera,[0,1,0]))*f/forward;
+    return {target,x,y,calls,vertices,buffers:r.meshes.size};
+  }
+  dispose(){this.r.dispose();}
+}

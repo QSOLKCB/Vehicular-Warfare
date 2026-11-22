@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1b201f"><title>RIDGEFIRE · Vehicular Warfare</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="./game/style.css">
+</head>
+<body>
+<main id="station" data-mode="briefing" aria-label="Ridgefire flight station">
+  <canvas id="valley" aria-label="3D valley flight view"></canvas>
+  <div class="shade"></div>
+  <header><span class="insignia" aria-hidden="true">◢</span><strong>VEHICULAR WARFARE</strong><span class="division"> / </span><span class="series">FLIGHT OPERATIONS</span><span class="callsign"><i></i> KESTREL 01</span></header>
+  <section id="panel">
+    <div class="eyebrow"><span class="dash"></span><span id="chapter">MISSION 001 / RIDGE SECTOR</span></div>
+    <h1 id="title">RIDGEFIRE</h1>
+    <p id="desc">Fly the Kestrel through Sable Valley. Use the ridgeline to break contact and destroy both ground units.</p>
+    <button id="primary">Launch mission <b>↗</b></button>
+    <button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
+    <details id="guide"><summary>Flight controls</summary><div class="keys">
+      <span><kbd>R / F</kbd> Climb / descend</span><span><kbd>W / S</kbd> Pitch / translate</span>
+      <span><kbd>A / D</kbd> Bank / strafe</span><span><kbd>← / →</kbd> Turn</span>
+      <span><kbd>↑ / ↓</kbd> Adjust sight</span><span><kbd>Space / LMB</kbd> Fire</span>
+      <span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Change camera</span><span><kbd>P / Esc</kbd> Pause</span>
+    </div></details>
+  </section>
+  <div id="hud" hidden>
+    <div id="compass"><small>HEADING</small><strong id="heading">000°</strong><span>┊　┊　┃　┊　┊</span></div>
+    <div class="mission"><small>GROUND OBJECTIVES</small><div id="objectives"></div></div>
+    <div id="threat" role="status"></div>
+    <div id="reticle"><i></i><span id="mark"></span></div>
+    <div class="instruments"><div><small>HULL</small><b id="health"></b></div><div><small>ROCKETS</small><b id="ammo"></b></div><div><small>ALT / AGL</small><b id="alt"></b></div></div>
+    <div class="station-actions"><button id="camera">Chase view</button><button id="pause">Pause</button></div>
+    <div id="canopy" hidden></div>
+  </div>
+  <footer><span id="footerLeft">SABLE VALLEY</span><span id="footerRight">QSOL–IMC　 /　VW–001</span></footer>
+</main>
+<script type="module" src="./game/main.js"></script>
+</body></html>
