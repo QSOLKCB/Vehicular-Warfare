@@ -1,0 +1,2240 @@
+{
+ "head": "828d1e310398d39e857f10eeb6aac91c63bcd1d6",
+ "referenceRevision": "5c3088953f983fadb2fade5f360de24f2d30cd2d",
+ "node": "v22.18.0",
+ "cpu": "AMD Ryzen 9 5950X 16-Core Processor",
+ "comparedTicks": 3959,
+ "reference": [
+  {
+   "ticks": 720,
+   "tickUs": {
+    "count": 720,
+    "p50": 204.58000000007814,
+    "p95": 329.0900000001784,
+    "max": 465.57999999959065
+   },
+   "orderAdmissionUs": [],
+   "incomingSweeps": 5897,
+   "shotsLaunched": 35,
+   "impacts": 20,
+   "peakShots": 13,
+   "peakActive": 0,
+   "heapBefore": 20414120,
+   "heapHigh": 21770168,
+   "heapAfter": 10903208,
+   "load": [
+    {
+     "tick": 60,
+     "alive": 9,
+     "active": 0,
+     "shots": 2,
+     "heapUsed": 11082328
+    },
+    {
+     "tick": 120,
+     "alive": 9,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 21770168
+    },
+    {
+     "tick": 180,
+     "alive": 9,
+     "active": 0,
+     "shots": 10,
+     "heapUsed": 18843888
+    },
+    {
+     "tick": 240,
+     "alive": 9,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 13443592
+    },
+    {
+     "tick": 300,
+     "alive": 8,
+     "active": 0,
+     "shots": 7,
+     "heapUsed": 16130608
+    },
+    {
+     "tick": 360,
+     "alive": 8,
+     "active": 0,
+     "shots": 6,
+     "heapUsed": 16048080
+    },
+    {
+     "tick": 420,
+     "alive": 8,
+     "active": 0,
+     "shots": 13,
+     "heapUsed": 16675600
+    },
+    {
+     "tick": 480,
+     "alive": 8,
+     "active": 0,
+     "shots": 10,
+     "heapUsed": 17075120
+    },
+    {
+     "tick": 540,
+     "alive": 8,
+     "active": 0,
+     "shots": 11,
+     "heapUsed": 16391584
+    },
+    {
+     "tick": 600,
+     "alive": 8,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 15201832
+    },
+    {
+     "tick": 660,
+     "alive": 8,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 13671408
+    },
+    {
+     "tick": 720,
+     "alive": 8,
+     "active": 0,
+     "shots": 13,
+     "heapUsed": 10778704
+    }
+   ]
+  },
+  {
+   "ticks": 720,
+   "tickUs": {
+    "count": 720,
+    "p50": 200.57999999971798,
+    "p95": 313.3299999999508,
+    "max": 521.4799999998831
+   },
+   "orderAdmissionUs": [],
+   "incomingSweeps": 5897,
+   "shotsLaunched": 35,
+   "impacts": 20,
+   "peakShots": 13,
+   "peakActive": 0,
+   "heapBefore": 15714536,
+   "heapHigh": 25496456,
+   "heapAfter": 22719272,
+   "load": [
+    {
+     "tick": 60,
+     "alive": 9,
+     "active": 0,
+     "shots": 2,
+     "heapUsed": 22898832
+    },
+    {
+     "tick": 120,
+     "alive": 9,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 17180832
+    },
+    {
+     "tick": 180,
+     "alive": 9,
+     "active": 0,
+     "shots": 10,
+     "heapUsed": 14325520
+    },
+    {
+     "tick": 240,
+     "alive": 9,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 25353520
+    },
+    {
+     "tick": 300,
+     "alive": 8,
+     "active": 0,
+     "shots": 7,
+     "heapUsed": 11565472
+    },
+    {
+     "tick": 360,
+     "alive": 8,
+     "active": 0,
+     "shots": 6,
+     "heapUsed": 11508216
+    },
+    {
+     "tick": 420,
+     "alive": 8,
+     "active": 0,
+     "shots": 13,
+     "heapUsed": 12046880
+    },
+    {
+     "tick": 480,
+     "alive": 8,
+     "active": 0,
+     "shots": 10,
+     "heapUsed": 12462928
+    },
+    {
+     "tick": 540,
+     "alive": 8,
+     "active": 0,
+     "shots": 11,
+     "heapUsed": 11786344
+    },
+    {
+     "tick": 600,
+     "alive": 8,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 10607048
+    },
+    {
+     "tick": 660,
+     "alive": 8,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 25496456
+    },
+    {
+     "tick": 720,
+     "alive": 8,
+     "active": 0,
+     "shots": 13,
+     "heapUsed": 22595336
+    }
+   ]
+  },
+  {
+   "ticks": 720,
+   "tickUs": {
+    "count": 720,
+    "p50": 198.8099999998667,
+    "p95": 315.2600000003076,
+    "max": 496.74999999979264
+   },
+   "orderAdmissionUs": [],
+   "incomingSweeps": 5897,
+   "shotsLaunched": 35,
+   "impacts": 20,
+   "peakShots": 13,
+   "peakActive": 0,
+   "heapBefore": 23182112,
+   "heapHigh": 24541664,
+   "heapAfter": 13099936,
+   "load": [
+    {
+     "tick": 60,
+     "alive": 9,
+     "active": 0,
+     "shots": 2,
+     "heapUsed": 13874672
+    },
+    {
+     "tick": 120,
+     "alive": 9,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 24541664
+    },
+    {
+     "tick": 180,
+     "alive": 9,
+     "active": 0,
+     "shots": 10,
+     "heapUsed": 21598120
+    },
+    {
+     "tick": 240,
+     "alive": 9,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 16180744
+    },
+    {
+     "tick": 300,
+     "alive": 8,
+     "active": 0,
+     "shots": 7,
+     "heapUsed": 18714640
+    },
+    {
+     "tick": 360,
+     "alive": 8,
+     "active": 0,
+     "shots": 6,
+     "heapUsed": 18594272
+    },
+    {
+     "tick": 420,
+     "alive": 8,
+     "active": 0,
+     "shots": 13,
+     "heapUsed": 19043936
+    },
+    {
+     "tick": 480,
+     "alive": 8,
+     "active": 0,
+     "shots": 10,
+     "heapUsed": 19376928
+    },
+    {
+     "tick": 540,
+     "alive": 8,
+     "active": 0,
+     "shots": 11,
+     "heapUsed": 18652888
+    },
+    {
+     "tick": 600,
+     "alive": 8,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 17445984
+    },
+    {
+     "tick": 660,
+     "alive": 8,
+     "active": 0,
+     "shots": 9,
+     "heapUsed": 15875056
+    },
+    {
+     "tick": 720,
+     "alive": 8,
+     "active": 0,
+     "shots": 13,
+     "heapUsed": 12976592
+    }
+   ]
+  }
+ ],
+ "command": [
+  {
+   "ticks": 720,
+   "tickUs": {
+    "count": 720,
+    "p50": 207.7299999996285,
+    "p95": 387.9299999998693,
+    "max": 646.6410000002725
+   },
+   "orderAdmissionUs": [
+    113.98999999983062,
+    56.90000000004147
+   ],
+   "incomingSweeps": 4175,
+   "shotsLaunched": 30,
+   "impacts": 22,
+   "peakShots": 10,
+   "peakActive": 4,
+   "heapBefore": 24513616,
+   "heapHigh": 25878176,
+   "heapAfter": 18567144,
+   "load": [
+    {
+     "tick": 60,
+     "alive": 9,
+     "active": 4,
+     "shots": 0,
+     "heapUsed": 13490976
+    },
+    {
+     "tick": 120,
+     "alive": 9,
+     "active": 4,
+     "shots": 9,
+     "heapUsed": 21071248
+    },
+    {
+     "tick": 180,
+     "alive": 9,
+     "active": 4,
+     "shots": 10,
+     "heapUsed": 15265632
+    },
+    {
+     "tick": 240,
+     "alive": 9,
+     "active": 4,
+     "shots": 9,
+     "heapUsed": 25878176
+    },
+    {
+     "tick": 300,
+     "alive": 8,
+     "active": 1,
+     "shots": 3,
+     "heapUsed": 11868760
+    },
+    {
+     "tick": 360,
+     "alive": 8,
+     "active": 1,
+     "shots": 3,
+     "heapUsed": 23011944
+    },
+    {
+     "tick": 420,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 19495040
+    },
+    {
+     "tick": 480,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 16563560
+    },
+    {
+     "tick": 540,
+     "alive": 8,
+     "active": 1,
+     "shots": 9,
+     "heapUsed": 13923872
+    },
+    {
+     "tick": 600,
+     "alive": 8,
+     "active": 1,
+     "shots": 6,
+     "heapUsed": 10747024
+    },
+    {
+     "tick": 660,
+     "alive": 8,
+     "active": 1,
+     "shots": 5,
+     "heapUsed": 23062248
+    },
+    {
+     "tick": 720,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 18447616
+    }
+   ]
+  },
+  {
+   "ticks": 720,
+   "tickUs": {
+    "count": 720,
+    "p50": 195.40999999981068,
+    "p95": 358.5400000001755,
+    "max": 496.7910000000302
+   },
+   "orderAdmissionUs": [
+    187.8799999999501,
+    24.870000000191794
+   ],
+   "incomingSweeps": 4175,
+   "shotsLaunched": 30,
+   "impacts": 22,
+   "peakShots": 10,
+   "peakActive": 4,
+   "heapBefore": 19869280,
+   "heapHigh": 25927000,
+   "heapAfter": 26046088,
+   "load": [
+    {
+     "tick": 60,
+     "alive": 9,
+     "active": 4,
+     "shots": 0,
+     "heapUsed": 24791040
+    },
+    {
+     "tick": 120,
+     "alive": 9,
+     "active": 4,
+     "shots": 9,
+     "heapUsed": 15436312
+    },
+    {
+     "tick": 180,
+     "alive": 9,
+     "active": 4,
+     "shots": 10,
+     "heapUsed": 25620176
+    },
+    {
+     "tick": 240,
+     "alive": 9,
+     "active": 4,
+     "shots": 9,
+     "heapUsed": 19320184
+    },
+    {
+     "tick": 300,
+     "alive": 8,
+     "active": 1,
+     "shots": 3,
+     "heapUsed": 21395160
+    },
+    {
+     "tick": 360,
+     "alive": 8,
+     "active": 1,
+     "shots": 3,
+     "heapUsed": 15924032
+    },
+    {
+     "tick": 420,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 12072584
+    },
+    {
+     "tick": 480,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 25265800
+    },
+    {
+     "tick": 540,
+     "alive": 8,
+     "active": 1,
+     "shots": 9,
+     "heapUsed": 22141072
+    },
+    {
+     "tick": 600,
+     "alive": 8,
+     "active": 1,
+     "shots": 6,
+     "heapUsed": 18541648
+    },
+    {
+     "tick": 660,
+     "alive": 8,
+     "active": 1,
+     "shots": 5,
+     "heapUsed": 14138104
+    },
+    {
+     "tick": 720,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 25927000
+    }
+   ]
+  },
+  {
+   "ticks": 720,
+   "tickUs": {
+    "count": 720,
+    "p50": 189.3899999995483,
+    "p95": 349.699999999757,
+    "max": 520.9600000007413
+   },
+   "orderAdmissionUs": [
+    106.79999999956635,
+    8.26000000051863
+   ],
+   "incomingSweeps": 4175,
+   "shotsLaunched": 30,
+   "impacts": 22,
+   "peakShots": 10,
+   "peakActive": 4,
+   "heapBefore": 26708568,
+   "heapHigh": 26708568,
+   "heapAfter": 14967704,
+   "load": [
+    {
+     "tick": 60,
+     "alive": 9,
+     "active": 4,
+     "shots": 0,
+     "heapUsed": 15168968
+    },
+    {
+     "tick": 120,
+     "alive": 9,
+     "active": 4,
+     "shots": 9,
+     "heapUsed": 22258520
+    },
+    {
+     "tick": 180,
+     "alive": 9,
+     "active": 4,
+     "shots": 10,
+     "heapUsed": 15927752
+    },
+    {
+     "tick": 240,
+     "alive": 9,
+     "active": 4,
+     "shots": 9,
+     "heapUsed": 26015064
+    },
+    {
+     "tick": 300,
+     "alive": 8,
+     "active": 1,
+     "shots": 3,
+     "heapUsed": 11368304
+    },
+    {
+     "tick": 360,
+     "alive": 8,
+     "active": 1,
+     "shots": 3,
+     "heapUsed": 22055528
+    },
+    {
+     "tick": 420,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 18061600
+    },
+    {
+     "tick": 480,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 14647864
+    },
+    {
+     "tick": 540,
+     "alive": 8,
+     "active": 1,
+     "shots": 9,
+     "heapUsed": 11406760
+    },
+    {
+     "tick": 600,
+     "alive": 8,
+     "active": 1,
+     "shots": 6,
+     "heapUsed": 24185256
+    },
+    {
+     "tick": 660,
+     "alive": 8,
+     "active": 1,
+     "shots": 5,
+     "heapUsed": 19636104
+    },
+    {
+     "tick": 720,
+     "alive": 8,
+     "active": 1,
+     "shots": 8,
+     "heapUsed": 14849992
+    }
+   ]
+  }
+ ],
+ "controllerProfile": {
+  "runs": 4,
+  "samplingIntervalUs": 120,
+  "totalSamples": 3909,
+  "inclusiveUs": {
+   "(anonymous)": 117474,
+   "observed": 83414,
+   "commandContacts": 357,
+   "motion": 93221,
+   "stepCommand": 658772,
+   "engage": 141047,
+   "mixedContact": 41273,
+   "objective": 707,
+   "navigate": 1772,
+   "stop": 1412,
+   "distance": 354,
+   "steer": 892,
+   "wrap": 177,
+   "flightMask": 530
+  },
+  "samples": {
+   "(anonymous)": 651,
+   "observed": 459,
+   "commandContacts": 2,
+   "motion": 518,
+   "stepCommand": 3676,
+   "engage": 785,
+   "mixedContact": 230,
+   "objective": 4,
+   "navigate": 10,
+   "stop": 8,
+   "distance": 2,
+   "steer": 5,
+   "wrap": 1,
+   "flightMask": 3
+  }
+ },
+ "encounter": {
+  "receipt": {
+   "version": 1,
+   "source": "vw-cmd-001:5d7b4943ee395804df0301acc66b0d5bf1ad931cbfa4f61a45147a45895d4ade",
+   "scenario": "breakwater-command-v1",
+   "seed": 2505,
+   "roster": [
+    {
+     "id": "cobalt-helicopter",
+     "kind": "helicopter",
+     "faction": "cobalt"
+    },
+    {
+     "id": "cobalt-tank",
+     "kind": "tank",
+     "faction": "cobalt"
+    },
+    {
+     "id": "cobalt-mech",
+     "kind": "mech",
+     "faction": "cobalt"
+    },
+    {
+     "id": "cobalt-ship",
+     "kind": "ship",
+     "faction": "cobalt"
+    },
+    {
+     "id": "ember-helicopter",
+     "kind": "helicopter",
+     "faction": "ember"
+    },
+    {
+     "id": "ember-tank",
+     "kind": "tank",
+     "faction": "ember"
+    },
+    {
+     "id": "ember-mech",
+     "kind": "mech",
+     "faction": "ember"
+    },
+    {
+     "id": "ember-ship",
+     "kind": "ship",
+     "faction": "ember"
+    },
+    {
+     "id": "relay",
+     "kind": "relay",
+     "faction": "ember"
+    }
+   ],
+   "orders": [
+    {
+     "tick": 0,
+     "units": [
+      "cobalt-helicopter",
+      "cobalt-mech",
+      "cobalt-ship",
+      "cobalt-tank"
+     ],
+     "append": false,
+     "type": "ATTACK",
+     "target": "relay"
+    },
+    {
+     "tick": 0,
+     "units": [
+      "cobalt-tank"
+     ],
+     "append": true,
+     "type": "MOVE",
+     "x": -16,
+     "z": 3
+    }
+   ],
+   "ticks": 1107,
+   "stateHash": "f2f4c0ab",
+   "eventHash": "e529722f",
+   "outcome": "victory"
+  },
+  "reason": "crossing secured",
+  "events": [
+   {
+    "tick": 100,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 1,
+    "point": [
+     -29.114839531357852,
+     11.322318341060539,
+     34.83627440998586
+    ]
+   },
+   {
+    "tick": 100,
+    "type": "launch",
+    "owner": "cobalt-tank",
+    "shot": 2,
+    "point": [
+     -17.401643413565502,
+     3.722291164425624,
+     34.367231020668676
+    ]
+   },
+   {
+    "tick": 100,
+    "type": "launch",
+    "owner": "cobalt-mech",
+    "shot": 3,
+    "point": [
+     -7.837604815523157,
+     5.217807093139511,
+     34.85638356490567
+    ]
+   },
+   {
+    "tick": 100,
+    "type": "launch",
+    "owner": "cobalt-ship",
+    "shot": 4,
+    "point": [
+     11.465676223122554,
+     1.9840245399329117,
+     32.91309423496453
+    ]
+   },
+   {
+    "tick": 107,
+    "type": "launch",
+    "owner": "relay",
+    "shot": 5,
+    "point": [
+     -3.1358685079358737,
+     7.787918667609822,
+     -27.20653569524647
+    ]
+   },
+   {
+    "tick": 108,
+    "type": "launch",
+    "owner": "ember-ship",
+    "shot": 6,
+    "point": [
+     16.853944428685764,
+     1.8488884250082862,
+     -40.94706417036214
+    ]
+   },
+   {
+    "tick": 109,
+    "type": "launch",
+    "owner": "ember-mech",
+    "shot": 7,
+    "point": [
+     -11.882838286189175,
+     5.250614391689666,
+     -34.14486133490639
+    ]
+   },
+   {
+    "tick": 110,
+    "type": "launch",
+    "owner": "ember-tank",
+    "shot": 8,
+    "point": [
+     -23.226336867198786,
+     3.9586196128108853,
+     -43.15347739648953
+    ]
+   },
+   {
+    "tick": 111,
+    "type": "launch",
+    "owner": "ember-helicopter",
+    "shot": 9,
+    "point": [
+     -34.71658883069702,
+     11.766190408422709,
+     -31.636052445385552
+    ]
+   },
+   {
+    "tick": 152,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 10,
+    "point": [
+     -29.11506530328921,
+     11.493094995639952,
+     34.836826296929175
+    ]
+   },
+   {
+    "tick": 183,
+    "type": "impact",
+    "source": "ember-ship",
+    "shot": 6,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     14.930583803591038,
+     1.1359452304862476,
+     -10.060778538204215
+    ]
+   },
+   {
+    "tick": 204,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 11,
+    "point": [
+     -29.115176411347928,
+     11.575368341459816,
+     34.83709789440605
+    ]
+   },
+   {
+    "tick": 218,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 1,
+    "target": "relay",
+    "component": "station",
+    "point": [
+     -3.9818181818181935,
+     4.526625637402592,
+     -26.6
+    ]
+   },
+   {
+    "tick": 218,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 1,
+    "target": "relay",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     -3.9818181818181935,
+     4.526625637402592,
+     -26.6
+    ],
+    "component": "station",
+    "plate": null
+   },
+   {
+    "tick": 247,
+    "type": "impact",
+    "source": "cobalt-ship",
+    "shot": 4,
+    "target": "relay",
+    "component": "station",
+    "point": [
+     -2.439252336448616,
+     1.9266495501790935,
+     -26.6
+    ]
+   },
+   {
+    "tick": 247,
+    "type": "damage",
+    "source": "cobalt-ship",
+    "shot": 4,
+    "target": "relay",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     -2.439252336448616,
+     1.9266495501790935,
+     -26.6
+    ],
+    "component": "station",
+    "plate": null
+   },
+   {
+    "tick": 251,
+    "type": "impact",
+    "source": "cobalt-tank",
+    "shot": 2,
+    "target": "relay",
+    "component": "station",
+    "point": [
+     -3.545454545446106,
+     4.238489331350105,
+     -26.6
+    ]
+   },
+   {
+    "tick": 251,
+    "type": "damage",
+    "source": "cobalt-tank",
+    "shot": 2,
+    "target": "relay",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     -3.545454545446106,
+     4.238489331350105,
+     -26.6
+    ],
+    "component": "station",
+    "plate": null
+   },
+   {
+    "tick": 255,
+    "type": "impact",
+    "source": "cobalt-mech",
+    "shot": 3,
+    "target": "relay",
+    "component": "station",
+    "point": [
+     -3.181818181818217,
+     4.294852967683863,
+     -26.6
+    ]
+   },
+   {
+    "tick": 255,
+    "type": "damage",
+    "source": "cobalt-mech",
+    "shot": 3,
+    "target": "relay",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     -3.181818181818217,
+     4.294852967683863,
+     -26.6
+    ],
+    "component": "station",
+    "plate": null
+   },
+   {
+    "tick": 255,
+    "type": "destroy",
+    "source": "cobalt-mech",
+    "shot": 3,
+    "target": "relay",
+    "point": [
+     -3,
+     4.258809683445467,
+     -29
+    ]
+   },
+   {
+    "tick": 277,
+    "type": "impact",
+    "source": "relay",
+    "shot": 5,
+    "target": "cobalt-mech",
+    "component": "torso",
+    "point": [
+     -7.9204545454545165,
+     5.291503790419639,
+     35.95
+    ]
+   },
+   {
+    "tick": 277,
+    "type": "damage",
+    "source": "relay",
+    "shot": 5,
+    "target": "cobalt-mech",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     -7.9204545454545165,
+     5.291503790419639,
+     35.95
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 285,
+    "type": "impact",
+    "source": "ember-mech",
+    "shot": 7,
+    "target": "cobalt-mech",
+    "component": "torso",
+    "point": [
+     -8.057417340082381,
+     5.250010081352223,
+     35.95
+    ]
+   },
+   {
+    "tick": 285,
+    "type": "damage",
+    "source": "ember-mech",
+    "shot": 7,
+    "target": "cobalt-mech",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     -8.057417340082381,
+     5.250010081352223,
+     35.95
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 300,
+    "type": "impact",
+    "source": "ember-tank",
+    "shot": 8,
+    "target": "cobalt-helicopter",
+    "component": "airframe",
+    "point": [
+     -29.831448700291325,
+     11.501400339021183,
+     35
+    ]
+   },
+   {
+    "tick": 300,
+    "type": "damage",
+    "source": "ember-tank",
+    "shot": 8,
+    "target": "cobalt-helicopter",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     -29.831448700291325,
+     11.501400339021183,
+     35
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 347,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 10,
+    "target": "water",
+    "component": null,
+    "point": [
+     12.382153967637608,
+     0,
+     -66.60082080978084
+    ]
+   },
+   {
+    "tick": 355,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 12,
+    "point": [
+     -30.161664600246425,
+     11.958310954654355,
+     34.655568501413875
+    ]
+   },
+   {
+    "tick": 368,
+    "type": "launch",
+    "owner": "cobalt-ship",
+    "shot": 13,
+    "point": [
+     11.240556211100948,
+     2.0060507412280772,
+     32.97862691747027
+    ]
+   },
+   {
+    "tick": 369,
+    "type": "launch",
+    "owner": "cobalt-mech",
+    "shot": 14,
+    "point": [
+     -8.119260542165186,
+     5.250042442962745,
+     34.85331024102665
+    ]
+   },
+   {
+    "tick": 398,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 11,
+    "target": "water",
+    "component": null,
+    "point": [
+     12.204784782423372,
+     0,
+     -66.16725169036818
+    ]
+   },
+   {
+    "tick": 398,
+    "type": "launch",
+    "owner": "ember-ship",
+    "shot": 15,
+    "point": [
+     16.863005353598485,
+     1.9013840343587818,
+     -46.276940654194746
+    ]
+   },
+   {
+    "tick": 401,
+    "type": "launch",
+    "owner": "ember-mech",
+    "shot": 16,
+    "point": [
+     -12.194409548491716,
+     5.201226777735829,
+     -32.85939606354394
+    ]
+   },
+   {
+    "tick": 407,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 17,
+    "point": [
+     -30.161715673313644,
+     11.967530305788138,
+     34.65557188868253
+    ]
+   },
+   {
+    "tick": 420,
+    "type": "launch",
+    "owner": "ember-tank",
+    "shot": 18,
+    "point": [
+     -23.22319983469893,
+     3.9668268163071,
+     -44.29451653933927
+    ]
+   },
+   {
+    "tick": 423,
+    "type": "impact",
+    "source": "ember-helicopter",
+    "shot": 9,
+    "target": "boundary",
+    "component": null,
+    "point": [
+     -22.64712024464304,
+     20.3937281813108,
+     144
+    ]
+   },
+   {
+    "tick": 459,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 19,
+    "point": [
+     -30.157473601029267,
+     11.96176854991367,
+     34.65529513062147
+    ]
+   },
+   {
+    "tick": 463,
+    "type": "launch",
+    "owner": "ember-helicopter",
+    "shot": 20,
+    "point": [
+     -33.93894913112891,
+     11.306538058035855,
+     -29.66329955825108
+    ]
+   },
+   {
+    "tick": 470,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 12,
+    "target": "ember-helicopter",
+    "component": "airframe",
+    "point": [
+     -34.62042563563467,
+     12.023024656465287,
+     -30.00459705183107
+    ]
+   },
+   {
+    "tick": 470,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 12,
+    "target": "ember-helicopter",
+    "amount": 20,
+    "hp": 100,
+    "point": [
+     -34.62042563563467,
+     12.023024656465287,
+     -30.00459705183107
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 487,
+    "type": "impact",
+    "source": "ember-ship",
+    "shot": 15,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     14.723863353848989,
+     0.9168653269603325,
+     -9.645025118215017
+    ]
+   },
+   {
+    "tick": 511,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 21,
+    "point": [
+     -30.137361349370437,
+     11.954994166396833,
+     34.65407621929608
+    ]
+   },
+   {
+    "tick": 525,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 17,
+    "target": "ember-helicopter",
+    "component": "airframe",
+    "point": [
+     -34.7431276341799,
+     12.030061257505597,
+     -31.762177056092053
+    ]
+   },
+   {
+    "tick": 525,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 17,
+    "target": "ember-helicopter",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     -34.7431276341799,
+     12.030061257505597,
+     -31.762177056092053
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 533,
+    "type": "launch",
+    "owner": "cobalt-ship",
+    "shot": 22,
+    "point": [
+     11.264929065009351,
+     2.0026692921961518,
+     32.97028483052837
+    ]
+   },
+   {
+    "tick": 536,
+    "type": "launch",
+    "owner": "cobalt-mech",
+    "shot": 23,
+    "point": [
+     -8.114975272029351,
+     5.250014384219206,
+     34.853076459997965
+    ]
+   },
+   {
+    "tick": 549,
+    "type": "impact",
+    "source": "cobalt-ship",
+    "shot": 13,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     -13.105324949707098,
+     2.000525685623357,
+     -38.23307547789322
+    ]
+   },
+   {
+    "tick": 550,
+    "type": "impact",
+    "source": "cobalt-mech",
+    "shot": 14,
+    "target": "ember-mech",
+    "component": "torso",
+    "point": [
+     -12.1159810340258,
+     5.251464813269285,
+     -37.08765861246186
+    ]
+   },
+   {
+    "tick": 550,
+    "type": "damage",
+    "source": "cobalt-mech",
+    "shot": 14,
+    "target": "ember-mech",
+    "amount": 20,
+    "hp": 100,
+    "point": [
+     -12.1159810340258,
+     5.251464813269285,
+     -37.08765861246186
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 563,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 24,
+    "point": [
+     -30.134552636136185,
+     11.951562455335058,
+     34.65394785202955
+    ]
+   },
+   {
+    "tick": 582,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 19,
+    "target": "ember-helicopter",
+    "component": "airframe",
+    "point": [
+     -34.80454338392008,
+     11.731021637738783,
+     -34.53730018102196
+    ]
+   },
+   {
+    "tick": 582,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 19,
+    "target": "ember-helicopter",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     -34.80454338392008,
+     11.731021637738783,
+     -34.53730018102196
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 590,
+    "type": "impact",
+    "source": "ember-helicopter",
+    "shot": 20,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     -14.187372050357832,
+     2.000000000003499,
+     38.49046458823379
+    ]
+   },
+   {
+    "tick": 612,
+    "type": "impact",
+    "source": "ember-tank",
+    "shot": 18,
+    "target": "cobalt-helicopter",
+    "component": "airframe",
+    "point": [
+     -29.833274703135288,
+     11.867302920626122,
+     35
+    ]
+   },
+   {
+    "tick": 612,
+    "type": "damage",
+    "source": "ember-tank",
+    "shot": 18,
+    "target": "cobalt-helicopter",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     -29.833274703135288,
+     11.867302920626122,
+     35
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 615,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 25,
+    "point": [
+     -30.137802267159877,
+     11.949828920054056,
+     34.654156457978885
+    ]
+   },
+   {
+    "tick": 624,
+    "type": "beacon",
+    "source": "cobalt-tank",
+    "point": [
+     -16,
+     11.080992491502506,
+     3
+    ]
+   },
+   {
+    "tick": 637,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 21,
+    "target": "ember-helicopter",
+    "component": "airframe",
+    "point": [
+     -34.28584915383654,
+     11.455553447174134,
+     -36.19581160622402
+    ]
+   },
+   {
+    "tick": 637,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 21,
+    "target": "ember-helicopter",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     -34.28584915383654,
+     11.455553447174134,
+     -36.19581160622402
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 667,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 26,
+    "point": [
+     -30.136021832426508,
+     11.949096805873202,
+     34.654061704045226
+    ]
+   },
+   {
+    "tick": 688,
+    "type": "launch",
+    "owner": "ember-ship",
+    "shot": 27,
+    "point": [
+     15.617484990618811,
+     2.010924658913935,
+     -38.85571333030532
+    ]
+   },
+   {
+    "tick": 690,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 24,
+    "target": "ember-helicopter",
+    "component": "airframe",
+    "point": [
+     -34.24517977776724,
+     11.314452884041799,
+     -37.01871432731585
+    ]
+   },
+   {
+    "tick": 690,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 24,
+    "target": "ember-helicopter",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     -34.24517977776724,
+     11.314452884041799,
+     -37.01871432731585
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 693,
+    "type": "launch",
+    "owner": "ember-mech",
+    "shot": 28,
+    "point": [
+     -12.22085336687585,
+     5.183729058933388,
+     -38.33740412654231
+    ]
+   },
+   {
+    "tick": 703,
+    "type": "launch",
+    "owner": "cobalt-mech",
+    "shot": 29,
+    "point": [
+     -8.11074007155793,
+     5.250003127409251,
+     34.85285383903621
+    ]
+   },
+   {
+    "tick": 708,
+    "type": "impact",
+    "source": "cobalt-ship",
+    "shot": 22,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     -11.52875808998966,
+     2.000226288004468,
+     -36.170566206301686
+    ]
+   },
+   {
+    "tick": 719,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 30,
+    "point": [
+     -30.1339266313369,
+     11.94882398781467,
+     34.65394482051337
+    ]
+   },
+   {
+    "tick": 723,
+    "type": "impact",
+    "source": "cobalt-mech",
+    "shot": 23,
+    "target": "ember-mech",
+    "component": "torso",
+    "point": [
+     -12.105570745625178,
+     5.25051363587584,
+     -39.66297564119561
+    ]
+   },
+   {
+    "tick": 723,
+    "type": "damage",
+    "source": "cobalt-mech",
+    "shot": 23,
+    "target": "ember-mech",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     -12.105570745625178,
+     5.25051363587584,
+     -39.66297564119561
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 730,
+    "type": "launch",
+    "owner": "ember-tank",
+    "shot": 31,
+    "point": [
+     -23.24247234389081,
+     3.9934484305925224,
+     -37.526513502897856
+    ]
+   },
+   {
+    "tick": 743,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 25,
+    "target": "ember-helicopter",
+    "component": "airframe",
+    "point": [
+     -34.37968686835587,
+     11.242093714124165,
+     -37.556539365840834
+    ]
+   },
+   {
+    "tick": 743,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 25,
+    "target": "ember-helicopter",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     -34.37968686835587,
+     11.242093714124165,
+     -37.556539365840834
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 743,
+    "type": "destroy",
+    "source": "cobalt-helicopter",
+    "shot": 25,
+    "target": "ember-helicopter",
+    "point": [
+     -34.35732695125984,
+     11.178939361052807,
+     -39.55944394161575
+    ]
+   },
+   {
+    "tick": 744,
+    "type": "impact",
+    "source": "ember-mech",
+    "shot": 16,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     -24.592601308860214,
+     2,
+     103.65456784966507
+    ]
+   },
+   {
+    "tick": 768,
+    "type": "launch",
+    "owner": "cobalt-ship",
+    "shot": 32,
+    "point": [
+     12.156796335832668,
+     1.8874559060095657,
+     32.85527025975799
+    ]
+   },
+   {
+    "tick": 799,
+    "type": "impact",
+    "source": "ember-mech",
+    "shot": 28,
+    "target": "cobalt-tank",
+    "component": "turret",
+    "point": [
+     -16.570677207603516,
+     3.8761369683657407,
+     3.7636768926767474
+    ]
+   },
+   {
+    "tick": 799,
+    "type": "damage",
+    "source": "ember-mech",
+    "shot": 28,
+    "target": "cobalt-tank",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     -16.570677207603516,
+     3.8761369683657407,
+     3.7636768926767474
+    ],
+    "component": "turret",
+    "plate": "front"
+   },
+   {
+    "tick": 816,
+    "type": "impact",
+    "source": "ember-ship",
+    "shot": 27,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     -15.576127115876284,
+     2.0573478295103533,
+     3.9856768637971265
+    ]
+   },
+   {
+    "tick": 834,
+    "type": "launch",
+    "owner": "cobalt-tank",
+    "shot": 33,
+    "point": [
+     -16.29764288126025,
+     3.961730964219143,
+     1.882683664091723
+    ]
+   },
+   {
+    "tick": 851,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 34,
+    "point": [
+     -29.789100915795302,
+     11.723986153104718,
+     34.672782877376946
+    ]
+   },
+   {
+    "tick": 863,
+    "type": "impact",
+    "source": "cobalt-ship",
+    "shot": 32,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     14.786636166430217,
+     0.7449130077605034,
+     -6.471309855325341
+    ]
+   },
+   {
+    "tick": 870,
+    "type": "launch",
+    "owner": "cobalt-mech",
+    "shot": 35,
+    "point": [
+     -8.110270344648377,
+     5.250002350949298,
+     34.852829664165974
+    ]
+   },
+   {
+    "tick": 890,
+    "type": "impact",
+    "source": "cobalt-mech",
+    "shot": 29,
+    "target": "ember-mech",
+    "component": "torso",
+    "point": [
+     -11.945366651887339,
+     5.250111421016548,
+     -39.49696032355188
+    ]
+   },
+   {
+    "tick": 890,
+    "type": "damage",
+    "source": "cobalt-mech",
+    "shot": 29,
+    "target": "ember-mech",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     -11.945366651887339,
+     5.250111421016548,
+     -39.49696032355188
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 903,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 36,
+    "point": [
+     -29.79202302362476,
+     11.7273457733128,
+     34.67216326176575
+    ]
+   },
+   {
+    "tick": 906,
+    "type": "impact",
+    "source": "ember-tank",
+    "shot": 31,
+    "target": "cobalt-helicopter",
+    "component": "airframe",
+    "point": [
+     -29.818654357486118,
+     11.856256906170294,
+     35
+    ]
+   },
+   {
+    "tick": 906,
+    "type": "damage",
+    "source": "ember-tank",
+    "shot": 31,
+    "target": "cobalt-helicopter",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     -29.818654357486118,
+     11.856256906170294,
+     35
+    ],
+    "component": "airframe",
+    "plate": null
+   },
+   {
+    "tick": 931,
+    "type": "impact",
+    "source": "cobalt-tank",
+    "shot": 33,
+    "target": "ember-mech",
+    "component": "torso",
+    "point": [
+     -12.290700356355991,
+     5.162928442075659,
+     -38.285809165639776
+    ]
+   },
+   {
+    "tick": 931,
+    "type": "damage",
+    "source": "cobalt-tank",
+    "shot": 33,
+    "target": "ember-mech",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     -12.290700356355991,
+     5.162928442075659,
+     -38.285809165639776
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 933,
+    "type": "launch",
+    "owner": "cobalt-ship",
+    "shot": 37,
+    "point": [
+     12.160081841401533,
+     1.8871836256116397,
+     32.85549375249265
+    ]
+   },
+   {
+    "tick": 978,
+    "type": "launch",
+    "owner": "ember-ship",
+    "shot": 38,
+    "point": [
+     15.518816228558448,
+     1.9553480643967454,
+     -34.90464633246395
+    ]
+   },
+   {
+    "tick": 983,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 26,
+    "target": "boundary",
+    "component": null,
+    "point": [
+     -40.49471408163209,
+     10.128423439943802,
+     -144
+    ]
+   },
+   {
+    "tick": 985,
+    "type": "launch",
+    "owner": "ember-mech",
+    "shot": 39,
+    "point": [
+     -12.231543597995064,
+     5.181091887098927,
+     -35.4136304036117
+    ]
+   },
+   {
+    "tick": 992,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 34,
+    "target": "ember-tank",
+    "component": "hull",
+    "point": [
+     -22.659037290651874,
+     3.30030921412522,
+     -44.005634415893454
+    ]
+   },
+   {
+    "tick": 992,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 34,
+    "target": "ember-tank",
+    "amount": 50,
+    "hp": 70,
+    "point": [
+     -22.659037290651874,
+     3.30030921412522,
+     -44.005634415893454
+    ],
+    "component": "hull",
+    "plate": "top"
+   },
+   {
+    "tick": 1011,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 40,
+    "point": [
+     -29.446270338927256,
+     11.766373976857324,
+     34.72554973096158
+    ]
+   },
+   {
+    "tick": 1019,
+    "type": "launch",
+    "owner": "cobalt-tank",
+    "shot": 41,
+    "point": [
+     -16.269555945369866,
+     3.9701330489097697,
+     1.885898632749981
+    ]
+   },
+   {
+    "tick": 1027,
+    "type": "impact",
+    "source": "cobalt-ship",
+    "shot": 37,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     14.826951086004954,
+     0.7540507939645305,
+     -6.202600223167147
+    ]
+   },
+   {
+    "tick": 1035,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 30,
+    "target": "boundary",
+    "component": null,
+    "point": [
+     -40.332544811364365,
+     10.101084809104872,
+     -144
+    ]
+   },
+   {
+    "tick": 1037,
+    "type": "launch",
+    "owner": "cobalt-mech",
+    "shot": 42,
+    "point": [
+     -8.11690329959946,
+     5.250028633880764,
+     34.853180581016915
+    ]
+   },
+   {
+    "tick": 1040,
+    "type": "launch",
+    "owner": "ember-tank",
+    "shot": 43,
+    "point": [
+     -23.224172627944764,
+     3.968346324839234,
+     -43.935015840852245
+    ]
+   },
+   {
+    "tick": 1046,
+    "type": "impact",
+    "source": "cobalt-mech",
+    "shot": 35,
+    "target": "ember-mech",
+    "component": "torso",
+    "point": [
+     -11.70747365224707,
+     5.250079042811326,
+     -35.19146246776582
+    ]
+   },
+   {
+    "tick": 1046,
+    "type": "damage",
+    "source": "cobalt-mech",
+    "shot": 35,
+    "target": "ember-mech",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     -11.70747365224707,
+     5.250079042811326,
+     -35.19146246776582
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 1046,
+    "type": "impact",
+    "source": "cobalt-helicopter",
+    "shot": 36,
+    "target": "ember-tank",
+    "component": "hull",
+    "point": [
+     -22.66179814892946,
+     3.3001239089992622,
+     -45.13474471655104
+    ]
+   },
+   {
+    "tick": 1046,
+    "type": "damage",
+    "source": "cobalt-helicopter",
+    "shot": 36,
+    "target": "ember-tank",
+    "amount": 50,
+    "hp": 20,
+    "point": [
+     -22.66179814892946,
+     3.3001239089992622,
+     -45.13474471655104
+    ],
+    "component": "hull",
+    "plate": "top"
+   },
+   {
+    "tick": 1063,
+    "type": "launch",
+    "owner": "cobalt-helicopter",
+    "shot": 44,
+    "point": [
+     -29.438687875896107,
+     11.763552885304941,
+     34.72766762994284
+    ]
+   },
+   {
+    "tick": 1084,
+    "type": "impact",
+    "source": "ember-mech",
+    "shot": 39,
+    "target": "cobalt-tank",
+    "component": "turret",
+    "point": [
+     -16.47864890799297,
+     3.9086262351619543,
+     3.772884514119591
+    ]
+   },
+   {
+    "tick": 1084,
+    "type": "damage",
+    "source": "ember-mech",
+    "shot": 39,
+    "target": "cobalt-tank",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     -16.47864890799297,
+     3.9086262351619543,
+     3.772884514119591
+    ],
+    "component": "turret",
+    "plate": "front"
+   },
+   {
+    "tick": 1095,
+    "type": "impact",
+    "source": "ember-ship",
+    "shot": 38,
+    "target": "cobalt-tank",
+    "component": "hull",
+    "point": [
+     -15.116623489164677,
+     2.377408476097457,
+     2.785598747276128
+    ]
+   },
+   {
+    "tick": 1095,
+    "type": "damage",
+    "source": "ember-ship",
+    "shot": 38,
+    "target": "cobalt-tank",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     -15.116623489164677,
+     2.377408476097457,
+     2.785598747276128
+    ],
+    "component": "hull",
+    "plate": "front"
+   },
+   {
+    "tick": 1107,
+    "type": "impact",
+    "source": "cobalt-tank",
+    "shot": 41,
+    "target": "ember-mech",
+    "component": "torso",
+    "point": [
+     -12.273421912468056,
+     5.167850162898063,
+     -34.329240764436435
+    ]
+   },
+   {
+    "tick": 1107,
+    "type": "damage",
+    "source": "cobalt-tank",
+    "shot": 41,
+    "target": "ember-mech",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     -12.273421912468056,
+     5.167850162898063,
+     -34.329240764436435
+    ],
+    "component": "torso",
+    "plate": null
+   },
+   {
+    "tick": 1107,
+    "type": "destroy",
+    "source": "cobalt-tank",
+    "shot": 41,
+    "target": "ember-mech",
+    "point": [
+     -12,
+     4.251240441975597,
+     -35.375
+    ]
+   },
+   {
+    "tick": 1107,
+    "type": "outcome",
+    "status": "victory",
+    "reason": "crossing secured",
+    "score": 350
+   }
+  ]
+ }
+}
