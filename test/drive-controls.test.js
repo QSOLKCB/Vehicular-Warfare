@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {crewKeys,SimpleSteering} from '../game/drive-controls.js';
+import {assertHeldYaw} from '../tools/control-sortie.mjs';
 import {createTankWorld,stepTank,tankReceipt,replayTank,componentSight,TK} from '../sim/tank-world.js';
 import {createMechWorld,stepMech,mechReceipt,replayMech,MK} from '../sim/mech-world.js';
 import {createNavalWorld,stepNaval,navalReceipt,replayNaval,NK} from '../sim/naval-world.js';
@@ -14,6 +15,21 @@ const stations=[
   {kind:'ship',keys:NK,left:NK.mountLeft,right:NK.mountRight,mount:'mountYaw',
     create:createNavalWorld,step:stepNaval,receipt:navalReceipt,replay:replayNaval}
 ];
+
+test('manual aim hold accepts idle roundoff and detects one tick of mount traverse',()=>{
+  const released=0.11249999999999961;
+  assertHeldYaw(0.11249999999999945,released); // Observed after release in Chromium 157.
+  assertHeldYaw(-Math.PI,Math.PI);
+  assert.throws(()=>assertHeldYaw(NaN,released),assert.AssertionError);
+  for(const {create,step,mount,right} of stations){
+    const world=create();
+    world.player[mount]=released;
+    for(let tick=0;tick<12;tick++)step(world,0);
+    assertHeldYaw(world.player[mount],released);
+    step(world,right);
+    assert.throws(()=>assertHeldYaw(world.player[mount],released),assert.AssertionError);
+  }
+});
 
 test('one-handed surface aliases use the same command bits as arrows and preserve helicopter flight keys',()=>{
   for(const {kind,keys,left,right} of stations){

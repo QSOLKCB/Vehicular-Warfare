@@ -7,6 +7,13 @@ const crews=[
   {crew:'ship',family:'naval',entry:'navalSortie',yaw:'mountYaw'}
 ];
 
+export function assertHeldYaw(actual,expected){
+  // A mount can wrap its yaw on idle ticks. Even one tick of manual traverse is at least 0.00875 rad.
+  const delta=actual-expected;
+  const radians=Math.atan2(Math.sin(delta),Math.cos(delta));
+  assert.ok(Math.abs(radians)<=1e-12,`Released mount yaw changed from ${expected} to ${actual} rad`);
+}
+
 export async function controlSortie({key,click,screenshot,send,evaluate,sleep}){
   const board=await evaluate('new URL("./",location.href).href');
   let module;
@@ -70,8 +77,8 @@ export async function controlSortie({key,click,screenshot,send,evaluate,sleep}){
     await wait(s=>s.player[yaw]<elevated.player[yaw]-.08 && s.player.elevation<elevated.player.elevation-.025,'near-hand left and lower');
     await key('KeyQ',false);await key('KeyF',false);
     const settled=await read();
-    await wait(s=>s.tick>=settled.tick+12,'manual aim held');
-    assert.equal((await read()).player[yaw],settled.player[yaw]);
+    const held=await wait(s=>s.tick>=settled.tick+12,'manual aim held');
+    assertHeldYaw(held.player[yaw],settled.player[yaw]);
     await pause();await choose('driveStyle','independent');
     await launch('again');await key('KeyW',true);await key('KeyD',true);
     const independent=await wait(s=>Math.abs(s.player.yaw)>.11,'independent steer');
