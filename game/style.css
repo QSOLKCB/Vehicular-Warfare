@@ -33,3 +33,6 @@ summary{margin-top:24px;cursor:pointer;color:#e8ddca;font-size:11px;width:fit-co
 @media(max-height:510px){#panel{top:52%}h1{font-size:49px;margin:8px 0}p{font-size:14px;margin-bottom:10px}summary{margin-top:9px}.keys{position:absolute;left:100%;bottom:0;width:260px}.series{display:none}}
 #valley{touch-action:none}
 #hud{z-index:1}
+
+#sortieLabel{display:flex;align-items:center;gap:10px;margin:0 0 14px;font:12px var(--mono);color:var(--gold)}
+select{font:inherit;padding:7px;color:var(--ink);background:#292f30;border:1px solid var(--line);max-width:100%}

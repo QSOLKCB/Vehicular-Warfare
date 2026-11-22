@@ -18,12 +18,26 @@ export function missionSeed(pack) {
   return seed;
 }
 
-export function valley(seed) {
+export function valley(seed, sites) {
   const random = seededRandom(seed);
   const heights = [];
   const phase = random() * 6;
-  for (let z = -EDGE; z <= EDGE; z += 6) {
-    for (let x = -EDGE; x <= EDGE; x += 6) {
+  const cell = sites ? 8 : 6, z0=sites ? -816 : -EDGE;
+  const cellsX=2*EDGE/cell,cellsZ=(EDGE-z0)/cell;
+  for (let z = z0; z <= EDGE; z += cell) {
+    for (let x = -EDGE; x <= EDGE; x += cell) {
+      if(sites) {
+        const middle=17*Math.sin(z/81+phase);
+        const wall=Math.min(1,Math.max(0,(Math.abs(x-middle)-37)/78));
+        const peaks=46+16*Math.cos(z/37+x/21+phase)+10*Math.sin(x/15);
+        let crest=0;
+        for(const [,cx,cz] of sites){
+          const dz=z-cz-29-4*Math.sin((x-cx)/23);
+          crest+=13*Math.exp(-dz*dz/78-(x-cx)**2/3600);
+        }
+        heights.push(1+wall*(peaks+5*random())+crest+.6*random());
+        continue;
+      }
       const crest = 18 + 4 * Math.sin(x / 27);
       const ridge = 13 * Math.exp(-((z - crest) ** 2) / 58) * Math.exp(-(x ** 2) / 2900);
       const walls = Math.min(1, Math.max(0, (Math.abs(x) - 25) / 84) + Math.max(0, (-z - 48) / 85));
@@ -31,12 +45,12 @@ export function valley(seed) {
       heights.push(1 + walls * (peaks + 7 * random()) + ridge + 0.55 * random());
     }
   }
-  const field = Object.freeze(new Heightfield({cellsX:48, cellsZ:48, cellSize:6, originX:-EDGE, originZ:-EDGE, heights}));
+  const field = Object.freeze(new Heightfield({cellsX, cellsZ, cellSize:cell, originX:-EDGE, originZ:z0, heights}));
   // Both triangle gradients bound the height difference over any horizontal disc.
   let slope = 0;
-  for (let j = 0; j < 48; j++) for (let i = 0; i < 48; i++) {
+  for (let j = 0; j < cellsZ; j++) for (let i = 0; i < cellsX; i++) {
     for (const f of [0.25, 0.75]) {
-      const {normal:n} = field.sample(-EDGE + (i+f)*6, -EDGE + (j+f)*6);
+      const {normal:n} = field.sample(-EDGE + (i+f)*cell, z0 + (j+f)*cell);
       slope = Math.max(slope, Math.hypot(n[0], n[2]) / n[1]);
     }
   }

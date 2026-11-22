@@ -3,7 +3,7 @@ import hashlib
 from pathlib import Path
 import sys
 
-files = [Path("sim") / (name + ".js") for name in ("clock", "world", "terrain")]
+files = [Path("sim") / (name + ".js") for name in ("clock", "world", "terrain", "missions")]
 files += [Path("vendor/vanillajs/modules") / name / "index.js" for name in ("terrain", "collision", "math")]
 digest = hashlib.sha256()
 for path in sorted(files):

@@ -2,7 +2,7 @@ import {cross,dot,normalize,subtract,seededRandom} from '../vendor/vanillajs/mod
 import {facet} from './models.js';
 export function landscape(w) {
   const out=[],rng=seededRandom(w.seed+17);
-  for(let j=0;j<48;j++) for(let i=0;i<48;i++) for(const tri of w.field.triangleAt(i,j)) {
+  for(let j=0;j<w.field.cellsZ;j++) for(let i=0;i<w.field.cellsX;i++) for(const tri of w.field.triangleAt(i,j)) {
     const [a,b,c]=tri, n=normalize(cross(subtract(b,a),subtract(c,a)));
     const h=(a[1]+b[1]+c[1])/3;
     const sunlight=Math.max(0,dot(n,normalize([-.65,.8,-.55])));
@@ -11,8 +11,8 @@ export function landscape(w) {
     facet(out,a,b,c,base,shade);
   }
   // Angular junipers give the ridgeline scale. Keep the convoy corridor open.
-  for(let i=0;i<850;i++){
-    const x=(rng()-.5)*270,z=(rng()-.5)*270;
+  for(let i=0;i<(w.route?2000:850);i++){
+    const x=(rng()-.5)*270,z=w.route?132-rng()*930:(rng()-.5)*270;
     if(Math.abs(x)<19 && z<50 && z>-44) continue;
     const y=w.field.sample(x,z).height, h=1.5+rng()*4, radius=h*.31;
     for(let side=0;side<5;side++) {
