@@ -1,0 +1,50 @@
+{
+  "native/breakwater-balanced-sight.png": {
+    "base": "e58ce54f0bc189caa0cd4d3752523dafd52d25b63e28117d65d9474a6da27f2e",
+    "bridge": "e58ce54f0bc189caa0cd4d3752523dafd52d25b63e28117d65d9474a6da27f2e",
+    "identical": true,
+    "differentPixels": 0
+  },
+  "native/breakwater-full-sight.png": {
+    "base": "0357cf8875a41390fee6b85e019c81facd4fd681a0604df21b9ffb703038694a",
+    "bridge": "0357cf8875a41390fee6b85e019c81facd4fd681a0604df21b9ffb703038694a",
+    "identical": true,
+    "differentPixels": 0
+  },
+  "native/breakwater-balanced-chase.png": {
+    "base": "cccb9bedfd73fe5dd9cd851ba9b01a43d50cd30a0d99c7a026d81ff7d5eb7418",
+    "bridge": "df55b8fd8c19fdfc1a688739c60073ac8a19467be4ab8379c0978fabc7fa0266",
+    "identical": false,
+    "differentPixels": 1
+  },
+  "native/breakwater-full-chase.png": {
+    "base": "485fba7d9c20c8bac31dc1fa3b118d73498518c4d72d7bbcfe9393049106ecb8",
+    "bridge": "485fba7d9c20c8bac31dc1fa3b118d73498518c4d72d7bbcfe9393049106ecb8",
+    "identical": true,
+    "differentPixels": 0
+  },
+  "software/breakwater-balanced-sight.png": {
+    "base": "97848fff91bda1ebb7c9b48c3ce292b7b5b9c2ddc6d3a83018536c7987cbd098",
+    "bridge": "97848fff91bda1ebb7c9b48c3ce292b7b5b9c2ddc6d3a83018536c7987cbd098",
+    "identical": true,
+    "differentPixels": 0
+  },
+  "software/breakwater-full-sight.png": {
+    "base": "7fd9652ce7a26bdbb559b29100d7b4d59068a6a480e528ab31d23ce76b313c68",
+    "bridge": "7fd9652ce7a26bdbb559b29100d7b4d59068a6a480e528ab31d23ce76b313c68",
+    "identical": true,
+    "differentPixels": 0
+  },
+  "software/breakwater-balanced-chase.png": {
+    "base": "04d0f2fc5cead2f9fcb237be082144bf0fd12cce9db3d54a7c91726e6b7ec759",
+    "bridge": "04d0f2fc5cead2f9fcb237be082144bf0fd12cce9db3d54a7c91726e6b7ec759",
+    "identical": true,
+    "differentPixels": 0
+  },
+  "software/breakwater-full-chase.png": {
+    "base": "40f06301b3191cdf8e009847521d9040043e80f952bf677e11df31433ed7b78c",
+    "bridge": "40f06301b3191cdf8e009847521d9040043e80f952bf677e11df31433ed7b78c",
+    "identical": true,
+    "differentPixels": 0
+  }
+}
