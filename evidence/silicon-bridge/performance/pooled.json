@@ -1,0 +1,274 @@
+{
+  "native/base/full": {
+    "draws": {
+      "p50": 62,
+      "p95": 64
+    },
+    "vertices": {
+      "p50": 84456,
+      "p95": 85176
+    },
+    "drawMs": {
+      "p50": 0.5,
+      "p95": 0.6
+    },
+    "gpuMs": {
+      "p50": 0.833,
+      "p95": 1.313
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.8
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2, OpenGL ES 3.2)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  },
+  "native/base/balanced": {
+    "draws": {
+      "p50": 37,
+      "p95": 59
+    },
+    "vertices": {
+      "p50": 75852,
+      "p95": 82284
+    },
+    "drawMs": {
+      "p50": 0.4,
+      "p95": 0.5
+    },
+    "gpuMs": {
+      "p50": 0.842,
+      "p95": 1.233
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.8
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2, OpenGL ES 3.2)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  },
+  "native/bridge/full": {
+    "draws": {
+      "p50": 62,
+      "p95": 64
+    },
+    "vertices": {
+      "p50": 84456,
+      "p95": 85176
+    },
+    "drawMs": {
+      "p50": 0.5,
+      "p95": 0.7
+    },
+    "gpuMs": {
+      "p50": 1.061,
+      "p95": 1.461
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.8
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2, OpenGL ES 3.2)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  },
+  "native/bridge/balanced": {
+    "draws": {
+      "p50": 37,
+      "p95": 59
+    },
+    "vertices": {
+      "p50": 75852,
+      "p95": 82284
+    },
+    "drawMs": {
+      "p50": 0.4,
+      "p95": 0.6
+    },
+    "gpuMs": {
+      "p50": 0.88,
+      "p95": 1.352
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.7
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2, OpenGL ES 3.2)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  },
+  "software/base/full": {
+    "draws": {
+      "p50": 62,
+      "p95": 64
+    },
+    "vertices": {
+      "p50": 84456,
+      "p95": 85176
+    },
+    "drawMs": {
+      "p50": 0.7,
+      "p95": 1
+    },
+    "gpuMs": {
+      "p50": 11.976,
+      "p95": 14.328
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.8
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  },
+  "software/base/balanced": {
+    "draws": {
+      "p50": 37,
+      "p95": 59
+    },
+    "vertices": {
+      "p50": 75852,
+      "p95": 82284
+    },
+    "drawMs": {
+      "p50": 0.6,
+      "p95": 0.9
+    },
+    "gpuMs": {
+      "p50": 10.5,
+      "p95": 13.411
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.8
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  },
+  "software/bridge/full": {
+    "draws": {
+      "p50": 62,
+      "p95": 64
+    },
+    "vertices": {
+      "p50": 84456,
+      "p95": 85176
+    },
+    "drawMs": {
+      "p50": 0.7,
+      "p95": 1.1
+    },
+    "gpuMs": {
+      "p50": 11.021,
+      "p95": 14.513
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.8
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  },
+  "software/bridge/balanced": {
+    "draws": {
+      "p50": 37,
+      "p95": 59
+    },
+    "vertices": {
+      "p50": 75852,
+      "p95": 82284
+    },
+    "drawMs": {
+      "p50": 0.7,
+      "p95": 0.9
+    },
+    "gpuMs": {
+      "p50": 10.305,
+      "p95": 13.188
+    },
+    "intervalMs": {
+      "p50": 16.7,
+      "p95": 16.8
+    },
+    "timer": {
+      "available": true,
+      "issued": 72,
+      "discarded": 0,
+      "disjoint": 0
+    },
+    "graphics": {
+      "backend": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "width": 1100,
+      "height": 720,
+      "antialias": true
+    }
+  }
+}

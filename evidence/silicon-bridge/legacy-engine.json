@@ -1,0 +1,51 @@
+{
+  "gameBaseline": "0132dd22191ebfeddfce8bc76651e09eb2f12b48",
+  "upstream": {
+    "v3.4.0": "0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466",
+    "v3.5.0": "9d95d74b355ec17add32db0b55f0f71130f9c004"
+  },
+  "comparison": {
+    "LICENSE": {
+      "bytes": 11357,
+      "v340Blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "v350Blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "NOTICE": {
+      "bytes": 15487,
+      "v340Blob": "ced2dc6add646224f2ba4b353963dc24476aa02a",
+      "v350Blob": "ced2dc6add646224f2ba4b353963dc24476aa02a",
+      "sha256": "3e00b198d9b7e8cf9aba1b6095caf815dd276bd7cff6c3e517927bf690c2c302"
+    },
+    "modules/collision/index.js": {
+      "bytes": 12454,
+      "v340Blob": "60975e1e1d5914f0610de2e3ed3cbb241ce7f571",
+      "v350Blob": "60975e1e1d5914f0610de2e3ed3cbb241ce7f571",
+      "sha256": "99c0f4bc106d4162fc5bea057a7108d7cf52526279b2a8ad4e4f27c1f0e6f5c1"
+    },
+    "modules/math/index.js": {
+      "bytes": 3042,
+      "v340Blob": "45e5fc4d6c6daa472a89fa59c80e6fd70b2c1455",
+      "v350Blob": "45e5fc4d6c6daa472a89fa59c80e6fd70b2c1455",
+      "sha256": "4f4ebf0786b97342c11004b8830a535890b16693458a0436edb1fc581a411da7"
+    },
+    "modules/render-packing/index.js": {
+      "bytes": 2951,
+      "v340Blob": "7d00bf28320632cf9224b24e19e54cc49f12c164",
+      "v350Blob": "7d00bf28320632cf9224b24e19e54cc49f12c164",
+      "sha256": "c42239a5be626feb53f11243dddaa034821daaa7ca667741495420dca8558733"
+    },
+    "modules/render-webgl/index.js": {
+      "bytes": 7559,
+      "v340Blob": "2403972b13838359c1e2ab50a9bce7749eae149c",
+      "v350Blob": "2403972b13838359c1e2ab50a9bce7749eae149c",
+      "sha256": "b23b2c427d3bf8b29c991e3cf676bcda13bdffa9dae88bbb9f0f4594088aba2d"
+    },
+    "modules/terrain/index.js": {
+      "bytes": 5985,
+      "v340Blob": "bf717a82272c69e16f58875d009da7b6567edbd2",
+      "v350Blob": "bf717a82272c69e16f58875d009da7b6567edbd2",
+      "sha256": "500756acf093f44e2e6c7e993a4b8f3f6f720abaf32db99fe0189d9b65fdc186"
+    }
+  }
+}

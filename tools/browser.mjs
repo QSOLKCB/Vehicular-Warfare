@@ -137,7 +137,15 @@ try{
   }
   const family=process.argv[3];
   const stationSorties={tank:tankSortie,mech:mechSortie,naval:navalSortie,combined:combinedSortie,creator:creatorSortie};
-  if(family==='profile' || family==='profile-base' || family==='controls'){
+  if(family==='archives'){
+    const {archivedReplays}=await import('./archived-replays.mjs');
+    const result=await archivedReplays({evaluate,webRoot});
+    assert.deepEqual(errors,[]);
+    assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
+    const report={source,servedTree,version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
+    await writeFile(join(output,'archives.json'),JSON.stringify(report,null,1)+'\n');
+    console.log('Verified',result.distinct,'distinct archived recordings from',result.occurrences,'occurrences');
+  }else if(family==='profile' || family==='profile-base' || family==='controls'){
     const io={click,key,mouse,evaluate,send,screenshot,sleep,output};
     const result=family==='controls'?await (await import('./control-sortie.mjs')).controlSortie(io):
       await releaseProfile(io,{baseOnly:family==='profile-base',backend});

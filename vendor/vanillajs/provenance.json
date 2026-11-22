@@ -1,17 +1,44 @@
 {
   "repository": "https://github.com/QSOLKCB/VANILLAJS",
-  "tag": "v3.4.0",
-  "commit": "0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466",
+  "tag": "v3.5.0",
+  "commit": "9d95d74b355ec17add32db0b55f0f71130f9c004",
+  "registrySha256": "73c16da07c674f8b0684705c501f16e27e76274a4981fdc49d8f5507b4a19781",
   "roots": [
     "terrain",
     "collision",
     "render-webgl",
-    "render-packing"
+    "render-packing",
+    "fx-pipe",
+    "blit",
+    "copper"
   ],
+  "dependencies": {
+    "blit": [],
+    "collision": [
+      "math"
+    ],
+    "copper": [],
+    "fx-pipe": [
+      "integer-math"
+    ],
+    "integer-math": [],
+    "math": [],
+    "render-packing": [],
+    "render-webgl": [
+      "math"
+    ],
+    "terrain": [
+      "math"
+    ]
+  },
   "sha256": {
     "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
     "NOTICE": "3e00b198d9b7e8cf9aba1b6095caf815dd276bd7cff6c3e517927bf690c2c302",
+    "modules/blit/index.js": "8d9b6f335af47022b318ee9643bbdc5641571ef384e2a499dfd5d8ebba7f71fd",
     "modules/collision/index.js": "99c0f4bc106d4162fc5bea057a7108d7cf52526279b2a8ad4e4f27c1f0e6f5c1",
+    "modules/copper/index.js": "3a0986e6377f334c9042ef25603fb390ad35452af82ee1423016801465a08131",
+    "modules/fx-pipe/index.js": "60b399acaf5a11978a2234d98aa6b081f1aaadf64b5e23b31a8da928ce9ffa29",
+    "modules/integer-math/index.js": "4c0bb66780bf9e810efb1963c0238d9356814abf79c959dcd1734164de57905f",
     "modules/math/index.js": "4f4ebf0786b97342c11004b8830a535890b16693458a0436edb1fc581a411da7",
     "modules/render-packing/index.js": "c42239a5be626feb53f11243dddaa034821daaa7ca667741495420dca8558733",
     "modules/render-webgl/index.js": "b23b2c427d3bf8b29c991e3cf676bcda13bdffa9dae88bbb9f0f4594088aba2d",

@@ -129,7 +129,7 @@ Pause, pointer unlock and switching to another foreground tab stopped the simula
 
 ## Source and scope
 
-VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
+VANILLAJS v3.5.0 is pinned at `9d95d74b355ec17add32db0b55f0f71130f9c004`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
 
 The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. The release performance checks cover the mixed theatre on one physical NVIDIA GPU. Mobile touch flight controls remain unverified.
 
