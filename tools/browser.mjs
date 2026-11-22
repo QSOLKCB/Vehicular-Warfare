@@ -3,6 +3,7 @@
 import {routeFlights} from './route-flights.mjs';
 import {terrainFlights} from './terrain-flights.mjs';
 import {tankSortie} from './tank-sortie.mjs';
+import {mechSortie} from './mech-sortie.mjs';
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
@@ -103,14 +104,16 @@ try{
     }
     assert.match(message,/^Verified ·/);console.log(message);
   }
-  if(process.argv[3]==='tank'){
-    const result=await tankSortie({click,key,mouse,evaluate,send,screenshot,sleep,output});
+  const family=process.argv[3];
+  if(family==='tank' || family==='mech'){
+    const sortie=family==='tank'?tankSortie:mechSortie;
+    const result=await sortie({click,key,mouse,evaluate,send,screenshot,sleep,output});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u.startsWith('blob:'+base+'/') || u==='data:,'));
     const report={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
       version,cpu:cpus()[0].model,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
-    await writeFile(join(output,'tank.json'),JSON.stringify(report,null,1)+'\n');
-    console.log('Cutbank Relay',result.win.receipt.ticks,'ticks to victory');
+    await writeFile(join(output,family+'.json'),JSON.stringify(report,null,1)+'\n');
+    console.log(family,result.win.receipt.ticks,'ticks to victory');
   }else if(process.argv[3]==='terrain'){
     const result=await terrainFlights({read,key,click,screenshot,evaluate,send,until,quantiles});
     assert.deepEqual(errors,[]);

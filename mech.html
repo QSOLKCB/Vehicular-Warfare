@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#34333d"><title>Glassworks Crossing · Vehicular Warfare</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="./game/style.css"><link rel="stylesheet" href="./game/tank.css">
+<style>
+#station{--gold:#ffc47c}
+#panel h1{font-size:clamp(44px,6.8vw,116px)}
+#support{display:flex;gap:4px;margin-top:5px}#support i{width:7px;height:7px;border:1px solid #d7cbb8}
+#support i[data-stance=true]{background:#b8dec9;border-color:#b8dec9}
+#station .instruments{gap:14px}#station #contact{max-width:45vw}
+</style></head>
+<body>
+<main id="station" data-mode="briefing" aria-label="Glassworks Crossing walker station">
+  <canvas id="battlefield" aria-label="Glassworks Crossing 3D battlefield"></canvas><div class="shade"></div>
+  <header><span class="insignia" aria-hidden="true">◢</span><strong>VEHICULAR WARFARE</strong><span class="division"> / </span><span class="series">WALKER OPERATIONS</span><span class="callsign"><i></i> KILN 01</span></header>
+  <section id="panel">
+    <div class="eyebrow"><span class="dash"></span><span id="chapter">MECH SORTIE</span></div>
+    <h1 id="title">GLASSWORKS<br>CROSSING</h1>
+    <p id="desc">Walk the Kiln over the causeway. Disable the sentinel, then reach the blue survey beacon. The arrow keys aim your torso while the legs continue walking.</p>
+    <button id="primary">Deploy walker <b>↗</b></button>
+    <button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
+    <a href="./" id="return">Flight board</a>
+    <details id="guide"><summary>Walker controls &amp; saved replays</summary>
+      <div class="keys"><span><kbd>W / S</kbd> Walk / reverse</span><span><kbd>A / D</kbd> Turn legs</span>
+        <span><kbd>← / →</kbd> Traverse torso</span><span><kbd>↑ / ↓</kbd> Elevate / depress</span>
+        <span><kbd>Space / LMB</kbd> Fire pulse</span><span><kbd>RMB</kbd> Capture mouse aim</span>
+        <span><kbd>C</kbd> Gun sight / chase</span><span><kbd>P / Esc</kbd> Pause</span></div>
+      <label class="replay-check">Check saved walker replay <input id="checkFile" type="file" accept=".json,application/json"></label>
+      <output id="checkResult" aria-live="polite"></output>
+    </details>
+  </section>
+  <section id="hud" hidden aria-label="Walker instruments">
+    <div id="compass"><small>TORSO BEARING</small><strong id="heading"></strong></div>
+    <div class="mission"><small>GLASSWORKS CROSSING</small><div id="objectives"></div></div>
+    <div id="contact" aria-live="polite"></div>
+    <div id="aimPoint" aria-label="Pulse sight"><i></i></div><div id="message" role="status"></div>
+    <div class="instruments"><div><small>FRAME</small><b id="health"></b></div><div><small>PULSES</small><b id="ammo"></b></div><div><small>GAIT</small><b id="gait"></b><div id="support" role="img"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div><small>GUN</small><b id="reload"></b></div></div>
+    <div class="station-actions"><button id="sound" aria-pressed="false">Sound off</button><button id="camera">Gun sight</button><button id="pause">Pause</button></div>
+  </section>
+  <footer><span>W/S STRIDE　 A/D TURN　 ARROWS AIM</span><span>SPACE FIRE　 C VIEW　 P PAUSE</span></footer>
+</main>
+<script type="module" src="./game/mech-main.js"></script>
+</body></html>
