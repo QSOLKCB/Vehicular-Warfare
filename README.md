@@ -24,9 +24,10 @@ Open [RIDGEFIRE on localhost](http://127.0.0.1:8080/) in desktop Chromium with W
 
 | Control | Action |
 | --- | --- |
-| R / F | Raise / lower collective. Release to settle into hover. |
-| W / S and A / D | Pitch forward / back and bank left / right to translate. |
-| Left / right arrows | Turn the helicopter. |
+| W / S | Fly forward / backward. |
+| A / D | Turn left / right. |
+| E / Q | Climb / descend. Release to settle into hover. |
+| Z / X | Slide left / right while keeping your heading. |
 | Up / down arrows | Adjust sight elevation. |
 | Space or left mouse | Launch a rocket. Hold for repeated fire. |
 | Right mouse | Capture mouse steering and sight elevation. Escape releases capture and pauses. |
@@ -34,7 +35,9 @@ Open [RIDGEFIRE on localhost](http://127.0.0.1:8080/) in desktop Chromium with W
 | C | Switch between chase and cockpit cameras. |
 | P or Escape | Pause. Resume, restart or save a replay from the panel. |
 
-In Sable Valley, begin in cover and tap Space to see a rocket hit the ridge. Hold R until the threat indicator reads **EXPOSED**, then release. A named reticle identifies a visible target inside the assisted sight cone. Rockets fly straight from launch. Hold F briefly to break contact. The defenders search the last observed position while their airborne shots continue. A hard descent can destroy the aircraft. The mission ends on destruction of both targets, loss of the Kestrel, exhaustion of usable rockets, or the three-minute time limit.
+The original R/F lift keys and left/right arrow turning also work.
+
+In Sable Valley, begin in cover and tap Space to see a rocket hit the ridge. Hold E until the threat indicator reads **EXPOSED**, then release. A named reticle identifies a visible target inside the assisted sight cone. Rockets fly straight from launch. Hold Q briefly to break contact. The defenders search the last observed position while their airborne shots continue. A hard descent can destroy the aircraft. The mission ends on destruction of both targets, loss of the Kestrel, exhaustion of usable rockets, or the three-minute time limit.
 
 ## Verification
 
