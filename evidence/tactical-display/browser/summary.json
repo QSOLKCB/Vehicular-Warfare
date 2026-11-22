@@ -1,0 +1,315 @@
+{
+  "dataset": "retro",
+  "suites": {
+    "sable": {
+      "mode": "sable",
+      "exit": 0,
+      "elapsedSeconds": 21.47,
+      "archivedCheck": {
+        "mission": "longwatch",
+        "ticks": 8551,
+        "stateHash": "cf43059f",
+        "eventHash": "9797f091",
+        "message": "Verified \u00b7 Long Watch \u00b7 71.26 s \u00b7 victory"
+      },
+      "victory": {
+        "ticks": 1098,
+        "stateHash": "d69c5fca",
+        "eventHash": "53275910"
+      },
+      "defeat": {
+        "ticks": 768,
+        "stateHash": "e4beee9b",
+        "eventHash": "9b5ec4d8"
+      },
+      "screenshots": {
+        "01-briefing.png": "5f14848ed18284454678f8dfe184206b5756650412676426d2cf87f020a5da18",
+        "02-masked.png": "29f097ba4ce3db31cadafd5ad98e11cb78a918739c8a9d5bfa38b0386361d3aa",
+        "03-exposed.png": "2ac96a8e6c33a43587fafae2a7f7b67866f23fecb94875f223f24578ec849da6",
+        "04-search.png": "17da2e22ff6bf9880bf549ea3aeef012387b904df03e08807c63050e8c520d00",
+        "05-cockpit.png": "464ddf2ba2b8f11d7024047435843015d5bc5db4aee981973713c8200b7a160b",
+        "06-victory.png": "f2984901097e5b686ae4eb09e7bac13179a55174f5afb078be3e9820938e77ef",
+        "07-defeat.png": "a61932dce02bec8c27f955440f1e54b7d7d9109edd7482bf6680ba22ccec190b"
+      }
+    },
+    "routes": {
+      "mode": "routes",
+      "exit": 0,
+      "elapsedSeconds": 167.79,
+      "archivedCheck": {
+        "mission": "frostline",
+        "ticks": 9491,
+        "stateHash": "d97c7f24",
+        "eventHash": "e8b4fc93",
+        "message": "Verified \u00b7 Frostline Run \u00b7 79.09 s \u00b7 victory"
+      },
+      "flights": {
+        "longwatch": {
+          "recording": {
+            "ticks": 8587,
+            "stateHash": "85814ea4",
+            "eventHash": "5c42367e"
+          },
+          "inBrowser": "85814ea4",
+          "inNode": "different runtime digest"
+        },
+        "frostline": {
+          "recording": {
+            "ticks": 9372,
+            "stateHash": "82c68c2c",
+            "eventHash": "33f5ceef"
+          },
+          "inBrowser": "82c68c2c",
+          "inNode": "different runtime digest"
+        }
+      },
+      "screenshots": {
+        "frostline-briefing.png": "2781baff4edaf513a6d1b112aa6e9206076a941156977f10042d43b21775b2a6",
+        "frostline-cockpit.png": "9ec81e7232f6ba9a615bb7d92d386922a1c62e7e553124afb17891b5264469ed",
+        "frostline-victory.png": "fa71376973e96fe7e8bacc3187d51e22d686bb5f6cea26e87cb52504f988b6dd",
+        "longwatch-briefing.png": "b507133c03df9b2b33311bb3cf1f3e8cb044b788b8d3d127bf308687ca4459db",
+        "longwatch-cockpit.png": "75ae6dce2d8da74526a2857898dd021abe2fe273174da9e095bf13128c9e7693",
+        "longwatch-hull-hit.png": "bb6bd9cadda6c500acb7579e80bf89d87f0756427cf1812f09d6e012a220d968",
+        "longwatch-victory.png": "99808c302c57e54b4741fdb71a8e9a12b9c70c51cfe806903ebf6366ca4bf506"
+      }
+    },
+    "terrain": {
+      "mode": "terrain",
+      "exit": 0,
+      "elapsedSeconds": 19.16,
+      "parity": {
+        "webgl": {
+          "ticks": 442,
+          "stateHash": "56d28634",
+          "eventHash": "79014d08"
+        },
+        "voxel": {
+          "ticks": 442,
+          "stateHash": "56d28634",
+          "eventHash": "79014d08"
+        },
+        "switch": {
+          "ticks": 442,
+          "stateHash": "56d28634",
+          "eventHash": "79014d08"
+        }
+      },
+      "screenshots": {
+        "frostline-voxel-cockpit.png": "ad5d3fe1a9102f00478d441c286cd881034b6cc079228d55983c9d1b918f4d03",
+        "sable-voxel-cockpit.png": "80511beea548edefa5f4deea96c95e8ac79ec658d4273c692b151d153e43bc9e",
+        "sable-voxel.png": "cb81e07317c515dfa5eb42ecfc1e324b763d8d7181c1fa509149dc79b581c440",
+        "sable-webgl.png": "ac742587e8c70cb95f973bace4545cd1ab8028f06d782d7f3ea59fa599e0fdcf"
+      }
+    },
+    "tank": {
+      "mode": "tank",
+      "exit": 0,
+      "elapsedSeconds": 17.98,
+      "victory": {
+        "ticks": 485,
+        "stateHash": "dd03edb8",
+        "eventHash": "1c6f095a"
+      },
+      "defeat": {
+        "ticks": 1056,
+        "stateHash": "93a05f9e",
+        "eventHash": "8dcf7718"
+      },
+      "screenshots": {
+        "01-cutbank-briefing.png": "ca7d9b510978413ebf5496b19e76dd114cb223bec83d5462ec71f410359ef52c",
+        "02-independent-turret.png": "22b47261bdc186c6531a4027f1732fdad9a2d669e789bcb9e0ca7c6b56f326e1",
+        "03-hull-down.png": "bcb6e12bdd3f748c8ae0413a1fca64d5f67cc87ce8a59ab6e938a61b8aa214f2",
+        "03b-gun-sight.png": "6828e12fb1e9aae60d63b3bfe370e85b0638b1ff83596808c52ed216a73804f1",
+        "04-hit.png": "48fc6bdcb849a3f5c5a62cc47346ead17898a448646e17fe4fe2353f87c368a7",
+        "05-victory.png": "f65e3403d18011d37535c4aaac19c4d4f71c4ab32f0afd06781b7b86301128f3",
+        "06-defeat.png": "bbe34f6f595eb2d5260b73fc8dc310ff2e832615d7874354ee2d4aa69cc99967"
+      }
+    },
+    "mech": {
+      "mode": "mech",
+      "exit": 0,
+      "elapsedSeconds": 23.53,
+      "victory": {
+        "ticks": 1153,
+        "stateHash": "cb5fa56d",
+        "eventHash": "38fb67f4"
+      },
+      "defeat": {
+        "ticks": 1134,
+        "stateHash": "2b6d9a0a",
+        "eventHash": "9fd0074a"
+      },
+      "screenshots": {
+        "01-glassworks-briefing.png": "feceecf27941f71b93edfe0d4ca82634f9bdc7c413dc47ec4b7f75275e1a59b2",
+        "02-walking.png": "8ef1c04bd6c22300f63c13f02973fe941c4e67fc7e2d11b7947f8fb7f40f3075",
+        "03-engagement.png": "2d6b49630c10de2e045591edd2ed9c809f6141c8abee74e48ef8e886b54b01fa",
+        "04-beacon-victory.png": "003cd8933dbd13233f5c8928a7203a24522d701605782d684d04af24fdbb7e98",
+        "05-defeat.png": "bd806bf4511dff21d9b9cee4a015eccd58f68007384f717abbfb55b500545f71"
+      }
+    },
+    "naval": {
+      "mode": "naval",
+      "exit": 0,
+      "elapsedSeconds": 25.33,
+      "victory": {
+        "ticks": 1253,
+        "stateHash": "63b57a5b",
+        "eventHash": "14fdd008"
+      },
+      "defeat": {
+        "ticks": 959,
+        "stateHash": "82a402d5",
+        "eventHash": "fde03734"
+      },
+      "screenshots": {
+        "01-lantern-briefing.png": "f2cfa34bee0ff0ac779f50b8790357e60994fd7a2e6d69bcc20994df3f63c735",
+        "02-underway.png": "a748fa95c251e53bd8e1163e992c1294a49d29b00206b09b50df731fd778efa1",
+        "03-water-contact.png": "8cb2d6f5555667afb90c7264c46ebaf57653ad028d730ba1e87887c0553bfe56",
+        "04-channel.png": "be237d9c501f45b086b20972fb939051cbdff5a41c8bed070293cf0c532b8665",
+        "05-shore-station.png": "c9686b60f2fc6a882ec3f1ddd8735161bbbd842e268d60c64d757ee901fae147",
+        "06-entrance-secured.png": "d352d243a638280140cab2790924e2907af6e1a20787aaeb62c92ede796204f8",
+        "07-defeat.png": "d33632ef86992200e5232336d15ee9d2329929dbd7a43460d84c32209e476ce1"
+      }
+    },
+    "combined": {
+      "mode": "combined",
+      "exit": 0,
+      "elapsedSeconds": 72.86,
+      "verifiedEnabled": {
+        "helicopter": true,
+        "tank": true,
+        "mech": true,
+        "ship": true
+      },
+      "defeat": {
+        "ticks": 1064,
+        "stateHash": "3070e54c",
+        "eventHash": "dca0d304"
+      },
+      "victories": {
+        "helicopter": {
+          "ticks": 1095,
+          "stateHash": "4907ce34",
+          "eventHash": "65e7fd7c"
+        },
+        "tank": {
+          "ticks": 1211,
+          "stateHash": "d70a33a2",
+          "eventHash": "1d226943"
+        },
+        "mech": {
+          "ticks": 978,
+          "stateHash": "cf294af2",
+          "eventHash": "b0e32513"
+        },
+        "ship": {
+          "ticks": 978,
+          "stateHash": "25fe298d",
+          "eventHash": "1ec32e37"
+        }
+      },
+      "screenshots": {
+        "01-breakwater-briefing.png": "3c10d00240fb40c5009a79c04da35b6c3071d6e9f12f39353dedb1e9f630a3ed",
+        "02-helicopter-underway.png": "4321cb084a482427aa0181d24cde3c8d200a3e3daafc7d10ab6481ccb01959eb",
+        "02-mech-underway.png": "a2138e8f7284868a9477cd0724ab29f18d3e896ba4891b7d9a5fcfe979167219",
+        "02-ship-underway.png": "300d10d56156b5c548f704b179bd0a7e66a27e7076659e57b0f0ddd671647764",
+        "02-tank-underway.png": "0c47312ceb0317ab09c4ba21cc6c19f04a20255155b073377f53e495c12b65fb",
+        "03-helicopter-victory.png": "66116f93ecd6d979e88b1248e91d1a13a5249631b2a109bac49f0acfcf27725e",
+        "03-mech-victory.png": "d126213194d38d106eb9f7e8ef072d58c4ddaeb6b69350c88f36c4d980cfaa0e",
+        "03-ship-victory.png": "00976c5597748558b44f594ad58a840852272a9d68be893cdfab0a92dd7c32ab",
+        "03-tank-victory.png": "00b803efe42e42b52bf6a748b4ca4cee24a2a3ec2d7e3f5668e54dd8d6240902",
+        "04-defeat.png": "ca65207f4ffd54b82d33e2dcbc7ebf58878dbff0e5f9c20ff7a62b335da65246"
+      }
+    },
+    "creator": {
+      "mode": "creator",
+      "exit": 0,
+      "elapsedSeconds": 37.31,
+      "verifiedEnabled": {
+        "authored": true
+      },
+      "victory": {
+        "ticks": 959,
+        "stateHash": "e353fae6",
+        "eventHash": "e36a358a"
+      },
+      "defeat": {
+        "ticks": 1054,
+        "stateHash": "567c59c2",
+        "eventHash": "2f954672"
+      },
+      "priorMixedRecording": {
+        "ticks": 1149,
+        "stateHash": "167150e6",
+        "eventHash": "ce10fecb"
+      },
+      "screenshots": {
+        "01-workshop-narrow.png": "08a1cf47d8174612d163fdbe10f2f164d042a90820557ff90fbcb55f4c688252",
+        "01-workshop.png": "eeda8a1ed82a3ef349ead39c19c28264fd8a273e1c2ab9a1398f1721c668de20",
+        "02-playtest.png": "a5bfca69302d5e3c0131effcab8796c03989b8ab1639420ab291a2faf1685026",
+        "03-debrief.png": "6e738a149e5c7e58c5a8f0ad30f3172ff91f935536f5d93ae6e9bd66d0d28363",
+        "04-replay-chase.png": "7d6824c5cb2c4ce2bde9b2bb29da92ffb3022ff6e1207ed8415bc6393e8e2277",
+        "04-replay-overview.png": "0397914042681042fdfe23fe762fec02d36aa8fffc4273a642378789e71e64a4",
+        "04-replay-sight.png": "4890cd5e6fbfa76854e52b4b81535018069fa741fb13a4860ea38c20a558e163",
+        "05-defeat.png": "ad50e0d5192a0651865c76cd28e67097eb0427e4eb7485439673319a7fc0ba2a"
+      }
+    },
+    "controls": {
+      "mode": "controls",
+      "exit": 0,
+      "elapsedSeconds": 40.72,
+      "victories": {
+        "tank": {
+          "ticks": 486,
+          "stateHash": "d7460ed0",
+          "eventHash": "68b883c3"
+        },
+        "mech": {
+          "ticks": 1153,
+          "stateHash": "cb5fa56d",
+          "eventHash": "38fb67f4"
+        },
+        "ship": {
+          "ticks": 1250,
+          "stateHash": "7cc2cb84",
+          "eventHash": "2b4ce92d"
+        }
+      },
+      "screenshots": {
+        "01-mech-controls.png": "feceecf27941f71b93edfe0d4ca82634f9bdc7c413dc47ec4b7f75275e1a59b2",
+        "01-ship-controls.png": "f2cfa34bee0ff0ac779f50b8790357e60994fd7a2e6d69bcc20994df3f63c735",
+        "01-tank-controls.png": "ca7d9b510978413ebf5496b19e76dd114cb223bec83d5462ec71f410359ef52c",
+        "02-mech-victory.png": "003cd8933dbd13233f5c8928a7203a24522d701605782d684d04af24fdbb7e98",
+        "02-ship-victory.png": "4930da50eb4bfce8133d9b3c749d73fd3d76bc59ed2fdaeb0e3e4f3cb16ba03e",
+        "02-tank-victory.png": "72866dc8d4024baf53782a20fbe636676c54ba7eb12c3ec417560a08c366d37a"
+      }
+    }
+  },
+  "servedTree": {
+    "revision": "3793a0e5b1213f3bb66ffc2469cbb75a5f17be85",
+    "files": 79,
+    "sha256": "a9c53336af53a20b72ce4e502502efb68f63dd692f3a6a2ebf93551a5e44e172"
+  },
+  "cpu": "AMD Ryzen 9 5950X 16-Core Processor",
+  "browser": "Chrome/158.0.8127.36",
+  "graphics": {
+    "backend": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "width": 1100,
+    "height": 720
+  },
+  "screenshotRasterDimensions": [
+    [
+      390,
+      844
+    ],
+    [
+      1100,
+      720
+    ]
+  ],
+  "screenshotCount": 61,
+  "zip": {
+    "size": 189110,
+    "sha256": "b8f1a65a7257622ce366ba7055b1c9a78543659b9324999b563fa9b6d35c52f5"
+  }
+}
