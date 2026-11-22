@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/QSOLKCB/VANILLAJS",
+  "tag": "v3.4.0",
+  "commit": "0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466",
+  "roots": [
+    "terrain",
+    "collision"
+  ],
+  "sha256": {
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "NOTICE": "3e00b198d9b7e8cf9aba1b6095caf815dd276bd7cff6c3e517927bf690c2c302",
+    "modules/collision/index.js": "99c0f4bc106d4162fc5bea057a7108d7cf52526279b2a8ad4e4f27c1f0e6f5c1",
+    "modules/math/index.js": "4f4ebf0786b97342c11004b8830a535890b16693458a0436edb1fc581a411da7",
+    "modules/terrain/index.js": "500756acf093f44e2e6c7e993a4b8f3f6f720abaf32db99fe0189d9b65fdc186"
+  }
+}
