@@ -1,0 +1,27 @@
+{
+  "testedCommit": "52c09e9cb040ba54c4974581fcb8e42c12f0696f",
+  "zipSha256": "7d437ac3534cc30610170bbf0f01f33c057e5c211fa5a715955c117cabd9e25d",
+  "zipFiles": 96,
+  "runs": [
+    {
+      "backend": "software",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "servedTree": {
+        "revision": "52c09e9cb040ba54c4974581fcb8e42c12f0696f",
+        "files": 91,
+        "sha256": "f2adec254efa20d98a0524f91331974d878c0120156041f5bbdf707fa3a6f20d"
+      },
+      "browser": "Chrome/158.0.8127.36"
+    },
+    {
+      "backend": "native",
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5060 Ti/PCIe/SSE2, OpenGL ES 3.2)",
+      "servedTree": {
+        "revision": "52c09e9cb040ba54c4974581fcb8e42c12f0696f",
+        "files": 91,
+        "sha256": "f2adec254efa20d98a0524f91331974d878c0120156041f5bbdf707fa3a6f20d"
+      },
+      "browser": "Chrome/158.0.8127.36"
+    }
+  ]
+}
