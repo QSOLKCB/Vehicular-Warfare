@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "title": "Copper Crossing",
+  "seed": 2506,
+  "crew": "tank",
+  "gate": [
+    -18,
+    4
+  ],
+  "relay": [
+    -4,
+    -28
+  ]
+}
