@@ -1,11 +1,13 @@
 import {Clock,HZ} from '../sim/clock.js';
 import {BK,REQUIRED_DEFENDERS,combinedReceipt} from '../sim/combined-world.js';
 import {acceptPack,createCreatorWorld,creatorReceipt,defaultPack,openReplay,stepCreator} from '../sim/creator.js';
+import {configureFxControl} from './fx-gate.js';
 import {CombinedView} from './combined-view.js';
 import {combinedHud,crewControls} from './combined-hud.js';
 import {CreatorMusic} from './creator-music.js';
 import {groundStation} from './ground-station.js';
 
+configureFxControl();
 const el=id=>document.getElementById(id);
 const station=el('station'),canvas=el('battlefield');
 const replayPage=new URLSearchParams(location.search).has('replay');
@@ -183,6 +185,9 @@ async function viewer(){
   toggle.addEventListener('click',transport);
   el('rewind').addEventListener('click',()=>seek(0));
   el('replayMusic').addEventListener('click',()=>{musicEnabled=!musicEnabled;syncMusic();});
+  const fxBeacon=el('fxBeacon');
+  el('replayDeck').querySelector('.transport').append(fxBeacon.parentElement);
+  fxBeacon.addEventListener('change',()=>{if(station.dataset.mode!=='replaying')still();});
   cameraSelect.addEventListener('change',()=>{
     camera=cameraSelect.value;
     if(station.dataset.mode!=='replaying')still();

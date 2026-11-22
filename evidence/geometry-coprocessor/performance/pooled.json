@@ -1,0 +1,262 @@
+{
+  "native/standard": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 0.4,
+      "p95": 0.5,
+      "mean": 0.408,
+      "peak": 0.9
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 0.7517,
+      "p95": 1.146,
+      "mean": 0.8075,
+      "peak": 2.6452
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.7,
+      "mean": 16.666,
+      "peak": 16.8
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75852,
+      "p95": 82284,
+      "mean": 77341.9148,
+      "peak": 82500
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 37,
+      "p95": 59,
+      "mean": 42.1635,
+      "peak": 59
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "resources": {
+      "fxRetainedBytes": 0,
+      "liveMeshes": 32,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 881856,
+      "gpuGeometryMaxBytes": 2029392
+    },
+    "sampledBytes": 660882776,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 490376,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  },
+  "native/fx": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 0.4,
+      "p95": 0.6,
+      "mean": 0.4162,
+      "peak": 0.9
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 0.7704,
+      "p95": 1.1858,
+      "mean": 0.8452,
+      "peak": 2.0585
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.7,
+      "mean": 16.666,
+      "peak": 16.8
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75912,
+      "p95": 82344,
+      "mean": 77401.9148,
+      "peak": 82560
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 38,
+      "p95": 60,
+      "mean": 43.1635,
+      "peak": 60
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0036,
+      "peak": 0.1
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 60,
+      "p95": 60,
+      "mean": 60.0,
+      "peak": 60
+    },
+    "resources": {
+      "fxRetainedBytes": 2459,
+      "liveMeshes": 33,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 884315,
+      "gpuGeometryMaxBytes": 2030832
+    },
+    "sampledBytes": 664270208,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 557224,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  },
+  "software/standard": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 0.6,
+      "p95": 0.9,
+      "mean": 0.6403,
+      "peak": 1.7
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 10.4576,
+      "p95": 12.9388,
+      "mean": 10.0248,
+      "peak": 14.0604
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.8,
+      "mean": 16.7966,
+      "peak": 50
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75852,
+      "p95": 82284,
+      "mean": 77341.9148,
+      "peak": 82500
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 37,
+      "p95": 59,
+      "mean": 42.1635,
+      "peak": 59
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "resources": {
+      "fxRetainedBytes": 0,
+      "liveMeshes": 32,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 881856,
+      "gpuGeometryMaxBytes": 2029392
+    },
+    "sampledBytes": 663071976,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 473032,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  },
+  "software/fx": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 0.7,
+      "p95": 0.9,
+      "mean": 0.6617,
+      "peak": 1.8
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 10.3376,
+      "p95": 12.9705,
+      "mean": 9.9352,
+      "peak": 14.4227
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.7,
+      "mean": 16.7967,
+      "peak": 99.9
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75912,
+      "p95": 82344,
+      "mean": 77401.9148,
+      "peak": 82560
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 38,
+      "p95": 60,
+      "mean": 43.1635,
+      "peak": 60
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0.1,
+      "mean": 0.0075,
+      "peak": 0.1
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 60,
+      "p95": 60,
+      "mean": 60.0,
+      "peak": 60
+    },
+    "resources": {
+      "fxRetainedBytes": 2459,
+      "liveMeshes": 33,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 884315,
+      "gpuGeometryMaxBytes": 2030832
+    },
+    "sampledBytes": 664175760,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 460056,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  }
+}
