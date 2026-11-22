@@ -4,12 +4,22 @@ from pathlib import Path
 import sys
 
 
-def source_id(prefix, destination, output, modules):
+def source_id(prefix, destination, output, modules, *, historical_exports=False):
     files = [Path("sim") / (name + ".js") for name in modules]
     files += [Path("vendor/vanillajs/modules") / name / "index.js" for name in ("terrain", "collision", "math")]
     digest = hashlib.sha256()
     for path in sorted(files):
-        digest.update(str(path).encode() + b"\0" + hashlib.sha256(path.read_bytes()).digest())
+        content = path.read_bytes()
+        if historical_exports and path == Path("sim/combined-world.js"):
+            # v0.3.0 and its workshop consumed the same executable module.
+            # The sole extension to those exact bytes is a named export list
+            # for command-mode callers. Strip only that literal declaration.
+            suffix = (b"\n// Shared by the command-mode tick.\n"
+                      b"export {advanceShots,canSee,choose,cpu,cpuMotion,damage,emit,launch,train};\n")
+            if not content.endswith(suffix):
+                raise ValueError("Review historical replay compatibility before changing the command exports")
+            content = content[:-len(suffix)]
+        digest.update(str(path).encode() + b"\0" + hashlib.sha256(content).digest())
     line = f"export const {destination} = '{prefix}:{digest.hexdigest()}';\n"
     path = Path("sim") / output
     if "--check" in sys.argv:
@@ -26,5 +36,8 @@ source_id("vw-004", "NAVAL_SOURCE", "naval-identity.js",
           ("clock", "identity", "missions", "terrain", "world", "vessel", "naval-world"))
 combined_modules = ("clock", "terrain", "world", "identity", "missions", "tracks", "tank-combat", "walker",
            "vessel", "naval-world", "naval-identity", "estuary", "combined-vehicles", "combined-contact", "combined-world")
-source_id("vw-005", "COMBINED_SOURCE", "combined-identity.js", combined_modules)
-source_id("vw-006", "CREATOR_SOURCE", "creator-identity.js", combined_modules + ("combined-identity", "creator"))
+source_id("vw-005", "COMBINED_SOURCE", "combined-identity.js", combined_modules, historical_exports=True)
+source_id("vw-006", "CREATOR_SOURCE", "creator-identity.js", combined_modules + ("combined-identity", "creator"),
+          historical_exports=True)
+source_id("vw-cmd-001", "COMMAND_SOURCE", "command-identity.js",
+          combined_modules + ("combined-identity", "command-control", "command-world"))

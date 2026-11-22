@@ -250,3 +250,6 @@ export function replayCombined(text){
     throw Error('combined replay diverged');
   return w;
 }
+
+// Shared by the command-mode tick.
+export {advanceShots,canSee,choose,cpu,cpuMotion,damage,emit,launch,train};
