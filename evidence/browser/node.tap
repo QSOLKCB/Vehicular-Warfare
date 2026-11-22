@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: upstream bytes and simulation content identity
+ok 1 - upstream bytes and simulation content identity
+  ---
+  duration_ms: 21.104407
+  type: 'test'
+  ...
+# Subtest: immutable field and triangle centroids agree across the seeded grid
+ok 2 - immutable field and triangle centroids agree across the seeded grid
+  ---
+  duration_ms: 15.369473
+  type: 'test'
+  ...
+# Subtest: hover trim, rotor tilt, yaw and fully swept terrain envelope
+ok 3 - hover trim, rotor tilt, yaw and fully swept terrain envelope
+  ---
+  duration_ms: 26.822402
+  type: 'test'
+  ...
+# Subtest: mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+ok 4 - mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+  ---
+  duration_ms: 42.476505
+  type: 'test'
+  ...
+# Subtest: terrain and fast moving hitboxes compete on the same interval
+ok 5 - terrain and fast moving hitboxes compete on the same interval
+  ---
+  duration_ms: 1.045781
+  type: 'test'
+  ...
+# Subtest: moving convoy, real enemy defeat, cooldown and last-round exhaustion
+ok 6 - moving convoy, real enemy defeat, cooldown and last-round exhaustion
+  ---
+  duration_ms: 34.863459
+  type: 'test'
+  ...
+# Subtest: same accepted controls at 30, 60 and 144 presentation Hz replay identically
+ok 7 - same accepted controls at 30, 60 and 144 presentation Hz replay identically
+  ---
+  duration_ms: 75.660323
+  type: 'test'
+  ...
+# Subtest: malformed packs, commands and replay are atomic
+ok 8 - malformed packs, commands and replay are atomic
+  ---
+  duration_ms: 1.897962
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 266.651451

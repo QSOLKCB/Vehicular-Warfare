@@ -1,6 +1,6 @@
 # Vehicular-Warfare — Codex CLI agent instructions
 
-Read README.md, ROADMAP.md and all docs linked by README before editing. This repository currently contains a **planning baseline**, not gameplay evidence.
+Read README.md, ROADMAP.md and all docs linked by README before editing. VW-000 is the historical planning baseline. Check the revision-specific evidence under `evidence/` for implemented milestones.
 
 ## Purpose and pin
 
