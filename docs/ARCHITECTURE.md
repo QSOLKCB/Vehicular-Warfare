@@ -24,6 +24,10 @@ Trusted controls -> accepted 120 Hz step -> vehicle physics + CPU perception
 
 **Combat:** first mission needs a small real 120 Hz authority for missile/AA travel, swept hits, finite damage and attribution. If reusing Combat3D, make an explicit tested 2:1 tick bridge; its default cadence is 60 Hz. Do not silently change upstream source or fabricate hit events.
 
+## Tracked vehicle
+
+Cutbank Relay has a dedicated 120 Hz world with two track drive inputs, chassis contact, separate turret traverse, component hits and a versioned replay. Both vehicle families use the pinned Heightfield, fixed clock and WebGL renderer. The helicopter missions retain their own command masks, step function and receipt verifier. [Tracked authority contract](TRACKED_WARFARE.md)
+
 ## Terrain views
 
 `View.render(world, camera, briefing = false, zoom = false, terrainMode = "webgl", profile = "survey")` reads the live world without advancing it. The optional `"voxel"` mode accepts `"survey"` or `"fine"`. Terrain selection belongs to the page and survives pause, restart and sortie changes within that page. Switching in flight takes effect on the next draw. Selecting a profile on pause takes effect on resume.

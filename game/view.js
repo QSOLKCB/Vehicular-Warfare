@@ -1,33 +1,14 @@
 import {Tracers} from './tracers.js';
 import {Renderer} from '../vendor/vanillajs/modules/render-webgl/index.js';
 import {BoxVertexStream} from '../vendor/vanillajs/modules/render-packing/index.js';
-import {add,clamp,dot,normalize,perspective,viewMatrix,multiplyMatrices,quatMultiply,rotate,scale,subtract} from '../vendor/vanillajs/modules/math/index.js';
+import {add,clamp,dot,perspective,viewMatrix,multiplyMatrices,quatMultiply,rotate,scale,subtract} from '../vendor/vanillajs/modules/math/index.js';
 import {enemyIds,unitType,minZ,zone,zoneRadius} from '../sim/missions.js';
 import {aim} from '../sim/world.js';
 import {aircraft,groundUnit,rotor} from './models.js';
 import {landscape} from './scenery.js';
 import {ColumnLayer} from './column-layer.js';
 
-function turn(axis, radians) {
-  const q=[0,0,0,Math.cos(radians/2)]; q[axis]=Math.sin(radians/2); return q;
-}
-function look(direction) {
-  const d=normalize(direction);
-  return quatMultiply(turn(1,Math.atan2(-d[0],-d[2])),turn(0,Math.asin(d[1])));
-}
-class Model {
-  constructor(renderer, vertices) {
-    this.src=new Float32Array(vertices); this.data=this.src.slice(); this.mesh=renderer.mesh(this.data);
-  }
-  draw(renderer,p,q) {
-    const x=rotate(q,[1,0,0]),y=rotate(q,[0,1,0]),z=rotate(q,[0,0,1]);
-    for(let i=0;i<this.src.length;i+=6) {
-      const a=this.src[i],b=this.src[i+1],c=this.src[i+2];
-      for(let k=0;k<3;k++) this.data[i+k]=p[k]+x[k]*a+y[k]*b+z[k]*c;
-    }
-    renderer.update(this.mesh,this.data); renderer.draw(this.mesh);
-  }
-}
+import {turn,look,Model} from './model-view.js';
 
 export class View {
   constructor(canvas,w) {

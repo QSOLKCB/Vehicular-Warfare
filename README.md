@@ -1,6 +1,6 @@
 ![RIDGEFIRE — VEHICULAR WARFARE. Fly low, strike fast, disappear.](assets/ridgefire-banner.svg)
 
-Fly the Kestrel in three sorties. Choose a route on the mission board before launch.
+Choose a Kestrel helicopter sortie on the mission board or choose **Tracked sortie** to enter Cutbank Relay.
 
 | Sortie | Opponents | Objective |
 | --- | ---: | --- |
@@ -11,6 +11,10 @@ Fly the Kestrel in three sorties. Choose a route on the mission board before lau
 The long sorties launch in cockpit view. Its north-up route display shows the aircraft, the active beacon, and ground contacts that currently see you. Warm tracers and an **Incoming fire** warning follow live enemy rounds. Diamonds beside the target name show remaining hits, and a hull-hit notice confirms damage. Frostline has snow-covered slopes and pale morning light. Long Watch takes place at dusk.
 
 Long Watch and Frostline use a 960 m valley. Follow the distance and compass bearing on the HUD. Once a patrol is cleared, enter the teal circle below 34 m above ground. Each confirmed beacon repairs up to 32 hull points and refills the rocket pods. Return to **Mission board** from pause or the debrief to choose another sortie.
+
+## Ground sortie · Cutbank Relay
+
+Open the ground sortie from the mission board to drive a tracked vehicle against a CPU guard. **W/S** drive the tracks forward or backward, **A/D** steer, and **Shift** brakes. The arrow keys traverse the turret and adjust gun elevation independently. **Space** fires, **C** changes the camera and **P** pauses. The ground sortie has its own replay checker and a return link to the helicopter board. [Tank authority and limitations](docs/TRACKED_WARFARE.md) · [Mission runs and screenshots](evidence/tracked-warfare/)
 
 ## Terrain view
 
@@ -55,6 +59,7 @@ node tools/measure.mjs
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-verification
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-routes routes
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-columns terrain
+CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-tracked tank
 ```
 
 **Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. Open **Flight controls & saved replays → Check saved flight** to verify the file locally in the recording browser. The report shows sortie, elapsed time and outcome. Node can verify a receipt when its runtime reproduces the checksums. From the repository root, run
@@ -90,6 +95,6 @@ Pause, pointer unlock and switching to another foreground tab stopped the simula
 
 VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
 
-The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance, mobile touch controls and other vehicle classes are outside the verified scope.
+The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance and mobile touch controls remain unverified. Walking mechs, surface ships and mixed-vehicle encounters are later milestones.
 
 [Agent instructions](AGENTS.md) · [Roadmap](ROADMAP.md) · [Original handoff](docs/CODEX_CLI_HANDOFF.md) · [Game design](docs/GAME_DESIGN.md) · [Architecture](docs/ARCHITECTURE.md) · [Engine baseline](docs/ENGINE_BASELINE.md) · [DOS-era techniques](docs/DOS_TECHNIQUES.md) · [Acceptance contract](docs/ACCEPTANCE.md)
