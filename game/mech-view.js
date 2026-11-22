@@ -24,7 +24,7 @@ function shell(out,bottom,top,tint){
   }
 }
 
-function chassis(renderer,color){
+export function walkerParts(renderer,color){
   const pelvis=[],torso=[],gun=[];
   shell(pelvis,[.81,-.44,1.00],[1,.14,1.04],basalt);
   shell(pelvis,[1,.14,1.04],[.74,.42,.88],color);
@@ -73,7 +73,7 @@ function drawLink(r,model,a,b,across){
 // Small ambient shadows follow the local terrain plane under the chassis and each sole.
 // Depth testing and alpha blending keep the underlying heightfield triangles visible.
 const shadowRing=Array.from({length:8},(_,i)=>[Math.cos(i*Math.PI/4),Math.sin(i*Math.PI/4)]);
-function shadowDisc(data,offset,field,p,rx,rz){
+export function shadowDisc(data,offset,field,p,rx,rz){
   const {height,normal}=field.sample(p[0],p[2]);
   const cx=p[0],cy=height+.018,cz=p[2];
   for(let i=0;i<shadowRing.length;i++){
@@ -115,13 +115,28 @@ function glassworks(w){
   return {land,sky};
 }
 
+export function drawWalker(r,part,a){
+  const mounted=walkerGun(a),heading=turn(1,-a.yaw);
+  const body=quatMultiply(heading,quatMultiply(turn(0,a.pitch),turn(2,a.roll)));
+  const across=rotate(heading,[1,0,0]);
+  part.pelvis.draw(r,a.p,body);part.torso.draw(r,mounted.pivot,turn(1,-a.torsoYaw));
+  part.gun.draw(r,mounted.pivot,look(mounted.direction));
+  for(let i=0;i<a.feet.length;i++){
+    const {hip,knee,foot}=legJoints(a,i);
+    drawLink(r,part.upper,hip,knee,across);drawLink(r,part.lower,knee,foot,across);
+    part.shoe.draw(r,foot,heading);
+  }
+  return part.pelvis.mesh.count+part.torso.mesh.count+part.gun.mesh.count+
+    a.feet.length*(part.upper.mesh.count+part.lower.mesh.count+part.shoe.mesh.count);
+}
+
 export class MechView {
   constructor(canvas,w){
     const r=this.r=new Renderer(canvas);
     try{
       const {land,sky}=glassworks(w);
       this.land=r.mesh(land);this.sky=r.mesh(sky);
-      this.parts={player:chassis(r,amber),enemy:chassis(r,sentinel)};
+      this.parts={player:walkerParts(r,amber),enemy:walkerParts(r,sentinel)};
       this.effects=r.mesh([]);this.stream=new BoxVertexStream(96);
       this.shadows=r.mesh([]);this.shadowData=new Float32Array(2*7*8*3*6);
       this.bytes=(land.length+sky.length)*4+this.stream.capacityBoxes*216*4+this.shadowData.byteLength;
@@ -163,18 +178,7 @@ export class MechView {
     }
     for(const a of [p,w.enemy]){
       if(!a.hp || (mode==='sight' && a===p))continue;
-      const part=this.parts[a.id],mounted=walkerGun(a),heading=turn(1,-a.yaw);
-      const body=quatMultiply(heading,quatMultiply(turn(0,a.pitch),turn(2,a.roll)));
-      const across=rotate(heading,[1,0,0]);
-      part.pelvis.draw(r,a.p,body);part.torso.draw(r,mounted.pivot,turn(1,-a.torsoYaw));
-      part.gun.draw(r,mounted.pivot,look(mounted.direction));
-      draws+=3;vertices+=part.pelvis.mesh.count+part.torso.mesh.count+part.gun.mesh.count;
-      for(let i=0;i<a.feet.length;i++){
-        const {hip,knee,foot}=legJoints(a,i);
-        drawLink(r,part.upper,hip,knee,across);drawLink(r,part.lower,knee,foot,across);
-        part.shoe.draw(r,foot,heading);
-        draws+=3;vertices+=part.upper.mesh.count+part.lower.mesh.count+part.shoe.mesh.count;
-      }
+      vertices+=drawWalker(r,this.parts[a.id],a);draws+=3+3*a.feet.length;
     }
     const s=this.stream.reset();
     for(const shot of w.shots)s.append(shot.p,[.23,.23,.23],shot.owner==='player'?blue:amber);

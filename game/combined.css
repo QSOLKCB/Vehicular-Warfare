@@ -1,0 +1,22 @@
+#station{--gold:#dbeab1;--line:#b9ceba68}
+#station .shade{background:linear-gradient(90deg,#132b2bf5,#233232ba 34%,transparent 72%),linear-gradient(0deg,#15292599,transparent 30%,transparent 84%,#10282d66)}
+#station[data-mode=playing] .shade{background:linear-gradient(0deg,#102825a1,transparent 24%,transparent 86%,#1c292d70)}
+#panel h1{font-size:clamp(46px,7.8vw,119px);letter-spacing:-.065em}
+#panel p{max-width:365px;margin-bottom:16px}
+#vehicleChoice{margin-bottom:20px;max-width:360px}
+#vehicleChoice label{display:block;font:600 11px var(--mono);color:var(--gold);letter-spacing:.09em;text-transform:uppercase;margin-bottom:6px}
+#vehicle{width:100%;background:#172c2ce8;border-color:#a9c9b48c;padding:9px 11px;font-weight:600}
+#controlHint{margin-top:7px;font-size:13px;color:#e1e8d6;line-height:1.4}
+#reselect{display:inline-block;font-weight:600;font-size:13px;margin:8px 7px;color:var(--ink);text-underline-offset:4px}
+#station[data-mode=briefing] #reselect,#station:not([data-mode=briefing]) #vehicleChoice{display:none}
+#chart{position:absolute;top:15%;right:4%;width:169px;padding:7px;background:#132b2eeb;border:1px solid var(--line)}
+.map-title,.legend{display:flex;align-items:center;justify-content:space-between;font:10px var(--mono);color:var(--gold)}
+#theatreMap{position:static;display:block;width:100%;height:auto;margin:5px 0;background:#274e58}
+.legend{font-size:9px}.legend span:first-child{color:#93eddb}.legend span:nth-child(2){color:#ffaf72}
+#hud .mission,#hud .instruments,#hud #contact{background:#172d2ee0}
+#hud #contact{color:#ebe8c3;font-size:10px}
+#hud #contact:empty{display:none}
+#guide[open]{background:#152927ee;padding:0 5px 5px}
+@media(max-width:760px){#chart{width:110px;top:18%}.legend{font-size:7px}#vehicleChoice{max-width:280px}#hud #contact{top:30%}}
+@media(max-height:610px){#panel{max-height:75svh;overflow:auto}#panel h1{font-size:48px;margin:9px 0}#panel p{font-size:14px;margin-bottom:10px}#vehicleChoice{margin-bottom:12px}#panel summary{margin-top:12px}.keys{position:static}}
+#guide .assist-note{margin:5px 0 8px;font-size:12px;line-height:1.45;padding:4px 8px}

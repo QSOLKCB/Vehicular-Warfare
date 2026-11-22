@@ -8,14 +8,14 @@ const {sand,gold,dark,teal,red,light,rubber}=paint;
 export function facet(out,a,b,c,color,shade=1) {
   for (const p of [a,b,c]) out.push(...p,color[0]*shade,color[1]*shade,color[2]*shade);
 }
-function shell(out,rings,canopy=false) {
+function shell(out,rings,canopy=false,tint=sand) {
   const points=rings.map(([z,y,rx,ry])=>Array.from({length:8},(_,i)=>{
     const a=(i+.5)*Math.PI/4;
     return [Math.cos(a)*rx,y+Math.sin(a)*ry,z];
   }));
   for(let j=1;j<points.length;j++) for(let i=0;i<8;i++) {
     const next=(i+1)%8,a=points[j-1][i],b=points[j-1][next],c=points[j][i],d=points[j][next];
-    const color=canopy && j<4 && i<4?teal:(i>3 && i<7?dark:sand);
+    const color=canopy && j<4 && i<4?teal:(i>3 && i<7?dark:tint);
     const n=normalize(cross(subtract(c,a),subtract(b,a)));
     const shade=.74+.24*dot(n,[-.5,.8,.25]);
     facet(out,a,b,c,color,shade); facet(out,b,d,c,color,shade);
@@ -30,10 +30,10 @@ function rod(out,a,b,r,color) {
     facet(out,x,y,z,color,.8+i*.032); facet(out,y,t,z,color,.8+i*.032);
   }
 }
-export function aircraft() {
+export function aircraft(tint=sand) {
   const out=[];
   shell(out,[[-2.45,-.14,.025,.05],[-2.03,-.04,.72,.56],[-1.02,.12,1,.86],
-    [-.18,.1,1.04,.88],[1.15,.15,.83,.67],[1.82,.24,.41,.41],[1.85,.24,.01,.01]],true);
+    [-.18,.1,1.04,.88],[1.15,.15,.83,.67],[1.82,.24,.41,.41],[1.85,.24,.01,.01]],true,tint);
   // Cockpit rails follow the wraparound glazing, with a central windscreen spar.
   rod(out,[0,.42,-2.08],[0,.98,-1.02],.045,dark);
   for(const s of [-1,1]) {
@@ -42,18 +42,18 @@ export function aircraft() {
     rod(out,[s*.9,.52,-1.02],[s*1.0,.15,-.23],.055,dark);
     boxVertices([s*.98,-.26,-.29],[.09,.09,1.46],gold,out);
   }
-  shell(out,[[1.25,.24,.43,.40],[2.7,.39,.30,.27],[4.85,.64,.13,.16],[4.9,.64,.01,.01]]);
+  shell(out,[[1.25,.24,.43,.40],[2.7,.39,.30,.27],[4.85,.64,.13,.16],[4.9,.64,.01,.01]],false,tint);
   for(const s of [-1,1]) {
-    boxVertices([s*.52,.83,.42],[.58,.55,1.8],sand,out);
+    boxVertices([s*.52,.83,.42],[.58,.55,1.8],tint,out);
     boxVertices([s*.52,.83,1.33],[.38,.30,.08],dark,out);
-    boxVertices([s*1.05,-.20,.22],[.82,.12,1.52],sand,out);
+    boxVertices([s*1.05,-.20,.22],[.82,.12,1.52],tint,out);
     rod(out,[s*1.45,-.28,-.85],[s*1.45,-.28,1.04],.22,dark);
     for(const z of [-.93,.82]) rod(out,[s*.64,-.46,z],[s*1.03,-.99,z],.065,dark);
     rod(out,[s*1.03,-.99,-1.6],[s*1.03,-.99,1.65],.085,light);
     rod(out,[s*1.03,-.99,-1.6],[s*1.03,-.75,-1.97],.085,light);
     boxVertices([s*1.46,-.11,.8],[.12,.11,.25],s<0?[1,.15,.08]:[.26,1,.65],out);
     boxVertices([s*.96,.12,.1],[.1,.16,.9],gold,out);
-    boxVertices([s*1.2,.65,3.65],[1.05,.1,.42],sand,out);
+    boxVertices([s*1.2,.65,3.65],[1.05,.1,.42],tint,out);
   }
   facet(out,[0,.6,3.92],[0,2.15,4.85],[0,.62,4.85],gold);
   rod(out,[-.26,1.45,4.66],[.26,1.45,4.66],.095,dark);

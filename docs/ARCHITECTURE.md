@@ -36,6 +36,10 @@ Glassworks Crossing runs its own fixed-step locomotion and mission ledger. Rende
 
 Lantern Sound adds a water surface to its seeded Heightfield. Both vessels sample that surface for displacement and check the seabed for keel clearance. The same surface determines water impacts and the height of the WebGL sea. The bridge supplies commands and reads accepted poses and events through the shared station lifecycle. [Water, vessel and naval mission API](NAVAL_WARFARE.md)
 
+## Combined arms
+
+Breakwater Reach has its own mixed-world simulation. Every actor uses the same coordinate frame, Heightfield, water surface and fixed clock. The selected class and accepted commands are part of its replay. Separate family solvers advance motion, while one world ledger orders impacts, damage, destruction and objectives. [Combined-arms API](COMBINED_ARMS.md)
+
 ## Terrain views
 
 `View.render(world, camera, briefing = false, zoom = false, terrainMode = "webgl", profile = "survey")` reads the live world without advancing it. The optional `"voxel"` mode accepts `"survey"` or `"fine"`. Terrain selection belongs to the page and survives pause, restart and sortie changes within that page. Switching in flight takes effect on the next draw. Selecting a profile on pause takes effect on resume.

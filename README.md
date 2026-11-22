@@ -1,6 +1,6 @@
 ![RIDGEFIRE — VEHICULAR WARFARE. Fly low, strike fast, disappear.](assets/ridgefire-banner.svg)
 
-Choose a Kestrel helicopter sortie on the mission board, or take a crawler to Cutbank Relay, a walker to Glassworks Crossing or a ship to Lantern Sound.
+Choose **Combined arms** on the mission board to fly, drive, walk or sail in Breakwater Reach. Standalone sorties include the three Kestrel helicopter missions, Cutbank Relay, Glassworks Crossing and Lantern Sound.
 
 | Sortie | Opponents | Objective |
 | --- | ---: | --- |
@@ -23,6 +23,10 @@ Pilot a six-legged walker across the terraces, disable the sentinel and reach th
 ## Naval sortie · Lantern Sound
 
 Choose **Naval sortie** to pilot a cutter through the island channel. **W/S** apply forward or reverse thrust. **A/D** turn the rudder, which needs water flowing past the hull to turn the ship. The arrow keys traverse and elevate the deck mount. **Space** fires, **C** switches views and **P** pauses. Disable the patrol and shore relay, then sail into the exit buoy. [Vessel, water and replay contract](docs/NAVAL_WARFARE.md) · [Playthrough, screenshots and measurements](evidence/naval-warfare/)
+
+## Combined arms · Breakwater Reach
+
+Choose a helicopter, tank, mech or ship before deploying. Your other three crews join you against four mobile defenders and a shore relay. Disable the relay to open your crew's gate, enter the gate and help the team disable two mobile defenders. Holding the gate lets your crew draw on its limited repair supply. The briefing lists controls for each vehicle, and the debrief lets you save the run or choose another crew. [Theatre, vehicle and replay API](docs/COMBINED_ARMS.md) · [Playthroughs and measurements](evidence/combined-arms/)
 
 ## Terrain view
 
@@ -66,12 +70,14 @@ node --test test/*.test.js
 node tools/measure.mjs
 node tools/measure.mjs mech
 node tools/measure.mjs naval
+node tools/measure.mjs combined
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-verification
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-routes routes
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-columns terrain
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-tracked tank
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-walking mech
 CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-sailing naval
+CHROMIUM=google-chrome node tools/browser.mjs /tmp/ridgefire-combined combined
 ```
 
 **Save replay** downloads the seed, accepted control changes, elapsed ticks, source identity and state/event checksums. Open **Flight controls & saved replays → Check saved flight** to verify the file locally in the recording browser. The report shows sortie, elapsed time and outcome. Node can verify a receipt when its runtime reproduces the checksums. From the repository root, run
@@ -107,6 +113,6 @@ Pause, pointer unlock and switching to another foreground tab stopped the simula
 
 VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
 
-The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance and mobile touch controls remain unverified. The mixed-vehicle encounter is planned for VW-005.
+The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance and mobile touch controls remain unverified.
 
 [Agent instructions](AGENTS.md) · [Roadmap](ROADMAP.md) · [Original handoff](docs/CODEX_CLI_HANDOFF.md) · [Game design](docs/GAME_DESIGN.md) · [Architecture](docs/ARCHITECTURE.md) · [Engine baseline](docs/ENGINE_BASELINE.md) · [DOS-era techniques](docs/DOS_TECHNIQUES.md) · [Acceptance contract](docs/ACCEPTANCE.md)

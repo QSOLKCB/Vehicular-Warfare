@@ -1,14 +1,15 @@
 import {Clock,HZ} from '../sim/clock.js';
 
 export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft,aimRight,
-  extraControls={},activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,actors=2,observe}){
+  extraControls={},activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,actors=2,observe,vehicleSelect}){
   const el=id=>document.getElementById(id);
   const canvas=el('battlefield'),station=el('station'),clock=new Clock();
   const controls={KeyW:keys.forward,KeyS:keys.back,KeyA:keys.left,KeyD:keys.right,
     ...extraControls,ArrowLeft:aimLeft,ArrowRight:aimRight,ArrowUp:keys.elevate,
     ArrowDown:keys.depress,Space:keys.fire};
   const pressed=new Set();
-  let world=createWorld(),mode='briefing',camera='chase',view=null,session=null,raf=0;
+  let vehicle=vehicleSelect?.value;
+  let world=createWorld(vehicle),mode='briefing',camera='chase',view=null,session=null,raf=0;
   let held=0,trigger=false,mouseX=0,mouseY=0,lastFrame=null;
   let sound=null,soundEnabled=false;
   let lastDraw=null,retired=0,peaks=0;
@@ -100,18 +101,24 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
   function begin(fresh){
     dispose();
     if(fresh){
-      world=createWorld();camera='chase';el('camera').textContent='Gun sight';
+      world=createWorld(vehicle);camera='chase';el('camera').textContent='Gun sight';
       frames.length=costs.length=viewMs.length=0;peaks=0;
     }
     try{view=new View(canvas,world);}
     catch(error){errorPanel(error);return;}
     mode='playing';station.dataset.mode=mode;el('panel').hidden=true;el('hud').hidden=false;
+    if(vehicleSelect)vehicleSelect.disabled=true;
     document.activeElement?.blur();syncSound();listen();raf=requestAnimationFrame(frame);
   }
   function preview(){
     try{view??=new View(canvas,world);lastDraw=view.draw(world,'briefing');}
     catch(error){errorPanel(error);}
   }
+  vehicleSelect?.addEventListener('change',()=>{
+    if(mode!=='briefing')return;
+    vehicle=vehicleSelect.value;
+    dispose();world=createWorld(vehicle);preview();
+  });
   function syncSound(){
     if(!Sound)return;
     sound?.dispose();sound=null;
@@ -136,7 +143,8 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
     try{
       if(file.size>300000)throw Error('Replay exceeds the size limit');
       const w=replay(await file.text());
-      el('checkResult').textContent='Verified · '+name+' · '+(w.tick/HZ).toFixed(2)+' s · '+w.status;
+      const crew=vehicleSelect?' · '+w.selection:'';
+      el('checkResult').textContent='Verified · '+name+crew+' · '+(w.tick/HZ).toFixed(2)+' s · '+w.status;
     }catch(error){el('checkResult').textContent='Could not verify this sortie. '+error.message;}
     finally{input.disabled=false;input.value='';}
   });

@@ -2,43 +2,11 @@ import {HZ} from '../sim/clock.js';
 import {createNavalWorld,stepNaval,navalReceipt,replayNaval,NK,NAVAL_LIMIT} from '../sim/naval-world.js';
 import {groundStation} from './ground-station.js';
 import {NavalView} from './naval-view.js';
+import {VehicleAudio} from './vehicle-audio.js';
 
 const el=id=>document.getElementById(id);
 const bearing=radians=>String((Math.round(radians*180/Math.PI)+360)%360).padStart(3,'0')+'°';
 
-// Two reusable voices. Only accepted motion and transient mission events feed the mix.
-class BridgeAudio{
-  constructor(w){
-    const c=this.ctx=new AudioContext();
-    this.motor=c.createOscillator();this.motor.type='triangle';
-    this.motor.frequency.value=46;
-    const gain=c.createGain();gain.gain.value=.037;this.motor.connect(gain);gain.connect(c.destination);
-    this.signal=c.createOscillator();this.signal.type='sine';
-    this.volume=c.createGain();this.volume.gain.value=0;
-    this.signal.connect(this.volume);this.volume.connect(c.destination);
-    this.tick=w.tick;this.motor.start();this.signal.start();c.resume().catch(()=>{});
-  }
-  update(w){
-    const t=this.ctx.currentTime;
-    this.motor.frequency.setTargetAtTime(40+Math.abs(w.player.speed)*5,t,.12);
-    for(const e of w.events){
-      if(e.tick<=this.tick)continue;
-      let pitch;
-      if(e.type==='launch')pitch=e.owner==='player'?285:175;
-      else if(e.type==='impact')pitch=e.target==='water'?126:95;
-      else if(e.type==='destroy')pitch=70;
-      else continue;
-      const freq=this.signal.frequency,volume=this.volume.gain;
-      freq.cancelScheduledValues(t);freq.setValueAtTime(pitch,t);freq.exponentialRampToValueAtTime(33,t+.17);
-      volume.cancelScheduledValues(t);volume.setValueAtTime(.14,t);volume.exponentialRampToValueAtTime(.0001,t+.20);
-    }
-    this.tick=w.tick;
-  }
-  dispose(){
-    this.motor.stop();this.motor.disconnect();this.signal.stop();this.signal.disconnect();
-    this.volume.disconnect();this.ctx.close().catch(()=>{});
-  }
-}
 function hud(w,draw){
   const p=w.player,sight=draw.sight;
   el('heading').textContent=bearing(p.yaw);
@@ -71,7 +39,7 @@ function hud(w,draw){
   el('message').textContent=message;
 }
 export const inspect=groundStation({
-  createWorld:createNavalWorld,step:stepNaval,receipt:navalReceipt,replay:replayNaval,View:NavalView,Sound:BridgeAudio,
+  createWorld:createNavalWorld,step:stepNaval,receipt:navalReceipt,replay:replayNaval,View:NavalView,Sound:VehicleAudio,
   keys:NK,aimLeft:NK.mountLeft,aimRight:NK.mountRight,activeStatus:'sailing',hud,actors:3,
   observe:w=>({shore:w.shore,waterLevel:w.water.level}),name:'Lantern Sound',replayPrefix:'lantern',
   wonTitle:'Channel secured',wonSummary:'Exit buoys reached'
