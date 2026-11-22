@@ -55,7 +55,13 @@ node --input-type=module -e "import {readFileSync} from 'node:fs'; import {repla
 
 The [numerical evidence](evidence/authority/) records eight passing tests at `91eb991ba861a772fe616ee0ae5b16179b4c8836`. [PR #2](https://github.com/QSOLKCB/Vehicular-Warfare/pull/2) merged that authority and its evidence into main at `3e37e8b66d998f083b5f1872c9531b5b25a53d8d`. See the [simulation contract](docs/AUTHORITY.md) for replay scope, sweep geometry and sensor timers.
 
-### Executed browser results
+### Mission playthroughs
+
+The mission acceptance flights completed Long Watch in 71 seconds and Frostline Run in 79 seconds using keyboard controls in Chromium. The ground units launched 12 and 18 projectiles respectively. Those times measure a rehearsed route. Both receipts reproduced in the recording Chromium runtime. Node on this machine produced different checksums for those long browser recordings. Use the in-game checker for browser saves. [Mission receipts and screenshots](evidence/valley-missions/)
+
+The cockpit pass repeated both routes at 1.6× sight zoom with sound enabled and recorded an exposed-hover defeat. The [cockpit evidence](evidence/cockpit-polish/) includes screenshots, replay receipts, and the accepted impacts on the aircraft.
+
+### Original Sable Valley benchmark
 
 At `a0ad1738085d3bb9bbdfe1b83238028003d484eb`, Chrome 158.0.8127.36 completed the mission through keyboard and mouse input. AA first fired on its 120th consecutive visible tick. A player rocket damaged the moving convoy, descent broke AA sight, and the player reappeared to finish both objectives. A separate exposed hover ended in destruction by enemy fire. Both exported command traces reproduced their recorded state and event checksums in Node. The [raw browser report](evidence/browser/playthrough.json) includes commands, events, frame and tick samples, debugger heap measurements and teardown observations.
 
