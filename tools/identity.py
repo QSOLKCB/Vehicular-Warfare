@@ -41,3 +41,6 @@ source_id("vw-006", "CREATOR_SOURCE", "creator-identity.js", combined_modules + 
           historical_exports=True)
 source_id("vw-cmd-001", "COMMAND_SOURCE", "command-identity.js",
           combined_modules + ("combined-identity", "command-control", "command-world"))
+formation_modules = combined_modules + ("combined-identity", "command-control", "command-world",
+                                        "command-identity", "formation-routes", "formation-world")
+source_id("vw-cmd-003", "FORMATION_SOURCE", "formation-identity.js", formation_modules)

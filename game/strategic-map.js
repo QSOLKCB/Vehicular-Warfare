@@ -113,9 +113,11 @@ export class StrategicMap{
           goal={x:target.p[0],z:target.p[2]};
         }
         if(!Number.isFinite(goal.x))continue;
-        const [x,y]=screen(goal.x,goal.z);ctx.lineWidth=1.5;ctx.strokeStyle=selected.has(a.id)?'#edffd4':'#d8f4d599';
-        ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();ctx.setLineDash([]);
-        ctx.strokeRect(x-3,y-3,6,6);px=x;py=y;
+        const route=order.route??[[goal.x,goal.z]];
+        ctx.lineWidth=1.5;ctx.strokeStyle=selected.has(a.id)?'#edffd4':'#d8f4d599';
+        ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(px,py);
+        for(const point of route){[px,py]=screen(...point);ctx.lineTo(px,py);}
+        ctx.stroke();ctx.setLineDash([]);ctx.strokeRect(px-3,py-3,6,6);
       }
     }
     for(const a of visible){

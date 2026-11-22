@@ -19,6 +19,7 @@
 | VW-GFX-003B — The Tactical Display Forge | Optional packed 16-colour chart with scanline palettes | [Retro display, visibility and replay](docs/RETRO_DISPLAY.md) |
 | VW-CMD-001 — Command Authority | Bounded per-crew orders using the original eight mobile actors and relay | [Authority and replay](docs/COMMAND_AUTHORITY.md) |
 | VW-CMD-002 — The War Room | Strategic map, group selection, live 3D observation and command replay | [Play the operation](docs/WAR_ROOM.md) |
+| VW-CMD-003 — Formation Intelligence | Spaced destinations and bounded routes through the Breakwater chart | [Routing and physical acceptance](docs/FORMATION.md) |
 
 **Implementation sequencing:** one playable helicopter game first; avoid tackling all vehicle categories in one PR. VW-001A and VW-001B should be separate PRs if that increases reviewability. The v3.4.0 GC Observatory is development tooling, not a built-in game performance boost.
 
