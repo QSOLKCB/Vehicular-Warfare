@@ -1,0 +1,553 @@
+{
+ "node": "v22.18.0",
+ "runs": [
+  {
+   "label": "shelf",
+   "contact": {
+    "position": [
+     0,
+     2.8,
+     20.958075537975823
+    ],
+    "speed": 0,
+    "guardSight": {
+     "hull": false,
+     "turret": true,
+     "point": [
+      0,
+      3.8499999999999996,
+      20.958075537975823
+     ]
+    },
+    "barrelClear": true
+   },
+   "peakShots": 3,
+   "result": "victory",
+   "receipt": {
+    "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+    "mission": "cutbank",
+    "seed": 622,
+    "ticks": 447,
+    "commands": [
+     [
+      0,
+      1
+     ],
+     [
+      180,
+      528
+     ]
+    ],
+    "stateHash": "46ecee4c",
+    "eventHash": "2f78b155"
+   },
+   "verified": {
+    "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+    "mission": "cutbank",
+    "seed": 622,
+    "ticks": 447,
+    "commands": [
+     [
+      0,
+      1
+     ],
+     [
+      180,
+      528
+     ]
+    ],
+    "stateHash": "46ecee4c",
+    "eventHash": "2f78b155"
+   },
+   "events": [
+    {
+     "tick": 181,
+     "type": "launch",
+     "owner": "player",
+     "shot": 1,
+     "point": [
+      4.309091274385239e-17,
+      3.865736277878301,
+      21.101920875852286
+     ]
+    },
+    {
+     "tick": 225,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 2,
+     "point": [
+      -3.3065445818686646e-16,
+      3.802798285298857,
+      -24.30000145007458
+     ]
+    },
+    {
+     "tick": 253,
+     "type": "launch",
+     "owner": "player",
+     "shot": 3,
+     "point": [
+      0,
+      3.8499999999999996,
+      18.258075537975824
+     ]
+    },
+    {
+     "tick": 311,
+     "type": "impact",
+     "source": "player",
+     "shot": 1,
+     "target": "enemy",
+     "point": [
+      4.309091274385239e-17,
+      3.865736277878301,
+      -26.2
+     ]
+    },
+    {
+     "tick": 311,
+     "type": "damage",
+     "source": "player",
+     "shot": 1,
+     "target": "enemy",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 40,
+     "point": [
+      4.309091274385239e-17,
+      3.865736277878301,
+      -26.2
+     ]
+    },
+    {
+     "tick": 325,
+     "type": "launch",
+     "owner": "player",
+     "shot": 4,
+     "point": [
+      0,
+      3.8499999999999996,
+      18.258075537975824
+     ]
+    },
+    {
+     "tick": 347,
+     "type": "impact",
+     "source": "enemy",
+     "shot": 2,
+     "target": "player",
+     "point": [
+      -5.775198626153139e-15,
+      3.848874748286037,
+      20.158075537975822
+     ]
+    },
+    {
+     "tick": 347,
+     "type": "damage",
+     "source": "enemy",
+     "shot": 2,
+     "target": "player",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 80,
+     "point": [
+      -5.775198626153139e-15,
+      3.848874748286037,
+      20.158075537975822
+     ]
+    },
+    {
+     "tick": 375,
+     "type": "impact",
+     "source": "player",
+     "shot": 3,
+     "target": "enemy",
+     "point": [
+      0,
+      3.8499999999999996,
+      -26.2
+     ]
+    },
+    {
+     "tick": 375,
+     "type": "damage",
+     "source": "player",
+     "shot": 3,
+     "target": "enemy",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 20,
+     "point": [
+      0,
+      3.8499999999999996,
+      -26.2
+     ]
+    },
+    {
+     "tick": 390,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 5,
+     "point": [
+      -3.3065445606452913e-16,
+      3.802814957129021,
+      -24.300001467404776
+     ]
+    },
+    {
+     "tick": 397,
+     "type": "launch",
+     "owner": "player",
+     "shot": 6,
+     "point": [
+      0,
+      3.8499999999999996,
+      18.258075537975824
+     ]
+    },
+    {
+     "tick": 447,
+     "type": "impact",
+     "source": "player",
+     "shot": 4,
+     "target": "enemy",
+     "point": [
+      0,
+      3.8499999999999996,
+      -26.2
+     ]
+    },
+    {
+     "tick": 447,
+     "type": "damage",
+     "source": "player",
+     "shot": 4,
+     "target": "enemy",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 0,
+     "point": [
+      0,
+      3.8499999999999996,
+      -26.2
+     ]
+    },
+    {
+     "tick": 447,
+     "type": "destroy",
+     "source": "player",
+     "shot": 4,
+     "target": "enemy",
+     "point": [
+      0,
+      2.75,
+      -27
+     ]
+    },
+    {
+     "tick": 447,
+     "type": "outcome",
+     "status": "victory",
+     "reason": "relay secured",
+     "score": 100
+    }
+   ]
+  },
+  {
+   "label": "exposure",
+   "contact": {
+    "position": [
+     0,
+     3.0956889893429573,
+     14.670757708667134
+    ],
+    "speed": 11,
+    "guardSight": {
+     "hull": true,
+     "turret": true,
+     "point": [
+      -8.555522239225432e-17,
+      4.13601645209342,
+      14.812950430869028
+     ]
+    },
+    "barrelClear": true
+   },
+   "peakShots": 2,
+   "result": "defeat",
+   "receipt": {
+    "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+    "mission": "cutbank",
+    "seed": 622,
+    "ticks": 1055,
+    "commands": [
+     [
+      0,
+      1
+     ]
+    ],
+    "stateHash": "7103272f",
+    "eventHash": "5618f363"
+   },
+   "verified": {
+    "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+    "mission": "cutbank",
+    "seed": 622,
+    "ticks": 1055,
+    "commands": [
+     [
+      0,
+      1
+     ]
+    ],
+    "stateHash": "7103272f",
+    "eventHash": "5618f363"
+   },
+   "events": [
+    {
+     "tick": 225,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 1,
+     "point": [
+      -3.3065444763545767e-16,
+      3.802880218364666,
+      -24.300001536233367
+     ]
+    },
+    {
+     "tick": 317,
+     "type": "impact",
+     "source": "enemy",
+     "shot": 1,
+     "target": "player",
+     "point": [
+      -4.4461688233232766e-15,
+      3.8387290634949065,
+      9.305723629203687
+     ]
+    },
+    {
+     "tick": 317,
+     "type": "damage",
+     "source": "enemy",
+     "shot": 1,
+     "target": "player",
+     "component": "hull",
+     "plate": "front",
+     "amount": 20,
+     "hp": 80,
+     "point": [
+      -4.4461688233232766e-15,
+      3.8387290634949065,
+      9.305723629203687
+     ]
+    },
+    {
+     "tick": 390,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 2,
+     "point": [
+      -3.3051881183552704e-16,
+      3.877381118586218,
+      -24.301109086590134
+     ]
+    },
+    {
+     "tick": 555,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 3,
+     "point": [
+      -3.3052914238880254e-16,
+      3.725619232865473,
+      -24.301024731221037
+     ]
+    },
+    {
+     "tick": 585,
+     "type": "impact",
+     "source": "enemy",
+     "shot": 3,
+     "target": "player",
+     "point": [
+      -1.6420165245241085e-15,
+      3.430488108071251,
+      -13.591917558047381
+     ]
+    },
+    {
+     "tick": 585,
+     "type": "damage",
+     "source": "enemy",
+     "shot": 3,
+     "target": "player",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 60,
+     "point": [
+      -1.6420165245241085e-15,
+      3.430488108071251,
+      -13.591917558047381
+     ]
+    },
+    {
+     "tick": 720,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 4,
+     "point": [
+      -3.3065463576978537e-16,
+      3.8,
+      -24.3
+     ]
+    },
+    {
+     "tick": 725,
+     "type": "impact",
+     "source": "enemy",
+     "shot": 4,
+     "target": "player",
+     "point": [
+      -5.266146464336598e-16,
+      3.8,
+      -22.699865081096775
+     ]
+    },
+    {
+     "tick": 725,
+     "type": "damage",
+     "source": "enemy",
+     "shot": 4,
+     "target": "player",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 40,
+     "point": [
+      -5.266146464336598e-16,
+      3.8,
+      -22.699865081096775
+     ]
+    },
+    {
+     "tick": 850,
+     "type": "impact",
+     "source": "enemy",
+     "shot": 2,
+     "target": "boundary",
+     "point": [
+      -2.094146026541971e-14,
+      8.70281812150951,
+      144
+     ]
+    },
+    {
+     "tick": 885,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 5,
+     "point": [
+      -3.3065463576978537e-16,
+      3.8,
+      -24.3
+     ]
+    },
+    {
+     "tick": 890,
+     "type": "impact",
+     "source": "enemy",
+     "shot": 5,
+     "target": "player",
+     "point": [
+      -5.266146464336598e-16,
+      3.8,
+      -22.699865081096775
+     ]
+    },
+    {
+     "tick": 890,
+     "type": "damage",
+     "source": "enemy",
+     "shot": 5,
+     "target": "player",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 20,
+     "point": [
+      -5.266146464336598e-16,
+      3.8,
+      -22.699865081096775
+     ]
+    },
+    {
+     "tick": 1050,
+     "type": "launch",
+     "owner": "enemy",
+     "shot": 6,
+     "point": [
+      -3.3065463576978537e-16,
+      3.8,
+      -24.3
+     ]
+    },
+    {
+     "tick": 1055,
+     "type": "impact",
+     "source": "enemy",
+     "shot": 6,
+     "target": "player",
+     "point": [
+      -5.266146464336598e-16,
+      3.8,
+      -22.699865081096775
+     ]
+    },
+    {
+     "tick": 1055,
+     "type": "damage",
+     "source": "enemy",
+     "shot": 6,
+     "target": "player",
+     "component": "turret",
+     "plate": "front",
+     "amount": 20,
+     "hp": 0,
+     "point": [
+      -5.266146464336598e-16,
+      3.8,
+      -22.699865081096775
+     ]
+    },
+    {
+     "tick": 1055,
+     "type": "destroy",
+     "source": "enemy",
+     "shot": 6,
+     "target": "player",
+     "point": [
+      0,
+      2.75,
+      -21.899865081096774
+     ]
+    },
+    {
+     "tick": 1055,
+     "type": "outcome",
+     "status": "defeat",
+     "reason": "vehicle disabled",
+     "score": 0
+    }
+   ]
+  }
+ ]
+}
