@@ -28,6 +28,10 @@ Trusted controls -> accepted 120 Hz step -> vehicle physics + CPU perception
 
 Cutbank Relay has a dedicated 120 Hz world with two track drive inputs, chassis contact, separate turret traverse, component hits and a versioned replay. Both vehicle families use the pinned Heightfield, fixed clock and WebGL renderer. The helicopter missions retain their own command masks, step function and receipt verifier. [Tracked authority contract](TRACKED_WARFARE.md)
 
+## Walking vehicle
+
+Glassworks Crossing runs its own fixed-step locomotion and mission ledger. Rendering reads the accepted body, planted feet, swinging feet and torso orientation. The tank and mech pages share the ground input, fixed clock, lifecycle and replay UI. Each supplies its own simulation, view and receipt verifier. [Walker and mission contract](MECH_WARFARE.md)
+
 ## Terrain views
 
 `View.render(world, camera, briefing = false, zoom = false, terrainMode = "webgl", profile = "survey")` reads the live world without advancing it. The optional `"voxel"` mode accepts `"survey"` or `"fine"`. Terrain selection belongs to the page and survives pause, restart and sortie changes within that page. Switching in flight takes effect on the next draw. Selecting a profile on pause takes effect on resume.

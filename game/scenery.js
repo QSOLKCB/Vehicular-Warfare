@@ -40,7 +40,11 @@ export function landscape(w) {
     for(let i=0;i<5;i++)boxVertices([mx,my+.7+i*1.4,mz],[.45,1.4,.45],i%2?[.94,.77,.53]:[.56,.28,.21],out);
     boxVertices([mx,my+7.1,mz],[2.6,.18,.38],[.53,.91,.77],out);
   }
-  // Painted sky, distant foothills and cut-disc sun share one static mesh.
+  return {land:out,terrainVertices,sky:skyMesh(winter,rng)};
+}
+
+// Painted sky, distant foothills and cut-disc sun share one static mesh.
+export function skyMesh(winter,rng){
   const sky=[], latitude=[[-.55,[.71,.53,.50]],[-.025,[.89,.64,.48]],
     [.12,[.96,.71,.48]],[.26,[.76,.58,.57]],[.56,[.38,.43,.53]],[1.58,[.16,.23,.34]]];
   if(winter){
@@ -68,5 +72,5 @@ export function landscape(w) {
     const v=k=>[96+37*Math.cos(k*Math.PI/36),65+37*Math.sin(k*Math.PI/36),-416];
     facet(sky,[96,65,-416],v(i),v(i+1),winter?[1,.96,.81]:[1,.86,.58]);
   }
-  return {land:out,terrainVertices,sky};
+  return sky;
 }

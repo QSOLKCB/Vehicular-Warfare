@@ -1,0 +1,763 @@
+[
+ {
+  "status": "victory",
+  "reason": "survey beacon linked",
+  "score": 150,
+  "steps": 48,
+  "health": {
+   "player": 80,
+   "sentinel": 0
+  },
+  "receipt": {
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "seed": 919,
+   "ticks": 1152,
+   "commands": [
+    [
+     0,
+     257
+    ]
+   ],
+   "stateHash": "1b3e05f3",
+   "eventHash": "20ed0bf8",
+   "mission": "glassworks"
+  },
+  "events": [
+   {
+    "tick": 1,
+    "type": "launch",
+    "owner": "player",
+    "shot": 1,
+    "point": [
+     0,
+     4.395988160425277,
+     21.84166666666667
+    ]
+   },
+   {
+    "tick": 38,
+    "type": "impact",
+    "source": "player",
+    "shot": 1,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     0,
+     4.395988160425277,
+     7.421712768212213
+    ]
+   },
+   {
+    "tick": 53,
+    "type": "launch",
+    "owner": "player",
+    "shot": 2,
+    "point": [
+     0,
+     4.432119922460673,
+     21.125000000000004
+    ]
+   },
+   {
+    "tick": 88,
+    "type": "impact",
+    "source": "player",
+    "shot": 2,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     0,
+     4.432119922460673,
+     7.307078753967974
+    ]
+   },
+   {
+    "tick": 105,
+    "type": "launch",
+    "owner": "player",
+    "shot": 3,
+    "point": [
+     0,
+     4.529024025853492,
+     19.55
+    ]
+   },
+   {
+    "tick": 137,
+    "type": "impact",
+    "source": "player",
+    "shot": 3,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     0,
+     4.529024025853492,
+     6.999634396347738
+    ]
+   },
+   {
+    "tick": 157,
+    "type": "launch",
+    "owner": "player",
+    "shot": 4,
+    "point": [
+     0,
+     4.679086812885114,
+     17.816666666666666
+    ]
+   },
+   {
+    "tick": 186,
+    "type": "impact",
+    "source": "player",
+    "shot": 4,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     0,
+     4.679086812885114,
+     6.523535288608021
+    ]
+   },
+   {
+    "tick": 209,
+    "type": "launch",
+    "owner": "player",
+    "shot": 5,
+    "point": [
+     0,
+     4.889126668351466,
+     16.083333333333332
+    ]
+   },
+   {
+    "tick": 235,
+    "type": "impact",
+    "source": "player",
+    "shot": 5,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     0,
+     4.889126668351466,
+     5.811601794100083
+    ]
+   },
+   {
+    "tick": 261,
+    "type": "launch",
+    "owner": "player",
+    "shot": 6,
+    "point": [
+     0,
+     5.1649401218213935,
+     14.349999999999996
+    ]
+   },
+   {
+    "tick": 286,
+    "type": "impact",
+    "source": "player",
+    "shot": 6,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     0,
+     5.1649401218213935,
+     4.6575290058815515
+    ]
+   },
+   {
+    "tick": 313,
+    "type": "launch",
+    "owner": "player",
+    "shot": 7,
+    "point": [
+     0,
+     5.521803029024186,
+     12.61666666666666
+    ]
+   },
+   {
+    "tick": 337,
+    "type": "impact",
+    "source": "player",
+    "shot": 7,
+    "target": "terrain",
+    "component": null,
+    "point": [
+     0,
+     5.521803029024186,
+     3.1643249393431647
+    ]
+   },
+   {
+    "tick": 365,
+    "type": "launch",
+    "owner": "player",
+    "shot": 8,
+    "point": [
+     0,
+     5.947549390470145,
+     10.883333333333326
+    ]
+   },
+   {
+    "tick": 417,
+    "type": "launch",
+    "owner": "player",
+    "shot": 9,
+    "point": [
+     0,
+     6.440706420596021,
+     9.14999999999999
+    ]
+   },
+   {
+    "tick": 437,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 10,
+    "point": [
+     3.661616875313162e-16,
+     6.358416893090937,
+     -24.010062919478067
+    ]
+   },
+   {
+    "tick": 456,
+    "type": "impact",
+    "source": "player",
+    "shot": 8,
+    "target": "enemy",
+    "component": "torso",
+    "point": [
+     0,
+     5.947549390470145,
+     -25.40972222222222
+    ]
+   },
+   {
+    "tick": 456,
+    "type": "damage",
+    "source": "player",
+    "shot": 8,
+    "target": "enemy",
+    "component": "torso",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     0,
+     5.947549390470145,
+     -25.40972222222222
+    ]
+   },
+   {
+    "tick": 469,
+    "type": "launch",
+    "owner": "player",
+    "shot": 11,
+    "point": [
+     0,
+     6.970242130427448,
+     7.416666666666655
+    ]
+   },
+   {
+    "tick": 506,
+    "type": "impact",
+    "source": "player",
+    "shot": 9,
+    "target": "enemy",
+    "component": "torso",
+    "point": [
+     0,
+     6.440706420596021,
+     -26.204166666666666
+    ]
+   },
+   {
+    "tick": 506,
+    "type": "damage",
+    "source": "player",
+    "shot": 9,
+    "target": "enemy",
+    "component": "torso",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     0,
+     6.440706420596021,
+     -26.204166666666666
+    ]
+   },
+   {
+    "tick": 515,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 10,
+    "target": "player",
+    "component": "pelvis",
+    "point": [
+     4.1636957717302435e-15,
+     6.59565731335474,
+     6.999156121006957
+    ]
+   },
+   {
+    "tick": 515,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 10,
+    "target": "player",
+    "component": "pelvis",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     4.1636957717302435e-15,
+     6.59565731335474,
+     6.999156121006957
+    ]
+   },
+   {
+    "tick": 521,
+    "type": "launch",
+    "owner": "player",
+    "shot": 12,
+    "point": [
+     0,
+     7.51631249024615,
+     5.683333333333321
+    ]
+   },
+   {
+    "tick": 556,
+    "type": "impact",
+    "source": "player",
+    "shot": 11,
+    "target": "enemy",
+    "component": "torso",
+    "point": [
+     0,
+     6.970242130427448,
+     -26.99861111111111
+    ]
+   },
+   {
+    "tick": 556,
+    "type": "damage",
+    "source": "player",
+    "shot": 11,
+    "target": "enemy",
+    "component": "torso",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     0,
+     6.970242130427448,
+     -26.99861111111111
+    ]
+   },
+   {
+    "tick": 556,
+    "type": "destroy",
+    "source": "player",
+    "shot": 11,
+    "target": "enemy",
+    "point": [
+     -1.3030241942927834e-16,
+     5.3551528829267605,
+     -28.064
+    ]
+   },
+   {
+    "tick": 573,
+    "type": "launch",
+    "owner": "player",
+    "shot": 13,
+    "point": [
+     0,
+     8.026000284791763,
+     3.949999999999988
+    ]
+   },
+   {
+    "tick": 625,
+    "type": "launch",
+    "owner": "player",
+    "shot": 14,
+    "point": [
+     0,
+     8.466126756809551,
+     2.2166666666666557
+    ]
+   },
+   {
+    "tick": 677,
+    "type": "launch",
+    "owner": "player",
+    "shot": 15,
+    "point": [
+     0,
+     8.790401009671413,
+     0.48333333333332273
+    ]
+   },
+   {
+    "tick": 729,
+    "type": "launch",
+    "owner": "player",
+    "shot": 16,
+    "point": [
+     0,
+     8.974015263652149,
+     -1.2500000000000109
+    ]
+   },
+   {
+    "tick": 781,
+    "type": "launch",
+    "owner": "player",
+    "shot": 17,
+    "point": [
+     0,
+     8.999042163090031,
+     -2.983333333333344
+    ]
+   },
+   {
+    "tick": 833,
+    "type": "launch",
+    "owner": "player",
+    "shot": 18,
+    "point": [
+     0,
+     8.871613481398011,
+     -4.716666666666677
+    ]
+   },
+   {
+    "tick": 885,
+    "type": "launch",
+    "owner": "player",
+    "shot": 19,
+    "point": [
+     0,
+     8.610011660219719,
+     -6.450000000000012
+    ]
+   },
+   {
+    "tick": 937,
+    "type": "launch",
+    "owner": "player",
+    "shot": 20,
+    "point": [
+     0,
+     8.254054237064727,
+     -8.183333333333344
+    ]
+   },
+   {
+    "tick": 989,
+    "type": "launch",
+    "owner": "player",
+    "shot": 21,
+    "point": [
+     0,
+     7.85050396703226,
+     -9.916666666666677
+    ]
+   },
+   {
+    "tick": 1041,
+    "type": "launch",
+    "owner": "player",
+    "shot": 22,
+    "point": [
+     0,
+     7.440573809410998,
+     -11.650000000000013
+    ]
+   },
+   {
+    "tick": 1093,
+    "type": "launch",
+    "owner": "player",
+    "shot": 23,
+    "point": [
+     0,
+     7.078945455194159,
+     -13.383333333333347
+    ]
+   },
+   {
+    "tick": 1145,
+    "type": "launch",
+    "owner": "player",
+    "shot": 24,
+    "point": [
+     0,
+     6.783859022203215,
+     -15.116666666666681
+    ]
+   },
+   {
+    "tick": 1152,
+    "type": "beacon",
+    "point": [
+     0,
+     3.1987952757619094,
+     -16
+    ]
+   },
+   {
+    "tick": 1152,
+    "type": "outcome",
+    "status": "victory",
+    "reason": "survey beacon linked",
+    "score": 150
+   }
+  ]
+ },
+ {
+  "status": "defeat",
+  "reason": "walker disabled",
+  "score": 0,
+  "steps": 47,
+  "health": {
+   "player": 0,
+   "sentinel": 60
+  },
+  "receipt": {
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "seed": 919,
+   "ticks": 1132,
+   "commands": [
+    [
+     0,
+     1
+    ]
+   ],
+   "stateHash": "29369f1b",
+   "eventHash": "96b8a768",
+   "mission": "glassworks"
+  },
+  "events": [
+   {
+    "tick": 437,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 1,
+    "point": [
+     3.661616875313162e-16,
+     6.358416893090937,
+     -24.010062919478067
+    ]
+   },
+   {
+    "tick": 515,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 1,
+    "target": "player",
+    "component": "pelvis",
+    "point": [
+     4.1636957717302435e-15,
+     6.59565731335474,
+     6.999156121006957
+    ]
+   },
+   {
+    "tick": 515,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 1,
+    "target": "player",
+    "component": "pelvis",
+    "amount": 20,
+    "hp": 80,
+    "point": [
+     4.1636957717302435e-15,
+     6.59565731335474,
+     6.999156121006957
+    ]
+   },
+   {
+    "tick": 605,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 2,
+    "point": [
+     3.65561986701826e-17,
+     6.482654692831881,
+     -26.70149598483714
+    ]
+   },
+   {
+    "tick": 676,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 2,
+    "target": "player",
+    "component": "pelvis",
+    "point": [
+     3.5048673380795684e-15,
+     8.099683939848328,
+     1.6194136996871
+    ]
+   },
+   {
+    "tick": 676,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 2,
+    "target": "player",
+    "component": "pelvis",
+    "amount": 20,
+    "hp": 60,
+    "point": [
+     3.5048673380795684e-15,
+     8.099683939848328,
+     1.6194136996871
+    ]
+   },
+   {
+    "tick": 773,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 3,
+    "point": [
+     -1.2668370168053227e-16,
+     6.558376689557797,
+     -28.03445092714679
+    ]
+   },
+   {
+    "tick": 835,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 3,
+    "target": "player",
+    "component": "torso",
+    "point": [
+     2.858790507463928e-15,
+     8.72624881805049,
+     -3.656203980981863
+    ]
+   },
+   {
+    "tick": 835,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 3,
+    "target": "player",
+    "component": "torso",
+    "amount": 20,
+    "hp": 40,
+    "point": [
+     2.858790507463928e-15,
+     8.72624881805049,
+     -3.656203980981863
+    ]
+   },
+   {
+    "tick": 941,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 4,
+    "point": [
+     2.0252218286386304e-16,
+     6.539822009507838,
+     -25.346280878659325
+    ]
+   },
+   {
+    "tick": 983,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 4,
+    "target": "player",
+    "component": "torso",
+    "point": [
+     2.2513627251993675e-15,
+     8.012435075615363,
+     -8.616228231953436
+    ]
+   },
+   {
+    "tick": 983,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 4,
+    "target": "player",
+    "component": "torso",
+    "amount": 20,
+    "hp": 20,
+    "point": [
+     2.2513627251993675e-15,
+     8.012435075615363,
+     -8.616228231953436
+    ]
+   },
+   {
+    "tick": 1109,
+    "type": "launch",
+    "owner": "enemy",
+    "shot": 5,
+    "point": [
+     5.324011091679755e-16,
+     6.438858790413624,
+     -22.652615027135546
+    ]
+   },
+   {
+    "tick": 1132,
+    "type": "impact",
+    "source": "enemy",
+    "shot": 5,
+    "target": "player",
+    "component": "torso",
+    "point": [
+     1.6441950552434382e-15,
+     6.887029813976668,
+     -13.57412850473954
+    ]
+   },
+   {
+    "tick": 1132,
+    "type": "damage",
+    "source": "enemy",
+    "shot": 5,
+    "target": "player",
+    "component": "torso",
+    "amount": 20,
+    "hp": 0,
+    "point": [
+     1.6441950552434382e-15,
+     6.887029813976668,
+     -13.57412850473954
+    ]
+   },
+   {
+    "tick": 1132,
+    "type": "destroy",
+    "source": "enemy",
+    "shot": 5,
+    "target": "player",
+    "point": [
+     0,
+     5.850610087566791,
+     -12.533333333333347
+    ]
+   },
+   {
+    "tick": 1132,
+    "type": "outcome",
+    "status": "defeat",
+    "reason": "walker disabled",
+    "score": 0
+   }
+  ]
+ }
+]

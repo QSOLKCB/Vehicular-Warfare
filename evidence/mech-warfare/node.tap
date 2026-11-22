@@ -1,0 +1,240 @@
+TAP version 13
+# Subtest: upstream bytes and simulation content identity
+ok 1 - upstream bytes and simulation content identity
+  ---
+  duration_ms: 27.708016
+  type: 'test'
+  ...
+# Subtest: immutable field and triangle centroids agree across the seeded grid
+ok 2 - immutable field and triangle centroids agree across the seeded grid
+  ---
+  duration_ms: 18.490227
+  type: 'test'
+  ...
+# Subtest: hover trim, rotor tilt, yaw and fully swept terrain envelope
+ok 3 - hover trim, rotor tilt, yaw and fully swept terrain envelope
+  ---
+  duration_ms: 43.10638
+  type: 'test'
+  ...
+# Subtest: mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+ok 4 - mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+  ---
+  duration_ms: 52.828898
+  type: 'test'
+  ...
+# Subtest: terrain and fast moving hitboxes compete on the same interval
+ok 5 - terrain and fast moving hitboxes compete on the same interval
+  ---
+  duration_ms: 1.551242
+  type: 'test'
+  ...
+# Subtest: moving convoy, real enemy defeat, cooldown and last-round exhaustion
+ok 6 - moving convoy, real enemy defeat, cooldown and last-round exhaustion
+  ---
+  duration_ms: 41.750558
+  type: 'test'
+  ...
+# Subtest: same accepted controls at 30, 60 and 144 presentation Hz replay identically
+ok 7 - same accepted controls at 30, 60 and 144 presentation Hz replay identically
+  ---
+  duration_ms: 89.819843
+  type: 'test'
+  ...
+# Subtest: malformed packs, commands and replay are atomic
+ok 8 - malformed packs, commands and replay are atomic
+  ---
+  duration_ms: 2.131142
+  type: 'test'
+  ...
+# Subtest: column samples agree with the WebGL triangles on vertices, edges and both sides of a diagonal
+ok 9 - column samples agree with the WebGL triangles on vertices, edges and both sides of a diagonal
+  ---
+  duration_ms: 67.883342
+  type: 'test'
+  ...
+# Subtest: finite planar horizon and sky match the angular rows, including the last sample at the far edge
+ok 10 - finite planar horizon and sky match the angular rows, including the last sample at the far edge
+  ---
+  duration_ms: 26.064025
+  type: 'test'
+  ...
+# Subtest: a near ridge hides changes to the far surface behind it
+ok 11 - a near ridge hides changes to the far surface behind it
+  ---
+  duration_ms: 1.952631
+  type: 'test'
+  ...
+# Subtest: drawing alternate profiles leaves all three accepted command traces and replays identical
+ok 12 - drawing alternate profiles leaves all three accepted command traces and replays identical
+  ---
+  duration_ms: 637.449186
+  type: 'test'
+  ...
+# Subtest: a fired pulse travels from the physical muzzle and terrain masks the patrolling sentinel
+ok 13 - a fired pulse travels from the physical muzzle and terrain masks the patrolling sentinel
+  ---
+  duration_ms: 19.813738
+  type: 'test'
+  ...
+# Subtest: an obstacle between mount and muzzle blocks launch even with the tip in open space
+ok 14 - an obstacle between mount and muzzle blocks launch even with the tip in open space
+  ---
+  duration_ms: 5.759025
+  type: 'test'
+  ...
+# Subtest: the crossing requires both sentinel destruction and supported entry into the beacon
+ok 15 - the crossing requires both sentinel destruction and supported entry into the beacon
+  ---
+  duration_ms: 45.675522
+  type: 'test'
+  ...
+# Subtest: accepted control playback is identical at 30, 60 and 144 Hz including foot state and events
+ok 16 - accepted control playback is identical at 30, 60 and 144 Hz including foot state and events
+  ---
+  duration_ms: 177.103593
+  type: 'test'
+  ...
+# Subtest: guard acquisition has a full reaction delay and actual returned pulses can disable the player
+ok 17 - guard acquisition has a full reaction delay and actual returned pulses can disable the player
+  ---
+  duration_ms: 39.120586
+  type: 'test'
+  ...
+# Subtest: bounded mech inputs, campaign timeout, ammunition exhaustion and separate replay identities
+ok 18 - bounded mech inputs, campaign timeout, ammunition exhaustion and separate replay identities
+  ---
+  duration_ms: 28.903626
+  type: 'test'
+  ...
+# Subtest: walkers arrest an approaching stride at separation, replant their feet and can reverse
+ok 19 - walkers arrest an approaching stride at separation, replant their feet and can reverse
+  ---
+  duration_ms: 3.940254
+  type: 'test'
+  ...
+# Subtest: hiding behind the berm freezes the guard observation, expires its search and clears acquisition
+ok 20 - hiding behind the berm freezes the guard observation, expires its search and clears acquisition
+  ---
+  duration_ms: 13.474263
+  type: 'test'
+  ...
+# longwatch 8574 ticks; 9 enemy shooters; 15c5e71d 82d0a642
+# frostline 9490 ticks; 15 enemy shooters; d243d88b 610a1900
+# Subtest: longwatch full route with finite ammunition, enemy fire and replay
+ok 21 - longwatch full route with finite ammunition, enemy fire and replay
+  ---
+  duration_ms: 394.784082
+  type: 'test'
+  ...
+# Subtest: frostline full route with finite ammunition, enemy fire and replay
+ok 22 - frostline full route with finite ammunition, enemy fire and replay
+  ---
+  duration_ms: 419.605526
+  type: 'test'
+  ...
+# Subtest: a cleared site must be visited low, in order, with an uninterrupted survey
+ok 23 - a cleared site must be visited low, in order, with an uninterrupted survey
+  ---
+  duration_ms: 7.622057
+  type: 'test'
+  ...
+# Subtest: old field receipts verified, unknown operations rejected
+ok 24 - old field receipts verified, unknown operations rejected
+  ---
+  duration_ms: 48.270164
+  type: 'test'
+  ...
+# Subtest: the Cutbank shelf conceals every hull corner, exposes the turret and clears the bore
+ok 25 - the Cutbank shelf conceals every hull corner, exposes the turret and clears the bore
+  ---
+  duration_ms: 138.241937
+  type: 'test'
+  ...
+# Subtest: a pulse into the berm reaches the terrain after launch; a blocked bore spends no round
+ok 26 - a pulse into the berm reaches the terrain after launch; a blocked bore spends no round
+  ---
+  duration_ms: 34.105312
+  type: 'test'
+  ...
+# Subtest: actual component entry faces select four distinct armour ratings
+ok 27 - actual component entry faces select four distinct armour ratings
+  ---
+  duration_ms: 4.293664
+  type: 'test'
+  ...
+# Subtest: a translating hull can intercept a pulse that misses both endpoint poses
+ok 28 - a translating hull can intercept a pulse that misses both endpoint poses
+  ---
+  duration_ms: 0.75449
+  type: 'test'
+  ...
+# Subtest: the guard loses sight, searches a frozen observation and reacquires with a full reaction delay
+ok 29 - the guard loses sight, searches a frozen observation and reacquires with a full reaction delay
+  ---
+  duration_ms: 143.989233
+  type: 'test'
+  ...
+# Subtest: 120 Hz command playback reproduces shelf victory across clock schedules and combat defeat
+ok 30 - 120 Hz command playback reproduces shelf victory across clock schedules and combat defeat
+  ---
+  duration_ms: 322.664876
+  type: 'test'
+  ...
+# Subtest: bounded tracked packs, masks, replay validation, ordnance exhaustion and timeout
+ok 31 - bounded tracked packs, masks, replay validation, ordnance exhaustion and timeout
+  ---
+  duration_ms: 114.920626
+  type: 'test'
+  ...
+# Subtest: independent belt inertia gives forward, reverse, pivot, arcing turns, coast and braking
+ok 32 - independent belt inertia gives forward, reverse, pivot, arcing turns, coast and braking
+  ---
+  duration_ms: 14.834614
+  type: 'test'
+  ...
+# Subtest: contact fits tilted planes, limits incline, scales traction and supports an interior ridge
+ok 33 - contact fits tilted planes, limits incline, scales traction and supports an interior ridge
+  ---
+  duration_ms: 34.400511
+  type: 'test'
+  ...
+# Subtest: world edges, invalid controls and turret stops preserve finite accepted poses
+ok 34 - world edges, invalid controls and turret stops preserve finite accepted poses
+  ---
+  duration_ms: 5.570136
+  type: 'test'
+  ...
+# Subtest: tripods anchor the moving pelvis, clear swing feet, solve fixed link lengths and carry independent aim
+ok 35 - tripods anchor the moving pelvis, clear swing feet, solve fixed link lengths and carry independent aim
+  ---
+  duration_ms: 26.610354
+  type: 'test'
+  ...
+# Subtest: accepted low rise, rejected cliff, slope limits, field edges and finite controls
+ok 36 - accepted low rise, rejected cliff, slope limits, field edges and finite controls
+  ---
+  duration_ms: 19.388597
+  type: 'test'
+  ...
+# Subtest: unsupported shoes unload, pelvis descends and reachable ground restores support
+ok 37 - unsupported shoes unload, pelvis descends and reachable ground restores support
+  ---
+  duration_ms: 14.895694
+  type: 'test'
+  ...
+# Subtest: aborting a swing retracts propulsion and plants airborne feet before resuming
+ok 38 - aborting a swing retracts propulsion and plants airborne feet before resuming
+  ---
+  duration_ms: 2.477052
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 919.432805
