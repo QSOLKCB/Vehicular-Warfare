@@ -65,7 +65,9 @@ export class View {
       camera=look(subtract(add(p.p,rotate(yaw,[0,0,-18])),eye));
     } else {
       eye=add(p.p,rotate(body,[0,.45,-1.15]));
-      camera=quatMultiply(body,turn(0,-.11));
+      // Lower the zoomed optical axis so a downhill contact stays above
+      // the instrument rail. Sight elevation also pans this read-only view.
+      camera=quatMultiply(body,turn(0,zoom ? p.aim*.85-.30 : p.aim*.45-.13));
     }
     r.begin([0,0,0],camera,{fov,fog:0});
     r.draw(this.sky);
