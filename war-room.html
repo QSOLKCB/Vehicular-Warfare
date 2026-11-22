@@ -8,7 +8,17 @@
 <canvas id="theatreMap" width="202" height="152" hidden aria-label="Local crew chart"></canvas>
 <div id="mapTools"><button id="less" aria-label="Zoom out">−</button><button id="fit">Fit theatre</button><button id="more" aria-label="Zoom in">+</button></div>
 <output role="status" id="feedback">Select a crew to issue orders.</output>
-<div id="viewTools"><button id="tab">Observe in 3D</button><select id="camera" aria-label="Observation camera" hidden><option value="overview">Overhead</option><option value="chase">Crew chase</option><option value="sight">Weapon sight</option></select></div>
+<div id="viewTools"><button id="tab">Observe in 3D</button><select id="camera" aria-label="Observation camera" hidden><option value="overview">Overhead</option><option value="chase">Crew chase</option><option value="sight">Weapon sight</option><option value="director">Battle Director</option></select></div>
+<section id="directorTools" aria-label="Battle Director" hidden>
+  <label>Camera subject<select id="directorSubject"><option value="">Current selection</option></select></label>
+  <div class="directorSettings">
+    <label>Bearing <span id="bearingText"></span><input id="bearing" type="range" min="0" max="360" value="40"></label>
+    <label>Tilt <span id="tiltText"></span><input id="tilt" type="range" min="6" max="78" value="19"></label>
+    <label>Distance <span id="rangeText"></span><input id="range" type="range" min="6" max="80" value="18"></label>
+  </div>
+  <label class="check"><input id="directorSweep" type="checkbox">Automatic orbit</label>
+  <p id="directorReadout"></p>
+</section>
 </section>
 <aside><div class="sectionTitle"><small>COBALT COMMAND</small><h1>Breakwater Reach</h1></div>
 <p id="objective">Disable the shore relay, secure the crossing and disable two mobile defenders.</p>
@@ -26,5 +36,5 @@
 <p>Drag a box to select crews. Shift-click toggles a crew. Right-click terrain to move or a contact to attack. Shift queues. Middle-drag or use arrows to pan. Wheel zooms. Ctrl + 1–9 stores a group. 1–9 recalls it. F follows a crew. Tab switches views from the map. C cycles cameras. P pauses.</p></details>
 </aside></main>
 <dialog id="panel" aria-labelledby="panelTitle" aria-describedby="panelText"><small>COBALT COMMAND</small><h2 id="panelTitle">The War Room</h2><p id="panelText">Four crews await orders at Breakwater Reach. Disable the shore relay, occupy the crossing and disable two Ember vehicles within two minutes. At least one Cobalt crew must survive.</p>
-<button id="primary">Deploy crews</button><button id="restart" hidden>Restart mission</button><button id="save" hidden>Save replay</button><label class="file">Open replay<input type="file" id="openReplay" accept=".json,application/json"></label><output id="report" role="status"></output><a id="boardReturn" href="./index.html">Mission board</a></dialog>
+<button id="primary">Deploy crews</button><button id="inspectFrame" hidden>Inspect frame</button><button id="restart" hidden>Restart mission</button><button id="save" hidden>Save replay</button><label class="file">Open replay<input type="file" id="openReplay" accept=".json,application/json"></label><output id="report" role="status"></output><a id="boardReturn" href="./index.html">Mission board</a></dialog>
 <script type="module" src="./game/war-room.js"></script></body></html>

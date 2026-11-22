@@ -42,6 +42,8 @@ Choose **War Room** on the mission board to command all four Cobalt crews from t
 
 Choose **Formation command** to route crews around charted obstacles and give a group of vehicles separate destinations. [Formation slots and routing](docs/FORMATION.md)
 
+Choose **Battle Director** in the observation camera selector to orbit a friendly crew. From pause or a verified replay, **Inspect frame** lets you change the camera at the held tick. [Director controls](docs/WAR_ROOM.md)
+
 The [command-mode numerical API](docs/COMMAND_AUTHORITY.md) lets four independently ordered crews share this battlefield. Its versioned receipt records group orders and waypoints.
 
 ## Creator systems · Mission workshop

@@ -8,6 +8,7 @@ import {commandScenarios} from './command-scenarios.js';
 import {CombinedView} from './combined-view.js';
 import {StrategicMap,callSign} from './strategic-map.js';
 import {CreatorMusic} from './creator-music.js';
+import {directorSubject,directorAngle,directorPose} from './battle-director.js';
 
 const scenarioKey=new URLSearchParams(location.search).get('scenario')??'classic';
 const scenario=Object.hasOwn(commandScenarios,scenarioKey)?commandScenarios[scenarioKey]:commandScenarios.classic;
@@ -21,6 +22,8 @@ const on=(node,type,fn,opts={})=>node.addEventListener(type,fn,{...opts,signal:l
 let world=createCommandWorld(),map=new StrategicMap(canvas,world);
 let mode='briefing',screen='map',camera='overview',raf=0,lastFrame=null,view=null,music=null;
 let drag=null,loading=null,contactKey,contextLost=false;
+let heldFrame=null,subjectKey='',sweepStart=null,lastDirector=null;
+const director=el('directorTools');
 const metrics={frames:[],mapMs:[],sceneMs:[],tickMs:[],orderMs:[],draws:0,lastDraw:null};
 const sample=(values,n)=>{if(values.length===240)values.shift();values.push(n);};
 const friendly=()=>world.actors.filter(a=>a.faction==='cobalt');
@@ -32,7 +35,7 @@ function cameraCrew(){
   return world.actors.find(a=>a.hp && selected.has(a.id)) ?? friendly().find(a=>a.hp) ?? world.player;
 }
 
-function presentation(visible){
+function presentation(visible,player=cameraCrew()){
   const ids=new Set(visible.map(a=>a.id));
   // Hide tracer paths and debris when their origin or struck unit is hidden.
   // Combat always uses the full, unfiltered authority.
@@ -48,7 +51,6 @@ function presentation(visible){
   const shots=world.shots.filter(s=>ids.has(s.owner) && observedPoint(s.p));
   const events=world.events.filter(e=>world.tick-e.tick<=108 && known(e.owner??e.source) &&
     (!e.target || known(e.target)) && observedPoint(e.point));
-  const player=cameraCrew();
   const {tick,seed,field,water,beacon,captured,status}=world;
   // The fixed relay site is on the briefing chart. Its hidden health and
   // mount pose are unavailable to the overview camera and beacon display.
@@ -137,10 +139,32 @@ function draw(){
     const t=performance.now();map.draw(world,visible,selected,box(),el('retro').checked);
     sample(metrics.mapMs,performance.now()-t);
   }else{
-    const shell=presentation(visible),t=performance.now();
+    const t=performance.now();
+    let subject,pose;
+    if(camera==='director'){
+      const crews=visible.filter(a=>a.faction==='cobalt');
+      const key=crews.map(a=>a.id).join(',');
+      const picker=el('directorSubject');
+      if(subjectKey!==key){
+        const pin=picker.value;
+        picker.replaceChildren(new Option('Current selection',''),...crews.map(a=>new Option(a.id,a.id)));
+        picker.value=crews.some(a=>a.id===pin)?pin:'';
+        subjectKey=key;
+      }
+      subject=directorSubject(crews,picker.value,selected);
+      const bearing=directorAngle(el('bearing').valueAsNumber,world.tick,sweepStart);
+      const tilt=el('tilt').valueAsNumber,range=el('range').valueAsNumber;
+      pose=directorPose(world,subject,bearing,tilt,range);
+      changeText(el('bearingText'),Math.round(bearing)+'°');
+      changeText(el('tiltText'),tilt+'°');changeText(el('rangeText'),range+' m');
+      const reading=subject?subject.id+' · '+subject.hp+' HP':'Crossing';
+      changeText(el('directorReadout'),reading+' · tick '+world.tick);
+      lastDirector={subject:subject?.id??null,eye:pose.eye,bearing,tilt,range,tick:world.tick};
+    }
+    const shell=presentation(visible,subject??cameraCrew());
     view??=new CombinedView(battle,shell,{retro:el('retro').checked,fx:el('fx').checked});
     view.setRetro(el('retro').checked);view.fx=el('fx').checked;
-    metrics.lastDraw=view.draw(shell,camera);
+    metrics.lastDraw=view.draw(shell,camera,pose);
     metrics.draws=metrics.lastDraw.draws;
     sample(metrics.sceneMs,performance.now()-t);
   }
@@ -153,6 +177,7 @@ function showScreen(next){
   canvas.hidden=observing;battle.hidden=!observing;
   el('theatreMap').hidden=!observing;el('mapTools').hidden=observing;el('camera').hidden=!observing;
   el('camera').value=camera;el('tab').textContent=observing?'Return to map':'Observe in 3D';
+  director.hidden=!observing || camera!=='director';
 }
 function dialog(next,text){
   clearSession();mode=next;
@@ -160,11 +185,46 @@ function dialog(next,text){
     verified:'Replay verified'};
   el('panelTitle').textContent=names[next];if(text)el('panelText').textContent=text;
   el('primary').textContent=next==='paused'?'Resume command':next==='briefing'?'Deploy crews':'New mission';
+  el('inspectFrame').hidden=next==='briefing' || contextLost;
   el('restart').hidden=next!=='paused';el('save').hidden=next==='briefing';
   if(!panel.open)panel.showModal();
 }
+// Hold the accepted world while inspecting a paused, verified or terminal tick.
+function inspectHeld(){
+  if(!['paused','verified','debrief'].includes(mode) || contextLost)return;
+  if(loading){
+    abortImport();
+    el('report').textContent='Replay verification cancelled.';
+  }
+  heldFrame={mode,screen,camera,text:el('panelText').textContent};
+  panel.close();mode='inspection';camera='director';
+  document.body.classList.add('inspecting');
+  showScreen('observation');
+  el('camera').hidden=true;el('expand').hidden=true;el('pause').hidden=true;
+  el('directorSweep').disabled=true;
+  el('tab').textContent='Return to '+({paused:'pause',verified:'replay',debrief:'debrief'})[heldFrame.mode];
+  el('tab').focus();
+  drawHeld();
+}
+function closeHeld(){
+  if(!heldFrame)return;
+  const previous=heldFrame;
+  heldFrame=null;document.body.classList.remove('inspecting');
+  el('expand').hidden=false;el('pause').hidden=false;el('directorSweep').disabled=false;
+  camera=previous.camera;showScreen(contextLost?'map':previous.screen);
+  dialog(previous.mode,previous.text);
+}
+function drawHeld(){
+  if(!heldFrame || raf)return;
+  raf=requestAnimationFrame(()=>{
+    raf=0;
+    try{draw();}
+    catch(error){closeHeld();el('report').textContent=error.message;}
+  });
+}
 function pause(reason='Your crews are standing by.'){
-  if(mode==='live')dialog('paused',reason);
+  if(heldFrame)closeHeld();
+  else if(mode==='live')dialog('paused',reason);
 }
 function frame(now){
   raf=0;
@@ -187,6 +247,8 @@ function frame(now){
 function start(fresh){
   clearSession();abortImport();
   if(fresh){
+    el('directorSubject').value='';el('directorSweep').checked=false;sweepStart=null;
+    el('bearing').value='40';el('tilt').value='19';el('range').value='18';lastDirector=null;
     const oldSeed=world.seed;
     world=createCommandWorld();
     if(world.seed!==oldSeed)map=new StrategicMap(canvas,world);
@@ -303,8 +365,19 @@ on(el('expand'),'click',()=>{
   el('expand').setAttribute('aria-pressed',String(expanded));
   el('expand').textContent=expanded?'Show roster':'Expand chart';
 });
-on(el('tab'),'click',()=>toggleView(screen==='map'?'observation':'map'));
-on(el('camera'),'change',()=>{camera=el('camera').value;battle.focus();});
+on(el('tab'),'click',()=>heldFrame?closeHeld():toggleView(screen==='map'?'observation':'map'));
+on(el('inspectFrame'),'click',inspectHeld);
+on(el('directorSubject'),'change',drawHeld);
+for(const id of ['bearing','tilt','range'])on(el(id),'input',drawHeld);
+on(el('directorSweep'),'change',()=>{
+  if(el('directorSweep').checked)sweepStart=world.tick;
+  else{
+    el('bearing').value=Math.round(directorAngle(el('bearing').valueAsNumber,world.tick,sweepStart));
+    sweepStart=null;
+  }
+});
+on(window,'resize',drawHeld);
+on(el('camera'),'change',()=>{camera=el('camera').value;director.hidden=camera!=='director';battle.focus();});
 on(el('primary'),'click',()=>start(mode!=='paused'));
 on(el('restart'),'click',()=>start(true));
 on(el('pause'),'click',()=>pause());
@@ -316,7 +389,8 @@ on(window,'keydown',e=>{
   if(e.altKey || e.metaKey)return;
   if(e.code==='Escape' || e.code==='KeyP' && !e.target.closest('input,select,textarea')){
     if(e.repeat)return;
-    if(mode==='live'){e.preventDefault();pause();}
+    if(heldFrame){e.preventDefault();closeHeld();}
+    else if(mode==='live'){e.preventDefault();pause();}
     else if(mode==='paused'){e.preventDefault();start(false);}
     return;
   }
@@ -335,7 +409,7 @@ on(window,'keydown',e=>{
   }
   if(e.code==='KeyF')toggleView('observation',true);
   if(e.code==='KeyC'){
-    const cameras=['overview','chase','sight'];
+    const cameras=['overview','chase','sight','director'];
     camera=cameras[(cameras.indexOf(camera)+1)%3];toggleView('observation');
   }
   if(e.code==='KeyM')el('retro').checked=!el('retro').checked;
@@ -344,9 +418,13 @@ on(window,'keydown',e=>{
 on(window,'blur',()=>pause('Window lost focus.'));
 on(document,'visibilitychange',()=>{if(document.hidden)pause('Tab hidden.');});
 on(battle,'webglcontextlost',e=>{
-  e.preventDefault();contextLost=true;showScreen('map');pause('3D context lost. Resume on the command map.');
+  e.preventDefault();contextLost=true;el('inspectFrame').hidden=true;
+  showScreen('map');pause('3D context lost. Resume on the command map.');
 });
-on(battle,'webglcontextrestored',()=>{contextLost=false;});
+on(battle,'webglcontextrestored',()=>{
+  contextLost=false;
+  el('inspectFrame').hidden=!['paused','debrief','verified'].includes(mode);
+});
 on(window,'pagehide',e=>{
   abortImport();pause('Left the command station.');clearSession();
   if(!e.persisted)listeners.abort();
@@ -380,7 +458,7 @@ export function inspect(){
     return {id:a.id,x:a.p[0],z:a.p[2],u:u+r.left,v:v+r.top,hp:a.hp};
   });
   return structuredClone({mode,tick:world.tick,status:world.status,selected:[...selected],visible,
-    camera,screen,units:world.units,metrics:{...metrics,buffers:view?.r.meshes.size??0,rafActive:Boolean(raf),
+    camera,screen,director:screen==='observation' && camera==='director'?lastDirector:null,units:world.units,metrics:{...metrics,buffers:view?.r.meshes.size??0,rafActive:Boolean(raf),
       dragging:Boolean(drag),audioActive:Boolean(music)},receipt:commandReceipt(world),zoom:map.zoom,cx:map.cx,cz:map.cz});
 }
 if(scenario===commandScenarios.formation){

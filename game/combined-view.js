@@ -140,8 +140,8 @@ export class CombinedView{
     this.retroEnabled=Boolean(enabled);
     if(!enabled){this.retro=null;this.retroImage=null;}
   }
-  draw(w,mode){
-    const r=this.r,gl=r.gl,{eye,q,fov}=cameraPose(w,mode);
+  draw(w,mode,pose){
+    const r=this.r,gl=r.gl,{eye,q,fov}=pose??cameraPose(w,mode);
     r.begin([0,0,0],q,{fov,fog:0});r.draw(this.sky);gl.clear(gl.DEPTH_BUFFER_BIT);
     const aspect=r.canvas.width/r.canvas.height;
     gl.uniformMatrix4fv(r.vp,false,multiplyMatrices(perspective(fov,aspect),viewMatrix(eye,q)));
