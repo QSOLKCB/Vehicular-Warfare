@@ -22,7 +22,6 @@ export const inspect=groundStation({
   createWorld:selection=>createCombinedWorld(undefined,selection),step:stepCombined,receipt:combinedReceipt,
   replay:replayCombined,View:CombinedView,Sound:VehicleAudio,vehicleSelect:select,
   keys:BK,aimLeft:BK.aimLeft,aimRight:BK.aimRight,
-  extraControls:{KeyE:BK.up,KeyQ:BK.down,KeyZ:BK.strafeLeft,KeyX:BK.strafeRight,ShiftLeft:BK.brake,ShiftRight:BK.brake},
   activeStatus:'active',hud,actors:9,observe:w=>({selection:w.selection,actors:w.actors,relay:w.relay,
     waterLevel:w.water.level,objective:objective(w),captured:w.captured,mobileKills:w.mobileKills,requiredDefenders:REQUIRED_DEFENDERS,repairReserve:w.supplies}),
   name:'Breakwater Reach',replayPrefix:'breakwater',wonTitle:'Reach secured',wonSummary:'Gate captured · '+defenderGoal+' disabled'

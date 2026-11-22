@@ -1,12 +1,12 @@
 import {Clock,HZ} from '../sim/clock.js';
+import {crewKeys,SimpleSteering} from './drive-controls.js';
 
 export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft,aimRight,
-  extraControls={},activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,soundLabel='Sound',actors=2,observe,vehicleSelect}){
+  vehicleKind,activeStatus,hud,name,replayPrefix,wonTitle,wonSummary,Sound,soundLabel='Sound',actors=2,observe,vehicleSelect}){
   const el=id=>document.getElementById(id);
   const canvas=el('battlefield'),station=el('station'),clock=new Clock();
-  const controls={KeyW:keys.forward,KeyS:keys.back,KeyA:keys.left,KeyD:keys.right,
-    ...extraControls,ArrowLeft:aimLeft,ArrowRight:aimRight,ArrowUp:keys.elevate,
-    ArrowDown:keys.depress,Space:keys.fire};
+  const style=el('driveStyle');
+  let controls,steering;
   const pressed=new Set();
   let vehicle=vehicleSelect?.value;
   let world=createWorld(vehicle),mode='briefing',camera='chase',view=null,session=null,raf=0;
@@ -15,10 +15,29 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
   let lastDraw=null,retired=0,peaks=0;
   const frames=[],costs=[],viewMs=[];
   const keep=(list,value)=>{if(list.length===1024)list.shift();list.push(value);};
+  try{if(localStorage.getItem('vw007:drive-style')==='independent')style.value='independent';}catch{}
+  function configureControls(){
+    const crew=world.selection??vehicleKind;
+    controls=crewKeys(crew,keys,aimLeft,aimRight);
+    const surface=crew!=='helicopter';
+    el('driveSetup').hidden=!surface;
+    if(el('nearAimKeys'))el('nearAimKeys').hidden=!surface;
+    steering=surface && style.value==='simple'?new SimpleSteering(crew,keys,aimLeft,aimRight):null;
+    if(!surface)return;
+    const help=el('driveHelp');
+    if(!steering){help.textContent='Steer and aim separately. Q/E aim left/right and R/F raise/lower.';return;}
+    const details={tank:'Release the drive keys to brake.',mech:'Release W/S to finish your stride.',ship:'A/D gives the rudder a little ahead power at low speed.'};
+    help.textContent='A/D steers and brings your aim around. '+details[crew];
+  }
+  style.addEventListener('change',()=>{
+    configureControls();
+    try{localStorage.setItem('vw007:drive-style',style.value);}catch{}
+  });
+  configureControls();
   function dispose(){
     cancelAnimationFrame(raf);raf=0;session?.abort();session=null;
     if(document.pointerLockElement===canvas)document.exitPointerLock();
-    pressed.clear();held=0;trigger=false;mouseX=mouseY=0;
+    pressed.clear();held=0;trigger=false;mouseX=mouseY=0;steering?.reset();
     sound?.dispose();sound=null;
     clock.reset();lastFrame=null;
     if(view){view.dispose();retired=view.r.meshes.size;view=null;}
@@ -86,6 +105,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
       let cmd=held|(trigger?keys.fire:0);
       if(Math.abs(mouseX)>=1){cmd|=mouseX>0?aimRight:aimLeft;mouseX-=Math.sign(mouseX);}
       if(Math.abs(mouseY)>=1){cmd|=mouseY>0?keys.depress:keys.elevate;mouseY-=Math.sign(mouseY);}
+      if(steering)cmd=steering.command(cmd,world.player);
       const start=performance.now();step(world,cmd);keep(costs,performance.now()-start);
       peaks=Math.max(peaks,world.shots.length);
     });
@@ -117,7 +137,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
   vehicleSelect?.addEventListener('change',()=>{
     if(mode!=='briefing')return;
     vehicle=vehicleSelect.value;
-    dispose();world=createWorld(vehicle);preview();
+    dispose();world=createWorld(vehicle);configureControls();preview();
   });
   function syncSound(){
     if(!Sound)return;
@@ -155,7 +175,7 @@ export function groundStation({createWorld,step,receipt,replay,View,keys,aimLeft
 
   // Detached snapshots for local acceptance tooling.
   function inspect(){
-    return structuredClone({mode,camera,tick:world.tick,status:world.status,reason:world.reason,
+    return structuredClone({mode,camera,driveStyle:el('driveSetup').hidden?null:style.value,tick:world.tick,status:world.status,reason:world.reason,
       score:world.score,held,trigger,player:world.player,enemy:world.enemy,events:world.events,
       ...(world.beacon?{beacon:world.beacon}:{}),...observe?.(world),sight:lastDraw?.sight,shots:world.shots,receipt:receipt(world),
       metrics:{frames,costs,viewMs,lastDraw,peaks,actors,buffers:view?.r.meshes.size??0,

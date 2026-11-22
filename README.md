@@ -12,17 +12,23 @@ The long sorties launch in cockpit view. Its north-up route display shows the ai
 
 Long Watch and Frostline use a 960 m valley. Follow the distance and compass bearing on the HUD. Once a patrol is cleared, enter the teal circle below 34 m above ground. Each confirmed beacon repairs up to 32 hull points and refills the rocket pods. Return to **Mission board** from pause or the debrief to choose another sortie.
 
+## One-handed vehicle controls
+
+Tanks, mechs and ships start with **Simple** controls in their own missions, Combined arms and workshop playtests. **W/S** move forward or back, **A/D** turn the vehicle and bring its mount around, and **Space** fires. Release the tank’s drive keys to brake. The walker finishes its stride. A slow cutter applies a little ahead power when you steer so the rudder can turn it.
+
+To aim independently with your left hand, use **Q/E** for left/right and **R/F** to raise/lower. Your aim holds when you release those keys. The next steering turn resumes mount following. Arrow keys and captured mouse also control the mount. Choose **Independent** in the briefing or pause panel for separate steering and aiming throughout. The browser remembers your choice for all three surface crews. In the helicopter, E/Q still control lift and Z/X still slide sideways.
+
 ## Ground sortie · Cutbank Relay
 
-Open the ground sortie from the mission board to drive a tracked vehicle against a CPU guard. **W/S** drive the tracks forward or backward, **A/D** steer, and **Shift** brakes. The arrow keys traverse the turret and adjust gun elevation independently. **Space** fires, **C** changes the camera and **P** pauses. The ground sortie has its own replay checker and a return link to the helicopter board. [Tank authority and limitations](docs/TRACKED_WARFARE.md) · [Mission runs and screenshots](evidence/tracked-warfare/)
+Open the ground sortie from the mission board to drive a tracked vehicle against a CPU guard. **W/S** drive the tracks forward or backward, **A/D** steer, and **Shift** brakes. To stop on the shelf with Simple controls, release W and keep holding Space. **Space** fires, **C** changes the camera and **P** pauses. The ground sortie has its own replay checker and a return link to the helicopter board. [Tank authority and limitations](docs/TRACKED_WARFARE.md) · [Mission runs and screenshots](evidence/tracked-warfare/)
 
 ## Walking sortie · Glassworks Crossing
 
-Pilot a six-legged walker across the terraces, disable the sentinel and reach the survey beacon. **W/S** walk forward or backward, **A/D** turn the legs, and the arrow keys aim the torso independently. **Space** fires, **C** changes the camera, and **P** pauses. The mech page includes local sound, a replay download and a checker for saved Glassworks runs. [Walking and combat contract](docs/MECH_WARFARE.md) · [Chromium playthrough and measurements](evidence/mech-warfare/)
+Pilot a six-legged walker across the terraces, disable the sentinel and reach the survey beacon. **W/S** walk forward or backward and **A/D** turn the legs. In Simple controls the torso follows the turn. **Space** fires, **C** changes the camera, and **P** pauses. The mech page includes local sound, a replay download and a checker for saved Glassworks runs. [Walking and combat contract](docs/MECH_WARFARE.md) · [Chromium playthrough and measurements](evidence/mech-warfare/)
 
 ## Naval sortie · Lantern Sound
 
-Choose **Naval sortie** to pilot a cutter through the island channel. **W/S** apply forward or reverse thrust. **A/D** turn the rudder, which needs water flowing past the hull to turn the ship. The arrow keys traverse and elevate the deck mount. **Space** fires, **C** switches views and **P** pauses. Disable the patrol and shore relay, then sail into the exit buoy. [Vessel, water and replay contract](docs/NAVAL_WARFARE.md) · [Playthrough, screenshots and measurements](evidence/naval-warfare/)
+Choose **Naval sortie** to pilot a cutter through the island channel. **W/S** apply forward or reverse thrust. **A/D** turn the rudder. Simple controls supply headway for low-speed turns and bring the deck mount around. **Space** fires, **C** switches views and **P** pauses. Disable the patrol and shore relay, then sail into the exit buoy. [Vessel, water and replay contract](docs/NAVAL_WARFARE.md) · [Playthrough, screenshots and measurements](evidence/naval-warfare/)
 
 ## Combined arms · Breakwater Reach
 
@@ -66,6 +72,10 @@ Open [RIDGEFIRE on localhost](http://127.0.0.1:8080/) in desktop Chromium with W
 The original R/F lift keys and left/right arrow turning also work.
 
 In Sable Valley, begin in cover and tap Space to see a rocket hit the ridge. Hold E until the threat indicator reads **EXPOSED**, then release. A named reticle identifies a visible target inside the assisted sight cone. Rockets fly straight from launch. Hold Q briefly to break contact. The defenders search the last observed position while their airborne shots continue. A hard descent can destroy the aircraft. The mission ends on destruction of both targets, loss of the Kestrel, exhaustion of usable rockets, or the three-minute time limit.
+
+## Release candidate
+
+Build the offline game from a committed checkout with `python3 tools/package.py /tmp/Vehicular-Warfare.zip`. Unzip it, run the local server from the extracted Vehicular-Warfare directory and open the mission board. PR verification exercises the controls against this packaged runtime. Mixed battles use distance-based vehicle detail and bounded effects. [Offline play and owner review](docs/RELEASE.md) · [Native and software measurements](evidence/release-performance/)
 
 ## Verification
 
@@ -121,6 +131,6 @@ Pause, pointer unlock and switching to another foreground tab stopped the simula
 
 VANILLAJS v3.4.0 is pinned at `0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466`. The [per-file SHA-256 manifest](vendor/vanillajs/provenance.json), [upstream license](vendor/vanillajs/LICENSE) and [notice](vendor/vanillajs/NOTICE) accompany the exact source closure. Reproduce this branch's closure with `python3 tools/vendor.py /path/to/VANILLAJS render-webgl render-packing`. The renderer retains the landscape and sky and reuses model and effect buffers. Aircraft motion, targeting and mission outcomes come entirely from the numerical world.
 
-The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. Native GPU performance and mobile touch controls remain unverified.
+The Kestrel flies three seeded missions. The hull uses conservative terrain clearance and assisted lift. Enable **Sound** in flight for the local rotor, launch, impact and beacon tones. Pause and debrief close the audio context. Keyboard-only flight works without mouse capture. Replay is scoped to the tested runtime. The release performance checks cover the mixed theatre on one physical NVIDIA GPU. Mobile touch flight controls remain unverified.
 
 [Agent instructions](AGENTS.md) · [Roadmap](ROADMAP.md) · [Original handoff](docs/CODEX_CLI_HANDOFF.md) · [Game design](docs/GAME_DESIGN.md) · [Architecture](docs/ARCHITECTURE.md) · [Engine baseline](docs/ENGINE_BASELINE.md) · [DOS-era techniques](docs/DOS_TECHNIQUES.md) · [Acceptance contract](docs/ACCEPTANCE.md)

@@ -1,0 +1,28 @@
+{
+  "base": "6c8bf5453110f195e5adae107f0d5dd56a1845d8",
+  "tested": "caece10be1bdc7474fd7bb6550d1973cab521147",
+  "engine": "0cffbcfe2524bbf7f82190ef8ef0813aeb6bb466",
+  "tag": "v3.4.0",
+  "manifestSha256": "0608e182be0d55f1dcb2fcf92eae6e3078e704de8ef7fadcc0fb5ab933a61bef",
+  "vendorSha256": {
+    "LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "NOTICE": "3e00b198d9b7e8cf9aba1b6095caf815dd276bd7cff6c3e517927bf690c2c302",
+    "modules/collision/index.js": "99c0f4bc106d4162fc5bea057a7108d7cf52526279b2a8ad4e4f27c1f0e6f5c1",
+    "modules/math/index.js": "4f4ebf0786b97342c11004b8830a535890b16693458a0436edb1fc581a411da7",
+    "modules/render-packing/index.js": "c42239a5be626feb53f11243dddaa034821daaa7ca667741495420dca8558733",
+    "modules/render-webgl/index.js": "b23b2c427d3bf8b29c991e3cf676bcda13bdffa9dae88bbb9f0f4594088aba2d",
+    "modules/terrain/index.js": "500756acf093f44e2e6c7e993a4b8f3f6f720abaf32db99fe0189d9b65fdc186"
+  },
+  "authorityIdentities": {
+    "combined-identity.js": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+    "creator-identity.js": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+    "identity.js": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+    "mech-identity.js": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+    "naval-identity.js": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+    "tank-identity.js": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140"
+  },
+  "gitTrees": {
+    "sim": "0adc2ad0cc748146521286f82179ee5fbefaad13",
+    "vendor": "d3fa7c96c9ce0d1b7ff30bba8bb53f242220731c"
+  }
+}

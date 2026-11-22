@@ -36,6 +36,6 @@ function hud(world,lastDraw){
 
 export const inspect=groundStation({
   createWorld:createTankWorld,step:stepTank,receipt:tankReceipt,replay:replayTank,View:TankView,
-  keys:TK,aimLeft:TK.turretLeft,aimRight:TK.turretRight,extraControls:{ShiftLeft:TK.brake,ShiftRight:TK.brake},
-  activeStatus:'driving',hud,name:'Cutbank Relay',replayPrefix:'cutbank',wonTitle:'Relay secured',wonSummary:'Guard disabled'
+  keys:TK,aimLeft:TK.turretLeft,aimRight:TK.turretRight,
+  vehicleKind:'tank',activeStatus:'driving',hud,name:'Cutbank Relay',replayPrefix:'cutbank',wonTitle:'Relay secured',wonSummary:'Guard disabled'
 });

@@ -21,13 +21,18 @@
       </select>
       <div id="controlHint"></div>
     </div>
+    <div id="driveSetup" hidden>
+      <label for="driveStyle">Controls</label>
+      <select id="driveStyle" aria-describedby="driveHelp"><option value="simple">Simple</option><option value="independent">Independent</option></select>
+      <div id="driveHelp"></div>
+    </div>
     <button id="primary">Deploy <b>↗</b></button><button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
     <a href="./combined.html" id="reselect">Choose vehicle</a><a href="./" id="return">Mission board</a>
     <details id="guide"><summary>Controls &amp; saved replays</summary>
-      <div class="keys"><span id="driveKeys"></span><span id="turnKeys"></span><span id="extraKeys"></span>
+      <div class="keys"><span id="driveKeys"></span><span id="turnKeys"></span><span id="extraKeys"></span><span id="nearAimKeys" hidden><kbd>Q / E</kbd> Aim left / right · <kbd>R / F</kbd> Raise / lower</span>
         <span><kbd>← / →</kbd> Slew aim</span><span><kbd>↑ / ↓</kbd> Adjust elevation</span><span><kbd>Space / LMB</kbd> Fire · forward aim assist</span>
         <span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Sight / chase</span><span><kbd>P / Esc</kbd> Pause</span></div>
-      <p class="assist-note">Hold fire to track visible Ember contacts ahead. The relay takes priority. Steer or use the arrow keys to aim manually. Your captured gate supplies cells and repairs. Release W to stay nearby.</p>
+      <p class="assist-note">Hold fire to track visible Ember contacts ahead, starting with the relay. Steer or aim to take over. Your captured gate supplies cells and repairs. Release W to stay nearby.</p>
       <label class="replay-check">Verify a Breakwater replay <input id="checkFile" type="file" accept=".json,application/json"></label>
       <output id="checkResult" aria-live="polite"></output>
     </details>

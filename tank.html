@@ -12,15 +12,20 @@
   <section id="panel">
     <div class="eyebrow"><span class="dash"></span><span id="chapter">TRACKED SORTIE</span></div>
     <h1 id="title">CUTBANK<br>RELAY</h1>
-    <p id="desc">Drive the Basalt north to the relay berm. Brake when the guard’s turret enters your sight. Hold the shelf and disable the guard before time runs out.</p>
+    <p id="desc">Drive the Basalt north to the relay berm. Stop on the shelf when the guard’s turret enters your sight, then hold Space to fire.</p>
+    <div id="driveSetup" hidden>
+      <label for="driveStyle">Controls</label>
+      <select id="driveStyle" aria-describedby="driveHelp"><option value="simple">Simple</option><option value="independent">Independent</option></select>
+      <div id="driveHelp"></div>
+    </div>
     <button id="primary">Deploy crawler <b>↗</b></button>
     <button id="again" hidden>Restart</button><button id="save" hidden>Save replay</button>
     <a href="./" id="return">Flight board</a>
     <details id="guide"><summary>Drive controls &amp; saved replays</summary>
       <div class="keys">
         <span><kbd>W / S</kbd> Drive / reverse</span><span><kbd>A / D</kbd> Differential steer</span>
-        <span><kbd>Shift</kbd> Brake</span><span><kbd>← / →</kbd> Traverse turret</span>
-        <span><kbd>↑ / ↓</kbd> Elevate / depress</span><span><kbd>Space / LMB</kbd> Fire</span>
+        <span><kbd>Shift</kbd> Brake</span><span><kbd>Q / E</kbd> Aim turret left / right</span>
+        <span><kbd>R / F</kbd> Raise / lower aim</span><span><kbd>Arrows</kbd> Alternate aim keys</span><span><kbd>Space / LMB</kbd> Fire</span>
         <span><kbd>RMB</kbd> Capture mouse aim</span><span><kbd>C</kbd> Gun sight / chase</span>
         <span><kbd>P / Esc</kbd> Pause</span>
       </div>
@@ -36,7 +41,7 @@
     <div class="instruments"><div><small>HULL</small><b id="health"></b></div><div><small>ROUNDS</small><b id="ammo"></b></div><div><small>DRIVE</small><b id="speed"></b><span id="belts" aria-label="Left and right track speeds in metres per second"></span></div><div><small>GUN</small><b id="reload"></b></div></div>
     <div class="station-actions"><button id="camera">Gun sight</button><button id="pause">Pause</button></div>
   </section>
-  <footer><span>W/S DRIVE　 A/D STEER　 SHIFT BRAKE</span><span>ARROWS AIM　 SPACE FIRE</span></footer>
+  <footer><span>W/S DRIVE　 A/D STEER　 SHIFT BRAKE</span><span>Q/E AIM　 R/F ELEVATION　 SPACE FIRE</span></footer>
 </main>
 <script type="module" src="./game/tank-main.js"></script>
 </body></html>

@@ -7,26 +7,53 @@ import {mechSortie} from './mech-sortie.mjs';
 import {navalSortie} from './naval-sortie.mjs';
 import {combinedSortie} from './combined-sortie.mjs';
 import {creatorSortie} from './creator-sortie.mjs';
+import {releaseProfile,qualifyRenderer} from './release-profile.mjs';
 import assert from 'node:assert/strict';
 import {spawn,execFileSync} from 'node:child_process';
-import {mkdtemp,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
-import {tmpdir,cpus} from 'node:os';
+import {createHash} from 'node:crypto';
+import {mkdtemp,readFile,symlink,writeFile,mkdir,rm} from 'node:fs/promises';
+import {tmpdir,cpus,release} from 'node:os';
 import {join,resolve} from 'node:path';
 import {once} from 'node:events';
 import {K,replay,receipt} from '../sim/world.js';
 
 const chrome=process.env.CHROMIUM || 'google-chrome';
+const backend=process.env.CHROMIUM_BACKEND ?? 'software';
+if(!['native','software'].includes(backend))throw RangeError('CHROMIUM_BACKEND must be native or software');
+const graphicsFlags=backend==='software'?['--use-angle=swiftshader','--enable-unsafe-swiftshader']:
+  ['--enable-gpu','--disable-software-rasterizer',...(process.platform==='linux'?['--use-gl=angle','--use-angle=gl']:[])];
+const webRoot=resolve(process.env.RIDGEFIRE_WEB_ROOT || process.cwd());
+const source=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+// An extracted ZIP has no .git directory. Check the files used by the browser
+// against the selected checkout, and give their bytes a location-independent ID.
+async function identifyRuntime(){
+  const manifest=createHash('sha256');
+  let files=0;
+  const tree=execFileSync('git',['ls-tree','-rz','--full-tree',source],{encoding:'utf8'});
+  for(const entry of tree.split('\0')){
+    if(!entry)continue;
+    const [header,name]=entry.split('\t');
+    if(!/^(?:assets|game|sim|vendor)\//.test(name) && !/^[^/]+\.html$/.test(name))continue;
+    const expected=header.split(' ')[2],bytes=await readFile(join(webRoot,name));
+    const oid=createHash(expected.length===40?'sha1':'sha256').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
+    assert.equal(oid,expected,'Packaged runtime file differs at '+name);
+    manifest.update(name+'\0').update(createHash('sha256').update(bytes).digest());files++;
+  }
+  assert.ok(files>0,'Expected runtime files in the source tree');
+  return {revision:source,files,sha256:manifest.digest('hex')};
+}
+const servedTree=process.env.RIDGEFIRE_WEB_ROOT?await identifyRuntime():undefined;
 const output=resolve(process.argv[2] || 'evidence/browser');
 await mkdir(output,{recursive:true});
 const temp=await mkdtemp(join(tmpdir(),'ridgefire-browser-'));
 const serve=join(temp,'www'); await mkdir(serve);
-await symlink(process.cwd(),join(serve,'ridgefire'));
+await symlink(webRoot,join(serve,'ridgefire'));
 const server=spawn('python3',['-u','-m','http.server','0','--bind','127.0.0.1','--directory',serve]);
 server.stderr.resume();
 const line=String((await once(server.stdout,'data'))[0]);
 const port=line.match(/port (\d+)/)[1],base='http://127.0.0.1:'+port;
 const browser=spawn(chrome,['--headless=new','--disable-background-networking','--no-first-run',
-  '--disable-default-apps','--use-angle=swiftshader','--enable-unsafe-swiftshader',
+  '--disable-default-apps',...graphicsFlags,
   '--window-size=1100,760','--remote-debugging-pipe','--user-data-dir='+join(temp,'profile'),
   'about:blank'],
   {stdio:['ignore','ignore','pipe','pipe','pipe']});
@@ -46,16 +73,16 @@ browser.stdio[4].on('data',data=>{
 });
 browser.once('exit',()=>{for(const cb of pending.values()) cb({error:{message:stderr||'Browser exited'}});});
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-async function send(method,params={},session=sessionId){
+async function send(method,params={},session=sessionId,timeout=12000){
   const id=++seq;
   return new Promise((ok,fail)=>{
-    const timer=setTimeout(()=>{pending.delete(id);fail(Error('CDP timeout '+method+' '+stderr));},12000);
+    const timer=setTimeout(()=>{pending.delete(id);fail(Error('CDP timeout '+method+' '+stderr));},timeout);
     pending.set(id,m=>{clearTimeout(timer);m.error?fail(Error(m.error.message)):ok(m.result);});
     browser.stdio[3].write(JSON.stringify({id,method,params,sessionId:session??undefined})+'\0');
   });
 }
-async function evaluate(expression){
-  const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});
+async function evaluate(expression,timeout){
+  const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true},sessionId,timeout);
   if(r.exceptionDetails) throw Error(r.exceptionDetails.exception?.description || r.exceptionDetails.text);
   return r.result.value;
 }
@@ -97,6 +124,7 @@ try{
   const initial=await read();
   assert.equal(initial.mode,'briefing');
   const gpu=await evaluate("(()=>{const g=document.querySelector('canvas').getContext('webgl'),e=g.getExtension('WEBGL_debug_renderer_info');return {backend:g.getParameter(e.UNMASKED_RENDERER_WEBGL),width:g.drawingBufferWidth,height:g.drawingBufferHeight}})()");
+  qualifyRenderer(backend,gpu.backend);
   if(process.env.RIDGEFIRE_TEST_REPLAY){
     const dom=await send('DOM.getDocument');
     const {nodeId}=await send('DOM.querySelector',{nodeId:dom.root.nodeId,selector:'#checkFile'});
@@ -109,12 +137,25 @@ try{
   }
   const family=process.argv[3];
   const stationSorties={tank:tankSortie,mech:mechSortie,naval:navalSortie,combined:combinedSortie,creator:creatorSortie};
-  if(Object.hasOwn(stationSorties,family)){
+  if(family==='profile' || family==='profile-base' || family==='controls'){
+    const io={click,key,mouse,evaluate,send,screenshot,sleep,output};
+    const result=family==='controls'?await (await import('./control-sortie.mjs')).controlSortie(io):
+      await releaseProfile(io,{baseOnly:family==='profile-base',backend});
+    assert.deepEqual(errors,[]);
+    assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u.startsWith('blob:'+base+'/') || u==='data:,'));
+    const {gpu:system}=await send('SystemInfo.getInfo',{},null);
+    const report={source,servedTree,host:{platform:process.platform,arch:process.arch,osRelease:release()},
+      driver:execFileSync('git',['rev-parse','HEAD'],{cwd:new URL('.',import.meta.url),encoding:'utf8'}).trim(),
+      version,cpu:cpus()[0].model,backend,graphicsFlags,gpu,devices:system.devices,webgl:system.featureStatus?.webgl,
+      requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
+    await writeFile(join(output,family+'.json'),JSON.stringify(report,null,1)+'\n');
+    console.log(family,backend,gpu.backend,'passed');
+  }else if(Object.hasOwn(stationSorties,family)){
     const sortie=stationSorties[family];
     const result=await sortie({click,key,mouse,evaluate,send,screenshot,sleep,output});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u.startsWith('blob:'+base+'/') || u==='data:,'));
-    const report={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+    const report={source,servedTree,
       version,cpu:cpus()[0].model,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,family+'.json'),JSON.stringify(report,null,1)+'\n');
     if(family==='combined'){
@@ -124,7 +165,7 @@ try{
     const result=await terrainFlights({read,key,click,screenshot,evaluate,send,until,quantiles});
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
-    const report={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+    const report={source,servedTree,
       version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,'terrain.json'),JSON.stringify(report,null,1)+'\n');
     console.log(report.measurements.map(({mode,summary})=>({mode,summary})));
@@ -133,7 +174,7 @@ try{
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
     await writeFile(join(output,'runtime.json'),JSON.stringify({version,gpu,cpu:cpus()[0].model,
-      source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),errors},null,2));
+      source,servedTree,errors},null,2));
   }else{
   await evaluate("const sel=document.querySelector('#sortie');sel.value='sable';sel.dispatchEvent(new Event('change'))");
   await screenshot('01-briefing');
@@ -219,7 +260,7 @@ try{
   assert.equal((await read()).mode,'error');
   assert.deepEqual(errors,[]);
   assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u==='data:,'));
-  const report={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+  const report={source,servedTree,
     version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,
     marks,lifecycle,renderIntervalsMs:quantiles(win.metrics.frames),tickTimeMs:quantiles(win.metrics.costs),
     win:{receipt:win.receipt,metrics:win.metrics,events:win.events},loss:{receipt:loss.receipt,metrics:loss.metrics,events:loss.events}};

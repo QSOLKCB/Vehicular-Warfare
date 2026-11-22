@@ -62,3 +62,7 @@ A heightfield has one surface elevation per horizontal location. It cannot repre
 ## Creator systems
 
 The workshop validates a versioned data pack, builds a fresh Breakwater world and places its gate and shore relay before the first tick. Authoring, preview, playtest and replay query the same seeded geometry. The workshop has a separate simulation source identity. Its viewer checks the embedded pack and command stream, then advances or restores bounded simulation checkpoints as the player scrubs. Camera and music are presentation inputs. [Pack and replay contract](CREATOR_SYSTEMS.md)
+
+## Surface controls and mixed-scene detail
+
+A live surface station converts the chosen steering style and held keys into the original per-vehicle command mask before each fixed step. Simple steering reads the selected vehicle’s own heading and motion. The replay records the accepted masks, including any steering assistance. A viewer replays them directly. Mixed-scene detail uses camera distance and field of view to select presentation geometry for distant mobile units. The authoritative field, target contact and live projectile set are shared across detail profiles. [Controls, release package and measurement procedure](RELEASE.md)

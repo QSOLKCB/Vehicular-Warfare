@@ -1,0 +1,612 @@
+TAP version 13
+# Subtest: upstream bytes and simulation content identity
+ok 1 - upstream bytes and simulation content identity
+  ---
+  duration_ms: 42.59185
+  type: 'test'
+  ...
+# Subtest: immutable field and triangle centroids agree across the seeded grid
+ok 2 - immutable field and triangle centroids agree across the seeded grid
+  ---
+  duration_ms: 39.408685
+  type: 'test'
+  ...
+# Subtest: hover trim, rotor tilt, yaw and fully swept terrain envelope
+ok 3 - hover trim, rotor tilt, yaw and fully swept terrain envelope
+  ---
+  duration_ms: 91.763358
+  type: 'test'
+  ...
+# Subtest: mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+ok 4 - mask → delayed acquisition → rocket → memory → fresh acquisition → victory
+  ---
+  duration_ms: 155.538536
+  type: 'test'
+  ...
+# Subtest: terrain and fast moving hitboxes compete on the same interval
+ok 5 - terrain and fast moving hitboxes compete on the same interval
+  ---
+  duration_ms: 2.465463
+  type: 'test'
+  ...
+# Subtest: moving convoy, real enemy defeat, cooldown and last-round exhaustion
+ok 6 - moving convoy, real enemy defeat, cooldown and last-round exhaustion
+  ---
+  duration_ms: 109.941004
+  type: 'test'
+  ...
+# Subtest: same accepted controls at 30, 60 and 144 presentation Hz replay identically
+ok 7 - same accepted controls at 30, 60 and 144 presentation Hz replay identically
+  ---
+  duration_ms: 227.505467
+  type: 'test'
+  ...
+# Subtest: malformed packs, commands and replay are atomic
+ok 8 - malformed packs, commands and replay are atomic
+  ---
+  duration_ms: 3.843876
+  type: 'test'
+  ...
+# Subtest: column samples agree with the WebGL triangles on vertices, edges and both sides of a diagonal
+ok 9 - column samples agree with the WebGL triangles on vertices, edges and both sides of a diagonal
+  ---
+  duration_ms: 159.075431
+  type: 'test'
+  ...
+# Subtest: finite planar horizon and sky match the angular rows, including the last sample at the far edge
+ok 10 - finite planar horizon and sky match the angular rows, including the last sample at the far edge
+  ---
+  duration_ms: 66.675363
+  type: 'test'
+  ...
+# Subtest: a near ridge hides changes to the far surface behind it
+ok 11 - a near ridge hides changes to the far surface behind it
+  ---
+  duration_ms: 3.006534
+  type: 'test'
+  ...
+# Subtest: drawing alternate profiles leaves all three accepted command traces and replays identical
+ok 12 - drawing alternate profiles leaves all three accepted command traces and replays identical
+  ---
+  duration_ms: 1502.669826
+  type: 'test'
+  ...
+# Subtest: Sable Valley archived victory and defeat survive the mixed-world integration
+ok 13 - Sable Valley archived victory and defeat survive the mixed-world integration
+  ---
+  duration_ms: 218.053884
+  type: 'test'
+  ...
+# Subtest: Cutbank Relay archived victory and defeat survive the mixed-world integration
+ok 14 - Cutbank Relay archived victory and defeat survive the mixed-world integration
+  ---
+  duration_ms: 273.056911
+  type: 'test'
+  ...
+# Subtest: Glassworks Crossing archived victory and defeat survive the mixed-world integration
+ok 15 - Glassworks Crossing archived victory and defeat survive the mixed-world integration
+  ---
+  duration_ms: 232.675484
+  type: 'test'
+  ...
+# Subtest: Lantern Sound archived victory and defeat survive the mixed-world integration
+ok 16 - Lantern Sound archived victory and defeat survive the mixed-world integration
+  ---
+  duration_ms: 197.595856
+  type: 'test'
+  ...
+# Subtest: Breakwater shares one accepted coast and navigable gates for every class
+ok 17 - Breakwater shares one accepted coast and navigable gates for every class
+  ---
+  duration_ms: 142.148878
+  type: 'test'
+  ...
+# Subtest: mixed Kestrel poses reproduce the released fixed-step rotor and terrain contact
+ok 18 - mixed Kestrel poses reproduce the released fixed-step rotor and terrain contact
+  ---
+  duration_ms: 38.594744
+  type: 'test'
+  ...
+# Subtest: a descending helicopter contacts the sea surface above the seabed
+ok 19 - a descending helicopter contacts the sea surface above the seabed
+  ---
+  duration_ms: 9.120183
+  type: 'test'
+  ...
+# Subtest: dry-ground adapters stop at the shoreline, recover and reject a wet interior track patch
+ok 20 - dry-ground adapters stop at the shoreline, recover and reject a wet interior track patch
+  ---
+  duration_ms: 171.74122
+  type: 'test'
+  ...
+# Subtest: four adapters expose their own control response and block overlapping live bodies
+ok 21 - four adapters expose their own control response and block overlapping live bodies
+  ---
+  duration_ms: 75.092435
+  type: 'test'
+  ...
+# Subtest: actual mixed plays record allied and player contributions and each vehicle can secure its own gate
+ok 22 - actual mixed plays record allied and player contributions and each vehicle can secure its own gate
+  ---
+  duration_ms: 2504.740143
+  type: 'test'
+  ...
+# Subtest: helicopter signal pulse reaches the tank through the common impact ledger
+ok 23 - helicopter signal pulse reaches the tank through the common impact ledger
+  ---
+  duration_ms: 9.265302
+  type: 'test'
+  ...
+# Subtest: tank signal pulse reaches the mech through the common impact ledger
+ok 24 - tank signal pulse reaches the mech through the common impact ledger
+  ---
+  duration_ms: 7.65155
+  type: 'test'
+  ...
+# Subtest: mech signal pulse reaches the helicopter through the common impact ledger
+ok 25 - mech signal pulse reaches the helicopter through the common impact ledger
+  ---
+  duration_ms: 9.138903
+  type: 'test'
+  ...
+# Subtest: ship signal pulse reaches the relay through the common impact ledger
+ok 26 - ship signal pulse reaches the relay through the common impact ledger
+  ---
+  duration_ms: 8.709073
+  type: 'test'
+  ...
+# Subtest: helicopter signal pulse reaches the ship through the common impact ledger
+ok 27 - helicopter signal pulse reaches the ship through the common impact ledger
+  ---
+  duration_ms: 6.124758
+  type: 'test'
+  ...
+# Subtest: the fixed shore relay acquires and physically tags a flying target
+ok 28 - the fixed shore relay acquires and physically tags a flying target
+  ---
+  duration_ms: 17.482575
+  type: 'test'
+  ...
+# Subtest: same-faction bodies stop pulses without taking damage or becoming CPU targets
+ok 29 - same-faction bodies stop pulses without taking damage or becoming CPU targets
+  ---
+  duration_ms: 12.349707
+  type: 'test'
+  ...
+# Subtest: an estuary island masks a flying opponent from a ship and intercepts the travelling cell
+ok 30 - an estuary island masks a flying opponent from a ship and intercepts the travelling cell
+  ---
+  duration_ms: 10.897175
+  type: 'test'
+  ...
+# Subtest: a CPU cutter loses its track behind the island and must acquire again after re-exposure
+ok 31 - a CPU cutter loses its track behind the island and must acquire again after re-exposure
+  ---
+  duration_ms: 19.740088
+  type: 'test'
+  ...
+# Subtest: a descending helicopter cell ends at the first water surface in the channel
+ok 32 - a descending helicopter cell ends at the first water surface in the channel
+  ---
+  duration_ms: 7.770091
+  type: 'test'
+  ...
+# Subtest: swept mobile contact competes with water, terrain and world edge in chronological order
+ok 33 - swept mobile contact competes with water, terrain and world edge in chronological order
+  ---
+  duration_ms: 5.587078
+  type: 'test'
+  ...
+# Subtest: turning cutter retains the start-of-tick side of a shrinking contact box
+ok 34 - turning cutter retains the start-of-tick side of a shrinking contact box
+  ---
+  duration_ms: 9.034492
+  type: 'test'
+  ...
+# Subtest: vehicle and faction are replayed deterministically across presentation schedules and defeat
+ok 35 - vehicle and faction are replayed deterministically across presentation schedules and defeat
+  ---
+  duration_ms: 7665.916561
+  type: 'test'
+  ...
+# Subtest: replay validation, seed validation and command rejection preserve accepted state
+ok 36 - replay validation, seed validation and command rejection preserve accepted state
+  ---
+  duration_ms: 20.155248
+  type: 'test'
+  ...
+# Subtest: workshop defaults preserve all four deployment lanes on the accepted seeded surface
+ok 37 - workshop defaults preserve all four deployment lanes on the accepted seeded surface
+  ---
+  duration_ms: 606.413295
+  type: 'test'
+  ...
+# Subtest: pack import is bounded, inert and atomic for plain records and JSON file text
+ok 38 - pack import is bounded, inert and atomic for plain records and JSON file text
+  ---
+  duration_ms: 32.715556
+  type: 'test'
+  ...
+# Subtest: gate and shore relay placement enforce contact, connectivity and deployment clearance
+ok 39 - gate and shore relay placement enforce contact, connectivity and deployment clearance
+  ---
+  duration_ms: 82.709415
+  type: 'test'
+  ...
+# Subtest: all four edited layouts play to a physical gate and score with their embedded pack
+ok 40 - all four edited layouts play to a physical gate and score with their embedded pack
+  ---
+  duration_ms: 3402.911036
+  type: 'test'
+  ...
+# Subtest: authored controls and outcomes reproduce across fixed-clock display schedules
+ok 41 - authored controls and outcomes reproduce across fixed-clock display schedules
+  ---
+  duration_ms: 1162.03836
+  type: 'test'
+  ...
+# Subtest: verified timeline seek, rewind and stepping reproduce partial and terminal recordings
+ok 42 - verified timeline seek, rewind and stepping reproduce partial and terminal recordings
+  ---
+  duration_ms: 1659.887845
+  type: 'test'
+  ...
+# Subtest: corrupt headers, pack changes, oversized recordings and cancellation never expose a timeline
+ok 43 - corrupt headers, pack changes, oversized recordings and cancellation never expose a timeline
+  ---
+  duration_ms: 2276.272504
+  type: 'test'
+  ...
+# Subtest: the timeline accepts archived VW-005 commands under their original source identity
+ok 44 - the timeline accepts archived VW-005 commands under their original source identity
+  ---
+  duration_ms: 581.757032
+  type: 'test'
+  ...
+# Subtest: both replay formats seek across a full two-minute recording with one change every tick
+ok 45 - both replay formats seek across a full two-minute recording with one change every tick
+  ---
+  duration_ms: 7196.148257
+  type: 'test'
+  ...
+# Subtest: score follows observed acquisition, accepted events, gate and terminal outcomes
+ok 46 - score follows observed acquisition, accepted events, gate and terminal outcomes
+  ---
+  duration_ms: 54.992257
+  type: 'test'
+  ...
+# Subtest: score reads leave command and event digests intact and release all three voices
+ok 47 - score reads leave command and event digests intact and release all three voices
+  ---
+  duration_ms: 1676.271538
+  type: 'test'
+  ...
+# Subtest: one-handed surface aliases use the same command bits as arrows and preserve helicopter flight keys
+ok 48 - one-handed surface aliases use the same command bits as arrows and preserve helicopter flight keys
+  ---
+  duration_ms: 2.237273
+  type: 'test'
+  ...
+# Subtest: an aim override lasts through the current turn and release, and a new turn can follow again
+ok 49 - an aim override lasts through the current turn and release, and a new turn can follow again
+  ---
+  duration_ms: 0.34243
+  type: 'test'
+  ...
+# Subtest: rudder headway yields to manual reverse, grounding and existing astern motion
+ok 50 - rudder headway yields to manual reverse, grounding and existing astern motion
+  ---
+  duration_ms: 0.1647
+  type: 'test'
+  ...
+# Subtest: tank steers with its own locomotion and brings the mount around without a second hand
+ok 51 - tank steers with its own locomotion and brings the mount around without a second hand
+  ---
+  duration_ms: 296.618263
+  type: 'test'
+  ...
+# Subtest: tank can finish the standalone and mixed missions with W and Space
+ok 52 - tank can finish the standalone and mixed missions with W and Space
+  ---
+  duration_ms: 1145.038336
+  type: 'test'
+  ...
+# Subtest: mech steers with its own locomotion and brings the mount around without a second hand
+ok 53 - mech steers with its own locomotion and brings the mount around without a second hand
+  ---
+  duration_ms: 27.517339
+  type: 'test'
+  ...
+# Subtest: mech can finish the standalone and mixed missions with W and Space
+ok 54 - mech can finish the standalone and mixed missions with W and Space
+  ---
+  duration_ms: 537.294539
+  type: 'test'
+  ...
+# Subtest: ship steers with its own locomotion and brings the mount around without a second hand
+ok 55 - ship steers with its own locomotion and brings the mount around without a second hand
+  ---
+  duration_ms: 19.420007
+  type: 'test'
+  ...
+# Subtest: ship can finish the standalone and mixed missions with W and Space
+ok 56 - ship can finish the standalone and mixed missions with W and Space
+  ---
+  duration_ms: 545.518541
+  type: 'test'
+  ...
+# Subtest: a fired pulse travels from the physical muzzle and terrain masks the patrolling sentinel
+ok 57 - a fired pulse travels from the physical muzzle and terrain masks the patrolling sentinel
+  ---
+  duration_ms: 38.991855
+  type: 'test'
+  ...
+# Subtest: an obstacle between mount and muzzle blocks launch even with the tip in open space
+ok 58 - an obstacle between mount and muzzle blocks launch even with the tip in open space
+  ---
+  duration_ms: 9.873164
+  type: 'test'
+  ...
+# Subtest: the crossing requires both sentinel destruction and supported entry into the beacon
+ok 59 - the crossing requires both sentinel destruction and supported entry into the beacon
+  ---
+  duration_ms: 117.207523
+  type: 'test'
+  ...
+# Subtest: accepted control playback is identical at 30, 60 and 144 Hz including foot state and events
+ok 60 - accepted control playback is identical at 30, 60 and 144 Hz including foot state and events
+  ---
+  duration_ms: 400.444509
+  type: 'test'
+  ...
+# Subtest: guard acquisition has a full reaction delay and actual returned pulses can disable the player
+ok 61 - guard acquisition has a full reaction delay and actual returned pulses can disable the player
+  ---
+  duration_ms: 91.954129
+  type: 'test'
+  ...
+# Subtest: bounded mech inputs, campaign timeout, ammunition exhaustion and separate replay identities
+ok 62 - bounded mech inputs, campaign timeout, ammunition exhaustion and separate replay identities
+  ---
+  duration_ms: 56.686769
+  type: 'test'
+  ...
+# Subtest: walkers arrest an approaching stride at separation, replant their feet and can reverse
+ok 63 - walkers arrest an approaching stride at separation, replant their feet and can reverse
+  ---
+  duration_ms: 5.999108
+  type: 'test'
+  ...
+# Subtest: hiding behind the berm freezes the guard observation, expires its search and clears acquisition
+ok 64 - hiding behind the berm freezes the guard observation, expires its search and clears acquisition
+  ---
+  duration_ms: 25.780036
+  type: 'test'
+  ...
+# longwatch 8574 ticks; 9 enemy shooters; 15c5e71d 82d0a642
+# frostline 9490 ticks; 15 enemy shooters; d243d88b 610a1900
+# Subtest: longwatch full route with finite ammunition, enemy fire and replay
+ok 65 - longwatch full route with finite ammunition, enemy fire and replay
+  ---
+  duration_ms: 839.10625
+  type: 'test'
+  ...
+# Subtest: frostline full route with finite ammunition, enemy fire and replay
+ok 66 - frostline full route with finite ammunition, enemy fire and replay
+  ---
+  duration_ms: 882.40761
+  type: 'test'
+  ...
+# Subtest: a cleared site must be visited low, in order, with an uninterrupted survey
+ok 67 - a cleared site must be visited low, in order, with an uninterrupted survey
+  ---
+  duration_ms: 15.488372
+  type: 'test'
+  ...
+# Subtest: old field receipts verified, unknown operations rejected
+ok 68 - old field receipts verified, unknown operations rejected
+  ---
+  duration_ms: 105.713108
+  type: 'test'
+  ...
+# Subtest: distance detail uses camera magnification and a return threshold; the pilot and relay stay detailed
+ok 69 - distance detail uses camera magnification and a return threshold; the pilot and relay stay detailed
+  ---
+  duration_ms: 72.077931
+  type: 'test'
+  ...
+# Subtest: the compact buffer fits all eight moving actors and retains their posed geometry through reuse
+ok 70 - the compact buffer fits all eight moving actors and retains their posed geometry through reuse
+  ---
+  duration_ms: 50.37238
+  type: 'test'
+  ...
+# Subtest: balanced reserves all 32 pulse boxes before admitting up to eight recent four-piece impacts
+ok 71 - balanced reserves all 32 pulse boxes before admitting up to eight recent four-piece impacts
+  ---
+  duration_ms: 33.206087
+  type: 'test'
+  ...
+# Subtest: Lantern skerry masks the crossing patrol, which reacquires only after sustained sight
+ok 72 - Lantern skerry masks the crossing patrol, which reacquires only after sustained sight
+  ---
+  duration_ms: 184.292707
+  type: 'test'
+  ...
+# Subtest: cells leave a traversed mount, curve under gravity, and stop on the sampled skerry or sea
+ok 73 - cells leave a traversed mount, curve under gravity, and stop on the sampled skerry or sea
+  ---
+  duration_ms: 98.437277
+  type: 'test'
+  ...
+# Subtest: a nearer solid wins a water crossing, land owns ties, and submerged objects cannot absorb a surface splash
+ok 74 - a nearer solid wins a water crossing, land owns ties, and submerged objects cannot absorb a surface splash
+  ---
+  duration_ms: 41.650878
+  type: 'test'
+  ...
+# Subtest: barrel segment against a narrow island prevents launch even with a clear muzzle
+ok 75 - barrel segment against a narrow island prevents launch even with a clear muzzle
+  ---
+  duration_ms: 29.172391
+  type: 'test'
+  ...
+# Subtest: slewing behind the bridge blocks a shot through the firing vessel
+ok 76 - slewing behind the bridge blocks a shot through the firing vessel
+  ---
+  duration_ms: 44.210812
+  type: 'test'
+  ...
+# Subtest: ship and shore damage require swept impacts before a live navigation objective can complete
+ok 77 - ship and shore damage require swept impacts before a live navigation objective can complete
+  ---
+  duration_ms: 225.882585
+  type: 'test'
+  ...
+# Subtest: hulls stop on approach, still respond to water while blocked, and can reverse apart
+ok 78 - hulls stop on approach, still respond to water while blocked, and can reverse apart
+  ---
+  duration_ms: 19.140057
+  type: 'test'
+  ...
+# Subtest: fixed command playback at 30/60/144 Hz includes both ship and shore objectives
+ok 79 - fixed command playback at 30/60/144 Hz includes both ship and shore objectives
+  ---
+  duration_ms: 439.318873
+  type: 'test'
+  ...
+# Subtest: bounded seeds, controls, replay family, cooldown, ammunition and mission timeout
+ok 80 - bounded seeds, controls, replay family, cooldown, ammunition and mission timeout
+  ---
+  duration_ms: 108.177681
+  type: 'test'
+  ...
+# Subtest: release measurements distinguish the active renderer from a requested GPU backend
+ok 81 - release measurements distinguish the active renderer from a requested GPU backend
+  ---
+  duration_ms: 1.582352
+  type: 'test'
+  ...
+# Subtest: the Cutbank shelf conceals every hull corner, exposes the turret and clears the bore
+ok 82 - the Cutbank shelf conceals every hull corner, exposes the turret and clears the bore
+  ---
+  duration_ms: 195.080813
+  type: 'test'
+  ...
+# Subtest: a pulse into the berm reaches the terrain after launch; a blocked bore spends no round
+ok 83 - a pulse into the berm reaches the terrain after launch; a blocked bore spends no round
+  ---
+  duration_ms: 92.451339
+  type: 'test'
+  ...
+# Subtest: actual component entry faces select four distinct armour ratings
+ok 84 - actual component entry faces select four distinct armour ratings
+  ---
+  duration_ms: 13.89488
+  type: 'test'
+  ...
+# Subtest: a translating hull can intercept a pulse that misses both endpoint poses
+ok 85 - a translating hull can intercept a pulse that misses both endpoint poses
+  ---
+  duration_ms: 2.089063
+  type: 'test'
+  ...
+# Subtest: the guard loses sight, searches a frozen observation and reacquires with a full reaction delay
+ok 86 - the guard loses sight, searches a frozen observation and reacquires with a full reaction delay
+  ---
+  duration_ms: 351.545861
+  type: 'test'
+  ...
+# Subtest: 120 Hz command playback reproduces shelf victory across clock schedules and combat defeat
+ok 87 - 120 Hz command playback reproduces shelf victory across clock schedules and combat defeat
+  ---
+  duration_ms: 607.136166
+  type: 'test'
+  ...
+# Subtest: bounded tracked packs, masks, replay validation, ordnance exhaustion and timeout
+ok 88 - bounded tracked packs, masks, replay validation, ordnance exhaustion and timeout
+  ---
+  duration_ms: 227.346187
+  type: 'test'
+  ...
+# Subtest: independent belt inertia gives forward, reverse, pivot, arcing turns, coast and braking
+ok 89 - independent belt inertia gives forward, reverse, pivot, arcing turns, coast and braking
+  ---
+  duration_ms: 42.312079
+  type: 'test'
+  ...
+# Subtest: contact fits tilted planes, limits incline, scales traction and supports an interior ridge
+ok 90 - contact fits tilted planes, limits incline, scales traction and supports an interior ridge
+  ---
+  duration_ms: 93.719871
+  type: 'test'
+  ...
+# Subtest: world edges, invalid controls and turret stops preserve finite accepted poses
+ok 91 - world edges, invalid controls and turret stops preserve finite accepted poses
+  ---
+  duration_ms: 12.202277
+  type: 'test'
+  ...
+# Subtest: finite water surface and segment-entry times include both endpoints
+ok 92 - finite water surface and segment-entry times include both endpoints
+  ---
+  duration_ms: 5.084557
+  type: 'test'
+  ...
+# Subtest: weight balances displacement at trim, unsupported hull falls and asymmetric immersion rights it
+ok 93 - weight balances displacement at trim, unsupported hull falls and asymmetric immersion rights it
+  ---
+  duration_ms: 64.021159
+  type: 'test'
+  ...
+# Subtest: surge and sway drag, keel moments, signed rudder authority and engine inertia
+ok 94 - surge and sway drag, keel moments, signed rudder authority and engine inertia
+  ---
+  duration_ms: 27.833949
+  type: 'test'
+  ...
+# Subtest: an interior shoal, shallow shelf and bank stop the complete hull and allow reverse
+ok 95 - an interior shoal, shallow shelf and bank stop the complete hull and allow reverse
+  ---
+  duration_ms: 167.822664
+  type: 'test'
+  ...
+# Subtest: invalid controls cannot mutate the accepted vessel
+ok 96 - invalid controls cannot mutate the accepted vessel
+  ---
+  duration_ms: 3.644845
+  type: 'test'
+  ...
+# Subtest: tripods anchor the moving pelvis, clear swing feet, solve fixed link lengths and carry independent aim
+ok 97 - tripods anchor the moving pelvis, clear swing feet, solve fixed link lengths and carry independent aim
+  ---
+  duration_ms: 96.869055
+  type: 'test'
+  ...
+# Subtest: accepted low rise, rejected cliff, slope limits, field edges and finite controls
+ok 98 - accepted low rise, rejected cliff, slope limits, field edges and finite controls
+  ---
+  duration_ms: 63.632709
+  type: 'test'
+  ...
+# Subtest: unsupported shoes unload, pelvis descends and reachable ground restores support
+ok 99 - unsupported shoes unload, pelvis descends and reachable ground restores support
+  ---
+  duration_ms: 50.899801
+  type: 'test'
+  ...
+# Subtest: aborting a swing retracts propulsion and plants airborne feet before resuming
+ok 100 - aborting a swing retracts propulsion and plants airborne feet before resuming
+  ---
+  duration_ms: 3.768865
+  type: 'test'
+  ...
+1..100
+# tests 100
+# suites 0
+# pass 100
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10428.838805
