@@ -1,0 +1,2480 @@
+{
+ "source": "828d1e310398d39e857f10eeb6aac91c63bcd1d6",
+ "servedTree": {
+  "revision": "828d1e310398d39e857f10eeb6aac91c63bcd1d6",
+  "files": 82,
+  "sha256": "ed00da1f033340726e6580a28dfac0b2fa574c0a2e01add72a97924f7902a878"
+ },
+ "version": {
+  "protocolVersion": "1.3",
+  "product": "Chrome/158.0.8127.36",
+  "revision": "@14d6f648e8cd7ad750a4044200ce94d3321be260",
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
+  "jsVersion": "15.8.62.31"
+ },
+ "cpu": "AMD Ryzen 9 5950X 16-Core Processor",
+ "gpu": {
+  "backend": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "width": 1100,
+  "height": 720
+ },
+ "requests": [
+  "/ridgefire/",
+  "/ridgefire/game/style.css",
+  "/ridgefire/game/main.js",
+  "/ridgefire/sim/world.js",
+  "/ridgefire/sim/missions.js",
+  "/ridgefire/sim/clock.js",
+  "/ridgefire/game/navigation.js",
+  "/ridgefire/game/audio.js",
+  "/ridgefire/game/view.js",
+  "/ridgefire/vendor/vanillajs/modules/math/index.js",
+  "/ridgefire/vendor/vanillajs/modules/collision/index.js",
+  "/ridgefire/sim/terrain.js",
+  "/ridgefire/sim/identity.js",
+  "/ridgefire/game/tracers.js",
+  "/ridgefire/vendor/vanillajs/modules/render-webgl/index.js",
+  "/ridgefire/vendor/vanillajs/modules/render-packing/index.js",
+  "/ridgefire/game/models.js",
+  "/ridgefire/game/scenery.js",
+  "/ridgefire/game/column-layer.js",
+  "/ridgefire/game/model-view.js",
+  "/ridgefire/vendor/vanillajs/modules/terrain/index.js",
+  "/ridgefire/game/columns.js",
+  "/ridgefire/sim/combined-world.js",
+  "/ridgefire/sim/tank-combat.js",
+  "/ridgefire/sim/estuary.js",
+  "/ridgefire/sim/combined-vehicles.js",
+  "/ridgefire/sim/combined-contact.js",
+  "/ridgefire/sim/combined-identity.js",
+  "/ridgefire/sim/tracks.js",
+  "/ridgefire/sim/vessel.js",
+  "/ridgefire/sim/walker.js",
+  "/ridgefire/sim/naval-world.js",
+  "/ridgefire/sim/naval-identity.js",
+  "/ridgefire/sim/mech-world.js",
+  "/ridgefire/sim/mech-identity.js",
+  "/ridgefire/sim/tank-world.js",
+  "/ridgefire/sim/tank-identity.js",
+  "/ridgefire/sim/creator.js",
+  "/ridgefire/sim/creator-identity.js"
+ ],
+ "errors": [],
+ "release": "0132dd22191ebfeddfce8bc76651e09eb2f12b48",
+ "node": "v22.18.0",
+ "occurrences": 204,
+ "distinct": 107,
+ "results": [
+  {
+   "id": "0755c36a240aaea03df7e565c488c5a5d203538b66d6becab48aff8d69d204cc",
+   "mission": "sable",
+   "source": "vw-001a:a9aee959be3e65883671613ea34c5ccb75628ea220ef935e75d92beb5e5986bc",
+   "ticks": 801,
+   "stateHash": "e97f4002",
+   "eventHash": "7aca9422",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/authority/mission.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "2f9a8202f277ae02f3a38fd94fff2e42631333d459f787f250d7eb484f2442e3",
+   "mission": "sable",
+   "source": "vw-001a:a9aee959be3e65883671613ea34c5ccb75628ea220ef935e75d92beb5e5986bc",
+   "ticks": 1036,
+   "stateHash": "4c7c7425",
+   "eventHash": "44e841ed",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/browser/playthrough.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "c5f51d64d801368145f811e65a79032f11a433f2c22ce7982cdd9123c9a244d9",
+   "mission": "sable",
+   "source": "vw-001a:a9aee959be3e65883671613ea34c5ccb75628ea220ef935e75d92beb5e5986bc",
+   "ticks": 763,
+   "stateHash": "8c57c19c",
+   "eventHash": "24b0cc00",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/browser/playthrough.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "ed27fb12b821bec7a25bcf2e6e271cd8df17426231cd69f01c4ba8acf6ce4279",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1632,
+   "stateHash": "8b5c07bb",
+   "eventHash": "b817db28",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/cockpit-polish/exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/routes-exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "73ef059813c8b5bd424250644b49188399ca34b96d5e9f28c22f1c48abec092a",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8610,
+   "stateHash": "1703fcfe",
+   "eventHash": "515d25c7",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/cockpit-polish/flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "5ff8588c1f99a6f5e3faa08e4ba6175728c7e1e24b752e7c270f5ca12bc8bfbc",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9400,
+   "stateHash": "d35878ab",
+   "eventHash": "a7320692",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/cockpit-polish/flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "99e5989053737d6604d7325d8a10e86f8cab2f382cf7e45672db72115c3939c2",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1074,
+   "stateHash": "eeb43d82",
+   "eventHash": "743f5598",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/cockpit-polish/sable.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "376e4f7fc1956354db134bb4d2487d5ae0e8b5593f2a3bbc79f66df05b05a87a",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 765,
+   "stateHash": "31c89a4c",
+   "eventHash": "c43ee1f0",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/cockpit-polish/sable.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/sable-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "51a862b8134036ebee568b697307da1478e197641fbeba58dbf0df9c42e1b0ba",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1095,
+   "stateHash": "6f78a72e",
+   "eventHash": "ea239b93",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/combined.json",
+     "pointer": "/runs/0/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/helicopter-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "b710f7a67d9f2680c0e709ca1d97237f4b7f91875cc5e4a216cc0b86a2bbbad5",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1149,
+   "stateHash": "167150e6",
+   "eventHash": "ce10fecb",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/combined.json",
+     "pointer": "/runs/1/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/tank-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/native-base.json",
+     "pointer": "/passes/0/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/native-base.json",
+     "pointer": "/passes/1/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/native-candidate.json",
+     "pointer": "/passes/0/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/native-candidate.json",
+     "pointer": "/passes/1/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/native-candidate.json",
+     "pointer": "/passes/2/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/native-candidate.json",
+     "pointer": "/passes/3/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/software-base.json",
+     "pointer": "/passes/0/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/software-base.json",
+     "pointer": "/passes/1/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/software-candidate.json",
+     "pointer": "/passes/0/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/software-candidate.json",
+     "pointer": "/passes/1/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/software-candidate.json",
+     "pointer": "/passes/2/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/software-candidate.json",
+     "pointer": "/passes/3/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "f42531e1b89f01f957b4303508eaaa3dd9c94baed2a62b38bab1c29b4ad6874b",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 820,
+   "stateHash": "d44c889d",
+   "eventHash": "a64b561f",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/combined.json",
+     "pointer": "/runs/2/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/mech-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "599b6e9534fb21038e45a3b45ff71ed4903d77f659fc5314f3155e9fe7e37290",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 978,
+   "stateHash": "c1646c7d",
+   "eventHash": "d8d63dc5",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/combined.json",
+     "pointer": "/runs/3/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/ship-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "b263ca1d76bf300dd318cb0ad1779e7acb4497955fe9a203463fc57585aca01d",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1064,
+   "stateHash": "b7d618f4",
+   "eventHash": "3672444c",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/combined.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/defeat-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "14727a5b4f63082bc9fb6de62de624f9ad57ed3bb539d1a1395cb2f7b22160e8",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 801,
+   "stateHash": "e97f4002",
+   "eventHash": "7aca9422",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/flight-measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/creator-systems/flight-measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/mech-warfare/flight-measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/naval-warfare/flight-measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/release-performance/numerical/base-flight.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/release-performance/numerical/flight.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/tracked-warfare/flight-measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/voxel-terrain/measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "fd91fa507b62f28e50a294c639bb81f0393c8897ab3bc065ecfb8eb4f3f03a1a",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1154,
+   "stateHash": "0641085c",
+   "eventHash": "e2e163e0",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/mech-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/mech.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/winning-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d28c13ead7d1c67cb6baab674167ecda003f70ffcfaec55bcbe539e16a311240",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1135,
+   "stateHash": "7082ae2c",
+   "eventHash": "98c38585",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/mech-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/mech-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/mech.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d0ff6d4d26d87e5b998bada44a523f5c08a678e61a02259ab2f5562b859e8335",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1095,
+   "stateHash": "7c67b364",
+   "eventHash": "d289228a",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/mixed-measure.json",
+     "pointer": "/runs/0/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "48ab5fcabfac45e00e282c20626699126deb903f4eee1d8f6f4e08c6dbcd9a00",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1149,
+   "stateHash": "95e30f6d",
+   "eventHash": "713b93ce",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/mixed-measure.json",
+     "pointer": "/runs/1/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "b82f7f2b9a098fcb94db607d4b04cbe40898bb1b793b1d3543c35ea18f257ab8",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 820,
+   "stateHash": "da14b984",
+   "eventHash": "a79a9f66",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/mixed-measure.json",
+     "pointer": "/runs/2/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "0b7ef1ca1cb1a90bcc8ac01d93db30d4e06eb6e72ab008a146afcfaf3f5517c9",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 978,
+   "stateHash": "03c805ca",
+   "eventHash": "a7f48bac",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/mixed-measure.json",
+     "pointer": "/runs/3/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "0b56a4ea3ef76419ca67d89d29646943aed1d06c2d50e31ba827c5b3660668dd",
+   "mission": "lantern",
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "ticks": 1251,
+   "stateHash": "9292f2d9",
+   "eventHash": "9851036c",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/naval-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "e797bb3094f84ca3686ec4e719b92ce35fb9628c1285a8a34c858fa2de63af9e",
+   "mission": "lantern",
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "ticks": 959,
+   "stateHash": "d41656ee",
+   "eventHash": "ff14802c",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/naval-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/naval-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/naval.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "24d1f2906708f084eb5d9e5ad879864b6cca21376c41746c0d4c7751873cbf39",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1633,
+   "stateHash": "df2feebb",
+   "eventHash": "d3336347",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/routes-exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/routes-exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/routes-exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/routes-exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "1ee41ab47a795fcd060ab0e2e8eeae418785f37831c595f0b3419a2c5275a828",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8553,
+   "stateHash": "6c151a88",
+   "eventHash": "a6d63da2",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/routes-flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "c98af2086ec841ef3c85cb9f98a327cc7ce3e413b4d47708590e1e9af7011d50",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9419,
+   "stateHash": "e9e98746",
+   "eventHash": "0663b961",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/routes-flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "e9ad1678c6f090bb10ee55ddfc8105cc96c8a5b66a61ce9db5f749a4e42f29ea",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1084,
+   "stateHash": "9f258366",
+   "eventHash": "50a89982",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/sable-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "2d1f73d16e907cc4047bea99feb1d1b59ed064e168627470880445c8bd88a283",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 762,
+   "stateHash": "03f00900",
+   "eventHash": "99645a21",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/sable-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d61fbd953387350718a1f329fc59f8d6ce88123085bfeacbd2f912431416fb2c",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 486,
+   "stateHash": "9050745b",
+   "eventHash": "68b883c3",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/tank-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "03e9610faa742380a55b1b38c826c36741977535fc4a1974b3ce550e5141fcbd",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 1058,
+   "stateHash": "e4f51579",
+   "eventHash": "40c45ef8",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/tank-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/tank-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/tank-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/tank-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "b829c4cd78ea9bb3b50d6583844f1c193e5905f08b1f793c22503df578e34288",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 707,
+   "stateHash": "ecdca06d",
+   "eventHash": "762e5cd4",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/victory",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "3bd0e3ecfed5a7a733766f00261a364bee619a129dd82b3053bda5ce24dbe033",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 243,
+   "stateHash": "46f02721",
+   "eventHash": "811c9dc5",
+   "checked": {
+    "chromium": "flying"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/frostline/recording",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "aa35eef6fc67e0305b819675a18557c19139b923244474be6cf6721cbb7fbf40",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 442,
+   "stateHash": "56d28634",
+   "eventHash": "79014d08",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/parity/results/0/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/parity/results/0/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/parity/results/1/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/parity/results/1/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/parity/results/2/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/combined-arms/terrain-regression.json",
+     "pointer": "/parity/results/2/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/parity/results/0/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/parity/results/0/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/parity/results/1/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/parity/results/1/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/parity/results/2/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/parity/results/2/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/parity/results/0/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/parity/results/0/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/parity/results/1/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/parity/results/1/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/parity/results/2/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/parity/results/2/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/parity/results/0/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/parity/results/0/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/parity/results/1/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/parity/results/1/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/parity/results/2/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/parity/results/2/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/parity/results/0/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/parity/results/0/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/parity/results/1/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/parity/results/1/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/parity/results/2/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/parity/results/2/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/parity/results/0/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/parity/results/0/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/parity/results/1/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/parity/results/1/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/parity/results/2/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/parity/results/2/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/parity/results/0/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/parity/results/0/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/parity/results/1/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/parity/results/1/verified",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/parity/results/2/recording",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/parity/results/2/verified",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "eb289b3b7b3e3d1cfc7365abc724f6427203f8a9eac464dad89e464ae23b2812",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1095,
+   "stateHash": "ef87081e",
+   "eventHash": "f557e5ce",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/combined-regression.json",
+     "pointer": "/runs/0/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "91d6cbaa11074191b28574756fedbd770fefcad0c61d6afea795fc70f425679b",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1149,
+   "stateHash": "c4640e3c",
+   "eventHash": "4ea87e42",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/combined-regression.json",
+     "pointer": "/runs/1/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/combined.json",
+     "pointer": "/runs/1/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "4a2245f56b892ae360172aca1d18f9ef2150abc629080b0ce20c8382b12cf0ee",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 820,
+   "stateHash": "9b1361d7",
+   "eventHash": "2c4546ba",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/combined-regression.json",
+     "pointer": "/runs/2/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "3540fa0f69fe8d667c4c8239e3f1b6c4cdd68c6afd461345b7837d890312c894",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 978,
+   "stateHash": "ef2a5723",
+   "eventHash": "acb31a82",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/combined-regression.json",
+     "pointer": "/runs/3/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d078fa4a0794af38098a476bcdbe0ad7d0d042ba36b31b00aec1eaeafe8b186f",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1064,
+   "stateHash": "477505e9",
+   "eventHash": "de0c59d8",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/combined-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/combined.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "435cf7e7f37d6acad0552c021bff93caeae216ff9900c4296902bae86ab859df",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 960,
+   "stateHash": "aa39340b",
+   "eventHash": "9d4a1d5d",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/creator-browser.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/victory-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "87a184d447caf48401064cad384a428d6ee0ceb6a679e827f10b3eb2a07bb47d",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 1054,
+   "stateHash": "567c59c2",
+   "eventHash": "2f954672",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/creator-browser.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/creator-systems/defeat-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/regressions/creator.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "3a582fa34eb27b518b52b38577fff706e65a2324a9b821c385eb4ba701617d7f",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 907,
+   "stateHash": "c4aebfc7",
+   "eventHash": "33d84d21",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/creator-measure.json",
+     "pointer": "/runs/0/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "3bdfa0fa41952f85d1f52359cd52012fa41fff11b9a2aaf8aaed2bf19598d8a5",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 1022,
+   "stateHash": "c22af72f",
+   "eventHash": "758f66f5",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/creator-measure.json",
+     "pointer": "/runs/1/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "94c78409e14765f019b24be4577ddeb823220e83c7f2cf60ed448428c9a8c2d8",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 905,
+   "stateHash": "aa628125",
+   "eventHash": "deabd2a3",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/creator-measure.json",
+     "pointer": "/runs/2/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "1213c7efba9e1beb85aa5f0c3760630b9d07df8a8619ca3538d909764a5fedd1",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 905,
+   "stateHash": "846d1c33",
+   "eventHash": "4b03c0f9",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/creator-measure.json",
+     "pointer": "/runs/3/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "4704a6c02426c8e7505605d0dba3b4d35e7410091fdb7cfb784001acaaea8ceb",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 1054,
+   "stateHash": "d2459c26",
+   "eventHash": "e0544f81",
+   "checked": {
+    "node": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/creator-measure.json",
+     "pointer": "/runs/4/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "4287010ca47dc18662da8c6d6ba467fb0b6ad22245cffbe273b268dd1e532e25",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1153,
+   "stateHash": "091387d2",
+   "eventHash": "aa5d53d4",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/mech-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d01f456db81dd40a53c108eae3c84d8e2a29488adec55dcdac5bd34c87186dc0",
+   "mission": "lantern",
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "ticks": 1250,
+   "stateHash": "7cc2cb84",
+   "eventHash": "2b4ce92d",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/naval-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/naval.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/winning-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/release-performance/controls/controls.json",
+     "pointer": "/solo/2/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "c12f58d147ed1e1729c0cb504abd6fc4f1840389ad7387630ae42c2b1822b665",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8542,
+   "stateHash": "9fa5122f",
+   "eventHash": "e10d4d97",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/routes-flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "eb89ed986d164d4c5b02707d5c31556f8e250a581f17f046915cc8438ce4c35b",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9465,
+   "stateHash": "b6d4233b",
+   "eventHash": "d7d60bf3",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/routes-flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "1b8babbcbdd1511070d6f8b55d96f6f5671f3e455b6086db8a65fd5385f81adc",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1054,
+   "stateHash": "f5ef8114",
+   "eventHash": "2f341f91",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/sable-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "9b57ff5099726dbcb7d89941bc245330cf940bce379717a8790930326f97e236",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 485,
+   "stateHash": "9adb0e3f",
+   "eventHash": "3f505af2",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/tank-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "09fd5a4ad361ebb4e5723bbd93d17c748124cdf4e222e52dcae60727bf9abc62",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 665,
+   "stateHash": "397db93e",
+   "eventHash": "50eaf5b5",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/victory",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d6d201b11cae1f45da11765569f85cb734657ad40a4c74998020382a6b0ea572",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 236,
+   "stateHash": "06a4155b",
+   "eventHash": "811c9dc5",
+   "checked": {
+    "chromium": "flying"
+   },
+   "locations": [
+    {
+     "file": "evidence/creator-systems/terrain-regression.json",
+     "pointer": "/frostline/recording",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "0061ed8ac522eb59a00f73da9e9872c0142e82c414fd9210bef1599194f6b5df",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1152,
+   "stateHash": "1b3e05f3",
+   "eventHash": "20ed0bf8",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/mech-measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/mech-warfare/mech-outcomes.json",
+     "pointer": "/0/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "3e7850cafcea1486779555bd38caecec5cb7c1fe472c5d0ac4d30323fd52b2c9",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1132,
+   "stateHash": "29369f1b",
+   "eventHash": "96b8a768",
+   "checked": {
+    "node": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/mech-outcomes.json",
+     "pointer": "/1/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "2a84c5c83a2511ef2108c1f80295ab38363202c862c7ccc82dd80106830f2d2b",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1134,
+   "stateHash": "2b6d9a0a",
+   "eventHash": "9fd0074a",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/mech.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/mech-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "74bc7ead3e23a5bf44c05e6fe02eb43ad46d647c95eadee2eec371f7220db56f",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8545,
+   "stateHash": "da4897d3",
+   "eventHash": "a7eccd95",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/routes-flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "54e2f129bf0e6b1104caace59fb3fb8b085656efa7b38b0416c73cc5dbd06b46",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9475,
+   "stateHash": "6011bcd6",
+   "eventHash": "c0d53bc7",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/routes-flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "edeccafedae38b3eb26c5c240069bc9a954c42fc949441b24599d64b95b1effc",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1076,
+   "stateHash": "855327cd",
+   "eventHash": "e2a02149",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/sable-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "fc1fbf3adce0cb68b1ee3ed03198a00f50d1097cfa660d7a04dc162cab734fd5",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 764,
+   "stateHash": "bac07040",
+   "eventHash": "7d459d82",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/sable-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "3d215992905c6141b2a0703a228015ab022fad0ec6540691c6a22cd771062327",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 485,
+   "stateHash": "58a10f4d",
+   "eventHash": "b94af14d",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/tank-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/naval-warfare/tank-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/tank.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/tracked-warfare/winning-replay.json",
+     "pointer": "",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "9d884a804523512fd3502f1a051f079e97f5149188e3542642e2173618e78882",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 669,
+   "stateHash": "efd1e38e",
+   "eventHash": "665bbeb7",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/victory",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "f2f51d58fab43f1bbc35ff248b0b2ca5525734f3b7006c5ab4b08fb658a14305",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 233,
+   "stateHash": "9f9a1502",
+   "eventHash": "811c9dc5",
+   "checked": {
+    "chromium": "flying"
+   },
+   "locations": [
+    {
+     "file": "evidence/mech-warfare/voxel-regression.json",
+     "pointer": "/frostline/recording",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "df00ab216a2993072b0945a38114bc5e837340d75e9db77dac0f22c92953d1b8",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1154,
+   "stateHash": "0641085c",
+   "eventHash": "e2e163e0",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/mech-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "33fb52fad8ee531a6d9d1c23a2746abe455541f2b8e1efb3d94a485f940a09bf",
+   "mission": "lantern",
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "ticks": 1249,
+   "stateHash": "20a71959",
+   "eventHash": "e519319c",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/naval-measure.json",
+     "pointer": "/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/naval-warfare/naval-outcomes.json",
+     "pointer": "/0/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "f193f6c91961d22b91e30367f71eeef91ef7daddd785ee8bf539a66635e3bd44",
+   "mission": "lantern",
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "ticks": 959,
+   "stateHash": "3308d4cc",
+   "eventHash": "2101dfcc",
+   "checked": {
+    "node": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/naval-outcomes.json",
+     "pointer": "/1/receipt",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "3c339c1bb201cc1f24e184bbc56a380696c0d218259066b8bf627656ae1f0204",
+   "mission": "lantern",
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "ticks": 959,
+   "stateHash": "82a402d5",
+   "eventHash": "fde03734",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/naval.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "68842d98edc1b66fdbf0b16873e99b731cf36318bbbcafb80ba9af9511957f47",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8578,
+   "stateHash": "e5ace3ee",
+   "eventHash": "f6125da3",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/routes-flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "e7adc8aa8a5f2e419a547564a4f1711940801ffdc5839317912009898fbed794",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9391,
+   "stateHash": "ded5bcf0",
+   "eventHash": "30527bcb",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/routes-flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "90c61f3b45daedd19fda38ad36079b54ea7cf02adcc14370915b4d6791a830a1",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1088,
+   "stateHash": "3a38967c",
+   "eventHash": "7ea58823",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/sable-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "8a046125cfcd858cfb8b994a327895f021b282adcdb068b0ed970df97cc61d09",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 763,
+   "stateHash": "b8196818",
+   "eventHash": "1f06aab5",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/sable-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "dbda5a2aaf7ce242ec29dac5540d26dd792ae5af5df546b2f769e8f67166b174",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 670,
+   "stateHash": "744e65f3",
+   "eventHash": "110fb67f",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/victory",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "b92dd1aa8b19d8ef481d42f68900ed6e388e9ca6c3528a80a32c044413ff0948",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 235,
+   "stateHash": "9c114c49",
+   "eventHash": "811c9dc5",
+   "checked": {
+    "chromium": "flying"
+   },
+   "locations": [
+    {
+     "file": "evidence/naval-warfare/voxel-regression.json",
+     "pointer": "/frostline/recording",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "0ef496ad638ba8e6eb5295b19317f11ee4914c86414e5e72cbe2f5a7664fa64c",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8588,
+   "stateHash": "3a4848f6",
+   "eventHash": "d5e30ea4",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/one-hand-flight/flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "a569a7795235fda1efa88377f6e02d6ed1efcf2349649ba4a331d14fecd8406f",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9476,
+   "stateHash": "ccb6dbb8",
+   "eventHash": "02c121a1",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/one-hand-flight/flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "31d40205ecd10d1517ccb165262ff80fe0ee76a6ab203794618164508d826f39",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 486,
+   "stateHash": "8b3e7ee1",
+   "eventHash": "ace6456c",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/controls/controls.json",
+     "pointer": "/solo/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "44a1ed20849b8cb405e8099c44d7e0551ab4ed6a3b63d2afca79c9e543b23eb1",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1153,
+   "stateHash": "cb5fa56d",
+   "eventHash": "38fb67f4",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/controls/controls.json",
+     "pointer": "/solo/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "ee0c074b8b86a5e0951d219891e3f7cc48865c78fd5ee324369e332de6752b49",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 1095,
+   "stateHash": "30c8f004",
+   "eventHash": "97bf328c",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/combined.json",
+     "pointer": "/runs/0/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "8cda45a73f07c3be80513eb53521b27defd045f803ccc9cf68cdb82865b38f5f",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 820,
+   "stateHash": "d44c889d",
+   "eventHash": "a64b561f",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/combined.json",
+     "pointer": "/runs/2/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "10a798b14e18b12a232bd5eb8d943c2269194757dc02c44f2a40f3badc0823c2",
+   "mission": "breakwater",
+   "source": "vw-005:c24aebf0136cc5a8374606a0e541180ca46caefc5482e5f6779862a74b753c3a",
+   "ticks": 978,
+   "stateHash": "1bec1526",
+   "eventHash": "c8ae8ca6",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/combined.json",
+     "pointer": "/runs/3/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "c8775f21f612c38f2c26dce37b8c66839ad8f7bb54f949d9af5c3d9ec5fe8326",
+   "mission": "workshop",
+   "source": "vw-006:057c8c012f5a1ec99b9bd86a64a3eb6416740e6466579d2b710d1c8b6aa98469",
+   "ticks": 959,
+   "stateHash": "e353fae6",
+   "eventHash": "e36a358a",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/creator.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "2947afcc6b6a2bd7edb729da86a217aeea5ba258438c5d0d487dcd31988763e7",
+   "mission": "glassworks",
+   "source": "vw-003:b0418e4091bb2fe8f7b7714095023ea4890cc1f9865284101f0cd0a7414d6a3f",
+   "ticks": 1154,
+   "stateHash": "0641085c",
+   "eventHash": "e2e163e0",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/mech.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "ff5c2c494b39e4960d35b1df683cc0af2c71044d82eb4aac4b141db2d779ff08",
+   "mission": "lantern",
+   "source": "vw-004:b79ed929ce6ea1bdd8e546a74c4a99fed87fc392d2078bfbdea3ce4a7df5e341",
+   "ticks": 1250,
+   "stateHash": "7cc2cb84",
+   "eventHash": "2b4ce92d",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/naval.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "dcc503acd050592e478fe5715d41f7e1eeb1ad4b830c7f0c7dfe85d825f11553",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1633,
+   "stateHash": "df6a3153",
+   "eventHash": "046e21ce",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/routes-exposure.json",
+     "pointer": "/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "0101e7cc54a5a1312568571e4f1163bcf879a5c14f950e5328f740b8c957a801",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8602,
+   "stateHash": "5da36f91",
+   "eventHash": "ab0395ad",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/routes-flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "a3878ab28ce4de7d1a71a4ae877721cbb3e5f8e59fb4506d4af738123c16138a",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9429,
+   "stateHash": "64bb79bc",
+   "eventHash": "1ecb378a",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/routes-flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "3d380ad494cca99da4bb9bd0f89a05e6912cd732dbd4806dd5457eb9729aa1b0",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1094,
+   "stateHash": "fb4b744d",
+   "eventHash": "5238f021",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/sable.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "9b9196717a27d9b30faf2a4e8f5aa3ab34dfdeee390483b59accff59dfedae37",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 769,
+   "stateHash": "e505c6bd",
+   "eventHash": "c7ccef9b",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/sable.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "7bbbc11c427eb1f8ab1e9f683639c6273129610eeb2ff9f9d27f3419894cff35",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 484,
+   "stateHash": "8f7f8a8b",
+   "eventHash": "5d7b70da",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/tank.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "1edf5e1cc1cabd31d4040bacfa2d08bbd6e73cfa888b2ddbea6d070c74f45771",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 1056,
+   "stateHash": "93a05f9e",
+   "eventHash": "8dcf7718",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/tank.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d4c7199d6eb1ce19180bfa1cfd85593e6ee54673a4fe0df2708e2c1866fd6c17",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 759,
+   "stateHash": "b4908c7b",
+   "eventHash": "54577b15",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/victory",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "26e572bbbeb601e8131cd87ff2999261a57f0439ade4f088df19ebc300ae406f",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 231,
+   "stateHash": "3e4b3c09",
+   "eventHash": "811c9dc5",
+   "checked": {
+    "chromium": "flying"
+   },
+   "locations": [
+    {
+     "file": "evidence/release-performance/regressions/terrain.json",
+     "pointer": "/frostline/recording",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "7bc0f05a9c92ee96ee7032b7cd0a8d55366d63f07d95010a0ff93e712c5af953",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8590,
+   "stateHash": "71f1bb19",
+   "eventHash": "89d59336",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/routes-flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "2da42531b8edca07cafef260000f32ec2c176a51d7781a3565bbcc492307a9b9",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9540,
+   "stateHash": "d490f38f",
+   "eventHash": "80c34e3c",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/routes-flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "d932144add922f0ad965f8ac2b3248d632f8a7985bea8e336845d2c17e4a4e1d",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1074,
+   "stateHash": "4da5a8fc",
+   "eventHash": "67a51ecf",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/sable-regression.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "df43dc3273ae33d864fe11565e31c777aa090204205b5183ce77e9cefa0a6303",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 763,
+   "stateHash": "0984f60f",
+   "eventHash": "3ab526b9",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/sable-regression.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    },
+    {
+     "file": "evidence/voxel-terrain/sable.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "8eb50b8b9232c9205f57be24de32dda7a7ec9149e52b29bebf938a7821f32c82",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 447,
+   "stateHash": "46ecee4c",
+   "eventHash": "2f78b155",
+   "checked": {
+    "node": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/tank-numeric.json",
+     "pointer": "/runs/0/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/tracked-warfare/tank-numeric.json",
+     "pointer": "/runs/0/verified",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "65ef0d30454b44c7f64a462d7c916e80382c550cdb29ddc8622228009372bfbf",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 1055,
+   "stateHash": "7103272f",
+   "eventHash": "5618f363",
+   "checked": {
+    "node": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/tank-numeric.json",
+     "pointer": "/runs/1/receipt",
+     "runtime": "node"
+    },
+    {
+     "file": "evidence/tracked-warfare/tank-numeric.json",
+     "pointer": "/runs/1/verified",
+     "runtime": "node"
+    }
+   ]
+  },
+  {
+   "id": "f39b02c99242f56331c944ff5dfe110f42e413f4db3c4f352dfb5c501349f71b",
+   "mission": "cutbank",
+   "source": "vw-002:f142eb3087c23f7e4ca5b36bbe87578526ee43dc931b1899109754588d38e140",
+   "ticks": 1059,
+   "stateHash": "0ebc40bc",
+   "eventHash": "66ad8905",
+   "checked": {
+    "chromium": "defeat"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/tank.json",
+     "pointer": "/loss/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "c0f88730eab96c0ae253e669b31ab28662c0fd5bae63a257d477b723bc474233",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 667,
+   "stateHash": "ab61ffa6",
+   "eventHash": "8f5eb2ec",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/victory",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "c9d604e80fa336675125c9f1deff384d087d05730a3c3c80cbaf8eb8cb1fe2c8",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 237,
+   "stateHash": "b5407dd5",
+   "eventHash": "811c9dc5",
+   "checked": {
+    "chromium": "flying"
+   },
+   "locations": [
+    {
+     "file": "evidence/tracked-warfare/voxel-regression.json",
+     "pointer": "/frostline/recording",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "5ab0c4e61b8f0ce1a59ad5626ba8ba062797018c12f64598db6d253278f1b2a9",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8551,
+   "stateHash": "cf43059f",
+   "eventHash": "9797f091",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/valley-missions/flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "7c26f47ea1e482d0430a65608df44ed7228c5e2423dcb712803eb50ca1f7da5c",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9491,
+   "stateHash": "d97c7f24",
+   "eventHash": "e8b4fc93",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/valley-missions/flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "b6dc5c8ff0cd7f0b069f21592c0022c5a3974a4d78368b3a9197fd8a9ad81fc9",
+   "mission": "longwatch",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 8574,
+   "stateHash": "e89ac679",
+   "eventHash": "c5e986b0",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/voxel-terrain/flights.json",
+     "pointer": "/0/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "cc1269d8983cd2c733860a5f5436da773ea4f3f517adee44187947d8d69034e8",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 9484,
+   "stateHash": "df8637de",
+   "eventHash": "44381947",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/voxel-terrain/flights.json",
+     "pointer": "/1/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "c5740796760585376d51a8094c9d214631a770e244ceb84609925bae1b912bc2",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 1082,
+   "stateHash": "effbe001",
+   "eventHash": "3e8d57ae",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/voxel-terrain/sable.json",
+     "pointer": "/win/receipt",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "e815e7087f7f2931d40345d0bd10ee184d7ab6ad01ff9a892056c329b180ee04",
+   "mission": "sable",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 709,
+   "stateHash": "c50246d6",
+   "eventHash": "a03e8b9a",
+   "checked": {
+    "chromium": "victory"
+   },
+   "locations": [
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/victory",
+     "runtime": "chromium"
+    }
+   ]
+  },
+  {
+   "id": "cd77f236fd59d980376b482fc66cb766cda971a4dcc008f0043dfe90531f6b0a",
+   "mission": "frostline",
+   "source": "vw-001a:510b596e40cc515d1ac9a6b8281fd4c06559258f83a1c179b082426954733ecb",
+   "ticks": 231,
+   "stateHash": "a8238731",
+   "eventHash": "811c9dc5",
+   "checked": {
+    "chromium": "flying"
+   },
+   "locations": [
+    {
+     "file": "evidence/voxel-terrain/terrain.json",
+     "pointer": "/frostline/recording",
+     "runtime": "chromium"
+    }
+   ]
+  }
+ ]
+}
