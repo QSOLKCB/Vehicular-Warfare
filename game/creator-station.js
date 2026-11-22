@@ -5,6 +5,7 @@ import {configureFxControl} from './fx-gate.js';
 import {CombinedView} from './combined-view.js';
 import {combinedHud,crewControls} from './combined-hud.js';
 import {CreatorMusic} from './creator-music.js';
+import {bindChartControls} from './chart-controls.js';
 import {groundStation} from './ground-station.js';
 
 configureFxControl();
@@ -103,6 +104,10 @@ async function viewer(){
   const timeline=el('timeline'),cameraSelect=el('replayCamera'),toggle=el('replayToggle');
   const clock=new Clock();
   let camera='chase',view=null,raf=0,lastDraw=null,musicEnabled=false,retired=0;
+  const mapMode=bindChartControls(enabled=>{
+    if(station.dataset.mode==='replaying')view?.setRetro(enabled);
+    else if(['reviewing','finished'].includes(station.dataset.mode))still();
+  });
   describe(cursor.world,title);
   document.title=title+' · Replay';
   el('panel').hidden=true;
@@ -120,7 +125,7 @@ async function viewer(){
   }
   function draw(){
     const w=cursor.world;
-    view??=new CombinedView(canvas,w);
+    view??=new CombinedView(canvas,w,{retro:mapMode.checked});
     lastDraw=view.draw(w,camera);
     combinedHud(w,lastDraw);
     if(camera==='overview')el('aimPoint').hidden=true;
@@ -180,7 +185,7 @@ async function viewer(){
     return structuredClone({mode:station.dataset.mode,camera,tick:w.tick,status:w.status,reason:w.reason,score:w.score,
       selection:w.selection,pack:w.pack,player:w.player,events:w.events,shots:w.shots,captured:w.captured,held:0,
       receipt:w.pack?creatorReceipt(w):combinedReceipt(w),recording,
-      metrics:{buffers:view?.r.meshes.size??0,rafActive:Boolean(raf),audioActive:Boolean(score),lastDraw,retired}});
+      metrics:{buffers:view?.r.meshes.size??0,liveRetroBytes:view?.retro?.retainedBytes??0,rafActive:Boolean(raf),audioActive:Boolean(score),lastDraw,retired}});
   };
   toggle.addEventListener('click',transport);
   el('rewind').addEventListener('click',()=>seek(0));
@@ -204,6 +209,7 @@ async function viewer(){
   document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
   window.addEventListener('keydown',e=>{
     if(e.ctrlKey||e.altKey||e.metaKey||e.repeat||station.dataset.mode==='error')return;
+    if(e.code==='KeyM' && !e.target.closest('input,select,textarea'))mapMode.click();
     if(e.code==='Escape' || e.code==='KeyP'){e.preventDefault();pause();}
     else if(e.code==='Space' && !e.target.closest('input,select,button,a')){e.preventDefault();transport();}
   });

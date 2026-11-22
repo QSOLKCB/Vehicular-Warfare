@@ -26,3 +26,8 @@
 .transport .fx-setting{margin:0}.transport .fx-setting kbd{display:none}
 #station:is([data-mode=victory],[data-mode=defeat],[data-mode=error]) #panel .fx-setting{display:none}
 @media(max-width:650px){.transport:has(.fx-setting){flex-wrap:wrap}.transport .fx-setting{font-size:10px}}
+.display-options{display:flex;flex-wrap:wrap;column-gap:15px}
+#chartSwitch{pointer-events:auto;padding:2px 4px;line-height:1.1;font:inherit;color:inherit;border:1px solid var(--line);background:transparent}
+#chartSwitch[aria-pressed=true]{background:var(--gold);color:#14332d}
+#chartSwitch:focus-visible{outline:2px solid white;outline-offset:2px}
+#chart[data-display=retro] #theatreMap{image-rendering:pixelated}

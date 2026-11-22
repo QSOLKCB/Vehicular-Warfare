@@ -52,7 +52,8 @@ const server=spawn('python3',['-u','-m','http.server','0','--bind','127.0.0.1','
 server.stderr.resume();
 const line=String((await once(server.stdout,'data'))[0]);
 const port=line.match(/port (\d+)/)[1],base='http://127.0.0.1:'+port;
-const browser=spawn(chrome,['--headless=new','--disable-background-networking','--no-first-run',
+// Exercise live Web Audio and offline score capture without playing through the host speakers.
+const browser=spawn(chrome,['--headless=new','--mute-audio','--disable-background-networking','--no-first-run',
   '--disable-default-apps',...graphicsFlags,
   '--window-size=1100,760','--remote-debugging-pipe','--user-data-dir='+join(temp,'profile'),
   'about:blank'],
@@ -124,8 +125,9 @@ try{
   // Set the same browser preference as the briefing before entering the historical sorties.
   const presentation=process.env.VW_TEST_PRESENTATION;
   if(presentation!==undefined){
-    if(presentation!=='fx')throw RangeError('Unknown test presentation');
-    await evaluate("localStorage.setItem('vw:fx-gate','on')");
+    if(presentation==='fx')await evaluate("localStorage.setItem('vw:fx-gate','on')");
+    else if(presentation==='retro')await evaluate("localStorage.setItem('vw-gfx:tactical-display','retro')");
+    else throw RangeError('Unknown test presentation');
   }
   const initial=await read();
   assert.equal(initial.mode,'briefing');
@@ -151,12 +153,16 @@ try{
     const report={source,servedTree,presentation,version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,'archives.json'),JSON.stringify(report,null,1)+'\n');
     console.log('Verified',result.distinct,'distinct archived recordings from',result.occurrences,'occurrences');
-  }else if(['profile','profile-base','profile-fx','fx','controls'].includes(family)){
+  }else if(['profile','profile-base','profile-fx','profile-retro','fx','retro','controls'].includes(family)){
     const io={click,key,mouse,evaluate,send,screenshot,sleep,output};
     let result;
     if(family==='controls')result=await (await import('./control-sortie.mjs')).controlSortie(io);
     else if(family==='fx')result=await (await import('./fx-sortie.mjs')).fxSortie(io);
-    else result=await releaseProfile(io,{baseOnly:family==='profile-base',backend,experiment:family==='profile-fx'?'fx':undefined});
+    else if(family==='retro')result=await (await import('./retro-sortie.mjs')).retroSortie(io);
+    else{
+      const experiment=family==='profile-fx'?'fx':family==='profile-retro'?'retro':undefined;
+      result=await releaseProfile(io,{baseOnly:family==='profile-base',backend,experiment});
+    }
     assert.deepEqual(errors,[]);
     assert.ok([...urls].every(u=>u.startsWith(base+'/ridgefire/') || u.startsWith('blob:'+base+'/') || u==='data:,'));
     const {gpu:system}=await send('SystemInfo.getInfo',{},null);

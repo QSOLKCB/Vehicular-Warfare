@@ -1,0 +1,322 @@
+{
+  "native/standard": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 0.4,
+      "p95": 0.6,
+      "mean": 0.416,
+      "peak": 0.9
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 0.8942,
+      "p95": 1.3395,
+      "mean": 0.9205,
+      "peak": 2.6844
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.8,
+      "mean": 16.666,
+      "peak": 16.8
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75852,
+      "p95": 82284,
+      "mean": 77341.9148,
+      "peak": 82500
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 37,
+      "p95": 59,
+      "mean": 42.1635,
+      "peak": 59
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "chartPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0.1,
+      "mean": 0.0187,
+      "peak": 0.2
+    },
+    "retroPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "resources": {
+      "retroRetainedBytes": 0,
+      "fxRetainedBytes": 0,
+      "liveMeshes": 32,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 881856,
+      "gpuGeometryMaxBytes": 2029392
+    },
+    "sampledBytes": 666001548,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 502480,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  },
+  "native/retro": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 0.7,
+      "p95": 0.9,
+      "mean": 0.6978,
+      "peak": 1.3
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 1.7391,
+      "p95": 2.5348,
+      "mean": 1.7674,
+      "peak": 3.3357
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.7,
+      "mean": 16.666,
+      "peak": 16.8
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75852,
+      "p95": 82284,
+      "mean": 77341.9148,
+      "peak": 82500
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 37,
+      "p95": 59,
+      "mean": 42.1635,
+      "peak": 59
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "chartPrepMs": {
+      "n": 1150,
+      "p50": 0.3,
+      "p95": 0.4,
+      "mean": 0.2883,
+      "peak": 0.6
+    },
+    "retroPrepMs": {
+      "n": 1150,
+      "p50": 0.3,
+      "p95": 0.4,
+      "mean": 0.2883,
+      "peak": 0.6
+    },
+    "resources": {
+      "retroRetainedBytes": 198076,
+      "fxRetainedBytes": 0,
+      "liveMeshes": 32,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 881856,
+      "gpuGeometryMaxBytes": 2029392
+    },
+    "sampledBytes": 668887932,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 480996,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  },
+  "software/standard": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 0.6,
+      "p95": 0.9,
+      "mean": 0.6142,
+      "peak": 1.5
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 10.6124,
+      "p95": 13.5722,
+      "mean": 10.4108,
+      "peak": 14.6109
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.7,
+      "mean": 16.8548,
+      "peak": 66.6
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75852,
+      "p95": 82284,
+      "mean": 77341.9148,
+      "peak": 82500
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 37,
+      "p95": 59,
+      "mean": 42.1635,
+      "peak": 59
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "chartPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0.1,
+      "mean": 0.039,
+      "peak": 0.2
+    },
+    "retroPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "resources": {
+      "retroRetainedBytes": 0,
+      "fxRetainedBytes": 0,
+      "liveMeshes": 32,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 881856,
+      "gpuGeometryMaxBytes": 2029392
+    },
+    "sampledBytes": 661030168,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 446064,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  },
+  "software/retro": {
+    "drawMs": {
+      "n": 1150,
+      "p50": 1.1,
+      "p95": 1.4,
+      "mean": 1.0554,
+      "peak": 1.9
+    },
+    "gpuMs": {
+      "n": 144,
+      "p50": 10.7377,
+      "p95": 13.606,
+      "mean": 10.3766,
+      "peak": 14.9485
+    },
+    "intervalMs": {
+      "n": 1148,
+      "p50": 16.7,
+      "p95": 16.7,
+      "mean": 16.724,
+      "peak": 50
+    },
+    "vertices": {
+      "n": 1150,
+      "p50": 75852,
+      "p95": 82284,
+      "mean": 77341.9148,
+      "peak": 82500
+    },
+    "draws": {
+      "n": 1150,
+      "p50": 37,
+      "p95": 59,
+      "mean": 42.1635,
+      "peak": 59
+    },
+    "fxPrepMs": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "fxVertices": {
+      "n": 1150,
+      "p50": 0,
+      "p95": 0,
+      "mean": 0.0,
+      "peak": 0
+    },
+    "chartPrepMs": {
+      "n": 1150,
+      "p50": 0.5,
+      "p95": 0.6,
+      "mean": 0.4477,
+      "peak": 0.8
+    },
+    "retroPrepMs": {
+      "n": 1150,
+      "p50": 0.5,
+      "p95": 0.6,
+      "mean": 0.4477,
+      "peak": 0.8
+    },
+    "resources": {
+      "retroRetainedBytes": 198076,
+      "fxRetainedBytes": 0,
+      "liveMeshes": 32,
+      "effectCapacity": 64,
+      "cpuGeometryBytes": 881856,
+      "gpuGeometryMaxBytes": 2029392
+    },
+    "sampledBytes": 665809580,
+    "samplingIntervalBytes": 8192,
+    "v8HeapDeltaBytes": 471216,
+    "queries": {
+      "accepted": 144,
+      "discarded": 0
+    }
+  }
+}

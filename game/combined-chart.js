@@ -12,6 +12,13 @@ export function roadCover(x,z){
   return clamp((3.9-distance)/2.1,0,1)*clamp((65-Math.abs(z))/6,0,1);
 }
 
+export const chartScale=1.45;
+export function chartCenter(player,width,height){
+  const mw=width/chartScale,mh=height/chartScale;
+  return {cx:clamp(player.p[0],-EDGE+mw/2,EDGE-mw/2),
+    cz:clamp(player.p[2]-mh*.30,-EDGE+mh/2,EDGE-mh/2)};
+}
+
 export class EstuaryChart{
   constructor(canvas,w){
     this.canvas=canvas;this.ctx=canvas.getContext('2d');
@@ -31,10 +38,9 @@ export class EstuaryChart{
     ctx.stroke();
   }
   draw(w,sight){
-    const {width,height}=this.canvas,ctx=this.ctx,scale=1.45;
+    const {width,height}=this.canvas,ctx=this.ctx,scale=chartScale;
     const mw=width/scale,mh=height/scale;
-    const cx=clamp(w.player.p[0],-EDGE+mw/2,EDGE-mw/2);
-    const cz=clamp(w.player.p[2]-mh*.30,-EDGE+mh/2,EDGE-mh/2);
+    const {cx,cz}=chartCenter(w.player,width,height);
     const u=x=>(x-cx)*scale+width/2,v=z=>(z-cz)*scale+height/2;
     ctx.drawImage(this.paper,cx+EDGE-mw/2,cz+EDGE-mh/2,mw,mh,0,0,width,height);
     const gate=w.beacon,side=GATE_RADIUS*scale;

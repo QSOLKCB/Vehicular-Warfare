@@ -21,7 +21,10 @@
       </select>
       <div id="controlHint"></div>
     </div>
-    <label class="fx-setting" title="Show a rotating marker above your capture gate"><input id="fxBeacon" type="checkbox"> FX gate beacon <kbd>G</kbd></label>
+    <div class="display-options">
+      <label class="fx-setting" title="Show a rotating marker above your capture gate"><input id="fxBeacon" type="checkbox"> FX gate beacon <kbd>G</kbd></label>
+      <label class="fx-setting" title="Switch chart rendering"><input id="retroChart" type="checkbox"> Retro tactical display <kbd>M</kbd></label>
+    </div>
     <div id="driveSetup" hidden>
       <label for="driveStyle">Controls</label>
       <select id="driveStyle" aria-describedby="driveHelp"><option value="simple">Simple</option><option value="independent">Independent</option></select>
@@ -41,7 +44,7 @@
   <section id="hud" hidden aria-label="Combined arms instruments">
     <div id="compass"><small>HEADING</small><strong id="heading"></strong></div>
     <div class="mission"><small>BREAKWATER REACH</small><div id="objectives"></div></div>
-    <aside id="chart"><div class="map-title"><b>ESTUARY</b><span>N ↑</span></div>
+    <aside id="chart"><div class="map-title"><b>ESTUARY</b><button id="chartSwitch" type="button" aria-label="Retro tactical display" aria-pressed="false" title="Toggle retro tactical display (M)">Retro</button><span>N ↑</span></div>
       <canvas id="theatreMap" width="202" height="152" aria-label="North-up map of allied vehicles, visible opponents, relay and exit gate"></canvas>
       <div class="legend"><span>● Cobalt</span><span>◆ Ember</span><span>○ Gate</span></div>
     </aside>
