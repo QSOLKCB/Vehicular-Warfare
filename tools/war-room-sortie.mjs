@@ -4,7 +4,7 @@ import {mkdtemp,readFile,readdir} from 'node:fs/promises';
 import {join} from 'node:path';
 
 // Profile the live observer's existing draw call. Restore the method before releasing the camera.
-async function sampleObserver(){
+export async function sampleObserver(){
   const {CombinedView}=await import('./game/combined-view.js');
   const old=CombinedView.prototype.draw,rows=[],pending=[],frame=()=>new Promise(requestAnimationFrame);
   let gl,timer,previous,disjoint=0;

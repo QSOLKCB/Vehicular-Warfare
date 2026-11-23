@@ -1,4 +1,4 @@
-// Compact, articulated silhouettes for the eight mobile actors on the Breakwater chart.
+// Compact, articulated silhouettes for the mobile actors on the Breakwater chart.
 import {boxVertices} from '../vendor/vanillajs/modules/render-webgl/index.js';
 import {cross,normalize,quatMultiply,rotate,scale,subtract} from '../vendor/vanillajs/modules/math/index.js';
 import {tankBasis} from '../sim/tracks.js';
@@ -77,7 +77,8 @@ function parts(color){
 }
 
 export class DistantFleet{
-  constructor(cobalt,ember){
+  constructor(cobalt,ember,crewSets=1){
+    if(!Number.isInteger(crewSets) || crewSets<1 || crewSets>3)throw RangeError('Unsupported fleet size');
     this.colors={cobalt:parts(cobalt),ember:parts(ember)};
     this.templateBytes=0;
     let capacity=0;
@@ -87,13 +88,14 @@ export class DistantFleet{
       capacity+=p.tank.length+p.turret.length+p.walker.length+p.torso.length+12*p.link.length+
         3*p.gun.length+p.ship.length+p.aircraft.length+p.rotor.length;
     }
-    this.data=new Float32Array(capacity);
+    this.data=new Float32Array(capacity*crewSets);
     this.reset();
   }
   reset(){this.used=0;this.count=0;}
   meshView(){return this.data.subarray(0,this.used);}
 
   put(geometry,origin,right,vertical,zAxis){
+    if(this.used+geometry.length>this.data.length)throw RangeError('Fleet geometry exceeds its roster');
     for(let i=0,j=this.used;i<geometry.length;i+=6,j+=6){
       const x=geometry[i],y=geometry[i+1],z=geometry[i+2];
       this.data[j]=origin[0]+right[0]*x+vertical[0]*y+zAxis[0]*z;

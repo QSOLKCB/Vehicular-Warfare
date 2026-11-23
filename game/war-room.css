@@ -27,3 +27,5 @@ aside{padding:20px 16px;overflow:auto;background:#1b292b;border-left:1px solid v
 #directorReadout { margin:0; font:12px/1.3 ui-monospace,monospace; color:var(--mint); }
 body.inspecting aside,body.inspecting #feedback { display:none; }
 body.inspecting main { grid-template-columns:1fr; grid-template-rows:1fr; }
+
+.big-battle #roster{max-height:18rem;overflow-y:auto;scrollbar-gutter:stable}

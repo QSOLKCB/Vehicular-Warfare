@@ -106,7 +106,8 @@ function fleet(r,color,side){
 }
 
 export class CombinedView{
-  constructor(canvas,w,{detail='balanced',fx,retro=false}={}){
+  constructor(canvas,w,{detail='balanced',fx,retro=false,crewSets=1}={}){
+    if(!Number.isInteger(crewSets) || crewSets<1 || crewSets>3)throw RangeError('Unsupported crew count');
     if(!Object.hasOwn(profiles,detail))throw RangeError('Unknown scene detail');
     this.detail=detail;
     this.setRetro(retro);
@@ -122,11 +123,11 @@ export class CombinedView{
       this.chart=new EstuaryChart(document.getElementById('theatreMap'),w);
       this.fleets={cobalt:fleet(r,cobalt,'player'),ember:fleet(r,ember,'enemy')};
       this.rotor=new Model(r,rotor());this.barrel=new Model(r,deckGun());this.relay=new Model(r,stationBody(w.relay));
-      this.distant=detail==='balanced'?new DistantFleet(cobalt,ember):null;
+      this.distant=detail==='balanced'?new DistantFleet(cobalt,ember,crewSets):null;
       this.distantMesh=this.distant?r.mesh([]):null;
       this.farActors=new Set();
-      this.shadows=r.mesh([]);this.shadowData=new Float32Array(profile.shadowDiscs*8*3*6);
-      this.foam=r.mesh([]);this.foamData=new Float32Array(2*2*8*6*6);
+      this.shadows=r.mesh([]);this.shadowData=new Float32Array(crewSets*profile.shadowDiscs*8*3*6);
+      this.foam=r.mesh([]);this.foamData=new Float32Array(crewSets*2*2*8*6*6);
       this.effects=r.mesh([]);this.stream=new BoxVertexStream(profile.boxes);
       const models=[this.rotor,this.barrel,this.relay];
       for(const f of Object.values(this.fleets))models.push(f.ship,f.helicopter,...Object.values(f.tank),...Object.values(f.mech));
@@ -183,6 +184,7 @@ export class CombinedView{
         shadowEnd=shadowDisc(this.shadowData,shadowEnd,w.field,a.p,1.45,2.20);
       }
     }
+    if(shadowEnd>this.shadowData.length)throw RangeError('Crew shadow capacity exceeded');
     if(shadowEnd){
       gl.enable(gl.BLEND);gl.blendColor(0,0,0,.28);gl.blendFunc(gl.CONSTANT_ALPHA,gl.ONE_MINUS_CONSTANT_ALPHA);
       gl.depthMask(false);r.update(this.shadows,this.shadowData.subarray(0,shadowEnd));r.draw(this.shadows);
@@ -222,6 +224,7 @@ export class CombinedView{
       r.update(this.distantMesh,this.distant.meshView());r.draw(this.distantMesh);
       vertices+=this.distantMesh.count;draws++;
     }
+    if(foamEnd>this.foamData.length)throw RangeError('Crew wake capacity exceeded');
     if(foamEnd){r.update(this.foam,this.foamData.subarray(0,foamEnd));r.draw(this.foam);vertices+=this.foam.count;draws++;}
     const stream=this.stream,debrisBoxes=packMixedEffects(stream,w,this.detail);
     if(stream.boxCount){r.update(this.effects,stream.view());r.draw(this.effects);vertices+=stream.vertexCount;draws++;}

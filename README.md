@@ -44,6 +44,8 @@ Choose **Formation command** to route crews around charted obstacles and give a 
 
 Choose **Battle Director** in the observation camera selector to orbit a friendly crew. From pause or a verified replay, **Inspect frame** lets you change the camera at the held tick. [Director controls](docs/WAR_ROOM.md)
 
+Choose **The Big Battle · 24 vehicles** to command twelve Cobalt crews against twelve Ember crews on the same coastal board. Each numbered section has a helicopter, tank, walker and cutter. [Big Battle roster and limits](docs/BIG_BATTLE.md)
+
 The [command-mode numerical API](docs/COMMAND_AUTHORITY.md) lets four independently ordered crews share this battlefield. Its versioned receipt records group orders and waypoints.
 
 ## Creator systems · Mission workshop

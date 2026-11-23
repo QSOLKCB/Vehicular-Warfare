@@ -153,12 +153,13 @@ try{
     const report={source,servedTree,presentation,version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,'archives.json'),JSON.stringify(report,null,1)+'\n');
     console.log('Verified',result.distinct,'distinct archived recordings from',result.occurrences,'occurrences');
-  }else if(['profile','profile-base','profile-fx','profile-retro','fx','retro','controls','war-room','formation','director'].includes(family)){
+  }else if(['profile','profile-base','profile-fx','profile-retro','fx','retro','controls','war-room','formation','director','big-battle'].includes(family)){
     const io={click,key,mouse,evaluate,send,screenshot,sleep,output};
     let result;
     if(family==='war-room')result=await (await import('./war-room-sortie.mjs')).warRoomSortie(io);
     else if(family==='formation')result=await (await import('./formation-sortie.mjs')).formationSortie(io);
     else if(family==='director')result=await (await import('./director-sortie.mjs')).directorSortie(io);
+    else if(family==='big-battle')result=await (await import('./big-battle-sortie.mjs')).bigBattleSortie(io);
     else if(family==='controls')result=await (await import('./control-sortie.mjs')).controlSortie(io);
     else if(family==='fx')result=await (await import('./fx-sortie.mjs')).fxSortie(io);
     else if(family==='retro')result=await (await import('./retro-sortie.mjs')).retroSortie(io);
