@@ -16,14 +16,20 @@ export async function check({evaluate,send,sleep}) {
   const results=[];
   for (const [mission,file] of recordings) {
     const expected=JSON.parse(await readFile(file,'utf8'));
+    // The next file can use the very same scenario URL. Wait for its fresh
+    // document before acquiring node IDs, which navigation invalidates.
+    await evaluate("document.documentElement.dataset.leavingReplayFixture='1'");
     await send('Page.navigate',{url:links[mission]});
-    let input;
-    for (let attempt=0;attempt<100 && !input;attempt++) {
-      const {root}=await send('DOM.getDocument');
-      input=(await send('DOM.querySelector',{nodeId:root.nodeId,selector:'dialog[open] #openReplay'})).nodeId;
-      if (!input) await sleep(40);
+    let ready=false;
+    for (let attempt=0;attempt<120 && !ready;attempt++) {
+      ready=await evaluate(`location.href===${JSON.stringify(links[mission])} &&
+        document.readyState==='complete' && !document.documentElement.dataset.leavingReplayFixture &&
+        !!document.querySelector('dialog[open] #openReplay')`);
+      if (!ready) await sleep(50);
     }
-    assert.ok(input,'Replay input in '+mission);
+    assert.ok(ready,'Loaded replay briefing in '+mission);
+    const {root}=await send('DOM.getDocument');
+    const {nodeId:input}=await send('DOM.querySelector',{nodeId:root.nodeId,selector:'#openReplay'});
     await send('DOM.setFileInputFiles',{nodeId:input,files:[resolve(file)]});
     let checked;
     for (let attempt=0;attempt<350 && !checked;attempt++) {
