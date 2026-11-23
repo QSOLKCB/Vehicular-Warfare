@@ -46,3 +46,5 @@ formation_modules = combined_modules + ("combined-identity", "command-control", 
 source_id("vw-cmd-003", "FORMATION_SOURCE", "formation-identity.js", formation_modules)
 source_id("vw-cmd-005", "BIG_BATTLE_SOURCE", "big-battle-identity.js",
           formation_modules + ("formation-identity", "big-battle"))
+source_id("vw-tact-001", "OVERLORD_INTEL_SOURCE", "overlord-intel-identity.js",
+          formation_modules + ("formation-identity", "big-battle", "big-battle-identity", "overlord-intel"))

@@ -22,6 +22,7 @@
 | VW-CMD-003 — Formation Intelligence | Spaced destinations and bounded routes through the Breakwater chart | [Routing and physical acceptance](docs/FORMATION.md) |
 | VW-CMD-004 — Battle Director | Orbit an observed crew and inspect a paused or verified battle frame | [Camera controls](docs/WAR_ROOM.md) |
 | VW-CMD-005 — The Big Battle | Playable 24-vehicle Breakwater scenario with twelve commandable crews | [Roster and scale measurements](docs/BIG_BATTLE.md) |
+| VW-TACT-001 — Battlefield Intelligence | Faction observations and last-known contacts on the Breakwater board | [Sampling, bounds and fixtures](docs/OVERLORD_INTEL.md) |
 
 **Implementation sequencing:** one playable helicopter game first; avoid tackling all vehicle categories in one PR. VW-001A and VW-001B should be separate PRs if that increases reviewability. The v3.4.0 GC Observatory is development tooling, not a built-in game performance boost.
 
