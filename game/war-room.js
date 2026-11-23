@@ -291,7 +291,8 @@ function give(order,append){
   const t=performance.now();
   try{
     const accepted=issueOrder(world,{tick:world.tick,units:[...selected],append,...order});
-    el('feedback').textContent=accepted.type+(append?' queued for ':' issued to ')+accepted.units.map(id=>crewName(world.actors.find(a=>a.id===id))).join(', ')+'.';
+    const instruction=accepted.doctrine??accepted.task??accepted.type;
+    el('feedback').textContent=instruction+(append?' queued for ':' issued to ')+accepted.units.map(id=>crewName(world.actors.find(a=>a.id===id))).join(', ')+'.';
   }catch(error){el('feedback').textContent='Order rejected. '+error.message;}
   sample(metrics.orderMs,performance.now()-t);updateUi(visibleActors());
 }

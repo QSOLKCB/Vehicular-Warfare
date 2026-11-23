@@ -13,13 +13,17 @@ export function decisionReport(world, selected) {
     const crew = world.tactical.crews[id], decision = crew.decision;
     const task = crew.task;
     const lines = [id + ' · ' + crew.doctrine];
-    if (task) lines.push(task.task + ' · ' + task.reason);
+    if (task) lines.push((task.active?'':'Last task · ') + task.task + ' · ' + task.reason);
     if (!decision) lines.push('Awaiting first decision.');
     else {
       lines.push('Tick ' + decision.tick + ' · ' + decision.doctrine + ' · ' + decision.action, decision.reason);
       if (decision.goal) lines.push('Objective ' + decision.goal.map(Math.round).join(', '));
       if (decision.contact) lines.push(decision.contact + ' · score ' + decision.score,
         'Observed by ' + decision.source + ' at tick ' + decision.observedTick);
+      if (decision.contact && decision.candidates?.length) {
+        const top = decision.candidates.slice(0,3).map(([id,score]) => id + ' ' + score);
+        lines.push('Highest reported scores · ' + top.join(', '));
+      }
     }
     const human = world.units[id];
     const result = human.queue.length || task ? human.lastResult : crew.controller.lastResult;
