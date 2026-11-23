@@ -59,3 +59,5 @@ source_id("vw-tact-001", "OVERLORD_INTEL_SOURCE", "overlord-intel-identity.js",
 overlord_modules = formation_modules + ("formation-identity", "big-battle", "big-battle-identity",
                                        "overlord-intel", "overlord-doctrine", "overlord-control", "overlord")
 source_id("vw-tact-002", "OVERLORD_SOURCE", "overlord-identity.js", overlord_modules, doctrine_exports=True)
+source_id("vw-tact-003", "OVERLORD_SOURCE", "coordinated-overlord-identity.js",
+          overlord_modules + ("overlord-identity", "overlord-groups", "coordinated-overlord"), doctrine_exports=True)
