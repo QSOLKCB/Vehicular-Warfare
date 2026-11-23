@@ -1,0 +1,171 @@
+{
+  "version": 3,
+  "source": "vw-tact-003:fe43304618801b334cfb22dbbaa1445e339694b21d0d121a5e8b634f9a67f5bf",
+  "scenario": "breakwater-overlord-v1",
+  "seed": 2505,
+  "roster": [
+    {
+      "id": "cobalt-helicopter",
+      "kind": "helicopter",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-tank",
+      "kind": "tank",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-mech",
+      "kind": "mech",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-ship",
+      "kind": "ship",
+      "faction": "cobalt"
+    },
+    {
+      "id": "ember-helicopter",
+      "kind": "helicopter",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-tank",
+      "kind": "tank",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-mech",
+      "kind": "mech",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-ship",
+      "kind": "ship",
+      "faction": "ember"
+    },
+    {
+      "id": "cobalt-helicopter-2",
+      "kind": "helicopter",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-tank-2",
+      "kind": "tank",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-mech-2",
+      "kind": "mech",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-ship-2",
+      "kind": "ship",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-helicopter-3",
+      "kind": "helicopter",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-tank-3",
+      "kind": "tank",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-mech-3",
+      "kind": "mech",
+      "faction": "cobalt"
+    },
+    {
+      "id": "cobalt-ship-3",
+      "kind": "ship",
+      "faction": "cobalt"
+    },
+    {
+      "id": "ember-helicopter-2",
+      "kind": "helicopter",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-tank-2",
+      "kind": "tank",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-mech-2",
+      "kind": "mech",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-ship-2",
+      "kind": "ship",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-helicopter-3",
+      "kind": "helicopter",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-tank-3",
+      "kind": "tank",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-mech-3",
+      "kind": "mech",
+      "faction": "ember"
+    },
+    {
+      "id": "ember-ship-3",
+      "kind": "ship",
+      "faction": "ember"
+    },
+    {
+      "id": "relay",
+      "kind": "relay",
+      "faction": "ember"
+    }
+  ],
+  "orders": [
+    {
+      "tick": 4,
+      "units": [
+        "cobalt-mech-2",
+        "cobalt-tank-2"
+      ],
+      "type": "DOCTRINE",
+      "append": false,
+      "doctrine": "SUPPORT"
+    },
+    {
+      "tick": 4,
+      "units": [
+        "cobalt-tank-2"
+      ],
+      "type": "TASK",
+      "append": false,
+      "task": "COVER",
+      "x": -30,
+      "z": 17
+    },
+    {
+      "tick": 4,
+      "units": [
+        "cobalt-helicopter"
+      ],
+      "type": "TASK",
+      "append": false,
+      "task": "ADVANCE",
+      "x": -30,
+      "z": 3
+    }
+  ],
+  "ticks": 1057,
+  "stateHash": "b1fec909",
+  "eventHash": "6fcc16ca",
+  "outcome": "victory"
+}

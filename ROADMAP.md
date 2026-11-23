@@ -25,6 +25,7 @@
 | VW-TACT-001 — Battlefield Intelligence | Faction observations and last-known contacts on the Breakwater board | [Sampling, bounds and fixtures](docs/OVERLORD_INTEL.md) |
 | VW-TACT-002 — Tactical Doctrines | Scheduled Breakwater crew decisions and source-bound replay | [Controls, precedence and verification](docs/OVERLORD_AUTHORITY.md) |
 | VW-TACT-003 — Coordinated Manoeuvre | Section tasks and validated alternative routes | [Group authority and fixtures](docs/OVERLORD_GROUPS.md) |
+| VW-TACT-004 — Operation Overlord | Playable 24-crew scenario, decision inspection and recording verification | [Commander guide](docs/OVERLORD.md) |
 
 **Implementation sequencing:** one playable helicopter game first; avoid tackling all vehicle categories in one PR. VW-001A and VW-001B should be separate PRs if that increases reviewability. The v3.4.0 GC Observatory is development tooling, not a built-in game performance boost.
 

@@ -35,3 +35,7 @@ The mixed benchmark draws the same accepted tank recording with full and balance
 The **Release verification** workflow runs on pull requests to main and pushes to main. It checks source identities, vendored bytes and numerical tests, builds the candidate ZIP, then drives the extracted game in software Chromium. The **offline-game** and **control-acceptance** workflow artifacts contain the tested ZIP and browser observations.
 
 For release approval, compare the intended commit and archive checksum, inspect the native and software measurements, and try the controls on the target machine. Each tag requires a separate owner decision on its name and exact commit. The candidate workflow ends after verification and artifact upload.
+
+## Operation Overlord
+
+Select **Operation Overlord · Tactical Intelligence** on the mission board. The [commander guide](OVERLORD.md) ships inside the ZIP. From a source checkout, run `node tools/browser.mjs /tmp/overlord-check overlord` with RIDGEFIRE_WEB_ROOT pointed at that extracted copy.

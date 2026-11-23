@@ -29,3 +29,11 @@ body.inspecting aside,body.inspecting #feedback { display:none; }
 body.inspecting main { grid-template-columns:1fr; grid-template-rows:1fr; }
 
 .big-battle #roster{max-height:18rem;overflow-y:auto;scrollbar-gutter:stable}
+
+#tactics { margin-bottom: 1rem; }
+#tactics details { margin-top: .65rem; }
+#tactics pre { white-space: pre-wrap; font: 12px/1.5 ui-monospace,monospace; color: #d9e7dc; }
+#assignDoctrine { align-self: center; }
+#issueTask { width: 100%; }
+body.overlord #roster { max-height: 10rem; }
+#directorDecision { white-space: pre-wrap; font: 12px/1.45 ui-monospace,monospace; }

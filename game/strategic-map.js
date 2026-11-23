@@ -1,4 +1,5 @@
 // All map coordinates and hit tolerances use CSS pixels, independently of backing resolution.
+import {chartContacts} from './overlord-panel.js';
 import {EDGE} from '../sim/terrain.js';
 import {GATE_RADIUS} from '../sim/combined-world.js';
 import {roadCover} from './combined-chart.js';
@@ -110,7 +111,9 @@ export class StrategicMap{
     for(const a of visible){
       if(a.faction!=='cobalt')continue;
       let [px,py]=screen(a.p[0],a.p[2]);
-      for(const order of w.units[a.id].queue){
+      const orders=w.units[a.id].queue;
+      const autonomous=w.tactical?.crews[a.id]?.controller.queue;
+      for(const order of orders.length?orders:autonomous??[]){
         let goal=order;
         if(order.type==='ATTACK'){
           const target=visible.find(v=>v.id===order.target);
@@ -140,6 +143,15 @@ export class StrategicMap{
         ctx.strokeText(crewName(a).toUpperCase(),x,y+row);ctx.fillText(crewName(a).toUpperCase(),x,y+row);
         ctx.textAlign='left';
       }
+    }
+    if(w.tactical){
+      ctx.strokeStyle='#ffd5a3';ctx.setLineDash([3,3]);ctx.lineWidth=1.5;
+      for(const c of chartContacts(w,visible)){
+        if(c.current)continue;
+        const [x,y]=screen(c.position[0],c.position[2]);
+        ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.stroke();
+      }
+      ctx.setLineDash([]);
     }
     if(box){ctx.fillStyle='#b5fbd12a';ctx.strokeStyle='#efffd6';ctx.lineWidth=1;ctx.fillRect(...box);ctx.strokeRect(...box);}
     ctx.restore();
