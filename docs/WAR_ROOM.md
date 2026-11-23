@@ -12,7 +12,7 @@ Choose **War Room** on the mission board, then **Deploy crews**. The crossing is
 | Wheel / middle-drag | Zoom around the pointer or pan. Arrow keys pan. Fit theatre restores the 288 m overview. |
 | F | Follow the first selected operational crew in roster order. |
 | Tab on the battlefield canvas / view button | Switch between map and live observation. |
-| C / camera selector | Cycle overhead, crew chase and weapon sight. |
+| C / camera selector | Press C to cycle through overhead, crew chase, weapon sight and Battle Director. Choose any view directly in the selector. |
 | M / G | Toggle retro display or the 3D FX gate beacon. |
 | P / Escape | Pause or resume. |
 

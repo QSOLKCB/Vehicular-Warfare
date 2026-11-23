@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {resolve} from 'node:path';
 import {readFile} from 'node:fs/promises';
 
-export async function directorSortie({click,evaluate,send,sleep,screenshot}){
+export async function directorSortie({click,key,evaluate,send,sleep,screenshot}){
   const snapshot=()=>evaluate("import('./game/war-room.js').then(m=>m.inspect())");
   async function waitFor(check){
     for(let n=0;n<150;n++){
@@ -27,6 +27,13 @@ export async function directorSortie({click,evaluate,send,sleep,screenshot}){
   await click('tab');
   await keyOn('camera','End');
   await waitFor(s=>s.director?.subject);
+  for(const expected of ['overview','chase','sight','director']){
+    await key('KeyC',true);await key('KeyC',false);
+    const state=await snapshot();
+    assert.equal(state.screen,'observation');
+    assert.equal(state.camera,expected);
+    assert.equal(await evaluate("document.getElementById('camera').value"),expected);
+  }
   await keyOn('directorSubject','End');
   const pinned=await waitFor(s=>s.director?.subject==='cobalt-ship');
   assert.equal(pinned.selected.length,4);
