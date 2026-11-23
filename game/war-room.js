@@ -410,7 +410,7 @@ on(window,'keydown',e=>{
   if(e.code==='KeyF')toggleView('observation',true);
   if(e.code==='KeyC'){
     const cameras=['overview','chase','sight','director'];
-    camera=cameras[(cameras.indexOf(camera)+1)%3];toggleView('observation');
+    camera=cameras[(cameras.indexOf(camera)+1)%cameras.length];toggleView('observation');
   }
   if(e.code==='KeyM')el('retro').checked=!el('retro').checked;
   if(e.code==='KeyG')el('fx').checked=!el('fx').checked;
