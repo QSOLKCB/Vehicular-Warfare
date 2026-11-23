@@ -15,7 +15,8 @@ def package(output):
     revision = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
     ).strip()
-    extras = ["LICENSE", "docs/RELEASE.md", "evidence/creator-systems/copper-crossing.json",
+    extras = ["LICENSE", "docs/RELEASE.md", "docs/OVERLORD.md", "docs/OVERLORD_INTEL.md",
+              "docs/OVERLORD_AUTHORITY.md", "docs/OVERLORD_GROUPS.md", "evidence/creator-systems/copper-crossing.json",
               "evidence/creator-systems/victory-replay.json",
               "evidence/creator-systems/defeat-replay.json"]
     paths = [":(top,glob)*.html", "assets", "game", "sim", "vendor", *extras]

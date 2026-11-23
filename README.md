@@ -46,6 +46,8 @@ Choose **Battle Director** in the observation camera selector to orbit a friendl
 
 Choose **The Big Battle · 24 vehicles** to command twelve Cobalt crews against twelve Ember crews on the same coastal board. Each numbered section has a helicopter, tank, walker and cutter. [Big Battle roster and limits](docs/BIG_BATTLE.md)
 
+Choose **Operation Overlord · Tactical Intelligence** to assign doctrines and section tasks to twelve crews. Open **Decision inspector** for a selected crew or **Subject decision** in Battle Director. Dashed rings on the chart mark last-known positions. [Operation controls and replay](docs/OVERLORD.md)
+
 The [command-mode numerical API](docs/COMMAND_AUTHORITY.md) lets four independently ordered crews share this battlefield. Its versioned receipt records group orders and waypoints.
 
 ## Creator systems · Mission workshop

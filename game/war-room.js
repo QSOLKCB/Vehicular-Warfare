@@ -4,6 +4,7 @@ import {Clock,HZ} from '../sim/clock.js';
 import {COMBINED_LIMIT,REQUIRED_DEFENDERS} from '../sim/combined-world.js';
 import {commandContacts,MAX_COMMAND_REPLAY_BYTES} from '../sim/command-world.js';
 import {FORMATION_REPLAY_BYTES} from '../sim/formation-world.js';
+import {chartContacts,decisionReport,contactReport} from './overlord-panel.js';
 import {commandScenarios} from './command-scenarios.js';
 import {CombinedView} from './combined-view.js';
 import {StrategicMap,crewName} from './strategic-map.js';
@@ -29,10 +30,12 @@ const sample=(values,n)=>{if(values.length===240)values.shift();values.push(n);}
 const friendly=()=>world.actors.filter(a=>a.faction==='cobalt');
 function visibleActors(){
   const contacts=commandContacts(world);
-  return world.actors.filter(a=>a.hp && (a.faction==='cobalt' || contacts.includes(a.id)));
+  const reports=world.tactical?.intel.cobalt.contacts;
+  return world.actors.filter(a=>a.faction==='cobalt'?a.hp>0:
+    contacts.includes(a.id) && (!reports || reports.some(c=>c.id===a.id && c.visible)));
 }
 function cameraCrew(){
-  return world.actors.find(a=>a.hp && selected.has(a.id)) ?? friendly().find(a=>a.hp) ?? world.player;
+  return world.actors.find(a=>selected.has(a.id) && a.hp) ?? friendly().find(a=>a.hp) ?? world.player;
 }
 
 function presentation(visible,player=cameraCrew()){
@@ -49,7 +52,8 @@ function presentation(visible,player=cameraCrew()){
     });
   }
   const shots=world.shots.filter(s=>ids.has(s.owner) && observedPoint(s.p));
-  const events=world.events.filter(e=>world.tick-e.tick<=108 && known(e.owner??e.source) &&
+  // Tactical replays have no per-event sight receipt for past debris.
+  const events=world.tactical?[]:world.events.filter(e=>world.tick-e.tick<=108 && known(e.owner??e.source) &&
     (!e.target || known(e.target)) && observedPoint(e.point));
   const {tick,seed,field,water,beacon,captured,status}=world;
   // The fixed relay site is on the briefing chart. Its hidden health and
@@ -118,7 +122,10 @@ function updateUi(visible){
     const r=roster.get(a.id);
     r.button.disabled=!a.hp;
     r.button.setAttribute('aria-pressed',String(selected.has(a.id)));
-    changeText(r.hp,a.hp+' HP');changeText(r.state,orderLabel(world.units[a.id]));
+    changeText(r.hp,a.hp+' HP');
+    const unit=world.units[a.id],crew=world.tactical?.crews[a.id];
+    const controller=crew && !unit.queue.length && a.hp ? crew.controller : unit;
+    changeText(r.state,(crew?crew.doctrine+' · ':'')+orderLabel(controller));
   }
   const enemies=visible.filter(a=>a.faction==='ember'),key=enemies.map(a=>a.id).join(',');
   if(key!==contactKey){
@@ -127,11 +134,18 @@ function updateUi(visible){
     el('contact').replaceChildren(...enemies.map(a=>new Option(a.id,a.id)));
     if(enemies.some(a=>a.id===previous))el('contact').value=previous;
   }
+  if(world.tactical){
+    changeText(el('decisionText'),decisionReport(world,selected));
+    if(el('contactText').parentElement.open)
+      changeText(el('contactText'),contactReport(chartContacts(world,visible),world.tick));
+    for(const id of ['assignDoctrine','issueTask'])el(id).disabled=!selected.size || mode!=='live';
+  }
   const sec=Math.ceil((COMBINED_LIMIT-world.tick)/HZ);
   changeText(el('clock'),String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0'));
   const relay=visible.some(a=>a.kind==='relay')?'online':world.captured?'disabled':'unconfirmed';
   changeText(el('objective'),'Shore relay '+relay+' · Crossing '+
-    (world.captured?'secured':'open objective')+' · '+world.mobileKills+'/'+REQUIRED_DEFENDERS+' mobile defenders disabled');
+    (world.captured?'secured':'open objective')+(world.tactical?' · Disable two mobile defenders':
+    ' · '+world.mobileKills+'/'+REQUIRED_DEFENDERS+' mobile defenders disabled'));
 }
 function draw(){
   const visible=visibleActors();
@@ -159,6 +173,8 @@ function draw(){
       changeText(el('tiltText'),tilt+'°');changeText(el('rangeText'),range+' m');
       const reading=subject?subject.id+' · '+subject.hp+' HP':'Crossing';
       changeText(el('directorReadout'),reading+' · tick '+world.tick);
+      if(world.tactical && subject)
+        changeText(el('directorDecision'),decisionReport(world,new Set([subject.id])));
       lastDirector={subject:subject?.id??null,eye:pose.eye,bearing,tilt,range,tick:world.tick};
     }
     const shell=presentation(visible,subject??cameraCrew());
@@ -360,6 +376,11 @@ on(el('orderForm'),'submit',e=>{
   if(type==='ATTACK')order.target=el('contact').value;
   give(order,el('append').checked);
 });
+on(el('assignDoctrine'),'click',()=>give({type:'DOCTRINE',doctrine:el('doctrine').value},false));
+on(el('taskForm'),'submit',e=>{
+  e.preventDefault();
+  give({type:'TASK',task:el('task').value,x:el('taskEast').valueAsNumber,z:el('taskSouth').valueAsNumber},false);
+});
 on(el('expand'),'click',()=>{
   const expanded=document.body.classList.toggle('expanded');
   el('expand').setAttribute('aria-pressed',String(expanded));
@@ -455,12 +476,20 @@ export function inspect(){
   const tr=map.transform(),r=canvas.getBoundingClientRect();
   const visible=visibleActors().map(a=>{
     const [u,v]=tr.screen(a.p[0],a.p[2]);
-    return {id:a.id,x:a.p[0],z:a.p[2],u:u+r.left,v:v+r.top,hp:a.hp};
+    return {id:a.id,x:a.p[0],z:a.p[2],u:u+r.left,v:v+r.top,...(!world.tactical||a.faction==='cobalt'?{hp:a.hp}:{})};
   });
   return structuredClone({mode,tick:world.tick,status:world.status,selected:[...selected],visible,
+    ...(world.tactical?{contacts:chartContacts(world,visibleActors()),
+      assignments:Object.fromEntries(friendly().map(a=>[a.id,world.tactical.crews[a.id].task])),
+      decisions:Object.fromEntries(friendly().map(a=>[a.id,world.tactical.crews[a.id].decision])),
+      launches:world.events.filter(e=>e.type==='launch' && e.owner.startsWith('cobalt-'))}:{}),
     camera,screen,director:screen==='observation' && camera==='director'?lastDirector:null,units:world.units,metrics:{...metrics,buffers:view?.r.meshes.size??0,rafActive:Boolean(raf),
       dragging:Boolean(drag),audioActive:Boolean(music)},receipt:commandReceipt(world),zoom:map.zoom,cx:map.cx,cz:map.cz});
 }
 if(scenario.briefing)el('panelText').textContent=scenario.briefing;
-document.body.classList.toggle('big-battle',scenario===commandScenarios.big);
+el('tactics').hidden=!world.tactical;
+el('directorInspector').hidden=!world.tactical;
+document.body.classList.toggle('overlord',Boolean(world.tactical));
+document.body.classList.toggle('big-battle',world.crewSets===3);
+if(world.tactical)document.querySelector('h1').textContent='Operation Overlord';
 initRoster();draw();dialog('briefing');

@@ -18,11 +18,23 @@
   </div>
   <label class="check"><input id="directorSweep" type="checkbox">Automatic orbit</label>
   <p id="directorReadout"></p>
+  <details id="directorInspector" hidden><summary>Subject decision</summary><pre id="directorDecision"></pre></details>
 </section>
 </section>
 <aside><div class="sectionTitle"><small>COBALT COMMAND</small><h1>Breakwater Reach</h1></div>
 <p id="objective">Disable the shore relay, secure the crossing and disable two mobile defenders.</p>
 <h2>Command roster <button id="all">Select all</button></h2><div id="roster"></div><label class="check"><input type="checkbox" id="multiSelect">Toggle individual crews</label>
+<section id="tactics" aria-label="Tactical command" hidden>
+<h2>Tactical command</h2>
+<div class="pair"><label>Crew doctrine<select id="doctrine"><option>ASSAULT</option><option>DEFEND</option><option>SUPPORT</option><option>RECON</option><option>MANUAL</option></select></label>
+<button type="button" id="assignDoctrine">Assign</button></div>
+<form id="taskForm"><label>Section task<select id="task"><option>ADVANCE</option><option>COVER</option><option>FLANK</option><option>REGROUP</option></select></label>
+<div class="pair"><label>Objective X<input id="taskEast" type="number" min="-144" max="144" step="any" value="-16" required></label>
+<label>Objective Z<input id="taskSouth" type="number" min="-144" max="144" step="any" value="3" required></label></div>
+<button type="submit" id="issueTask">Issue task</button></form>
+<details id="decisions"><summary>Decision inspector</summary><pre id="decisionText"></pre></details>
+<details><summary>Faction contacts</summary><pre id="contactText"></pre></details>
+</section>
 <h2>Orders</h2><form id="orderForm"><div class="pair"><label>Order<select id="type"><option>MOVE</option><option>ATTACK</option><option>HOLD</option><option>DEFEND</option></select></label><label class="check"><input id="append" type="checkbox">Queue</label></div>
 <div id="coords" class="pair"><label>East / X<input id="east" type="number" step="any" value="-18" required></label><label>South / Z<input id="south" type="number" step="any" value="3" required></label></div>
 <label id="contactLabel" hidden>Visible contact<select id="contact"></select></label>
