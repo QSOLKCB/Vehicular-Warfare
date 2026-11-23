@@ -1,0 +1,5 @@
+# Battlefield Intelligence acceptance
+
+Implementation `b22e6b472edf40cda3e2aec9249ba6d945f15157` passed 143 Node tests. The detached build produced ZIP SHA-256 `2ec808e7ff18a77043dfacd8633c5baec76625d026a922ba1f8e8bdbd105582d`. Chromium 158 with SwiftShader loaded that extracted game. At five successive sensor sweeps all 13 Ember pieces and 12 Cobalt pieces were visible to at least one opposing crew. The browser independently checked the source crew and physical sight for every report. The island fixture in the numerical suite exercises contact loss, freezing and expiry away from that exposed opening.
+
+Reproduce with `python3 tools/identity.py --check`, `node --test test/*.test.js` and `node tools/overlord-intel-measure.mjs`. Build and extract the game using tools/package.py and set RIDGEFIRE_WEB_ROOT to the extracted Vehicular-Warfare directory before running `node tools/browser.mjs /tmp/intel-check overlord-intel`. The browser check exercises the numerical API. The playable commander interface comes later in the stack.
