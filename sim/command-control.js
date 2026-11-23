@@ -212,3 +212,6 @@ export function stepCommand(w){
   }
   objective(w);
 }
+
+// Shared movement and mission rules for the separately versioned doctrine game.
+export {finish,navigate,objective,stop};

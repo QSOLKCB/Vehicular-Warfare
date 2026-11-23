@@ -4,12 +4,20 @@ from pathlib import Path
 import sys
 
 
-def source_id(prefix, destination, output, modules, *, historical_exports=False):
+def source_id(prefix, destination, output, modules, *, historical_exports=False, doctrine_exports=False):
     files = [Path("sim") / (name + ".js") for name in modules]
     files += [Path("vendor/vanillajs/modules") / name / "index.js" for name in ("terrain", "collision", "math")]
     digest = hashlib.sha256()
     for path in sorted(files):
         content = path.read_bytes()
+        if path == Path("sim/command-control.js") and not doctrine_exports:
+            # Earlier identities cover the exact bytes before this named-export
+            # declaration. Its helpers themselves remain part of every identity.
+            suffix = (b"\n// Shared movement and mission rules for the separately versioned doctrine game.\n"
+                      b"export {finish,navigate,objective,stop};\n")
+            if not content.endswith(suffix):
+                raise ValueError("Review historical command exports")
+            content = content[:-len(suffix)]
         if historical_exports and path == Path("sim/combined-world.js"):
             # v0.3.0 and its workshop consumed the same executable module.
             # The sole extension to those exact bytes is a named export list
@@ -48,3 +56,6 @@ source_id("vw-cmd-005", "BIG_BATTLE_SOURCE", "big-battle-identity.js",
           formation_modules + ("formation-identity", "big-battle"))
 source_id("vw-tact-001", "OVERLORD_INTEL_SOURCE", "overlord-intel-identity.js",
           formation_modules + ("formation-identity", "big-battle", "big-battle-identity", "overlord-intel"))
+overlord_modules = formation_modules + ("formation-identity", "big-battle", "big-battle-identity",
+                                       "overlord-intel", "overlord-doctrine", "overlord-control", "overlord")
+source_id("vw-tact-002", "OVERLORD_SOURCE", "overlord-identity.js", overlord_modules, doctrine_exports=True)

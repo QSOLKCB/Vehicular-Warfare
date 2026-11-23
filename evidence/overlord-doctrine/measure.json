@@ -1,0 +1,818 @@
+{
+  "node": "v22.18.0",
+  "base": "19b530b04692607f4dacc96e3f14525e3562aaa2",
+  "scenarios": [
+    {
+      "start": [
+        -30,
+        10.971306524197583,
+        37
+      ],
+      "obs": [
+        {
+          "tick": 1,
+          "p": [
+            -30,
+            10.972487079753138,
+            37
+          ],
+          "mask": 512,
+          "decision": {
+            "tick": 0,
+            "doctrine": "DEFEND",
+            "action": "defend station",
+            "reason": "assigned station",
+            "goal": [
+              -30,
+              37
+            ],
+            "contact": "relay",
+            "observedTick": 0,
+            "source": "cobalt-helicopter",
+            "score": 747,
+            "candidates": [
+              [
+                "relay",
+                747
+              ],
+              [
+                "ember-mech-2",
+                637
+              ],
+              [
+                "ember-tank-2",
+                632
+              ],
+              [
+                "ember-helicopter-2",
+                626
+              ],
+              [
+                "ember-helicopter",
+                608
+              ],
+              [
+                "ember-mech",
+                606
+              ],
+              [
+                "ember-tank",
+                596
+              ],
+              [
+                "ember-ship-2",
+                585
+              ],
+              [
+                "ember-mech-3",
+                574
+              ],
+              [
+                "ember-ship",
+                574
+              ],
+              [
+                "ember-tank-3",
+                573
+              ],
+              [
+                "ember-helicopter-3",
+                566
+              ],
+              [
+                "ember-ship-3",
+                549
+              ]
+            ]
+          },
+          "launches": 0
+        },
+        {
+          "tick": 101,
+          "p": [
+            -30,
+            11.665467426349823,
+            37
+          ],
+          "mask": 0,
+          "decision": {
+            "tick": 100,
+            "doctrine": "DEFEND",
+            "action": "defend station",
+            "reason": "assigned station",
+            "goal": [
+              -30,
+              37
+            ],
+            "contact": "relay",
+            "observedTick": 90,
+            "source": "cobalt-helicopter",
+            "score": 747,
+            "candidates": [
+              [
+                "relay",
+                747
+              ],
+              [
+                "ember-mech-2",
+                637
+              ],
+              [
+                "ember-tank-2",
+                632
+              ],
+              [
+                "ember-helicopter-2",
+                627
+              ],
+              [
+                "ember-helicopter",
+                611
+              ],
+              [
+                "ember-mech",
+                606
+              ],
+              [
+                "ember-tank",
+                600
+              ],
+              [
+                "ember-ship-2",
+                585
+              ],
+              [
+                "ember-mech-3",
+                574
+              ],
+              [
+                "ember-ship",
+                574
+              ],
+              [
+                "ember-tank-3",
+                574
+              ],
+              [
+                "ember-helicopter-3",
+                567
+              ],
+              [
+                "ember-ship-3",
+                549
+              ]
+            ]
+          },
+          "launches": 1
+        },
+        {
+          "tick": 165,
+          "p": [
+            -30,
+            11.86606206651718,
+            37
+          ],
+          "mask": 0,
+          "decision": {
+            "tick": 150,
+            "doctrine": "DEFEND",
+            "action": "defend station",
+            "reason": "assigned station",
+            "goal": [
+              -30,
+              37
+            ],
+            "contact": "relay",
+            "observedTick": 150,
+            "source": "cobalt-helicopter",
+            "score": 747,
+            "candidates": [
+              [
+                "relay",
+                747
+              ],
+              [
+                "ember-mech-2",
+                637
+              ],
+              [
+                "ember-tank-2",
+                634
+              ],
+              [
+                "ember-helicopter-2",
+                631
+              ],
+              [
+                "ember-helicopter",
+                617
+              ],
+              [
+                "ember-tank",
+                607
+              ],
+              [
+                "ember-mech",
+                606
+              ],
+              [
+                "ember-ship-2",
+                585
+              ],
+              [
+                "ember-tank-3",
+                577
+              ],
+              [
+                "ember-mech-3",
+                574
+              ],
+              [
+                "ember-ship",
+                574
+              ],
+              [
+                "ember-helicopter-3",
+                571
+              ],
+              [
+                "ember-ship-3",
+                549
+              ]
+            ]
+          },
+          "launches": 26
+        }
+      ],
+      "receipt": {
+        "version": 3,
+        "source": "vw-tact-002:53e5f4659a945d80f7a7e386d88e2303795f138199eae0d85804784a58c486c9",
+        "scenario": "breakwater-doctrine-v1",
+        "seed": 2505,
+        "roster": [
+          {
+            "id": "cobalt-helicopter",
+            "kind": "helicopter",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-tank",
+            "kind": "tank",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-mech",
+            "kind": "mech",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-ship",
+            "kind": "ship",
+            "faction": "cobalt"
+          },
+          {
+            "id": "ember-helicopter",
+            "kind": "helicopter",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-tank",
+            "kind": "tank",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-mech",
+            "kind": "mech",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-ship",
+            "kind": "ship",
+            "faction": "ember"
+          },
+          {
+            "id": "cobalt-helicopter-2",
+            "kind": "helicopter",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-tank-2",
+            "kind": "tank",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-mech-2",
+            "kind": "mech",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-ship-2",
+            "kind": "ship",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-helicopter-3",
+            "kind": "helicopter",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-tank-3",
+            "kind": "tank",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-mech-3",
+            "kind": "mech",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-ship-3",
+            "kind": "ship",
+            "faction": "cobalt"
+          },
+          {
+            "id": "ember-helicopter-2",
+            "kind": "helicopter",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-tank-2",
+            "kind": "tank",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-mech-2",
+            "kind": "mech",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-ship-2",
+            "kind": "ship",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-helicopter-3",
+            "kind": "helicopter",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-tank-3",
+            "kind": "tank",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-mech-3",
+            "kind": "mech",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-ship-3",
+            "kind": "ship",
+            "faction": "ember"
+          },
+          {
+            "id": "relay",
+            "kind": "relay",
+            "faction": "ember"
+          }
+        ],
+        "orders": [
+          {
+            "tick": 0,
+            "units": [
+              "cobalt-helicopter"
+            ],
+            "type": "DOCTRINE",
+            "append": false,
+            "doctrine": "DEFEND"
+          }
+        ],
+        "ticks": 835,
+        "stateHash": "9e81617c",
+        "eventHash": "41d91ed7",
+        "outcome": "victory"
+      },
+      "verified": true,
+      "reason": "crossing secured",
+      "decisions": 393,
+      "decisionHash": 3461017859,
+      "launches": 80,
+      "routeCounts": {
+        "plans": 46,
+        "visited": 603,
+        "replans": 0
+      },
+      "phaseMs": {
+        "p50": 0.01873000000000502,
+        "p95": 0.09986999999999568,
+        "max": 0.6897599999999926
+      }
+    },
+    {
+      "start": [
+        -30,
+        10.971306524197583,
+        37
+      ],
+      "obs": [
+        {
+          "tick": 1,
+          "p": [
+            -30,
+            10.972487079753138,
+            36.99995888538038
+          ],
+          "mask": 513,
+          "decision": {
+            "tick": 0,
+            "doctrine": "RECON",
+            "action": "investigate",
+            "reason": "charted survey point",
+            "goal": [
+              -30,
+              11
+            ],
+            "contact": "relay",
+            "observedTick": 0,
+            "source": "cobalt-helicopter",
+            "score": 747,
+            "candidates": [
+              [
+                "relay",
+                747
+              ],
+              [
+                "ember-mech-2",
+                637
+              ],
+              [
+                "ember-tank-2",
+                632
+              ],
+              [
+                "ember-helicopter-2",
+                626
+              ],
+              [
+                "ember-helicopter",
+                608
+              ],
+              [
+                "ember-mech",
+                606
+              ],
+              [
+                "ember-tank",
+                596
+              ],
+              [
+                "ember-ship-2",
+                585
+              ],
+              [
+                "ember-mech-3",
+                574
+              ],
+              [
+                "ember-ship",
+                574
+              ],
+              [
+                "ember-tank-3",
+                573
+              ],
+              [
+                "ember-helicopter-3",
+                566
+              ],
+              [
+                "ember-ship-3",
+                549
+              ]
+            ]
+          },
+          "launches": 0
+        },
+        {
+          "tick": 101,
+          "p": [
+            -31.215060894824976,
+            11.674430636876568,
+            34.51622323729344
+          ],
+          "mask": 2049,
+          "decision": {
+            "tick": 100,
+            "doctrine": "RECON",
+            "action": "investigate",
+            "reason": "charted survey point",
+            "goal": [
+              -30,
+              11
+            ],
+            "contact": "relay",
+            "observedTick": 90,
+            "source": "cobalt-helicopter",
+            "score": 749,
+            "candidates": [
+              [
+                "relay",
+                749
+              ],
+              [
+                "ember-mech-2",
+                639
+              ],
+              [
+                "ember-tank-2",
+                635
+              ],
+              [
+                "ember-helicopter-2",
+                630
+              ],
+              [
+                "ember-helicopter",
+                613
+              ],
+              [
+                "ember-mech",
+                608
+              ],
+              [
+                "ember-tank",
+                602
+              ],
+              [
+                "ember-ship-2",
+                586
+              ],
+              [
+                "ember-mech-3",
+                576
+              ],
+              [
+                "ember-tank-3",
+                576
+              ],
+              [
+                "ember-ship",
+                575
+              ],
+              [
+                "ember-helicopter-3",
+                570
+              ],
+              [
+                "ember-ship-3",
+                549
+              ]
+            ]
+          },
+          "launches": 1
+        },
+        {
+          "tick": 165,
+          "p": [
+            -32.85880080558573,
+            11.912830363486595,
+            29.85529214367156
+          ],
+          "mask": 1,
+          "decision": {
+            "tick": 150,
+            "doctrine": "RECON",
+            "action": "investigate",
+            "reason": "charted survey point",
+            "goal": [
+              -30,
+              11
+            ],
+            "contact": "relay",
+            "observedTick": 150,
+            "source": "cobalt-helicopter",
+            "score": 752,
+            "candidates": [
+              [
+                "relay",
+                752
+              ],
+              [
+                "ember-mech-2",
+                642
+              ],
+              [
+                "ember-tank-2",
+                640
+              ],
+              [
+                "ember-helicopter-2",
+                637
+              ],
+              [
+                "ember-helicopter",
+                623
+              ],
+              [
+                "ember-tank",
+                612
+              ],
+              [
+                "ember-mech",
+                611
+              ],
+              [
+                "ember-ship-2",
+                588
+              ],
+              [
+                "ember-tank-3",
+                583
+              ],
+              [
+                "ember-mech-3",
+                579
+              ],
+              [
+                "ember-ship",
+                578
+              ],
+              [
+                "ember-helicopter-3",
+                577
+              ],
+              [
+                "ember-ship-3",
+                549
+              ]
+            ]
+          },
+          "launches": 26
+        }
+      ],
+      "receipt": {
+        "version": 3,
+        "source": "vw-tact-002:53e5f4659a945d80f7a7e386d88e2303795f138199eae0d85804784a58c486c9",
+        "scenario": "breakwater-doctrine-v1",
+        "seed": 2505,
+        "roster": [
+          {
+            "id": "cobalt-helicopter",
+            "kind": "helicopter",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-tank",
+            "kind": "tank",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-mech",
+            "kind": "mech",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-ship",
+            "kind": "ship",
+            "faction": "cobalt"
+          },
+          {
+            "id": "ember-helicopter",
+            "kind": "helicopter",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-tank",
+            "kind": "tank",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-mech",
+            "kind": "mech",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-ship",
+            "kind": "ship",
+            "faction": "ember"
+          },
+          {
+            "id": "cobalt-helicopter-2",
+            "kind": "helicopter",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-tank-2",
+            "kind": "tank",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-mech-2",
+            "kind": "mech",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-ship-2",
+            "kind": "ship",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-helicopter-3",
+            "kind": "helicopter",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-tank-3",
+            "kind": "tank",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-mech-3",
+            "kind": "mech",
+            "faction": "cobalt"
+          },
+          {
+            "id": "cobalt-ship-3",
+            "kind": "ship",
+            "faction": "cobalt"
+          },
+          {
+            "id": "ember-helicopter-2",
+            "kind": "helicopter",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-tank-2",
+            "kind": "tank",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-mech-2",
+            "kind": "mech",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-ship-2",
+            "kind": "ship",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-helicopter-3",
+            "kind": "helicopter",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-tank-3",
+            "kind": "tank",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-mech-3",
+            "kind": "mech",
+            "faction": "ember"
+          },
+          {
+            "id": "ember-ship-3",
+            "kind": "ship",
+            "faction": "ember"
+          },
+          {
+            "id": "relay",
+            "kind": "relay",
+            "faction": "ember"
+          }
+        ],
+        "orders": [
+          {
+            "tick": 0,
+            "units": [
+              "cobalt-helicopter"
+            ],
+            "type": "DOCTRINE",
+            "append": false,
+            "doctrine": "RECON"
+          }
+        ],
+        "ticks": 778,
+        "stateHash": "e355ed53",
+        "eventHash": "7c5fd1e3",
+        "outcome": "victory"
+      },
+      "verified": true,
+      "reason": "crossing secured",
+      "decisions": 367,
+      "decisionHash": 1047891975,
+      "launches": 81,
+      "routeCounts": {
+        "plans": 48,
+        "visited": 1083,
+        "replans": 0
+      },
+      "phaseMs": {
+        "p50": 0.018569999999954234,
+        "p95": 0.06886999999983345,
+        "max": 0.6972900000000664
+      }
+    }
+  ]
+}
