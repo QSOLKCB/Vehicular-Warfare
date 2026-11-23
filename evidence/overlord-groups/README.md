@@ -16,3 +16,11 @@ In fixture B, the ordinary formation route took Basalt 3 via (−18, 66). Its al
 Chromium 158 ran fixture B against the extracted ZIP with SHA-256 `49a1077e067c9f776f587efb136d10325b2c5ef577596719ebe9ae818e2e4602`. The browser drew the strategic map at tick 240 and reproduced its 3,568-tick victory with state digest `25a2fedb` and event digest `0e48db90`. The browser and Node have different digests for this recording. Verification scope is the original runtime. [SwiftShader and replay observations](software.json.gz)
 
 ![Breakwater chart at tick 240 with the section routes and selected friendly crews](01-section-routes.png)
+
+## Cover reassignment correction
+
+At the pre-review head `b1c089f`, replacing a covering crew’s task with another COVER at the same tick left the original advancing crew waiting. Both the identical replacement and a distant replacement at (−90, 90) reproduced the problem. Assigning another crew its own COVER correctly preserved the original wait. [Three submissions through the scenario API](review/before.tap.gz)
+
+At `ad75fea30e5ec2ed496b213c30609d2c5639ed32`, ADVANCE tracks the particular accepted COVER assignment. Both replacements released the waiting unit on its next step. All three cases replayed, and all 157 Node tests passed. The numerical fixtures A and B again ended in victory at ticks 1,064 and 3,568. Their verified state / event digests were `83ca9541` / `aa4cbd69` and `f2aebb1c` / `9b54c928`, respectively. [Corrected cases](review/after.tap.gz) · [Full suite](review/node.tap.gz) · [Fixture traces and receipts](review/measure.json.gz)
+
+Chromium 158 with SwiftShader exercised the extracted corrected ZIP, SHA-256 `bb3b4bb46ce22d8e0b2e0f69376ca5bf85f1cc089690bd22504c35ccfb11b0d2`. Its alternate-route recording reproduced the tick 3,568 victory with state / event digests `25a2fedb` / `0e48db90`. The corrected source identity is `vw-tact-003:fe43304618801b334cfb22dbbaa1445e339694b21d0d121a5e8b634f9a67f5bf`. [Packaged browser and runtime manifest](review/software.json.gz) · [Accepted route screenshot](review/01-section-routes.png)
