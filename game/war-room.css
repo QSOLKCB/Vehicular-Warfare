@@ -8,3 +8,22 @@ aside{padding:20px 16px;overflow:auto;background:#1b292b;border-left:1px solid v
 .expanded main{grid-template-columns:1fr;grid-template-rows:1fr}.expanded aside{display:none}
 #feedback{position:absolute;max-width:calc(100% - 32px);pointer-events:none;left:16px;top:52px;min-height:0;margin:0;color:#ebf4e8;background:#183631ed;border-left:2px solid #b8d8b0;padding:4px 8px;font:12px/1.4 ui-monospace,monospace}
 @media(max-width:510px){header strong{display:none}header{font-size:12px}#viewTools select{max-width:100px}}
+
+#directorTools {
+  position:absolute;
+  left:16px;
+  bottom:60px;
+  width:min(290px,calc(100% - 32px));
+  max-height:calc(100% - 90px);
+  overflow:auto;
+  padding:9px 12px;
+  background:#162829ed;
+  border:1px solid var(--edge);
+  border-radius:4px;
+}
+.directorSettings { display:flex; gap:10px; }
+.directorSettings label { min-width:0; flex:1; }
+.directorSettings input { padding:0; width:100%; accent-color:var(--mint); }
+#directorReadout { margin:0; font:12px/1.3 ui-monospace,monospace; color:var(--mint); }
+body.inspecting aside,body.inspecting #feedback { display:none; }
+body.inspecting main { grid-template-columns:1fr; grid-template-rows:1fr; }

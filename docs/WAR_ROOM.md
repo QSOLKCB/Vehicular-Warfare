@@ -12,7 +12,7 @@ Choose **War Room** on the mission board, then **Deploy crews**. The crossing is
 | Wheel / middle-drag | Zoom around the pointer or pan. Arrow keys pan. Fit theatre restores the 288 m overview. |
 | F | Follow the first selected operational crew in roster order. |
 | Tab on the battlefield canvas / view button | Switch between map and live observation. |
-| C / camera selector | Cycle overhead, crew chase and weapon sight. |
+| C / camera selector | Press C to cycle through overhead, crew chase, weapon sight and Battle Director. Choose any view directly in the selector. |
 | M / G | Toggle retro display or the 3D FX gate beacon. |
 | P / Escape | Pause or resume. |
 
@@ -23,3 +23,11 @@ One opening is to select all four crews and right-click the shore relay while it
 The presentation shares the live simulation while switching cameras. The strategic map samples Breakwater's heightfield and water once per terrain build. Friendly sensors determine the hostile symbols and available designations. Retro colours on the strategic canvas retain the same coordinates and selection. The 3D local chart supports the original indexed display. Direct waypoints can end in grounding or obstruction. Replace a blocked route or issue intermediate waypoints around the obstacle.
 
 The debrief shows the accepted outcome. **Save replay** writes the accepted order stream. **Open replay** reconstructs the battle and compares state and event digests in the local runtime. The numerical API, finite limits and example are in the [authority contract](COMMAND_AUTHORITY.md).
+
+## Battle Director
+
+Choose **Observe in 3D**, then **Battle Director** from the camera selector. Pin an operational Cobalt crew to inspect it while issuing orders to a different selection. **Current selection** follows the first selected operational crew in roster order. If a pinned crew is lost, the director returns to the current selection or the first surviving crew. The crossing provides the camera focus when all crews are disabled.
+
+Adjust bearing, tilt and distance to frame the scene. **Automatic orbit** circles the subject at 15 degrees per simulation second. The camera stays inside the chart and above the sampled ground and water surface. Terrain between the lens and the subject can still block the view.
+
+**Inspect frame** opens the director from pause, debrief or a verified replay. Camera and subject controls redraw the held tick. **Return to pause**, **Return to debrief** or **Return to replay** closes the inspector and releases its WebGL resources. Command receipts record the same simulation regardless of camera settings.
