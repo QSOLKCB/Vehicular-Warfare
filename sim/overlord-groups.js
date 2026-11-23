@@ -63,7 +63,7 @@ function findCover(w, group, anchor) {
   for (const id of Object.keys(w.units).sort()) {
     const assignment = w.tactical.crews[id].task;
     if (assignment?.task !== 'COVER' || group.includes(id) ||
-        !w.units[id].queue[0]?.sectionTask ||
+        w.units[id].queue[0]?.sectionTask !== 'COVER' ||
         w.units[id].queue[0]?.type !== 'DEFEND') continue;
     const slot = assignment.slot;
     const d = Math.hypot(slot[0]-anchor[0],slot[1]-anchor[1]);
@@ -86,6 +86,9 @@ export function groupPlan(w, accepted) {
   const assignments = members.map(a => {
     const slot = slots.get(a.id);
     const assignment = {task,tick:w.tick,anchor,slot,approach:null,cover,waiting:false,reason:''};
+    // The accepted command log is append-only and can contain several orders
+    // for this crew on one tick. Its index identifies this particular assignment.
+    if (task === 'COVER') assignment.orderIndex = w.orderLog.length;
     const route = slot ? planned(w,a,slot,stats) : [];
     const orders = [];
     if (!route.length) {
@@ -104,6 +107,7 @@ export function groupPlan(w, accepted) {
         // This one queue entry reserves the pending movement. Releasing it
         // replaces only the head, leaving any player-appended successor intact.
         orders[0] = {type:'HOLD',pendingAdvance:orders[0]};
+        assignment.coverOrderIndex = w.tactical.crews[cover].task.orderIndex;
         assignment.waiting = true;
         assignment.reason = 'waiting for covering crew';
       } else {
@@ -145,7 +149,7 @@ export function beforeGroupStep(w) {
     if (!next) { task.waiting=false;continue; }
     const support = w.units[task.cover];
     const ready = support.onStation;
-    const unavailable = w.tactical.crews[task.cover].task?.task !== 'COVER' ||
+    const unavailable = w.tactical.crews[task.cover].task?.orderIndex !== task.coverOrderIndex ||
       support.queue[0]?.sectionTask !== 'COVER';
     if (!ready && !unavailable && w.tick-task.tick < COVER_WAIT && u.queue.length === 1) continue;
     u.queue[0] = next;

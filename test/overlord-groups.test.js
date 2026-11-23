@@ -116,3 +116,35 @@ test('alternate section physically completes both independently validated stages
   }
   assert.throws(()=>overlord.replay(JSON.stringify({...run.recording,eventHash:'deadbeef'})));
 });
+
+for (const [label, recipient, destination] of [
+  ['identical replacement', 'cobalt-tank-2', [-26,15]],
+  ['distant replacement', 'cobalt-tank-2', [-90,90]],
+  ['unrelated cover order', 'cobalt-tank-3', [-90,90]]
+]) {
+  test('waiting ADVANCE retains the identity of its covering assignment through '+label, async()=>{
+    const {overlord}=await import('../sim/coordinated-overlord.js');
+    const w=overlord.createWorld();
+    const issue=(task,id,[x,z])=>overlord.issueOrder(w,{
+      tick:w.tick,type:'TASK',task,units:[id],append:false,x,z
+    });
+    const cover='cobalt-tank-2';
+    issue('COVER',cover,[-26,15]);
+    issue('ADVANCE',helicopter,[-30,3]);
+    assert.equal(w.tactical.crews[helicopter].task.cover,cover);
+    assert.equal(w.tactical.crews[helicopter].task.waiting,true);
+    issue('COVER',recipient,destination);
+    assert.equal(w.units[recipient].queue[0].sectionTask,'COVER');
+    assert.deepEqual(w.orderLog.map(order=>order.tick),[0,0,0]);
+    overlord.step(w);
+    const advance=w.tactical.crews[helicopter].task;
+    const stillWaiting=recipient!==cover;
+    assert.equal(advance.waiting,stillWaiting);
+    assert.equal(advance.releaseTick,stillWaiting?undefined:0);
+    assert.equal(w.units[helicopter].queue[0].type,stillWaiting?'HOLD':'MOVE');
+    const saved=overlord.receipt(w);
+    const rebuilt=overlord.replay(JSON.stringify(saved));
+    assert.deepEqual(rebuilt.tactical.crews[helicopter].task,advance);
+    assert.deepEqual(overlord.receipt(rebuilt),saved);
+  });
+}

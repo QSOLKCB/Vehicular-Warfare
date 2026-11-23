@@ -9,7 +9,7 @@ Choose a group of Cobalt crews and a chart anchor. Every section task replaces t
 | FLANK | Attempt a different approach to each compatible slot. Visit and settle at the validated intermediate marker, then travel to the slot. A crew without an alternate path reports a blocked task. |
 | REGROUP | Route each member independently to its assigned rally slot. Different classes use the existing formation priority and terrain checks. |
 
-An ADVANCE can wait up to 240 accepted ticks for its covering crew. Loss or reassignment of that crew releases the movement. A queued player successor also releases it so the commander’s two orders can run in sequence. The assignment records the release reason and tick. Replacement takes effect immediately.
+An ADVANCE can wait up to 240 accepted ticks for its covering crew. The wait records the covering crew ID and the original COVER command’s index in the accepted order log. Loss or reassignment of that crew releases the movement on the next simulation step, including when the new COVER order has the same destination and tick. A queued player successor also releases it so the commander’s two orders can run in sequence. The assignment records the release reason and tick. Replacement takes effect immediately.
 
 ## Routes and bounds
 
