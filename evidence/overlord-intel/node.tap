@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: each faction admits actual observations from a live crew; source and ID ties ignore roster order
+ok 1 - each faction admits actual observations from a live crew; source and ID ties ignore roster order
+  ---
+  duration_ms: 28.525796
+  type: 'test'
+  ...
+# Subtest: island blocks an in-range contact, loss freezes its report, reacquisition and expiry use sweep ticks
+ok 2 - island blocks an in-range contact, loss freezes its report, reacquisition and expiry use sweep ticks
+  ---
+  duration_ms: 11.349052
+  type: 'test'
+  ...
+# Subtest: shared sight cannot grant personal visibility or acquisition
+ok 3 - shared sight cannot grant personal visibility or acquisition
+  ---
+  duration_ms: 9.024172
+  type: 'test'
+  ...
+# Subtest: ranking uses snapshots, bounded additive scores and stable actor IDs
+ok 4 - ranking uses snapshots, bounded additive scores and stable actor IDs
+  ---
+  duration_ms: 0.36461
+  type: 'test'
+  ...
+# Subtest: concealed opponents cannot feed hidden orders, ammo, velocity or tracking into a report or score
+ok 5 - concealed opponents cannot feed hidden orders, ammo, velocity or tracking into a report or score
+  ---
+  duration_ms: 8.883432
+  type: 'test'
+  ...
+# Subtest: malformed, sparse, accessor and oversized observations reject without changing the contact book
+ok 6 - malformed, sparse, accessor and oversized observations reject without changing the contact book
+  ---
+  duration_ms: 0.8235
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 67.821623

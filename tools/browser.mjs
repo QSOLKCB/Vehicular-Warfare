@@ -153,10 +153,11 @@ try{
     const report={source,servedTree,presentation,version,cpu:cpus()[0].model,gpu,requests:[...urls].map(u=>u.replace(base,'')),errors,...result};
     await writeFile(join(output,'archives.json'),JSON.stringify(report,null,1)+'\n');
     console.log('Verified',result.distinct,'distinct archived recordings from',result.occurrences,'occurrences');
-  }else if(['profile','profile-base','profile-fx','profile-retro','fx','retro','controls','war-room','formation','director','big-battle'].includes(family)){
+  }else if(['profile','profile-base','profile-fx','profile-retro','fx','retro','controls','war-room','formation','director','big-battle','overlord-intel'].includes(family)){
     const io={click,key,mouse,evaluate,send,screenshot,sleep,output};
     let result;
-    if(family==='war-room')result=await (await import('./war-room-sortie.mjs')).warRoomSortie(io);
+    if(family==='overlord-intel')result=await (await import('./overlord-intel-browser.mjs')).check(io);
+    else if(family==='war-room')result=await (await import('./war-room-sortie.mjs')).warRoomSortie(io);
     else if(family==='formation')result=await (await import('./formation-sortie.mjs')).formationSortie(io);
     else if(family==='director')result=await (await import('./director-sortie.mjs')).directorSortie(io);
     else if(family==='big-battle')result=await (await import('./big-battle-sortie.mjs')).bigBattleSortie(io);
